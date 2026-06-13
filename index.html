@@ -8,6 +8,24 @@
 <style>
   html { scroll-behavior: smooth; }
   section { scroll-margin-top: 80px; }
+
+  /* ── GOOGLE TRANSLATE TOOLBAR FIX ── */
+  body.translated-ltr,
+  body.translated-rtl {
+    margin-top: 0 !important;
+    top: 0 !important;
+  }
+  .skiptranslate iframe {
+    display: none !important;
+  }
+  #goog-gt-tt,
+  .goog-te-banner-frame,
+  .goog-te-menu-frame {
+    display: none !important;
+  }
+  body > .skiptranslate {
+    display: none !important;
+  }
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   :root {
     --navy: #0d1f3c;
@@ -1304,5 +1322,18 @@
     </div>
   </div>
 </div>
+
+<script>
+  // Fix Google Translate toolbar pushing page content down
+  function fixGoogleTranslate() {
+    var top = parseInt(document.body.style.top || '0', 10);
+    if (top < 0) {
+      document.body.style.top = '0';
+      window.scrollTo(0, Math.abs(top));
+    }
+  }
+  var observer = new MutationObserver(fixGoogleTranslate);
+  observer.observe(document.body, { attributes: true, attributeFilter: ['style', 'class'] });
+</script>
 </body>
 </html>
