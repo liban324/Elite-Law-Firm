@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>All Legal Services – Elite Law Firm</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --navy: #0d1f3c;
+    --navy-mid: #162848;
+    --navy-light: #1e3560;
+    --gold: #c9a84c;
+    --gold-light: #e8c96a;
+    --gold-pale: #f5e9c8;
+    --white: #ffffff;
+    --off-white: #f8f6f1;
+    --gray: #4a5e78;
+    --text: #1a2a40;
+  }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Montserrat', sans-serif; color: var(--text); background: var(--white); overflow-x: hidden; }
+
+  /* Google Translate fix */
+  body.translated-ltr, body.translated-rtl { margin-top: 0 !important; top: 0 !important; }
+  .skiptranslate iframe, #goog-gt-tt, .goog-te-banner-frame, .goog-te-menu-frame, body > .skiptranslate { display: none !important; }
+
+  /* TOP BAR */
+  .topbar { background: var(--navy-mid); padding: 8px 40px; display: flex; justify-content: space-between; align-items: center; font-size: 12px; color: var(--gray); letter-spacing: 0.05em; }
+  .topbar a { color: var(--gray); text-decoration: none; }
+  .topbar a:hover { color: var(--gold); }
+  .topbar-right { display: flex; gap: 20px; align-items: center; }
+  .social-icons { display: flex; gap: 10px; }
+  .social-icons a { width: 28px; height: 28px; border: 1px solid rgba(201,168,76,0.3); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 11px; color: var(--gold); text-decoration: none; transition: all 0.3s; }
+  .social-icons a:hover { background: var(--gold); color: var(--navy); }
+
+  /* NAVBAR */
+  nav { background: #080f1e; padding: 0 40px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 20px rgba(0,0,0,0.3); height: 96px; }
+  .logo { display: flex; align-items: center; gap: 14px; text-decoration: none; }
+  .logo-icon { width: 86px; height: 90px; }
+  .logo-text { line-height: 1.15; }
+  .logo-text .firm { font-family: 'Cinzel', serif; font-size: 28px; font-weight: 700; color: var(--white); letter-spacing: 0.18em; }
+  .logo-text .sub-row { display: flex; align-items: center; gap: 6px; margin-top: 2px; }
+  .logo-text .sub-line { flex: 1; height: 1px; background: var(--gold); opacity: 0.7; }
+  .logo-text .sub { font-family: 'Cinzel', serif; font-size: 10px; font-weight: 400; color: var(--gold); letter-spacing: 0.22em; text-transform: uppercase; }
+  .nav-links { display: flex; list-style: none; gap: 4px; align-items: center; }
+  .nav-links > li { position: relative; }
+  .nav-links > li > a { padding: 28px 14px; display: block; color: rgba(255,255,255,0.75); text-decoration: none; font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; transition: color 0.2s; border-bottom: 3px solid transparent; }
+  .nav-links > li > a:hover, .nav-links > li > a.active { color: var(--gold); border-bottom-color: var(--gold); }
+  .dropdown { position: absolute; top: 100%; left: 0; background: #080f1e; min-width: 240px; box-shadow: 0 8px 30px rgba(0,0,0,0.4); opacity: 0; visibility: hidden; transform: translateY(-8px); transition: all 0.25s; border-top: 3px solid var(--gold); z-index: 200; }
+  .nav-links > li:hover .dropdown { opacity: 1; visibility: visible; transform: translateY(0); }
+  .dropdown a { display: block; padding: 11px 20px; font-size: 11.5px; font-weight: 500; color: rgba(255,255,255,0.6); text-decoration: none; letter-spacing: 0.04em; border-bottom: 1px solid rgba(255,255,255,0.06); transition: all 0.2s; }
+  .dropdown a:hover { background: rgba(201,168,76,0.1); color: var(--gold); padding-left: 26px; }
+  .nav-cta { background: var(--gold) !important; color: var(--navy) !important; padding: 10px 22px !important; border-bottom: none !important; font-weight: 700 !important; transition: background 0.2s !important; }
+  .nav-cta:hover { background: var(--gold-light) !important; }
+
+  /* PAGE HERO BANNER */
+  .page-banner {
+    background: var(--navy);
+    padding: 80px 40px 60px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .page-banner::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse at 60% 50%, rgba(201,168,76,0.08) 0%, transparent 70%);
+  }
+  .page-banner .breadcrumb {
+    font-size: 11px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 18px;
+  }
+  .page-banner .breadcrumb a { color: rgba(201,168,76,0.6); text-decoration: none; }
+  .page-banner .breadcrumb a:hover { color: var(--gold); }
+  .page-banner h1 {
+    font-family: 'Cinzel', serif; font-size: clamp(28px, 5vw, 52px); font-weight: 700;
+    color: var(--white); letter-spacing: 0.06em; margin-bottom: 20px;
+  }
+  .page-banner h1 em { color: var(--gold); font-style: normal; }
+  .page-banner p {
+    font-size: 14px; color: rgba(255,255,255,0.6); max-width: 640px;
+    margin: 0 auto; line-height: 1.75; letter-spacing: 0.02em;
+  }
+  .gold-rule { width: 60px; height: 2px; background: var(--gold); margin: 28px auto 0; }
+
+  /* SERVICES PAGE CONTENT */
+  .services-page { background: var(--off-white); padding: 64px 40px 80px; }
+  .services-page-inner { max-width: 1400px; margin: 0 auto; }
+
+  /* Filter bar */
+  .filter-bar {
+    display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 48px;
+    padding-bottom: 24px; border-bottom: 1px solid rgba(13,31,60,0.1);
+  }
+  .filter-btn {
+    padding: 7px 16px; font-size: 11px; font-weight: 600; letter-spacing: 0.06em;
+    text-transform: uppercase; border: 1px solid rgba(13,31,60,0.2);
+    background: transparent; color: var(--gray); cursor: pointer;
+    transition: all 0.2s; font-family: 'Montserrat', sans-serif;
+  }
+  .filter-btn:hover, .filter-btn.active { background: var(--navy); color: var(--gold); border-color: var(--navy); }
+
+  /* Grid */
+  .services-grid-full { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px; }
+
+  /* Service card */
+  .service-card-full { background: var(--white); padding: 28px 24px; border-bottom: 3px solid transparent; transition: all 0.3s; position: relative; overflow: hidden; }
+  .service-card-full::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 0; background: var(--navy); transition: height 0.3s; z-index: 0; }
+  .service-card-full:hover::before { height: 100%; }
+  .service-card-full > * { position: relative; z-index: 1; }
+  .service-card-full:hover { border-bottom-color: var(--gold); }
+  .service-num { font-family: 'Cinzel', serif; font-size: 32px; font-weight: 700; color: rgba(13,31,60,0.08); margin-bottom: 12px; line-height: 1; transition: color 0.3s; }
+  .service-card-full:hover .service-num { color: rgba(201,168,76,0.35); }
+  .service-card-full h3 { font-size: 13px; font-weight: 700; color: var(--navy); letter-spacing: 0.04em; margin-bottom: 10px; transition: color 0.3s; }
+  .service-card-full:hover h3 { color: var(--gold); }
+  .service-card-full p { font-size: 12px; color: #1a1a1a; line-height: 1.65; transition: color 0.3s; }
+  .service-card-full:hover p { color: rgba(255,255,255,0.5); }
+  .svc-list { list-style: none; margin-top: 8px; }
+  .svc-list li { font-size: 12px; color: var(--gray); padding: 4px 0; padding-left: 14px; position: relative; line-height: 1.5; transition: color 0.3s; }
+  .svc-list li::before { content: '—'; position: absolute; left: 0; color: var(--gold); font-size: 10px; }
+  .service-card-full:hover .svc-list li { color: rgba(255,255,255,0.6); }
+
+  /* Back CTA */
+  .back-cta {
+    text-align: center; margin-top: 64px; padding-top: 48px;
+    border-top: 1px solid rgba(13,31,60,0.12);
+  }
+  .back-cta p { font-size: 13px; color: var(--gray); margin-bottom: 20px; letter-spacing: 0.04em; }
+  .btn-navy {
+    display: inline-flex; align-items: center; gap: 10px;
+    background: var(--navy); color: var(--gold); border: 2px solid var(--gold);
+    padding: 14px 36px; font-family: 'Cinzel', serif; font-size: 12px;
+    font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase;
+    text-decoration: none; transition: all 0.3s;
+  }
+  .btn-navy:hover { background: var(--gold); color: var(--navy); }
+  .btn-gold-solid {
+    display: inline-flex; align-items: center; gap: 10px;
+    background: var(--gold); color: var(--navy); border: 2px solid var(--gold);
+    padding: 14px 36px; font-family: 'Cinzel', serif; font-size: 12px;
+    font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase;
+    text-decoration: none; transition: all 0.3s;
+  }
+  .btn-gold-solid:hover { background: var(--gold-light); }
+
+  /* FOOTER */
+  footer { background: var(--navy); padding: 64px 40px 24px; }
+  .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; margin-bottom: 48px; }
+  .footer-logo { display: flex; align-items: center; gap: 12px; text-decoration: none; margin-bottom: 20px; }
+  .footer-logo .firm { font-family: 'Cinzel', serif; font-size: 22px; font-weight: 700; color: var(--white); letter-spacing: 0.18em; }
+  .footer-logo .sub-row { display: flex; align-items: center; gap: 5px; margin-top: 2px; }
+  .footer-logo .sub-line { flex: 1; height: 1px; background: var(--gold); opacity: 0.5; }
+  .footer-logo .sub { font-family: 'Cinzel', serif; font-size: 9px; color: var(--gold); letter-spacing: 0.2em; }
+  .footer-about { font-size: 12px; color: rgba(255,255,255,0.4); line-height: 1.75; }
+  footer h5 { font-family: 'Cinzel', serif; font-size: 11px; font-weight: 700; color: var(--gold); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 18px; }
+  footer ul { list-style: none; }
+  footer ul li { margin-bottom: 8px; }
+  footer ul li a { font-size: 12px; color: rgba(255,255,255,0.45); text-decoration: none; transition: color 0.2s; letter-spacing: 0.02em; }
+  footer ul li a:hover { color: var(--gold); }
+  .footer-bottom { border-top: 1px solid rgba(255,255,255,0.08); padding-top: 24px; display: flex; justify-content: space-between; align-items: center; }
+  .footer-bottom span { font-size: 11px; color: rgba(255,255,255,0.3); letter-spacing: 0.04em; }
+  .footer-social { display: flex; gap: 10px; }
+  .footer-social a { width: 32px; height: 32px; border: 1px solid rgba(201,168,76,0.25); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px; color: var(--gold); text-decoration: none; transition: all 0.3s; }
+  .footer-social a:hover { background: var(--gold); color: var(--navy); }
+
+  /* RESPONSIVE */
+  @media (max-width: 1100px) { .services-grid-full { grid-template-columns: repeat(3, 1fr); } .footer-grid { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 768px) { .services-grid-full { grid-template-columns: repeat(2, 1fr); } .services-page { padding: 40px 20px 60px; } .page-banner { padding: 60px 20px 40px; } nav { padding: 0 20px; } .topbar { padding: 8px 20px; } }
+  @media (max-width: 500px) { .services-grid-full { grid-template-columns: 1fr; } .footer-grid { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="topbar">
+  <span>Elite Law Firm · Mogadishu, Somalia · +252 61 000 0000</span>
+  <div class="topbar-right">
+    <a href="#">info@elitelawfirm.so</a>
+    <div class="social-icons">
+      <a href="#" title="Facebook">f</a>
+      <a href="#" title="Twitter">𝕏</a>
+      <a href="#" title="LinkedIn">in</a>
+    </div>
+  </div>
+</div>
+
+<!-- NAVBAR -->
+<nav>
+  <a href="index.html" class="logo">
+    <svg class="logo-icon" viewBox="0 0 200 220" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="navGold" x1="30" y1="0" x2="170" y2="220" gradientUnits="userSpaceOnUse">
+          <stop offset="0%" stop-color="#f9ebb0"/><stop offset="35%" stop-color="#d4a93a"/><stop offset="65%" stop-color="#c9a030"/><stop offset="100%" stop-color="#8a6510"/>
+        </linearGradient>
+        <linearGradient id="navGold2" x1="30" y1="0" x2="170" y2="220" gradientUnits="userSpaceOnUse">
+          <stop offset="0%" stop-color="#f9ebb0"/><stop offset="50%" stop-color="#c9a84c"/><stop offset="100%" stop-color="#9a7020"/>
+        </linearGradient>
+      </defs>
+      <path d="M100 6 L186 38 L186 108 C186 162 148 196 100 212 C52 196 14 162 14 108 L14 38 Z" fill="#0d1f3c"/>
+      <path d="M100 6 L186 38 L186 108 C186 162 148 196 100 212 C52 196 14 162 14 108 L14 38 Z" stroke="url(#navGold)" stroke-width="9" fill="none"/>
+      <path d="M100 22 L172 50 L172 108 C172 154 138 184 100 198 C62 184 28 154 28 108 L28 50 Z" stroke="url(#navGold)" stroke-width="2.5" fill="none"/>
+      <polygon points="100,14 108,34 100,30 92,34" fill="url(#navGold2)"/>
+      <rect x="96" y="30" width="8" height="16" rx="2" fill="url(#navGold2)"/>
+      <rect x="42" y="72" width="116" height="12" rx="3" fill="url(#navGold2)"/>
+      <rect x="55" y="84" width="90" height="8" rx="2" fill="url(#navGold2)"/>
+      <rect x="72" y="92" width="16" height="88" rx="2" fill="url(#navGold2)"/>
+      <rect x="92" y="92" width="16" height="88" rx="2" fill="url(#navGold2)"/>
+      <rect x="112" y="92" width="16" height="88" rx="2" fill="url(#navGold2)"/>
+      <rect x="60" y="178" width="80" height="10" rx="2" fill="url(#navGold2)"/>
+      <rect x="38" y="68" width="124" height="6" rx="3" fill="url(#navGold2)"/>
+      <rect x="96" y="46" width="8" height="26" rx="2" fill="url(#navGold2)"/>
+      <circle cx="40" cy="71" r="6" fill="url(#navGold2)"/>
+      <circle cx="160" cy="71" r="6" fill="url(#navGold2)"/>
+      <line x1="40" y1="77" x2="28" y2="110" stroke="url(#navGold2)" stroke-width="2.5"/>
+      <line x1="40" y1="77" x2="52" y2="110" stroke="url(#navGold2)" stroke-width="2.5"/>
+      <path d="M22 110 L58 110 L46 138 Q40 144 34 138 Z" fill="url(#navGold2)"/>
+      <line x1="160" y1="77" x2="148" y2="110" stroke="url(#navGold2)" stroke-width="2.5"/>
+      <line x1="160" y1="77" x2="172" y2="110" stroke="url(#navGold2)" stroke-width="2.5"/>
+      <path d="M142 110 L178 110 L166 138 Q160 144 154 138 Z" fill="url(#navGold2)"/>
+    </svg>
+    <div class="logo-text">
+      <div class="firm">ELITE</div>
+      <div class="sub-row"><span class="sub-line"></span><span class="sub">Law Firm</span><span class="sub-line"></span></div>
+    </div>
+  </a>
+
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li>
+      <a href="#">About Us ▾</a>
+      <div class="dropdown">
+        <a href="/about/overview/">Overview</a>
+        <a href="/about/mission-vision/">Our Mission &amp; Vision</a>
+        <a href="/about/core-values/">Core Values</a>
+        <a href="/about/our-approach/">Our Approach</a>
+        <a href="/about/where-we-operate/">Where We Operate</a>
+        <a href="/about/meet-the-team/">Meet The Team</a>
+      </div>
+    </li>
+    <li>
+      <a href="services.html" class="active">Services ▾</a>
+      <div class="dropdown">
+        <a href="services.html#s01">Corporate, Commercial &amp; Business Setup</a>
+        <a href="services.html#s02">Government &amp; Regulatory Advisory</a>
+        <a href="services.html#s03">Labour &amp; Employment Law</a>
+        <a href="services.html#s04">Shipping &amp; Trade</a>
+        <a href="services.html#s05">International &amp; Immigration Law</a>
+        <a href="services.html#s06">Arbitration &amp; ADR</a>
+        <a href="services.html#s07">Anti-Corruption &amp; Bribery</a>
+        <a href="services.html#s08">Taxation</a>
+        <a href="services.html#s09">Civil Litigation</a>
+        <a href="services.html#s10">Criminal Defence</a>
+        <a href="services.html#s11">Property &amp; Land Law</a>
+        <a href="services.html#s12">Real Estate</a>
+        <a href="services.html#s13">Family Law</a>
+        <a href="services.html#s14">Notary &amp; Legal Documentation</a>
+        <a href="services.html#s15">General Legal Advisory</a>
+        <a href="services.html#s16">Other Legal Services</a>
+      </div>
+    </li>
+    <li>
+      <a href="#">Presence ▾</a>
+      <div class="dropdown">
+        <a href="/presence/mogadishu/">Mogadishu</a>
+        <a href="/presence/somalia-regions/">Somalia Regions</a>
+        <a href="/presence/east-africa/">East Africa</a>
+      </div>
+    </li>
+    <li><a href="index.html#contact">Multimedia</a></li>
+    <li><a href="index.html#contact" class="nav-cta">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- PAGE BANNER -->
+<div class="page-banner">
+  <div class="breadcrumb"><a href="index.html">Home</a> &nbsp;/&nbsp; Our Legal Services</div>
+  <h1>Our <em>Legal Services</em></h1>
+  <p>We maintain a diverse and dynamic legal practice covering key sectors of the Somali economy and legal system — from business formation and compliance to dispute resolution and strategic advisory.</p>
+  <div class="gold-rule"></div>
+</div>
+
+<!-- ALL 16 SERVICES -->
+<div class="services-page">
+  <div class="services-page-inner">
+
+    <div class="services-grid-full">
+
+      <div class="service-card-full" id="s01">
+        <div class="service-num">01</div>
+        <h3>Corporate, Commercial &amp; Business Setup</h3>
+        <ul class="svc-list">
+          <li>Company formation, structuring, and legal registration</li>
+          <li>Commercial contracts — drafting, review &amp; negotiation</li>
+          <li>Corporate governance and regulatory compliance</li>
+          <li>Mergers, acquisitions, joint ventures &amp; restructuring</li>
+          <li>Ongoing legal support for business operations</li>
+        </ul>
+      </div>
+
+      <div class="service-card-full" id="s02">
+        <div class="service-num">02</div>
+        <h3>Government &amp; Regulatory Advisory</h3>
+        <ul class="svc-list">
+          <li>Legal advisory for government institutions</li>
+          <li>Policy drafting and legislative support</li>
+          <li>Regulatory compliance frameworks</li>
+          <li>Review of laws and administrative procedures</li>
+          <li>Institutional capacity building and training</li>
+        </ul>
+      </div>
+
+      <div class="service-card-full" id="s03">
+        <div class="service-num">03</div>
+        <h3>Labour &amp; Employment Law</h3>
+        <ul class="svc-list">
+          <li>Employment contracts and workplace policies</li>
+          <li>Labour law compliance advisory</li>
+          <li>Workplace dispute resolution and litigation</li>
+          <li>Employee rights and employer representation</li>
+          <li>Termination and disciplinary procedures</li>
+        </ul>
+      </div>
+
+      <div class="service-card-full" id="s04">
+        <div class="service-num">04</div>
+        <h3>Shipping &amp; Trade</h3>
+        <ul class="svc-list">
+          <li>Maritime law and shipping operations</li>
+          <li>International trade and commodities</li>
+          <li>Energy sector legal support</li>
+          <li>Corporate and regulatory shipping issues</li>
+          <li>Cross-border trade compliance</li>
+        </ul>
+      </div>
+
+      <div class="service-card-full" id="s05">
+        <div class="service-num">05</div>
+        <h3>International &amp; Immigration Law</h3>
+        <ul class="svc-list">
+          <li>Visa and immigration documentation support</li>
+          <li>Cross-border legal transactions</li>
+          <li>International compliance advisory</li>
+          <li>Representation in immigration matters</li>
+          <li>Foreign investment legal support</li>
+        </ul>
+      </div>
+
+      <div class="service-card-full" id="s06">
+        <div class="service-num">06</div>
+        <h3>Arbitration &amp; ADR</h3>
+        <ul class="svc-list">
+          <li>Commercial arbitration and mediation</li>
+          <li>Negotiated settlements outside of court</li>
+          <li>Dispute resolution strategy and advisory</li>
+          <li>Arbitration clause drafting and review</li>
+          <li>Enforcement of arbitral awards</li>
+        </ul>
+      </div>
+
+      <div class="service-card-full" id="s07">
+        <div class="service-num">07</div>
+        <h3>Anti-Corruption &amp; Bribery</h3>
+        <ul class="svc-list">
+          <li>Anti-corruption compliance frameworks</li>
+          <li>Governance and risk management advisory</li>
+          <li>Multi-jurisdictional compliance support</li>
+          <li>Internal investigation and due diligence</li>
+          <li>Training and preventive legal strategies</li>
+        </ul>
+      </div>
+
+      <div class="service-card-full" id="s08">
+        <div class="service-num">08</div>
+        <h3>Taxation</h3>
+        <ul class="svc-list">
+          <li>Tax advisory and planning</li>
+          <li>Somalia tax framework guidance</li>
+          <li>Tax compliance and registration</li>
+          <li>Tax dispute resolution</li>
+          <li>Cross-border tax considerations</li>
+        </ul>
+      </div>
+
+      <div class="service-card-full" id="s09">
+        <div class="service-num">09</div>
+        <h3>Civil Litigation</h3>
+        <ul class="svc-list">
+          <li>Representation in civil court proceedings</li>
+          <li>Property, land, and contractual disputes</li>
+          <li>Compensation and liability claims</li>
+          <li>Enforcement of judgments and court decisions</li>
+          <li>Case preparation and legal strategy</li>
+        </ul>
+      </div>
+
+      <div class="service-card-full" id="s10">
+        <div class="service-num">10</div>
+        <h3>Criminal Defence</h3>
+        <ul class="svc-list">
+          <li>Criminal defence at all court levels</li>
+          <li>Bail applications and procedural defence</li>
+          <li>Case investigation and legal analysis</li>
+          <li>Protection of constitutional rights</li>
+          <li>Appeals and post-conviction remedies</li>
+        </ul>
+      </div>
+
+      <div class="service-card-full" id="s11">
+        <div class="service-num">11</div>
+        <h3>Property &amp; Land Law</h3>
+        <ul class="svc-list">
+          <li>Land legalization and official registration</li>
+          <li>Ownership transfer and documentation</li>
+          <li>Land due diligence and verification</li>
+          <li>Resolution of land disputes and boundary conflicts</li>
+          <li>Legal advisory on property transactions</li>
+        </ul>
+      </div>
+
+      <div class="service-card-full" id="s12">
+        <div class="service-num">12</div>
+        <h3>Real Estate</h3>
+        <ul class="svc-list">
+          <li>Real estate transactions and acquisitions</li>
+          <li>Property conveyancing and title transfers</li>
+          <li>Lease agreements and tenancy law</li>
+          <li>Real estate due diligence</li>
+          <li>Development and construction legal support</li>
+        </ul>
+      </div>
+
+      <div class="service-card-full" id="s13">
+        <div class="service-num">13</div>
+        <h3>Family Law</h3>
+        <ul class="svc-list">
+          <li>Marriage and divorce proceedings</li>
+          <li>Child custody and guardianship cases</li>
+          <li>Inheritance and estate distribution</li>
+          <li>Family agreements and mediation</li>
+          <li>Sensitive family dispute resolution</li>
+        </ul>
+      </div>
+
+      <div class="service-card-full" id="s14">
+        <div class="service-num">14</div>
+        <h3>Notary &amp; Legal Documentation</h3>
+        <ul class="svc-list">
+          <li>Notarization and authentication of documents</li>
+          <li>Powers of attorney and affidavits</li>
+          <li>Drafting agreements, bylaws &amp; constitutions</li>
+          <li>Legal declarations and formal statements</li>
+          <li>Document legalization for official use</li>
+        </ul>
+      </div>
+
+      <div class="service-card-full" id="s15">
+        <div class="service-num">15</div>
+        <h3>General Legal Advisory</h3>
+        <ul class="svc-list">
+          <li>Ongoing legal consultation and opinions</li>
+          <li>Legal risk assessment and strategy</li>
+          <li>Contract review and advisory</li>
+          <li>Preventive legal planning</li>
+          <li>Customized legal solutions for clients</li>
+        </ul>
+      </div>
+
+      <div class="service-card-full" id="s16">
+        <div class="service-num">16</div>
+        <h3>Other Legal Services</h3>
+        <ul class="svc-list">
+          <li>Legal aid and access to justice support</li>
+          <li>Pro bono representation for qualifying clients</li>
+          <li>Administrative procedures and guidance</li>
+          <li>Legal research and opinion writing</li>
+          <li>Specialist referrals and legal coordination</li>
+        </ul>
+      </div>
+
+    </div><!-- /services-grid-full -->
+
+    <!-- CTA -->
+    <div class="back-cta">
+      <p>Need legal assistance? Our team is ready to help.</p>
+      <div style="display:flex; gap:16px; justify-content:center; flex-wrap:wrap;">
+        <a href="index.html#contact" class="btn-gold-solid">Contact Us &nbsp;→</a>
+        <a href="index.html" class="btn-navy">← Back to Home</a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div>
+      <a href="index.html" class="footer-logo">
+        <svg width="52" height="58" viewBox="0 0 200 220" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="ftGold" x1="30" y1="0" x2="170" y2="220" gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stop-color="#f9ebb0"/><stop offset="35%" stop-color="#d4a93a"/><stop offset="65%" stop-color="#c9a030"/><stop offset="100%" stop-color="#8a6510"/>
+            </linearGradient>
+            <linearGradient id="ftGold2" x1="30" y1="0" x2="170" y2="220" gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stop-color="#f9ebb0"/><stop offset="50%" stop-color="#c9a84c"/><stop offset="100%" stop-color="#9a7020"/>
+            </linearGradient>
+          </defs>
+          <path d="M100 6 L186 38 L186 108 C186 162 148 196 100 212 C52 196 14 162 14 108 L14 38 Z" fill="#0d1f3c"/>
+          <path d="M100 6 L186 38 L186 108 C186 162 148 196 100 212 C52 196 14 162 14 108 L14 38 Z" stroke="url(#ftGold)" stroke-width="9" fill="none"/>
+          <path d="M100 22 L172 50 L172 108 C172 154 138 184 100 198 C62 184 28 154 28 108 L28 50 Z" stroke="url(#ftGold)" stroke-width="2.5" fill="none"/>
+          <polygon points="100,14 108,34 100,30 92,34" fill="url(#ftGold2)"/>
+          <rect x="96" y="30" width="8" height="16" rx="2" fill="url(#ftGold2)"/>
+          <rect x="42" y="72" width="116" height="12" rx="3" fill="url(#ftGold2)"/>
+          <rect x="55" y="84" width="90" height="8" rx="2" fill="url(#ftGold2)"/>
+          <rect x="72" y="92" width="16" height="88" rx="2" fill="url(#ftGold2)"/>
+          <rect x="92" y="92" width="16" height="88" rx="2" fill="url(#ftGold2)"/>
+          <rect x="112" y="92" width="16" height="88" rx="2" fill="url(#ftGold2)"/>
+          <rect x="60" y="178" width="80" height="10" rx="2" fill="url(#ftGold2)"/>
+          <rect x="38" y="68" width="124" height="6" rx="3" fill="url(#ftGold2)"/>
+          <rect x="96" y="46" width="8" height="26" rx="2" fill="url(#ftGold2)"/>
+          <circle cx="40" cy="71" r="6" fill="url(#ftGold2)"/>
+          <circle cx="160" cy="71" r="6" fill="url(#ftGold2)"/>
+          <line x1="40" y1="77" x2="28" y2="110" stroke="url(#ftGold2)" stroke-width="2.5"/>
+          <line x1="40" y1="77" x2="52" y2="110" stroke="url(#ftGold2)" stroke-width="2.5"/>
+          <path d="M22 110 L58 110 L46 138 Q40 144 34 138 Z" fill="url(#ftGold2)"/>
+          <line x1="160" y1="77" x2="148" y2="110" stroke="url(#ftGold2)" stroke-width="2.5"/>
+          <line x1="160" y1="77" x2="172" y2="110" stroke="url(#ftGold2)" stroke-width="2.5"/>
+          <path d="M142 110 L178 110 L166 138 Q160 144 154 138 Z" fill="url(#ftGold2)"/>
+        </svg>
+        <div>
+          <div class="firm">ELITE</div>
+          <div class="sub-row"><span class="sub-line"></span><span class="sub">Law Firm</span><span class="sub-line"></span></div>
+        </div>
+      </a>
+      <p class="footer-about">A modern, full-service law firm delivering high-quality legal solutions to individuals, businesses, and institutions across Somalia and East Africa. Established 2019.</p>
+      <p class="footer-about" style="margin-top:12px; font-size:11px; color:rgba(255,255,255,0.3);">Your Rights. Our Commitment.</p>
+    </div>
+    <div>
+      <h5>Services</h5>
+      <ul>
+        <li><a href="#s01">Corporate &amp; Business Setup</a></li>
+        <li><a href="#s02">Government &amp; Regulatory</a></li>
+        <li><a href="#s03">Labour &amp; Employment</a></li>
+        <li><a href="#s04">Shipping &amp; Trade</a></li>
+        <li><a href="#s05">International &amp; Immigration</a></li>
+        <li><a href="#s06">Arbitration &amp; ADR</a></li>
+        <li><a href="#s07">Anti-Corruption</a></li>
+        <li><a href="#s08">Taxation</a></li>
+      </ul>
+    </div>
+    <div>
+      <h5>More Services</h5>
+      <ul>
+        <li><a href="#s09">Civil Litigation</a></li>
+        <li><a href="#s10">Criminal Defence</a></li>
+        <li><a href="#s11">Property &amp; Land Law</a></li>
+        <li><a href="#s12">Real Estate</a></li>
+        <li><a href="#s13">Family Law</a></li>
+        <li><a href="#s14">Notary &amp; Documentation</a></li>
+        <li><a href="#s15">General Legal Advisory</a></li>
+        <li><a href="#s16">Other Legal Services</a></li>
+      </ul>
+    </div>
+    <div>
+      <h5>Information</h5>
+      <ul>
+        <li><a href="#">About Us</a></li>
+        <li><a href="#">Mission &amp; Vision</a></li>
+        <li><a href="#">Our Team</a></li>
+        <li><a href="/about/where-we-operate/">Where We Operate</a></li>
+        <li><a href="index.html#contact">Multimedia</a></li>
+        <li><a href="index.html#contact">Contact Us</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2024 Elite Law Firm. All rights reserved. | Mogadishu, Somalia</span>
+    <div class="footer-social">
+      <a href="#" title="Facebook">f</a>
+      <a href="#" title="Twitter">𝕏</a>
+      <a href="#" title="LinkedIn">in</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
