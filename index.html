@@ -8,6 +8,24 @@
 <style>
   html { scroll-behavior: smooth; }
   section { scroll-margin-top: 80px; }
+
+  /* ── GOOGLE TRANSLATE TOOLBAR FIX ── */
+  body.translated-ltr,
+  body.translated-rtl {
+    margin-top: 0 !important;
+    top: 0 !important;
+  }
+  .skiptranslate iframe {
+    display: none !important;
+  }
+  #goog-gt-tt,
+  .goog-te-banner-frame,
+  .goog-te-menu-frame {
+    display: none !important;
+  }
+  body > .skiptranslate {
+    display: none !important;
+  }
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   :root {
     --navy: #0d1f3c;
@@ -18,8 +36,8 @@
     --gold-pale: #f5e9c8;
     --white: #ffffff;
     --off-white: #f8f6f1;
-    --gray: #8a9bb5;
-    --text: #2c3e5a;
+    --gray: #4a5e78;
+    --text: #1a2a40;
   }
   html { scroll-behavior: smooth; }
   body { font-family: 'Montserrat', sans-serif; color: var(--text); background: var(--white); overflow-x: hidden; }
@@ -139,7 +157,7 @@
   .about-badge { position: absolute; bottom: -24px; right: -24px; width: 140px; height: 140px; background: var(--gold); display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; }
   .about-badge strong { font-family: 'Cormorant Garamond', serif; font-size: 44px; font-weight: 700; color: var(--navy); line-height: 1; }
   .about-badge span { font-size: 9px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--navy); opacity: 0.7; padding: 0 10px; }
-  .about-content p { font-size: 14.5px; line-height: 1.85; color: #4a5a72; margin-bottom: 20px; }
+  .about-content p { font-size: 14.5px; line-height: 1.85; color: #2a3a52; margin-bottom: 20px; }
   .check-list { list-style: none; margin: 24px 0 36px; }
   .check-list li { padding: 8px 0 8px 24px; position: relative; font-size: 13.5px; font-weight: 500; color: var(--text); }
   .check-list li::before { content: '✦'; position: absolute; left: 0; color: var(--gold); font-size: 10px; top: 10px; }
@@ -156,7 +174,7 @@
 
   /* SERVICES GRID */
   .svc-list { margin: 8px 0 10px 0; padding-left: 16px; }
-  .svc-list li { font-size: 11.5px; color: #3a3a3a; line-height: 1.7; margin-bottom: 2px; }
+  .svc-list li { font-size: 11.5px; color: #1a1a1a; line-height: 1.7; margin-bottom: 2px; }
   .service-card-full:hover .svc-list li { color: rgba(255,255,255,0.6); }
   .svc-note { font-size: 11px; color: var(--gold); font-style: italic; margin-top: 8px; }
   .service-card-full:hover .svc-note { color: rgba(201,168,76,0.8); }
@@ -170,23 +188,8 @@
   .service-card-full:hover .service-num { color: rgba(201,168,76,0.35); }
   .service-card-full h3 { font-size: 13px; font-weight: 700; color: var(--navy); letter-spacing: 0.04em; margin-bottom: 10px; transition: color 0.3s; }
   .service-card-full:hover h3 { color: var(--gold); }
-  .service-card-full p { font-size: 12px; color: #3a3a3a; line-height: 1.65; transition: color 0.3s; }
+  .service-card-full p { font-size: 12px; color: #1a1a1a; line-height: 1.65; transition: color 0.3s; }
   .service-card-full:hover p { color: rgba(255,255,255,0.5); }
-
-  /* PRACTICE AREAS */
-  .practice-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; }
-  .practice-card { background: var(--white); padding: 40px 32px; border-bottom: 3px solid transparent; transition: all 0.3s; cursor: pointer; position: relative; overflow: hidden; }
-  .practice-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 0; background: var(--navy); transition: height 0.3s; z-index: 0; }
-  .practice-card:hover::before { height: 100%; }
-  .practice-card > * { position: relative; z-index: 1; }
-  .practice-card:hover { border-bottom-color: var(--gold); }
-  .practice-icon { width: 52px; height: 52px; margin-bottom: 20px; color: var(--gold); }
-  .practice-card h3 { font-family: 'Cormorant Garamond', serif; font-size: 20px; font-weight: 700; color: var(--navy); margin-bottom: 12px; transition: color 0.3s; }
-  .practice-card:hover h3 { color: var(--gold); }
-  .practice-card p { font-size: 13px; color: var(--gray); line-height: 1.7; transition: color 0.3s; }
-  .practice-card:hover p { color: rgba(255,255,255,0.6); }
-  .practice-link { display: inline-flex; align-items: center; gap: 8px; font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); text-decoration: none; margin-top: 20px; transition: gap 0.2s; }
-  .practice-link:hover { gap: 14px; }
 
   /* TEAM MODAL — Full Page Profile */
   .modal-backdrop { position: fixed; inset: 0; background: rgba(5,10,20,0.92); z-index: 1000; display: flex; align-items: flex-start; justify-content: center; opacity: 0; visibility: hidden; transition: all 0.3s; overflow-y: auto; }
@@ -214,7 +217,7 @@
   .mp-hero-office { font-size: 13px; color: rgba(255,255,255,0.5); }
 
   /* Main 2-col layout */
-  .mp-body { display: grid; grid-template-columns: 300px 1fr; gap: 0; }
+  .mp-body { display: grid; grid-template-columns: 300px 1fr; gap: 0; overflow: hidden; }
 
   /* LEFT SIDEBAR */
   .mp-sidebar { background: var(--navy); padding: 36px 28px; border-right: 1px solid rgba(201,168,76,0.1); }
@@ -238,10 +241,10 @@
   .mp-section { margin-bottom: 44px; }
   .mp-section-title { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 700; color: var(--navy); margin-bottom: 6px; padding-bottom: 12px; border-bottom: 2px solid var(--gold-pale); display: flex; align-items: center; gap: 12px; }
   .mp-section-title::before { content: ''; display: block; width: 4px; height: 22px; background: var(--gold); flex-shrink: 0; }
-  .mp-main p { font-size: 14px; color: #4a5a72; line-height: 1.9; margin-bottom: 16px; }
+  .mp-main p { font-size: 14px; color: #2a3a52; line-height: 1.9; margin-bottom: 16px; }
   .mp-main p strong { color: var(--navy); }
   .mp-roles-list { list-style: none; margin: 0; }
-  .mp-roles-list li { padding: 12px 0 12px 20px; position: relative; font-size: 13.5px; color: #4a5a72; border-bottom: 1px solid #f0ede6; line-height: 1.55; }
+  .mp-roles-list li { padding: 12px 0 12px 20px; position: relative; font-size: 13.5px; color: #2a3a52; border-bottom: 1px solid #f0ede6; line-height: 1.55; }
   .mp-roles-list li:last-child { border-bottom: none; }
   .mp-roles-list li::before { content: '✦'; position: absolute; left: 0; color: var(--gold); font-size: 9px; top: 15px; }
   .mp-roles-list li strong { color: var(--navy); }
@@ -271,7 +274,16 @@
   .view-profile-btn { display: inline-flex; align-items: center; gap: 8px; font-size: 10px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); margin-top: 8px; transition: gap 0.2s; background: none; border: none; cursor: pointer; padding: 0; font-family: 'Montserrat', sans-serif; }
   .view-profile-btn:hover { gap: 12px; }
 
-  @media(max-width:768px){ .mp-body{grid-template-columns:1fr;} .mp-stats{grid-template-columns:repeat(2,1fr); margin:0 -20px 32px; padding:20px;} .mp-main{padding:28px 20px;} .mp-sidebar{padding:28px 20px;} .mp-hero{padding:32px 20px;} .mp-cta{flex-direction:column; padding:28px 20px;} .mp-edu-grid{grid-template-columns:1fr;} }
+  @media(max-width:768px){
+    .mp-body { display: flex !important; flex-direction: column !important; grid-template-columns: none !important; }
+    .mp-sidebar { order: 2; width: 100%; box-sizing: border-box; padding: 28px 20px; }
+    .mp-main { order: 1; width: 100%; box-sizing: border-box; padding: 28px 20px; }
+    .mp-stats { grid-template-columns: repeat(2,1fr); margin: 0 0 32px; padding: 20px; }
+    .mp-hero { padding: 32px 20px; }
+    .mp-hero-inner { flex-direction: column; }
+    .mp-cta { flex-direction: column; padding: 28px 20px; }
+    .mp-edu-grid { grid-template-columns: 1fr; }
+  }
   .team-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
   .team-card { text-align: center; }
   .team-photo { width: 100%; aspect-ratio: 1; background: var(--navy-mid); overflow: hidden; position: relative; margin-bottom: 16px; }
@@ -344,23 +356,47 @@
 
   /* RESPONSIVE */
   @media (max-width: 1200px) { .svc-list { margin: 8px 0 10px 0; padding-left: 16px; }
-  .svc-list li { font-size: 11.5px; color: #3a3a3a; line-height: 1.7; margin-bottom: 2px; }
+  .svc-list li { font-size: 11.5px; color: #1a1a1a; line-height: 1.7; margin-bottom: 2px; }
   .service-card-full:hover .svc-list li { color: rgba(255,255,255,0.6); }
   .svc-note { font-size: 11px; color: var(--gold); font-style: italic; margin-top: 8px; }
   .service-card-full:hover .svc-note { color: rgba(201,168,76,0.8); }
   .services-grid-full { grid-template-columns: repeat(3, 1fr); } }
-  @media (max-width: 1024px) { .section { padding: 70px 40px; } .practice-grid { grid-template-columns: repeat(2, 1fr); } .team-grid { grid-template-columns: repeat(2, 1fr); } .footer-grid { grid-template-columns: 1fr 1fr; } .svc-list { margin: 8px 0 10px 0; padding-left: 16px; }
-  .svc-list li { font-size: 11.5px; color: #3a3a3a; line-height: 1.7; margin-bottom: 2px; }
+  @media (max-width: 1024px) { .section { padding: 70px 40px; } .team-grid { grid-template-columns: repeat(2, 1fr); } .footer-grid { grid-template-columns: 1fr 1fr; } .svc-list { margin: 8px 0 10px 0; padding-left: 16px; }
+  .svc-list li { font-size: 11.5px; color: #1a1a1a; line-height: 1.7; margin-bottom: 2px; }
   .service-card-full:hover .svc-list li { color: rgba(255,255,255,0.6); }
   .svc-note { font-size: 11px; color: var(--gold); font-style: italic; margin-top: 8px; }
   .service-card-full:hover .svc-note { color: rgba(201,168,76,0.8); }
   .services-grid-full { grid-template-columns: repeat(2, 1fr); } .mvv-grid { grid-template-columns: 1fr; } .values-grid { grid-template-columns: repeat(3, 1fr); } .contact-grid { grid-template-columns: 1fr; gap: 48px; } }
-  @media (max-width: 768px) { .topbar { display: none; } nav { padding: 0 20px; } .nav-links { display: none; } .hero-content { padding: 60px 20px; } .hero-shield { display: none; } .stats-bar { grid-template-columns: repeat(2, 1fr); } .section { padding: 60px 20px; } .about-grid { grid-template-columns: 1fr; } .practice-grid { grid-template-columns: 1fr; } .svc-list { margin: 8px 0 10px 0; padding-left: 16px; }
-  .svc-list li { font-size: 11.5px; color: #3a3a3a; line-height: 1.7; margin-bottom: 2px; }
+  @media (max-width: 768px) { .topbar { display: none; } nav { padding: 0 20px; } .nav-links { display: none; } .hero-content { padding: 60px 20px; } .hero-shield { display: none; } .stats-bar { grid-template-columns: repeat(2, 1fr); } .section { padding: 60px 20px; } .about-grid { grid-template-columns: 1fr; } .svc-list { margin: 8px 0 10px 0; padding-left: 16px; }
+  .svc-list li { font-size: 11.5px; color: #1a1a1a; line-height: 1.7; margin-bottom: 2px; }
   .service-card-full:hover .svc-list li { color: rgba(255,255,255,0.6); }
   .svc-note { font-size: 11px; color: var(--gold); font-style: italic; margin-top: 8px; }
   .service-card-full:hover .svc-note { color: rgba(201,168,76,0.8); }
   .services-grid-full { grid-template-columns: 1fr; } .team-grid { grid-template-columns: repeat(2, 1fr); } .contact-strip { grid-template-columns: 1fr; padding: 40px 20px; } .contact-details { flex-wrap: wrap; } footer { padding: 40px 20px 20px; } .footer-grid { grid-template-columns: 1fr; } .footer-bottom { flex-direction: column; gap: 16px; text-align: center; } .contact-section { padding: 60px 20px; } .contact-persons { grid-template-columns: 1fr; } .form-row { grid-template-columns: 1fr; } .values-grid { grid-template-columns: repeat(2, 1fr); } }
+  /* ── LANGUAGE SWITCHER ── */
+  .lang-switcher { display: flex; align-items: center; gap: 4px; }
+  .lang-btn {
+    background: transparent;
+    border: 1px solid rgba(201,168,76,0.35);
+    color: var(--gray);
+    font-family: 'Montserrat', sans-serif;
+    font-size: 10.5px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    padding: 3px 9px;
+    cursor: pointer;
+    transition: all 0.2s;
+    text-transform: uppercase;
+  }
+  .lang-btn:hover { border-color: var(--gold); color: var(--gold); }
+  .lang-btn.active { background: var(--gold); border-color: var(--gold); color: var(--navy); }
+  [dir="rtl"] { direction: rtl; text-align: right; }
+  [dir="rtl"] .hero-content { padding: 80px 80px 80px 40px; }
+  [dir="rtl"] .hero-eyebrow::before { display: none; }
+  [dir="rtl"] .hero-eyebrow::after { content: ''; display: block; width: 40px; height: 1px; background: var(--gold); }
+  [dir="rtl"] .dropdown { left: auto; right: 0; }
+  [dir="rtl"] .check-list li { padding: 8px 24px 8px 0; }
+  [dir="rtl"] .check-list li::before { left: auto; right: 0; }
 </style>
 </head>
 <body>
@@ -374,7 +410,11 @@
       <a href="#" title="Twitter">𝕏</a>
       <a href="#" title="LinkedIn">in</a>
     </div>
-    <span>🌐 EN &nbsp;|&nbsp; SO</span>
+    <div class="lang-switcher">
+      <button class="lang-btn active" onclick="setLang('en', this)">EN</button>
+      <button class="lang-btn" onclick="setLang('so', this)">SO</button>
+      <button class="lang-btn" onclick="setLang('ar', this)">AR</button>
+    </div>
   </div>
 </div>
 
@@ -437,29 +477,24 @@
       </div>
     </li>
     <li>
-      <a href="#">Practice Areas ▾</a>
+      <a href="#services">Services ▾</a>
       <div class="dropdown">
-        <a href="/practice-areas/corporate-commercial-business-setup/">Corporate, Commercial &amp; Business Setup</a>
-        <a href="/practice-areas/civil-litigation/">Civil Litigation</a>
-        <a href="/practice-areas/criminal-defence/">Criminal Defence</a>
-        <a href="/practice-areas/property-land-law/">Property &amp; Land Law</a>
-        <a href="/practice-areas/family-law/">Family Law</a>
-        <a href="/practice-areas/shipping-trade/">Shipping &amp; Trade</a>
-      </div>
-    </li>
-    <li>
-      <a href="#">Services ▾</a>
-      <div class="dropdown">
-        <a href="/services/notary-legal-documentation/">Notary &amp; Legal Documentation</a>
-        <a href="/services/labour-employment-law/">Labour &amp; Employment Law</a>
-        <a href="/services/arbitration-adr/">Arbitration &amp; ADR</a>
-        <a href="/services/government-regulatory-advisory/">Government &amp; Regulatory Advisory</a>
-        <a href="/services/international-immigration-law/">International &amp; Immigration Law</a>
-        <a href="/services/general-legal-advisory/">General Legal Advisory</a>
-        <a href="/services/taxation/">Taxation</a>
-        <a href="/services/anti-corruption-bribery/">Anti-Corruption &amp; Bribery</a>
-        <a href="/services/real-estate/">Real Estate</a>
-        <a href="/services/other-legal-services/">Other Legal Services</a>
+        <a href="#services">Corporate, Commercial &amp; Business Setup</a>
+        <a href="#services">Government &amp; Regulatory Advisory</a>
+        <a href="#services">Labour &amp; Employment Law</a>
+        <a href="#services">Shipping &amp; Trade</a>
+        <a href="#services">International &amp; Immigration Law</a>
+        <a href="#services">Arbitration &amp; ADR</a>
+        <a href="#services">Anti-Corruption &amp; Bribery</a>
+        <a href="#services">Taxation</a>
+        <a href="#services">Civil Litigation</a>
+        <a href="#services">Criminal Defence</a>
+        <a href="#services">Property &amp; Land Law</a>
+        <a href="#services">Real Estate</a>
+        <a href="#services">Family Law</a>
+        <a href="#services">Notary &amp; Legal Documentation</a>
+        <a href="#services">General Legal Advisory</a>
+        <a href="#services">Other Legal Services</a>
       </div>
     </li>
     <li>
@@ -498,7 +533,7 @@
 <!-- STATS BAR -->
 <div class="stats-bar">
   <div class="stat-item"><div class="stat-num">2019</div><div class="stat-label">Established</div></div>
-  <div class="stat-item"><div class="stat-num">16+</div><div class="stat-label">Practice Areas</div></div>
+  <div class="stat-item"><div class="stat-num">16+</div><div class="stat-label">Services</div></div>
   <div class="stat-item"><div class="stat-num">500+</div><div class="stat-label">Cases Handled</div></div>
   <div class="stat-item"><div class="stat-num">East Africa</div><div class="stat-label">Regional Reach</div></div>
 </div>
@@ -576,47 +611,106 @@
   </div>
 </section>
 
-<!-- PRACTICE AREAS -->
-<section class="section section-alt" id="practice">
+<!-- SERVICES -->
+<section class="section section-alt" id="services">
   <div class="section-tag">What We Do</div>
-  <h2 class="section-title">Main <em>Practice</em> Areas</h2>
-  <p class="section-subtitle">We maintain a diverse and dynamic legal practice, covering key sectors of the Somali economy and legal system. Our work spans commercial, corporate, and public law. We are well-equipped to handle both transactional and contentious matters, offering strategic insight and practical legal solutions tailored to each client's objectives.</p>
-  <div class="practice-grid">
-    <div class="practice-card">
-      <svg class="practice-icon" viewBox="0 0 52 52" fill="none"><circle cx="26" cy="26" r="24" stroke="currentColor" stroke-width="1.5"/><rect x="16" y="18" width="20" height="16" rx="1" stroke="currentColor" stroke-width="1.5"/><path d="M20 18 L20 14 L32 14 L32 18" stroke="currentColor" stroke-width="1.5"/><line x1="20" y1="24" x2="32" y2="24" stroke="currentColor" stroke-width="1"/><line x1="20" y1="28" x2="28" y2="28" stroke="currentColor" stroke-width="1"/></svg>
-      <h3>Corporate, Commercial & Business Setup</h3>
-      <p>Company formation, structuring, registration, commercial contracts, governance frameworks, mergers, acquisitions, and ongoing legal support for businesses.</p>
-      <a href="#" class="practice-link">Learn More →</a>
+  <h2 class="section-title">Our <em>Legal Services</em></h2>
+  <p class="section-subtitle">We maintain a diverse and dynamic legal practice covering key sectors of the Somali economy and legal system — from business formation and compliance to dispute resolution and strategic advisory.</p>
+  <div class="services-grid-full">
+    <div class="service-card-full">
+      <div class="service-num">01</div>
+      <h3>Corporate, Commercial &amp; Business Setup</h3>
+      <ul class="svc-list">
+        <li>Company formation, structuring, and legal registration</li>
+        <li>Commercial contracts — drafting, review &amp; negotiation</li>
+        <li>Corporate governance and regulatory compliance</li>
+        <li>Mergers, acquisitions, joint ventures &amp; restructuring</li>
+        <li>Ongoing legal support for business operations</li>
+      </ul>
     </div>
-    <div class="practice-card">
-      <svg class="practice-icon" viewBox="0 0 52 52" fill="none"><circle cx="26" cy="26" r="24" stroke="currentColor" stroke-width="1.5"/><path d="M16 36 L16 22 L26 14 L36 22 L36 36 Z" stroke="currentColor" stroke-width="1.5" fill="none"/><rect x="22" y="28" width="8" height="8" stroke="currentColor" stroke-width="1.5"/></svg>
-      <h3>Civil Litigation</h3>
-      <p>Representation in civil court proceedings, property and contractual disputes, compensation claims, enforcement of judgments, and case preparation.</p>
-      <a href="#" class="practice-link">Learn More →</a>
+    <div class="service-card-full">
+      <div class="service-num">02</div>
+      <h3>Government &amp; Regulatory Advisory</h3>
+      <ul class="svc-list">
+        <li>Legal advisory for government institutions</li>
+        <li>Policy drafting and legislative support</li>
+        <li>Regulatory compliance frameworks</li>
+        <li>Review of laws and administrative procedures</li>
+        <li>Institutional capacity building and training</li>
+      </ul>
     </div>
-    <div class="practice-card">
-      <svg class="practice-icon" viewBox="0 0 52 52" fill="none"><circle cx="26" cy="26" r="24" stroke="currentColor" stroke-width="1.5"/><path d="M18 34 L26 16 L34 34" stroke="currentColor" stroke-width="1.5" fill="none"/><line x1="21" y1="28" x2="31" y2="28" stroke="currentColor" stroke-width="1.2"/></svg>
-      <h3>Criminal Defence</h3>
-      <p>Strong professional legal defence for individuals and entities facing criminal allegations, bail applications, case investigation, and appeals at all court levels.</p>
-      <a href="#" class="practice-link">Learn More →</a>
+    <div class="service-card-full">
+      <div class="service-num">03</div>
+      <h3>Labour &amp; Employment Law</h3>
+      <ul class="svc-list">
+        <li>Employment contracts and workplace policies</li>
+        <li>Labour law compliance advisory</li>
+        <li>Workplace dispute resolution and litigation</li>
+        <li>Employee rights and employer representation</li>
+        <li>Termination and disciplinary procedures</li>
+      </ul>
     </div>
-    <div class="practice-card">
-      <svg class="practice-icon" viewBox="0 0 52 52" fill="none"><circle cx="26" cy="26" r="24" stroke="currentColor" stroke-width="1.5"/><rect x="14" y="22" width="24" height="16" rx="1" stroke="currentColor" stroke-width="1.5"/><line x1="26" y1="22" x2="26" y2="16" stroke="currentColor" stroke-width="1.5"/><line x1="20" y1="16" x2="32" y2="16" stroke="currentColor" stroke-width="1.5"/></svg>
-      <h3>Property & Land Law</h3>
-      <p>Land legalization, ownership transfer, due diligence, resolution of land disputes and boundary conflicts, and legal advisory on real estate transactions.</p>
-      <a href="#" class="practice-link">Learn More →</a>
+    <div class="service-card-full">
+      <div class="service-num">04</div>
+      <h3>Shipping &amp; Trade</h3>
+      <ul class="svc-list">
+        <li>Maritime law and shipping operations</li>
+        <li>International trade and commodities</li>
+        <li>Energy sector legal support</li>
+        <li>Corporate and regulatory shipping issues</li>
+        <li>Cross-border trade compliance</li>
+      </ul>
     </div>
-    <div class="practice-card">
-      <svg class="practice-icon" viewBox="0 0 52 52" fill="none"><circle cx="26" cy="26" r="24" stroke="currentColor" stroke-width="1.5"/><circle cx="26" cy="20" r="5" stroke="currentColor" stroke-width="1.5"/><path d="M14 38 C14 30 38 30 38 38" stroke="currentColor" stroke-width="1.5" fill="none"/></svg>
-      <h3>Family Law</h3>
-      <p>Marriage and divorce proceedings, child custody, inheritance and estate distribution, family agreements, mediation, and sensitive family dispute resolution.</p>
-      <a href="#" class="practice-link">Learn More →</a>
+    <div class="service-card-full">
+      <div class="service-num">05</div>
+      <h3>International &amp; Immigration Law</h3>
+      <ul class="svc-list">
+        <li>Visa and immigration documentation support</li>
+        <li>Cross-border legal transactions</li>
+        <li>International compliance advisory</li>
+        <li>Representation in immigration matters</li>
+        <li>Foreign investment legal support</li>
+      </ul>
     </div>
-    <div class="practice-card" style="background:var(--navy);">
-      <div style="color:var(--gold); font-family:'Cormorant Garamond',serif; font-size:26px; font-weight:700; line-height:1.2; margin-bottom:16px;">Your Rights. <em style="font-style:normal; color:#e8c96a;">Our Commitment.</em></div>
-      <p style="color:rgba(255,255,255,0.55); font-size:13px; line-height:1.7;">We combine legal expertise with strategic insight to provide practical, effective, and results-driven legal services in Somalia and across East Africa.</p>
-      <button onclick="document.getElementById('servicesModal').classList.add('open'); document.body.style.overflow='hidden';" class="btn-gold" style="margin-top:24px; font-size:10px; padding:12px 24px; cursor:pointer; border:none;">All 16 Services →</button>
+    <div class="service-card-full">
+      <div class="service-num">06</div>
+      <h3>Arbitration &amp; ADR</h3>
+      <ul class="svc-list">
+        <li>Commercial arbitration and mediation</li>
+        <li>Negotiated settlements outside of court</li>
+        <li>Dispute resolution strategy and advisory</li>
+        <li>Arbitration clause drafting and review</li>
+        <li>Enforcement of arbitral awards</li>
+      </ul>
     </div>
+    <div class="service-card-full">
+      <div class="service-num">07</div>
+      <h3>Anti-Corruption &amp; Bribery</h3>
+      <ul class="svc-list">
+        <li>Anti-corruption compliance frameworks</li>
+        <li>Governance and risk management advisory</li>
+        <li>Multi-jurisdictional compliance support</li>
+        <li>Internal investigation and due diligence</li>
+        <li>Training and preventive legal strategies</li>
+      </ul>
+    </div>
+    <div class="service-card-full">
+      <div class="service-num">08</div>
+      <h3>Taxation</h3>
+      <ul class="svc-list">
+        <li>Tax advisory and planning</li>
+        <li>Somalia tax framework guidance</li>
+        <li>Tax compliance and registration</li>
+        <li>Tax dispute resolution</li>
+        <li>Cross-border tax considerations</li>
+      </ul>
+    </div>
+  </div>
+  <div style="text-align:center; margin-top: 48px;">
+    <a href="services.html" style="display:inline-flex; align-items:center; gap:10px; background:var(--navy); color:var(--gold); border:2px solid var(--gold); padding:14px 36px; font-family:'Cinzel',serif; font-size:12px; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; text-decoration:none; transition:all 0.3s;">
+      View All 16 Services &nbsp;→
+    </a>
+    <p style="margin-top:14px; font-size:12px; color:var(--gray); letter-spacing:0.04em;">Showing 8 of 16 practice areas</p>
   </div>
 </section>
 
@@ -839,25 +933,29 @@
       <p class="footer-about" style="margin-top:12px; font-size:11px; color:rgba(255,255,255,0.3);">Your Rights. Our Commitment.</p>
     </div>
     <div>
-      <h5>Practice Areas</h5>
+      <h5>Services</h5>
       <ul>
-        <li><a href="#">Corporate & Business Setup</a></li>
-        <li><a href="/practice-areas/civil-litigation/">Civil Litigation</a></li>
-        <li><a href="/practice-areas/criminal-defence/">Criminal Defence</a></li>
-        <li><a href="/practice-areas/property-land-law/">Property &amp; Land Law</a></li>
-        <li><a href="/practice-areas/family-law/">Family Law</a></li>
-        <li><a href="/practice-areas/shipping-trade/">Shipping &amp; Trade</a></li>
+        <li><a href="#services">Corporate &amp; Business Setup</a></li>
+        <li><a href="#services">Government &amp; Regulatory</a></li>
+        <li><a href="#services">Labour &amp; Employment</a></li>
+        <li><a href="#services">Shipping &amp; Trade</a></li>
+        <li><a href="#services">International &amp; Immigration</a></li>
+        <li><a href="#services">Arbitration &amp; ADR</a></li>
+        <li><a href="#services">Anti-Corruption</a></li>
+        <li><a href="#services">Taxation</a></li>
       </ul>
     </div>
     <div>
-      <h5>Services</h5>
+      <h5>More Services</h5>
       <ul>
-        <li><a href="#">Notary & Documentation</a></li>
-        <li><a href="#">Labour & Employment</a></li>
-        <li><a href="/services/arbitration-adr/">Arbitration &amp; ADR</a></li>
-        <li><a href="#">Immigration Law</a></li>
-        <li><a href="/services/taxation/">Taxation</a></li>
-        <li><a href="/services/real-estate/">Real Estate</a></li>
+        <li><a href="#services">Civil Litigation</a></li>
+        <li><a href="#services">Criminal Defence</a></li>
+        <li><a href="#services">Property &amp; Land Law</a></li>
+        <li><a href="#services">Real Estate</a></li>
+        <li><a href="#services">Family Law</a></li>
+        <li><a href="#services">Notary &amp; Documentation</a></li>
+        <li><a href="#services">General Legal Advisory</a></li>
+        <li><a href="#services">Other Legal Services</a></li>
       </ul>
     </div>
     <div>
@@ -982,20 +1080,7 @@
         </div>
 
 
-            <div class="mp-edu-card">
-              <div class="edu-label">Postgraduate</div>
-              <div class="edu-val">Master of International Relations & Diplomacy (MIRD)</div>
-            </div>
-            <div class="mp-edu-card">
-              <div class="edu-label">Specialisation</div>
-              <div class="edu-val">Public Administration · Regulatory Compliance · Dispute Resolution</div>
-            </div>
-            <div class="mp-edu-card">
-              <div class="edu-label">Experience</div>
-              <div class="edu-val">7+ Years in Legal Practice across Somalia</div>
-            </div>
           </div>
-          <p>Adv. Ali combines advanced legal expertise with a strong understanding of diplomacy, international affairs, governance, and public policy — delivering practical, effective, and results-driven legal services to public and private sector clients.</p>
         </div>
 
 <!-- end mp-main -->
@@ -1270,39 +1355,88 @@
 
 
 <!-- ALL 16 SERVICES MODAL -->
-<div class="modal-backdrop" id="servicesModal" onclick="if(event.target===this){this.classList.remove('open');document.body.style.overflow='';}">
-  <div class="modal-page" style="max-width:960px;">
-    <div class="mp-topbar">
-      <div class="mp-topbar-left">Practice Areas &nbsp;›&nbsp; <span>All 16 Services</span></div>
-      <button class="mp-close-btn" onclick="document.getElementById('servicesModal').classList.remove('open');document.body.style.overflow='';">✕ &nbsp;Close</button>
-    </div>
-    <div style="padding:48px 40px;overflow-y:auto;max-height:calc(100vh - 80px);">
-      <div class="section-tag" style="margin-bottom:12px;">Full Scope</div>
-      <h2 class="section-title" style="margin-bottom:12px;">All <em>16 Services</em></h2>
-      <p style="color:var(--gray);font-size:14px;margin-bottom:36px;max-width:660px;">Elite Law Firm is a full-service legal and advisory firm — covering a broad spectrum of legal needs from business formation and compliance to dispute resolution and strategic advisory.</p>
-      <div class="services-grid-full">
-        <div class="service-card-full"><div class="service-num">01</div><h3>Corporate, Commercial & Business Setup</h3><ul class="svc-list"><li>Company formation, structuring, and legal registration</li><li>Business name reservation and licensing processes</li><li>Drafting, review, and negotiation of commercial contracts</li><li>Drafting of bylaws, constitutions, and governance frameworks</li><li>Corporate governance and regulatory compliance advisory</li><li>Mergers, acquisitions, joint ventures, and restructuring</li><li>Development of internal policies and operational systems</li><li>Strategic advisory on business growth, sustainability, and risk management</li><li>Ongoing legal support for daily business operations</li></ul></div>
-        <div class="service-card-full"><div class="service-num">02</div><h3>Civil Litigation</h3><ul class="svc-list"><li>Representation in civil court proceedings</li><li>Property, land, and contractual disputes</li><li>Compensation and liability claims</li><li>Enforcement of judgments and court decisions</li><li>Legal analysis, strategy development, and case preparation</li></ul><p class="svc-note">We focus on achieving fair, lawful, and practical resolutions for our clients.</p></div>
-        <div class="service-card-full"><div class="service-num">03</div><h3>Criminal Defence</h3><ul class="svc-list"><li>Criminal defence representation at all court levels</li><li>Bail applications and procedural defence</li><li>Case investigation and legal analysis</li><li>Protection of constitutional and due process rights</li><li>Appeals and post-conviction legal remedies</li></ul><p class="svc-note">Our priority is to ensure every client receives a fair trial and effective defence.</p></div>
-        <div class="service-card-full"><div class="service-num">04</div><h3>Property & Land Law</h3><ul class="svc-list"><li>Land legalization and official registration</li><li>Ownership transfer and documentation</li><li>Land due diligence and verification</li><li>Resolution of land disputes and boundary conflicts</li><li>Legal advisory on real estate transactions</li></ul><p class="svc-note">We ensure secure, clear, and legally recognized property ownership.</p></div>
-        <div class="service-card-full"><div class="service-num">05</div><h3>Family Law</h3><ul class="svc-list"><li>Marriage and divorce proceedings</li><li>Child custody and guardianship cases</li><li>Inheritance and estate distribution</li><li>Family agreements and mediation</li><li>Dispute resolution in family matters</li></ul><p class="svc-note">We aim to provide balanced and peaceful legal solutions in personal matters.</p></div>
-        <div class="service-card-full"><div class="service-num">06</div><h3>Notary & Legal Documentation</h3><ul class="svc-list"><li>Notarization and authentication of documents</li><li>Certification and verification of legal papers</li><li>Drafting powers of attorney and affidavits</li><li>Drafting agreements, bylaws, constitutions, and regulations</li><li>Legal declarations and formal statements</li><li>Document legalization for official use</li></ul><p class="svc-note">We guarantee accuracy, validity, and official acceptance of all documents.</p></div>
-        <div class="service-card-full"><div class="service-num">07</div><h3>Labour & Employment Law</h3><ul class="svc-list"><li>Employment contracts and workplace policies</li><li>Labour law compliance advisory</li><li>Workplace dispute resolution and litigation</li><li>Employee rights and employer representation</li><li>Termination and disciplinary procedures</li></ul><p class="svc-note">We promote fair and legally compliant working environments.</p></div>
-        <div class="service-card-full"><div class="service-num">08</div><h3>Arbitration & ADR</h3><p>Alternative dispute resolution including mediation, arbitration, and negotiated settlements outside of court.</p></div>
-        <div class="service-card-full"><div class="service-num">09</div><h3>Government & Regulatory Advisory</h3><ul class="svc-list"><li>Legal advisory for government institutions</li><li>Policy drafting and legislative support</li><li>Regulatory compliance frameworks</li><li>Review of laws and administrative procedures</li><li>Institutional capacity building and training</li></ul><p class="svc-note">We ensure alignment with national laws and governance standards.</p></div>
-        <div class="service-card-full"><div class="service-num">10</div><h3>International & Immigration Law</h3><ul class="svc-list"><li>Visa and immigration documentation support</li><li>Cross-border legal transactions</li><li>International compliance advisory</li><li>Representation in immigration matters</li><li>Foreign investment legal support</li></ul><p class="svc-note">We facilitate smooth international mobility and compliance.</p></div>
-        <div class="service-card-full"><div class="service-num">11</div><h3>General Legal Advisory</h3><ul class="svc-list"><li>Ongoing legal consultation</li><li>Legal risk assessment and opinions</li><li>Contract review and advisory services</li><li>Preventive legal strategies</li><li>Customized legal solutions for clients</li></ul><p class="svc-note">We act as a trusted legal partner in decision-making and risk management.</p></div>
-        <div class="service-card-full"><div class="service-num">12</div><h3>Shipping & Trade</h3><p>Maritime law, international trade, commodities, energy sectors, corporate and regulatory issues affecting shipping operations.</p></div>
-        <div class="service-card-full"><div class="service-num">13</div><h3>Taxation</h3><p>Practical, innovative tax advisory services — navigating Somalia's evolving tax framework with clarity and confidence.</p></div>
-        <div class="service-card-full"><div class="service-num">14</div><h3>Anti-Corruption & Bribery</h3><p>We provide strategic legal advisory and proactive compliance support to help clients navigate complex and evolving regulatory environments. Our expertise in anti-corruption and bribery laws enables us to guide businesses in establishing strong governance frameworks, mitigating risks, and ensuring full compliance with applicable local and international standards.</p><p class="svc-note" style="margin-top:10px;">Leveraging deep local insight and international best practices, we support clients across corporate structuring, cross-border transactions, and multi-jurisdictional compliance matters.</p></div>
-        <div class="service-card-full"><div class="service-num">15</div><h3>Real Estate</h3><p>Strong expertise in land law and property transactions across Somalia — precision, compliance, and efficiency in every deal.</p></div>
-        <div class="service-card-full"><div class="service-num">16</div><h3>Legal Aid & Pro Bono</h3><p>Access to justice for individuals navigating complex legal matters — guidance, representation, and administrative procedures.</p></div>
-      </div>
-      <div style="text-align:center;margin-top:40px;">
-        <a href="#contact" class="btn-gold" onclick="document.getElementById('servicesModal').classList.remove('open');document.body.style.overflow='';" style="font-size:11px;padding:14px 32px;">Contact Us For Legal Advice →</a>
-      </div>
-    </div>
-  </div>
-</div>
+<!-- end services section -->
+
+<script>
+  // Fix Google Translate toolbar pushing page content down
+  function fixGoogleTranslate() {
+    var top = parseInt(document.body.style.top || '0', 10);
+    if (top < 0) {
+      document.body.style.top = '0';
+      window.scrollTo(0, Math.abs(top));
+    }
+  }
+  var observer = new MutationObserver(fixGoogleTranslate);
+  observer.observe(document.body, { attributes: true, attributeFilter: ['style', 'class'] });
+</script>
+
+<script>
+// ── LANGUAGE SWITCHER ──
+const translations = {
+  en: {
+    dir: 'ltr',
+    heroEyebrow: 'Full-Service Law Firm — Somalia',
+    heroH1: 'Excellence. Integrity. <em>Results.</em>',
+    heroP: 'Elite Law Firm is a modern, full-service law firm dedicated to delivering high-quality legal solutions tailored to the evolving needs of individuals, businesses, and institutions across Somalia and East Africa.',
+    heroBtnServices: 'Explore Our Services',
+    heroBtnAbout: 'About Us',
+    statLabels: ['Established','Services','Cases Handled','Regional Reach'],
+    sectionTagAbout: 'Who We Are',
+  },
+  so: {
+    dir: 'ltr',
+    heroEyebrow: 'Shirkadda Sharciga ee Dhammeystiran — Soomaaliya',
+    heroH1: 'Tayada. Daacadnimada. <em>Natiijooyinka.</em>',
+    heroP: 'Elite Law Firm waa shirkad sharci casri ah oo dhammaystiran oo u hiilisa bixinta xalalada sharciga ee tayo sare leh kuwaas oo loogu talagalay baahiyaha isbeddelaya ee shakhsiyaadka, ganacsiyada, iyo hay\'aadaha Soomaaliya iyo Bariga Afrika.',
+    heroBtnServices: 'Baadh Adeegyadeenna',
+    heroBtnAbout: 'Naga Waran',
+    statLabels: ['La Aasaasay','Goobaha Dhaqanka','Kiisaska La Maamullay','Gaadhitaanka Gobolka'],
+    sectionTagAbout: 'Cidda Annagu Nahay',
+  },
+  ar: {
+    dir: 'rtl',
+    heroEyebrow: 'مكتب محاماة متكامل الخدمات — الصومال',
+    heroH1: 'التميز. النزاهة. <em>النتائج.</em>',
+    heroP: 'إليت لو فيرم مكتب محاماة عصري متكامل الخدمات يلتزم بتقديم حلول قانونية عالية الجودة مصممة لتلبية الاحتياجات المتطورة للأفراد والشركات والمؤسسات في جميع أنحاء الصومال وشرق أفريقيا.',
+    heroBtnServices: 'استكشف خدماتنا',
+    heroBtnAbout: 'من نحن',
+    statLabels: ['تأسست','مجالات الممارسة','القضايا المنجزة','النطاق الإقليمي'],
+    sectionTagAbout: 'من نحن',
+  }
+};
+
+function setLang(lang, btn) {
+  const t = translations[lang];
+  if (!t) return;
+
+  // Update active button
+  document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+
+  // Direction
+  document.documentElement.dir = t.dir;
+  document.documentElement.lang = lang;
+
+  // Hero text
+  const eyebrow = document.querySelector('.hero-eyebrow');
+  if (eyebrow) eyebrow.textContent = t.heroEyebrow;
+  const heroH1 = document.querySelector('.hero h1');
+  if (heroH1) heroH1.innerHTML = t.heroH1;
+  const heroP = document.querySelector('.hero p');
+  if (heroP) heroP.textContent = t.heroP;
+  const btnGold = document.querySelector('.btn-gold');
+  if (btnGold) btnGold.textContent = t.heroBtnServices;
+  const btnOutline = document.querySelector('.btn-outline');
+  if (btnOutline) btnOutline.textContent = t.heroBtnAbout;
+
+  // Stat labels
+  const statLbls = document.querySelectorAll('.stat-label');
+  t.statLabels.forEach((txt, i) => { if (statLbls[i]) statLbls[i].textContent = txt; });
+
+  // About section tag
+  const aboutTag = document.querySelector('#about .section-tag');
+  if (aboutTag) aboutTag.childNodes[0].textContent = t.sectionTagAbout;
+}
+</script>
 </body>
 </html>
