@@ -232,7 +232,7 @@
   .mp-hero-office { font-size: 13px; color: rgba(255,255,255,0.5); }
 
   /* Main 2-col layout */
-  .mp-body { display: grid; grid-template-columns: 300px 1fr; gap: 0; }
+  .mp-body { display: grid; grid-template-columns: 300px 1fr; gap: 0; overflow: hidden; }
 
   /* LEFT SIDEBAR */
   .mp-sidebar { background: var(--navy); padding: 36px 28px; border-right: 1px solid rgba(201,168,76,0.1); }
@@ -289,7 +289,16 @@
   .view-profile-btn { display: inline-flex; align-items: center; gap: 8px; font-size: 10px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); margin-top: 8px; transition: gap 0.2s; background: none; border: none; cursor: pointer; padding: 0; font-family: 'Montserrat', sans-serif; }
   .view-profile-btn:hover { gap: 12px; }
 
-  @media(max-width:768px){ .mp-body{grid-template-columns:1fr;} .mp-stats{grid-template-columns:repeat(2,1fr); margin:0 -20px 32px; padding:20px;} .mp-main{padding:28px 20px;} .mp-sidebar{padding:28px 20px;} .mp-hero{padding:32px 20px;} .mp-cta{flex-direction:column; padding:28px 20px;} .mp-edu-grid{grid-template-columns:1fr;} }
+  @media(max-width:768px){
+    .mp-body { display: flex !important; flex-direction: column !important; grid-template-columns: none !important; }
+    .mp-sidebar { order: 2; width: 100%; box-sizing: border-box; padding: 28px 20px; }
+    .mp-main { order: 1; width: 100%; box-sizing: border-box; padding: 28px 20px; }
+    .mp-stats { grid-template-columns: repeat(2,1fr); margin: 0 0 32px; padding: 20px; }
+    .mp-hero { padding: 32px 20px; }
+    .mp-hero-inner { flex-direction: column; }
+    .mp-cta { flex-direction: column; padding: 28px 20px; }
+    .mp-edu-grid { grid-template-columns: 1fr; }
+  }
   .team-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
   .team-card { text-align: center; }
   .team-photo { width: 100%; aspect-ratio: 1; background: var(--navy-mid); overflow: hidden; position: relative; margin-bottom: 16px; }
@@ -1000,20 +1009,7 @@
         </div>
 
 
-            <div class="mp-edu-card">
-              <div class="edu-label">Postgraduate</div>
-              <div class="edu-val">Master of International Relations & Diplomacy (MIRD)</div>
-            </div>
-            <div class="mp-edu-card">
-              <div class="edu-label">Specialisation</div>
-              <div class="edu-val">Public Administration · Regulatory Compliance · Dispute Resolution</div>
-            </div>
-            <div class="mp-edu-card">
-              <div class="edu-label">Experience</div>
-              <div class="edu-val">7+ Years in Legal Practice across Somalia</div>
-            </div>
           </div>
-          <p>Adv. Ali combines advanced legal expertise with a strong understanding of diplomacy, international affairs, governance, and public policy — delivering practical, effective, and results-driven legal services to public and private sector clients.</p>
         </div>
 
 <!-- end mp-main -->
