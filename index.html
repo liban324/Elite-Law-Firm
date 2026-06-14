@@ -6,6 +6,12 @@
 <title>Elite Law Firm – Excellence. Integrity. Results.</title>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
+
+  /* ══ MULTI-PAGE SYSTEM ══ */
+  .page-section { display: none; animation: none; }
+  .page-section.page-active { display: block; animation: pageIn 0.38s cubic-bezier(0.22,1,0.36,1); }
+  @keyframes pageIn { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+  .nav-page-link:focus { outline: none; }
   html { scroll-behavior: smooth; }
   section { scroll-margin-top: 80px; }
 
@@ -43,14 +49,8 @@
   body { font-family: 'Montserrat', sans-serif; color: var(--text); background: var(--white); overflow-x: hidden; }
 
   /* TOP BAR */
-.topbar {
-  background: var(--navy-mid);
-  padding: 8px 40px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  color: #ffffff; font-size: 12px; letter-spacing: 0.05em; }
-  .topbar a { color: #ffffff; text-decoration: none; }
+  .topbar { background: var(--navy-mid); padding: 8px 40px; display: flex; justify-content: space-between; align-items: center; font-size: 12px; color: var(--gray); letter-spacing: 0.05em; }
+  .topbar a { color: var(--gray); text-decoration: none; }
   .topbar a:hover { color: var(--gold); }
   .topbar-right { display: flex; gap: 20px; align-items: center; }
   .social-icons { display: flex; gap: 10px; }
@@ -409,7 +409,7 @@
 
 <!-- TOP BAR -->
 <div class="topbar">
-  <span>📧 <a href="mailto:info@elitelawfirm.so">info@elitelawfirm.so</a> &nbsp;|&nbsp; ☎ +252 61 1118860&nbsp;|&nbsp; Sat–Fri: 9am – 6pm | Mogadishu, Somalia</span>
+  <span>📧 <a href="mailto:info@elitelawfirm.so">info@elitelawfirm.so</a> &nbsp;|&nbsp; ☎ +252 61 000 0000 &nbsp;|&nbsp; Mon–Fri: 9am – 6pm | Mogadishu, Somalia</span>
   <div class="topbar-right">
     <div class="social-icons">
       <a href="#" title="Facebook">f</a>
@@ -469,53 +469,54 @@
     </div>
   </a>
 
-  <ul class="nav-links">
-    <li><a href="#hero" class="active">Home</a></li>
+  <ul class="nav-links" id="mainNav">
+    <li><a href="#" class="nav-page-link active" data-page="home">Home</a></li>
     <li>
-      <a href="#">About Us ▾</a>
+      <a href="#" class="nav-page-link" data-page="about">About Us ▾</a>
       <div class="dropdown">
-        <a href="/about/overview/">Overview</a>
-        <a href="/about/mission-vision/">Our Mission &amp; Vision</a>
-        <a href="/about/core-values/">Core Values</a>
-        <a href="/about/our-approach/">Our Approach</a>
-        <a href="/about/where-we-operate/">Where We Operate</a>
-        <a href="/about/meet-the-team/">Meet The Team</a>
+        <a href="#" class="nav-page-link" data-page="about">Overview</a>
+        <a href="#" class="nav-page-link" data-page="about">Our Mission &amp; Vision</a>
+        <a href="#" class="nav-page-link" data-page="about">Core Values</a>
+        <a href="#" class="nav-page-link" data-page="about">Our Approach</a>
+        <a href="#" class="nav-page-link" data-page="about">Where We Operate</a>
+        <a href="#" class="nav-page-link" data-page="about">Meet The Team</a>
       </div>
     </li>
     <li>
-      <a href="#services">Services ▾</a>
+      <a href="#" class="nav-page-link" data-page="services">Services ▾</a>
       <div class="dropdown">
-        <a href="#services">Corporate, Commercial &amp; Business Setup</a>
-        <a href="#services">Government &amp; Regulatory Advisory</a>
-        <a href="#services">Labour &amp; Employment Law</a>
-        <a href="#services">Shipping &amp; Trade</a>
-        <a href="#services">International &amp; Immigration Law</a>
-        <a href="#services">Arbitration &amp; ADR</a>
-        <a href="#services">Anti-Corruption &amp; Bribery</a>
-        <a href="#services">Taxation</a>
-        <a href="#services">Civil Litigation</a>
-        <a href="#services">Criminal Defence</a>
-        <a href="#services">Property &amp; Land Law</a>
-        <a href="#services">Real Estate</a>
-        <a href="#services">Family Law</a>
-        <a href="#services">Notary &amp; Legal Documentation</a>
-        <a href="#services">General Legal Advisory</a>
-        <a href="#services">Other Legal Services</a>
+        <a href="#" class="nav-page-link" data-page="services">Corporate, Commercial &amp; Business Setup</a>
+        <a href="#" class="nav-page-link" data-page="services">Government &amp; Regulatory Advisory</a>
+        <a href="#" class="nav-page-link" data-page="services">Labour &amp; Employment Law</a>
+        <a href="#" class="nav-page-link" data-page="services">Shipping &amp; Trade</a>
+        <a href="#" class="nav-page-link" data-page="services">International &amp; Immigration Law</a>
+        <a href="#" class="nav-page-link" data-page="services">Arbitration &amp; ADR</a>
+        <a href="#" class="nav-page-link" data-page="services">Anti-Corruption &amp; Bribery</a>
+        <a href="#" class="nav-page-link" data-page="services">Taxation</a>
+        <a href="#" class="nav-page-link" data-page="services">Civil Litigation</a>
+        <a href="#" class="nav-page-link" data-page="services">Criminal Defence</a>
+        <a href="#" class="nav-page-link" data-page="services">Property &amp; Land Law</a>
+        <a href="#" class="nav-page-link" data-page="services">Real Estate</a>
+        <a href="#" class="nav-page-link" data-page="services">Family Law</a>
+        <a href="#" class="nav-page-link" data-page="services">Notary &amp; Legal Documentation</a>
+        <a href="#" class="nav-page-link" data-page="services">General Legal Advisory</a>
+        <a href="#" class="nav-page-link" data-page="services">Other Legal Services</a>
       </div>
     </li>
     <li>
-      <a href="#">Presence ▾</a>
+      <a href="#" class="nav-page-link" data-page="presence">Presence ▾</a>
       <div class="dropdown">
-        <a href="/presence/mogadishu/">Mogadishu</a>
-        <a href="/presence/somalia-regions/">Somalia Regions</a>
-        <a href="/presence/east-africa/">East Africa</a>
+        <a href="#" class="nav-page-link" data-page="presence">Mogadishu</a>
+        <a href="#" class="nav-page-link" data-page="presence">Somalia Regions</a>
+        <a href="#" class="nav-page-link" data-page="presence">East Africa</a>
       </div>
     </li>
-    <li><a href="#contact">Multimedia</a></li>
-    <li><a href="#contact" class="nav-cta">Contact</a></li>
+    <li><a href="#" class="nav-page-link" data-page="multimedia">Multimedia</a></li>
+    <li><a href="#" class="nav-page-link nav-cta" data-page="contact">Contact</a></li>
   </ul>
 </nav>
 
+<div class="page-section page-active" id="page-home">
 <!-- HERO -->
 <section class="hero" id="hero">
   <div class="hero-bg"></div>
@@ -526,8 +527,8 @@
     <h1>Excellence. Integrity. <em>Results.</em></h1>
     <p>Elite Law Firm is a modern, full-service law firm dedicated to delivering high-quality legal solutions tailored to the evolving needs of individuals, businesses, and institutions across Somalia and East Africa.</p>
     <div class="hero-btns">
-      <a href="#services" class="btn-gold">Explore Our Services</a>
-      <a href="#about" class="btn-outline">About Us</a>
+      <a href="#" class="btn-gold nav-page-link" data-page="services">Explore Our Services</a>
+      <a href="#" class="btn-outline nav-page-link" data-page="about">About Us</a>
     </div>
   </div>
   <svg class="hero-shield" viewBox="0 0 300 340" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -543,7 +544,9 @@
   <div class="stat-item"><div class="stat-num">500+</div><div class="stat-label">Cases Handled</div></div>
   <div class="stat-item"><div class="stat-num">East Africa</div><div class="stat-label">Regional Reach</div></div>
 </div>
+</div><!-- /page-home -->
 
+<div class="page-section" id="page-about">
 <!-- ABOUT -->
 <section class="section" id="about">
   <div class="about-grid">
@@ -572,7 +575,7 @@
         <li>Flexible, cost-effective legal solutions</li>
         <li>Deep local knowledge with international best practices</li>
       </ul>
-      <a href="#contact" class="btn-gold">Get In Touch</a>
+      <a href="#" class="btn-gold nav-page-link" data-page="contact">Get In Touch</a>
     </div>
   </div>
 </section>
@@ -617,6 +620,9 @@
   </div>
 </section>
 
+</div><!-- /page-about -->
+
+<div class="page-section" id="page-services">
 <!-- SERVICES -->
 <section class="section section-alt" id="services">
   <div class="section-tag">What We Do</div>
@@ -721,7 +727,9 @@
 </section>
 
 
+</div><!-- /page-services -->
 
+<div class="page-section" id="page-about-team" style="display:none;">
 <!-- TEAM -->
 <section class="section section-alt" id="team">
   <div style="display:flex; justify-content:space-between; align-items:flex-end; margin-bottom:40px; flex-wrap:wrap; gap:16px;">
@@ -777,6 +785,9 @@
   </div>
 </section>
 
+</div><!-- /page-about-team -->
+
+<div class="page-section" id="page-presence">
 <!-- WHERE WE OPERATE -->
 <section class="section section-dark">
   <div style="text-align:center; max-width:700px; margin:0 auto 50px;">
@@ -803,6 +814,45 @@
   </div>
 </section>
 
+</div><!-- /page-presence -->
+
+<div class="page-section" id="page-multimedia">
+
+<section class="section" style="min-height:60vh;">
+  <div class="section-tag">Media &amp; News</div>
+  <h2 class="section-title">Multimedia <em>&amp; Press</em></h2>
+  <p class="section-subtitle">Stay up to date with the latest news, legal insights, and media coverage from Elite Law Firm.</p>
+  <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:28px;">
+    <div style="border:1px solid rgba(201,168,76,0.2); overflow:hidden;">
+      <div style="background:var(--navy); height:180px; display:flex; align-items:center; justify-content:center; font-size:48px;">📰</div>
+      <div style="padding:24px;">
+        <div style="font-size:11px; color:var(--gold); letter-spacing:0.1em; text-transform:uppercase; margin-bottom:8px;">Press Release</div>
+        <h3 style="font-family:'Cormorant Garamond',serif; font-size:20px; color:var(--navy); margin-bottom:10px;">Elite Law Firm Expands Regional Practice</h3>
+        <p style="font-size:13.5px; color:var(--gray); line-height:1.6;">Announcing our expanded services across East Africa and new partnerships with international legal networks.</p>
+      </div>
+    </div>
+    <div style="border:1px solid rgba(201,168,76,0.2); overflow:hidden;">
+      <div style="background:var(--navy); height:180px; display:flex; align-items:center; justify-content:center; font-size:48px;">⚖️</div>
+      <div style="padding:24px;">
+        <div style="font-size:11px; color:var(--gold); letter-spacing:0.1em; text-transform:uppercase; margin-bottom:8px;">Legal Insight</div>
+        <h3 style="font-family:'Cormorant Garamond',serif; font-size:20px; color:var(--navy); margin-bottom:10px;">Navigating Somalia's Commercial Law Framework</h3>
+        <p style="font-size:13.5px; color:var(--gray); line-height:1.6;">Our senior partners share insights on doing business legally in Somalia's evolving regulatory environment.</p>
+      </div>
+    </div>
+    <div style="border:1px solid rgba(201,168,76,0.2); overflow:hidden;">
+      <div style="background:var(--navy); height:180px; display:flex; align-items:center; justify-content:center; font-size:48px;">🎙️</div>
+      <div style="padding:24px;">
+        <div style="font-size:11px; color:var(--gold); letter-spacing:0.1em; text-transform:uppercase; margin-bottom:8px;">Interview</div>
+        <h3 style="font-family:'Cormorant Garamond',serif; font-size:20px; color:var(--navy); margin-bottom:10px;">Interview: Legal Reforms in the Horn of Africa</h3>
+        <p style="font-size:13.5px; color:var(--gray); line-height:1.6;">Managing partner discusses the latest legal reforms and what they mean for local and foreign investors in Somalia.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+</div><!-- /page-multimedia -->
+
+<div class="page-section" id="page-contact">
 <!-- CONTACT SECTION -->
 <section class="contact-section" id="contact">
   <div class="contact-grid">
@@ -849,7 +899,7 @@
 
       <div class="contact-detail-item">
         <div class="cd-icon">📍</div>
-        <div><div class="cd-label">Physical Address</div><div class="cd-val"><br>Mogadishu, Somalia</div></div>
+        <div><div class="cd-label">Physical Address</div><div class="cd-val">145 Mandela Street, 1080<br>Mogadishu, Somalia</div></div>
       </div>
       <div class="contact-detail-item">
         <div class="cd-icon">📧</div>
@@ -857,7 +907,7 @@
       </div>
       <div class="contact-detail-item">
         <div class="cd-icon">🕐</div>
-        <div><div class="cd-label">Office Hours</div><div class="cd-val">Saturday – Friday: 9:00am – 6:00pm </div></div>
+        <div><div class="cd-label">Office Hours</div><div class="cd-val">Monday – Friday: 9:00am – 6:00pm<br>Saturday: 9:00am – 1:00pm</div></div>
       </div>
       <div class="contact-detail-item">
         <div class="cd-icon">🌍</div>
@@ -867,14 +917,14 @@
       <div class="section-tag" style="margin-top:8px; margin-bottom:16px;">Contact Persons</div>
       <div class="contact-persons">
         <div class="cp-card">
-          <div class="cp-name"></div>
+          <div class="cp-name">Janet Right</div>
           <div class="cp-role">Director</div>
-          <div class="cp-phone">📞 </div>
+          <div class="cp-phone">📞 000 000 0000</div>
         </div>
         <div class="cp-card">
-          <div class="cp-name">t</div>
+          <div class="cp-name">James Right</div>
           <div class="cp-role">Director</div>
-          <div class="cp-phone">📞</div>
+          <div class="cp-phone">📞 000 000 0000</div>
         </div>
       </div>
     </div>
@@ -888,9 +938,9 @@
     <p>Get in touch with our team of expert lawyers today</p>
   </div>
   <div class="contact-details">
-    <div class="contact-item"><div class="ci-label">Phone</div><div class="ci-val"> </div></div>
+    <div class="contact-item"><div class="ci-label">Phone</div><div class="ci-val">000 000 0000</div></div>
     <div class="contact-item"><div class="ci-label">Email</div><div class="ci-val">info@elitelawfirm.so</div></div>
-    <div class="contact-item"><div class="ci-label">Address</div><div class="ci-val">Mogadishu</div></div>
+    <div class="contact-item"><div class="ci-label">Address</div><div class="ci-val">145 Mandela Street, Mogadishu</div></div>
   </div>
 </div>
 
@@ -941,27 +991,27 @@
     <div>
       <h5>Services</h5>
       <ul>
-        <li><a href="#services">Corporate &amp; Business Setup</a></li>
-        <li><a href="#services">Government &amp; Regulatory</a></li>
-        <li><a href="#services">Labour &amp; Employment</a></li>
-        <li><a href="#services">Shipping &amp; Trade</a></li>
-        <li><a href="#services">International &amp; Immigration</a></li>
-        <li><a href="#services">Arbitration &amp; ADR</a></li>
-        <li><a href="#services">Anti-Corruption</a></li>
-        <li><a href="#services">Taxation</a></li>
+        <li><a href="#" class="nav-page-link" data-page="services">Corporate &amp; Business Setup</a></li>
+        <li><a href="#" class="nav-page-link" data-page="services">Government &amp; Regulatory</a></li>
+        <li><a href="#" class="nav-page-link" data-page="services">Labour &amp; Employment</a></li>
+        <li><a href="#" class="nav-page-link" data-page="services">Shipping &amp; Trade</a></li>
+        <li><a href="#" class="nav-page-link" data-page="services">International &amp; Immigration</a></li>
+        <li><a href="#" class="nav-page-link" data-page="services">Arbitration &amp; ADR</a></li>
+        <li><a href="#" class="nav-page-link" data-page="services">Anti-Corruption</a></li>
+        <li><a href="#" class="nav-page-link" data-page="services">Taxation</a></li>
       </ul>
     </div>
     <div>
       <h5>More Services</h5>
       <ul>
-        <li><a href="#services">Civil Litigation</a></li>
-        <li><a href="#services">Criminal Defence</a></li>
-        <li><a href="#services">Property &amp; Land Law</a></li>
-        <li><a href="#services">Real Estate</a></li>
-        <li><a href="#services">Family Law</a></li>
-        <li><a href="#services">Notary &amp; Documentation</a></li>
-        <li><a href="#services">General Legal Advisory</a></li>
-        <li><a href="#services">Other Legal Services</a></li>
+        <li><a href="#" class="nav-page-link" data-page="services">Civil Litigation</a></li>
+        <li><a href="#" class="nav-page-link" data-page="services">Criminal Defence</a></li>
+        <li><a href="#" class="nav-page-link" data-page="services">Property &amp; Land Law</a></li>
+        <li><a href="#" class="nav-page-link" data-page="services">Real Estate</a></li>
+        <li><a href="#" class="nav-page-link" data-page="services">Family Law</a></li>
+        <li><a href="#" class="nav-page-link" data-page="services">Notary &amp; Documentation</a></li>
+        <li><a href="#" class="nav-page-link" data-page="services">General Legal Advisory</a></li>
+        <li><a href="#" class="nav-page-link" data-page="services">Other Legal Services</a></li>
       </ul>
     </div>
     <div>
@@ -971,8 +1021,8 @@
         <li><a href="#">Mission & Vision</a></li>
         <li><a href="#">Our Team</a></li>
         <li><a href="/about/where-we-operate/">Where We Operate</a></li>
-        <li><a href="#contact">Multimedia</a></li>
-        <li><a href="#contact">Contact Us</a></li>
+        <li><a href="#" class="nav-page-link" data-page="contact">Multimedia</a></li>
+        <li><a href="#" class="nav-page-link" data-page="contact">Contact Us</a></li>
       </ul>
     </div>
   </div>
@@ -985,6 +1035,8 @@
     </div>
   </div>
 </footer>
+
+</div><!-- /page-contact -->
 
 <!-- LAWYER PROFILE MODAL — Full Page Style -->
 <div class="modal-backdrop" id="lawyerModal" onclick="closeModalOutside(event)">
@@ -1037,7 +1089,7 @@
             <div class="mp-contact-icon">📍</div>
             <div>
               <div class="mp-contact-key">Office</div>
-              <div class="mp-contact-val">Mogadishu, Somalia</div>
+              <div class="mp-contact-val">145 Mandela Street<br>Mogadishu, Somalia</div>
             </div>
           </div>
           <div class="mp-social" style="margin-top:16px;">
@@ -1142,7 +1194,7 @@
             <div class="mp-contact-icon">📍</div>
             <div>
               <div class="mp-contact-key">Office</div>
-              <div class="mp-contact-val">Mogadishu, Somalia</div>
+              <div class="mp-contact-val">145 Mandela Street<br>Mogadishu, Somalia</div>
             </div>
           </div>
           <div class="mp-social" style="margin-top:16px;">
@@ -1252,14 +1304,14 @@
             <div class="mp-contact-icon">📞</div>
             <div>
               <div class="mp-contact-key">Phone</div>
-              <div class="mp-contact-val">+252 61 1118860</div>
+              <div class="mp-contact-val">+252 61 000 0000</div>
             </div>
           </div>
           <div class="mp-contact-row">
             <div class="mp-contact-icon">📍</div>
             <div>
               <div class="mp-contact-key">Office</div>
-              <div class="mp-contact-val">Mogadishu, Somalia</div>
+              <div class="mp-contact-val">145 Mandela Street<br>Mogadishu, Somalia</div>
             </div>
           </div>
           <div class="mp-social" style="margin-top:16px;">
@@ -1444,5 +1496,105 @@ function setLang(lang, btn) {
   if (aboutTag) aboutTag.childNodes[0].textContent = t.sectionTagAbout;
 }
 </script>
+
+<script>
+// ══ MULTI-PAGE NAVIGATION SYSTEM ══
+(function() {
+  // Page groups: which page-divs to show for each nav section
+  var PAGE_MAP = {
+    home:       ['page-home'],
+    about:      ['page-about', 'page-about-team'],
+    services:   ['page-services'],
+    presence:   ['page-presence'],
+    multimedia: ['page-multimedia'],
+    contact:    ['page-contact']
+  };
+
+  var ALL_PAGES = ['page-home','page-about','page-services','page-about-team','page-presence','page-multimedia','page-contact'];
+
+  function showPage(pageKey) {
+    var pagesToShow = PAGE_MAP[pageKey] || ['page-home'];
+
+    // Hide all pages
+    ALL_PAGES.forEach(function(id) {
+      var el = document.getElementById(id);
+      if (el) {
+        el.classList.remove('page-active');
+        el.style.display = 'none';
+      }
+    });
+
+    // Show target pages
+    pagesToShow.forEach(function(id) {
+      var el = document.getElementById(id);
+      if (el) {
+        el.style.display = 'block';
+        // Trigger reflow for animation
+        void el.offsetWidth;
+        el.classList.add('page-active');
+      }
+    });
+
+    // Update nav active state
+    document.querySelectorAll('.nav-page-link').forEach(function(link) {
+      link.classList.remove('active');
+      if (link.dataset.page === pageKey) {
+        link.classList.add('active');
+      }
+    });
+
+    // Update hash
+    window.location.hash = '#' + pageKey;
+
+    // Scroll to top
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  // Attach click handlers to all nav-page-link elements
+  function attachHandlers() {
+    document.querySelectorAll('.nav-page-link').forEach(function(link) {
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+        var page = this.dataset.page;
+        if (page) showPage(page);
+      });
+    });
+  }
+
+  // On load: check hash or default to home
+  function init() {
+    attachHandlers();
+
+    // Hide all pages first
+    ALL_PAGES.forEach(function(id) {
+      var el = document.getElementById(id);
+      if (el) el.style.display = 'none';
+    });
+
+    // Read hash
+    var hash = window.location.hash.replace('#', '');
+    var validPages = Object.keys(PAGE_MAP);
+    var startPage = (hash && validPages.indexOf(hash) !== -1) ? hash : 'home';
+    showPage(startPage);
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+
+  // Handle back/forward
+  window.addEventListener('hashchange', function() {
+    var hash = window.location.hash.replace('#', '');
+    var validPages = Object.keys(PAGE_MAP);
+    if (hash && validPages.indexOf(hash) !== -1) showPage(hash);
+  });
+
+  // Expose globally for inline calls (mobile menu etc)
+  window.showSitePage = showPage;
+})();
+</script>
+
 </body>
 </html>
