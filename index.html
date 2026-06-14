@@ -1399,7 +1399,7 @@
     if (e.target === document.getElementById('kamalModal')) closeKamalModal();
   }
   document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape') { closeModal(); closeCTOModal(); closeKamalModal(); document.getElementById('servicesModal').classList.remove('open'); document.body.style.overflow=''; }
+    if (e.key === 'Escape') { closeModal(); closeCTOModal(); closeKamalModal(); var sm = document.getElementById('servicesModal'); if (sm) sm.classList.remove('open'); document.body.style.overflow=''; }
   });
 </script>
 
