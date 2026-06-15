@@ -3,17 +3,17 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Overview | Elite Law Firm</title>
+<title>About Us | Elite Law Firm</title>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
-  html { scroll-behavior: smooth; }
+  html { scroll-behavior: smooth; min-height: 100dvh; overflow-y: auto; }
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   :root {
     --navy: #0d1f3c; --navy-mid: #162848; --navy-light: #1e3560;
     --gold: #c9a84c; --gold-light: #e8c96a; --gold-pale: #f5e9c8;
     --white: #ffffff; --off-white: #f8f6f1; --gray: #8a9bb5; --text: #2c3e5a;
   }
-  body { font-family: 'Montserrat', sans-serif; color: var(--text); background: var(--white); overflow-x: hidden; }
+  body { font-family: 'Montserrat', sans-serif; color: var(--text); background: var(--white); overflow-x: hidden; min-height: 100dvh; overflow-y: auto; }
   /* TOP BAR */
   .topbar { background: var(--navy-mid); padding: 8px 40px; display: flex; justify-content: space-between; align-items: center; font-size: 12px; color: var(--gray); letter-spacing: 0.05em; }
   .topbar a { color: var(--gray); text-decoration: none; }
@@ -52,11 +52,13 @@
   .gold-rule { width: 60px; height: 2px; background: var(--gold); margin: 20px auto 0; }
   /* CONTENT */
   .page-content { max-width: 1100px; margin: 0 auto; padding: 80px 40px; }
+  .page-content.alt { background: var(--off-white); max-width: none; }
+  .page-content.alt > .inner { max-width: 1100px; margin: 0 auto; }
   .section-tag { font-size: 11px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); margin-bottom: 10px; }
   .section-title { font-family: 'Cormorant Garamond', serif; font-size: 36px; font-weight: 600; color: var(--navy); margin-bottom: 20px; line-height: 1.2; }
   .section-title em { color: var(--gold); font-style: italic; }
   .lead { font-size: 15px; color: var(--text); line-height: 1.8; margin-bottom: 40px; max-width: 760px; }
-  .content-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; margin-bottom: 60px; align-items: start; }
+  .content-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; margin-bottom: 0; align-items: start; }
   .feature-list { list-style: none; padding: 0; }
   .feature-list li { display: flex; gap: 12px; align-items: flex-start; padding: 12px 0; border-bottom: 1px solid rgba(13,31,60,0.07); font-size: 14px; color: var(--text); line-height: 1.6; }
   .feature-list li::before { content: '›'; color: var(--gold); font-size: 18px; font-weight: 700; line-height: 1.2; flex-shrink: 0; margin-top: 1px; }
@@ -78,9 +80,15 @@
   .cta-strip p { font-size: 14px; color: var(--gray); margin-bottom: 30px; }
   .btn-gold { display: inline-block; background: var(--gold); color: var(--navy); padding: 13px 32px; font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; text-decoration: none; border-radius: 2px; transition: background 0.2s; }
   .btn-gold:hover { background: var(--gold-light); }
+  /* PRESENCE GRID */
+  .presence-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 40px; }
+  .presence-card { background: var(--navy); border: 1px solid rgba(201,168,76,0.15); padding: 32px 28px; text-align: center; }
+  .presence-card .icon { font-size: 32px; margin-bottom: 14px; }
+  .presence-card h3 { font-family: 'Cormorant Garamond', serif; font-size: 20px; color: var(--gold); margin-bottom: 10px; }
+  .presence-card p { font-size: 13px; color: rgba(255,255,255,0.55); line-height: 1.7; }
   /* FOOTER */
   footer { background: var(--navy); padding: 60px 40px 28px; }
-  .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; margin-bottom: 40px; }
+  .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px; margin-bottom: 40px; }
   .footer-logo { display: flex; align-items: center; gap: 12px; text-decoration: none; margin-bottom: 18px; }
   .footer-about { font-size: 12.5px; color: rgba(255,255,255,0.4); line-height: 1.75; }
   footer h5 { font-family: 'Cinzel', serif; font-size: 11px; letter-spacing: 0.15em; color: var(--gold); margin-bottom: 16px; text-transform: uppercase; }
@@ -99,6 +107,7 @@
     .page-content { padding: 50px 20px; } .content-grid { grid-template-columns: 1fr; gap: 32px; }
     .why-grid { grid-template-columns: 1fr; } .footer-grid { grid-template-columns: 1fr; }
     .why-strip { padding: 40px 20px; } .cta-strip { padding: 48px 20px; }
+    .presence-grid { grid-template-columns: 1fr; }
   }
 </style>
 </head>
@@ -154,40 +163,25 @@
   </a>
   <ul class="nav-links">
     <li><a href="/">Home</a></li>
-    <li>
-      <a href="#">About Us ▾</a>
-      <div class="dropdown">
-        <a href="/about/overview/">Overview</a>
-        <a href="/about/mission-vision/">Our Mission &amp; Vision</a>
-        <a href="/about/core-values/">Core Values</a>
-        <a href="/about/our-approach/">Our Approach</a>
-        <a href="/about/where-we-operate/">Where We Operate</a>
-        <a href="/about/meet-the-team/">Meet The Team</a>
-      </div>
-    </li>
-    <li>
-      <a href="#">Practice Areas ▾</a>
-      <div class="dropdown">
-        <a href="/practice-areas/corporate-commercial-business-setup/">Corporate, Commercial &amp; Business Setup</a>
-        <a href="/practice-areas/civil-litigation/">Civil Litigation</a>
-        <a href="/practice-areas/criminal-defence/">Criminal Defence</a>
-        <a href="/practice-areas/property-land-law/">Property &amp; Land Law</a>
-        <a href="/practice-areas/family-law/">Family Law</a>
-        <a href="/practice-areas/shipping-trade/">Shipping &amp; Trade</a>
-      </div>
-    </li>
+    <li><a href="/about/overview/" class="active">About Us</a></li>
     <li>
       <a href="#">Services ▾</a>
       <div class="dropdown">
-        <a href="/services/notary-legal-documentation/">Notary &amp; Legal Documentation</a>
-        <a href="/services/labour-employment-law/">Labour &amp; Employment Law</a>
-        <a href="/services/arbitration-adr/">Arbitration &amp; ADR</a>
+        <a href="/services/corporate-commercial-business-setup/">Corporate, Commercial &amp; Business Setup</a>
         <a href="/services/government-regulatory-advisory/">Government &amp; Regulatory Advisory</a>
+        <a href="/services/labour-employment-law/">Labour &amp; Employment Law</a>
+        <a href="/services/shipping-trade/">Shipping &amp; Trade</a>
         <a href="/services/international-immigration-law/">International &amp; Immigration Law</a>
-        <a href="/services/general-legal-advisory/">General Legal Advisory</a>
-        <a href="/services/taxation/">Taxation</a>
+        <a href="/services/arbitration-adr/">Arbitration &amp; ADR</a>
         <a href="/services/anti-corruption-bribery/">Anti-Corruption &amp; Bribery</a>
+        <a href="/services/taxation/">Taxation</a>
+        <a href="/services/civil-litigation/">Civil Litigation</a>
+        <a href="/services/criminal-defence/">Criminal Defence</a>
+        <a href="/services/property-land-law/">Property &amp; Land Law</a>
         <a href="/services/real-estate/">Real Estate</a>
+        <a href="/services/family-law/">Family Law</a>
+        <a href="/services/notary-legal-documentation/">Notary &amp; Legal Documentation</a>
+        <a href="/services/general-legal-advisory/">General Legal Advisory</a>
         <a href="/services/other-legal-services/">Other Legal Services</a>
       </div>
     </li>
@@ -204,13 +198,14 @@
   </ul>
 </nav>
 <section class="page-hero">
-  <div class="breadcrumb"><a href="/">Home</a> › <a href="#">About Us</a> › Overview</div>
+  <div class="breadcrumb"><a href="/">Home</a> › About Us</div>
   <h1>About Elite Law Firm</h1>
   <p>A premier full-service legal institution committed to excellence, integrity, and results across Somalia and East Africa.</p>
   <div class="gold-rule"></div>
 </section>
 
-<section class="page-content">
+<!-- OVERVIEW -->
+<section class="page-content" id="overview">
   <div class="section-tag">Who We Are</div>
   <h2 class="section-title">A Legacy of <em>Legal Excellence</em></h2>
   <p class="lead">Elite Law Firm was founded with a clear mission: to deliver world-class legal services to clients navigating the complexities of Somali and East African law. From corporate transactions to courtroom advocacy, we bring precision, dedication, and deep expertise to every matter we handle.</p>
@@ -230,6 +225,140 @@
     </div>
   </div>
 </section>
+
+<!-- MISSION & VISION -->
+<section class="page-content alt" id="mission-vision">
+  <div class="inner">
+    <div class="section-tag">Purpose &amp; Direction</div>
+    <h2 class="section-title">Our <em>Mission &amp; Vision</em></h2>
+    <p class="lead">Our mission is to provide accessible, high-quality legal services that empower individuals, businesses, and institutions to achieve their goals within the framework of the law. Our vision is to be East Africa's most trusted and respected law firm.</p>
+    <div class="content-grid">
+      <ul class="feature-list">
+      <li>To uphold the rule of law and protect the rights of every client</li>
+      <li>To deliver innovative, practical, and results-driven legal solutions</li>
+      <li>To build long-term partnerships rooted in trust and transparency</li>
+      <li>To continuously develop our expertise to meet evolving legal challenges</li>
+      <li>To contribute to the development of Somalia's legal and business environment</li>
+      <li>To set the standard for ethical and professional legal practice in the region</li>
+      </ul>
+      <div class="info-box">
+        <h3>Our Values</h3>
+        <p>Integrity, excellence, and commitment are not just words to us — they are the principles that guide every decision we make and every case we handle on behalf of our clients.</p>
+        <a href="/#contact" class="btn-gold">Get In Touch →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CORE VALUES -->
+<section class="page-content" id="core-values">
+  <div class="section-tag">What We Stand For</div>
+  <h2 class="section-title">The <em>Values</em> That Drive Us</h2>
+  <p class="lead">Our core values are the foundation of Elite Law Firm's identity. They shape our culture, define our standards, and guide every interaction we have with clients, colleagues, and the broader legal community.</p>
+  <div class="content-grid">
+    <ul class="feature-list">
+    <li>Integrity — we act with honesty and transparency in all circumstances</li>
+    <li>Excellence — we hold ourselves to the highest professional standards</li>
+    <li>Client Focus — your interests are always our primary concern</li>
+    <li>Accountability — we take ownership of every matter entrusted to us</li>
+    <li>Innovation — we embrace creative, practical approaches to legal challenges</li>
+    <li>Respect — we treat every individual with dignity and professionalism</li>
+    </ul>
+    <div class="info-box">
+      <h3>Living Our Values</h3>
+      <p>These values are not aspirations — they are commitments we live by every day. From the way we handle your case to the way we communicate with you, our values are present in every interaction.</p>
+      <a href="/#contact" class="btn-gold">Get In Touch →</a>
+    </div>
+  </div>
+</section>
+
+<!-- OUR APPROACH -->
+<section class="page-content alt" id="approach">
+  <div class="inner">
+    <div class="section-tag">How We Work</div>
+    <h2 class="section-title">A <em>Strategic Approach</em> to Legal Excellence</h2>
+    <p class="lead">We believe great legal work begins with truly understanding our clients. Before advising, we listen. Before acting, we plan. Our approach combines rigorous legal analysis with practical, commercial thinking to deliver solutions that work in the real world.</p>
+    <div class="content-grid">
+      <ul class="feature-list">
+      <li>Initial consultation to understand your objectives and background</li>
+      <li>Thorough legal research and analysis of all relevant laws and precedents</li>
+      <li>Development of a tailored strategy aligned with your goals</li>
+      <li>Clear, regular communication throughout the life of your matter</li>
+      <li>Proactive risk identification and mitigation planning</li>
+      <li>Efficient execution with ongoing review and client updates</li>
+      </ul>
+      <div class="info-box">
+        <h3>Collaborative by Nature</h3>
+        <p>We work as a team — pooling our diverse expertise to ensure you receive well-rounded advice. Whether your matter is straightforward or complex, our collaborative approach means you benefit from the full strength of our firm.</p>
+        <a href="/#contact" class="btn-gold">Get In Touch →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHERE WE OPERATE -->
+<section class="page-content" id="where-we-operate">
+  <div class="section-tag">Our Presence</div>
+  <h2 class="section-title">Serving Clients Across <em>East Africa</em></h2>
+  <p class="lead">Elite Law Firm is headquartered in Mogadishu, Somalia, with the capacity to advise clients on matters spanning the entire East African region. Our network of contacts, partners, and local experts enables us to provide on-the-ground support wherever you need it.</p>
+  <div class="content-grid" style="margin-bottom:0;">
+    <ul class="feature-list">
+    <li>Mogadishu — our headquarters, serving the Banaadir region and beyond</li>
+    <li>Somalia Regions — supporting clients across all federal member states</li>
+    <li>East Africa — cross-border advisory for regional and international transactions</li>
+    <li>Remote advisory services available for international clients</li>
+    <li>Strong networks with government bodies, courts, and regulators nationwide</li>
+    <li>Knowledge of local customs, languages, and legal traditions</li>
+    </ul>
+    <div class="info-box">
+      <h3>Your Local Partner</h3>
+      <p>Whether you are based in Mogadishu or operating across borders, Elite Law Firm provides the local knowledge and regional reach you need to navigate legal challenges with confidence.</p>
+      <a href="/#contact" class="btn-gold">Get In Touch →</a>
+    </div>
+  </div>
+  <div class="presence-grid">
+    <div class="presence-card">
+      <div class="icon">🏙️</div>
+      <h3>Mogadishu</h3>
+      <p>Main headquarters with full legal services, court representation, and advisory operations.</p>
+    </div>
+    <div class="presence-card">
+      <div class="icon">🗺️</div>
+      <h3>Somalia Regions</h3>
+      <p>Active presence in key regions and major cities across Somalia to serve clients wherever they are.</p>
+    </div>
+    <div class="presence-card">
+      <div class="icon">🌍</div>
+      <h3>East Africa</h3>
+      <p>Regional reach across East Africa with partner law firms in multiple jurisdictions for cross-border matters.</p>
+    </div>
+  </div>
+</section>
+
+<!-- MEET THE TEAM -->
+<section class="page-content alt" id="team">
+  <div class="inner">
+    <div class="section-tag">Our People</div>
+    <h2 class="section-title">The Professionals Behind <em>Elite Law Firm</em></h2>
+    <p class="lead">Our team is composed of highly qualified lawyers, legal advisors, and support professionals who bring diverse expertise and a shared commitment to excellence. Together, we provide the depth and breadth of knowledge required to handle any legal challenge.</p>
+    <div class="content-grid" style="margin-bottom:0;">
+      <ul class="feature-list">
+      <li>Senior partners with decades of combined legal experience</li>
+      <li>Specialists across corporate, litigation, property, and family law</li>
+      <li>Bilingual professionals fluent in Somali, Arabic, and English</li>
+      <li>Professionals trained at leading Somali, regional, and international institutions</li>
+      <li>A dedicated support team ensuring seamless case management</li>
+      <li>Ongoing professional development to stay at the forefront of legal practice</li>
+      </ul>
+      <div class="info-box">
+        <h3>Join Our Team</h3>
+        <p>Elite Law Firm is always looking for talented, driven legal professionals. If you share our commitment to excellence and client service, we would love to hear from you.</p>
+        <a href="/#contact" class="btn-gold">Get In Touch →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="why-strip">
   <div class="why-inner">
     <div class="section-tag">Why Choose Us</div>
@@ -289,17 +418,6 @@
       <p class="footer-about" style="margin-top:10px;font-size:11px;color:rgba(255,255,255,0.25);">Your Rights. Our Commitment.</p>
     </div>
     <div>
-      <h5>Practice Areas</h5>
-      <ul>
-        <li><a href="/practice-areas/corporate-commercial-business-setup/">Corporate &amp; Business</a></li>
-        <li><a href="/practice-areas/civil-litigation/">Civil Litigation</a></li>
-        <li><a href="/practice-areas/criminal-defence/">Criminal Defence</a></li>
-        <li><a href="/practice-areas/property-land-law/">Property &amp; Land Law</a></li>
-        <li><a href="/practice-areas/family-law/">Family Law</a></li>
-        <li><a href="/practice-areas/shipping-trade/">Shipping &amp; Trade</a></li>
-      </ul>
-    </div>
-    <div>
       <h5>Services</h5>
       <ul>
         <li><a href="/services/notary-legal-documentation/">Notary &amp; Documentation</a></li>
@@ -313,10 +431,10 @@
     <div>
       <h5>Information</h5>
       <ul>
-        <li><a href="/about/overview/">About Us</a></li>
-        <li><a href="/about/mission-vision/">Mission &amp; Vision</a></li>
-        <li><a href="/about/meet-the-team/">Our Team</a></li>
-        <li><a href="/about/where-we-operate/">Where We Operate</a></li>
+        <li><a href="/about/overview/#overview">About Us</a></li>
+        <li><a href="/about/overview/#mission-vision">Mission &amp; Vision</a></li>
+        <li><a href="/about/overview/#team">Our Team</a></li>
+        <li><a href="/about/overview/#where-we-operate">Where We Operate</a></li>
         <li><a href="/#contact">Multimedia</a></li>
         <li><a href="/#contact">Contact Us</a></li>
       </ul>
