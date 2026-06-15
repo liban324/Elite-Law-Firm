@@ -25,12 +25,8 @@
   /* NAVBAR */
   nav { background: #080f1e; padding: 0 40px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 20px rgba(0,0,0,0.3); height: 96px; }
   .logo { display: flex; align-items: center; gap: 14px; text-decoration: none; }
+  .logo-img { height: 48px; width: auto; max-width: 180px; object-fit: contain; display: block; }
   .logo-icon { width: 86px; height: 90px; }
-  .logo-text { line-height: 1.15; }
-  .logo-text .firm { font-family: 'Cinzel', serif; font-size: 28px; font-weight: 700; color: var(--white); letter-spacing: 0.18em; }
-  .logo-text .sub-row { display: flex; align-items: center; gap: 6px; margin-top: 2px; }
-  .logo-text .sub-line { flex: 1; height: 1px; background: var(--gold); opacity: 0.7; }
-  .logo-text .sub { font-family: 'Cinzel', serif; font-size: 10px; font-weight: 400; color: var(--gold); letter-spacing: 0.22em; text-transform: uppercase; }
   .nav-links { display: flex; list-style: none; gap: 4px; align-items: center; }
   .nav-links > li { position: relative; }
   .nav-links > li > a { padding: 28px 14px; display: block; color: rgba(255,255,255,0.75); text-decoration: none; font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; transition: color 0.2s; border-bottom: 3px solid transparent; }
@@ -90,6 +86,7 @@
   footer { background: var(--navy); padding: 60px 40px 28px; }
   .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px; margin-bottom: 40px; }
   .footer-logo { display: flex; align-items: center; gap: 12px; text-decoration: none; margin-bottom: 18px; }
+  .footer-logo-img { height: 44px; width: auto; max-width: 160px; object-fit: contain; display: block; }
   .footer-about { font-size: 12.5px; color: rgba(255,255,255,0.4); line-height: 1.75; }
   footer h5 { font-family: 'Cinzel', serif; font-size: 11px; letter-spacing: 0.15em; color: var(--gold); margin-bottom: 16px; text-transform: uppercase; }
   footer ul { list-style: none; }
@@ -102,6 +99,7 @@
   .footer-social a { width: 32px; height: 32px; border: 1px solid rgba(201,168,76,0.25); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--gold); font-size: 12px; text-decoration: none; transition: all 0.2s; }
   .footer-social a:hover { background: var(--gold); color: var(--navy); }
   @media (max-width: 900px) {
+    .logo-img { height: 36px; }
     .topbar { display: none; } nav { padding: 0 20px; } .nav-links { display: none; }
     .page-hero { padding: 60px 20px 50px; } .page-hero h1 { font-size: 28px; }
     .page-content { padding: 50px 20px; } .content-grid { grid-template-columns: 1fr; gap: 32px; }
@@ -125,41 +123,7 @@
 </div>
 <nav>
   <a href="/" class="logo">
-    <svg class="logo-icon" viewBox="0 0 200 220" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <defs>
-        <linearGradient id="navGold" x1="30" y1="0" x2="170" y2="220" gradientUnits="userSpaceOnUse">
-          <stop offset="0%" stop-color="#f9ebb0"/><stop offset="35%" stop-color="#d4a93a"/><stop offset="65%" stop-color="#c9a030"/><stop offset="100%" stop-color="#8a6510"/>
-        </linearGradient>
-        <linearGradient id="navGold2" x1="30" y1="0" x2="170" y2="220" gradientUnits="userSpaceOnUse">
-          <stop offset="0%" stop-color="#f9ebb0"/><stop offset="50%" stop-color="#c9a84c"/><stop offset="100%" stop-color="#9a7020"/>
-        </linearGradient>
-      </defs>
-      <path d="M100 6 L186 38 L186 108 C186 162 148 196 100 212 C52 196 14 162 14 108 L14 38 Z" fill="#0d1f3c"/>
-      <path d="M100 6 L186 38 L186 108 C186 162 148 196 100 212 C52 196 14 162 14 108 L14 38 Z" stroke="url(#navGold)" stroke-width="9" fill="none"/>
-      <path d="M100 22 L172 50 L172 108 C172 154 138 184 100 198 C62 184 28 154 28 108 L28 50 Z" stroke="url(#navGold)" stroke-width="2.5" fill="none"/>
-      <polygon points="100,14 108,34 100,30 92,34" fill="url(#navGold2)"/>
-      <rect x="96" y="30" width="8" height="16" rx="2" fill="url(#navGold2)"/>
-      <rect x="42" y="72" width="116" height="12" rx="3" fill="url(#navGold2)"/>
-      <rect x="55" y="84" width="90" height="8" rx="2" fill="url(#navGold2)"/>
-      <rect x="72" y="92" width="16" height="88" rx="2" fill="url(#navGold2)"/>
-      <rect x="92" y="92" width="16" height="88" rx="2" fill="url(#navGold2)"/>
-      <rect x="112" y="92" width="16" height="88" rx="2" fill="url(#navGold2)"/>
-      <rect x="60" y="178" width="80" height="10" rx="2" fill="url(#navGold2)"/>
-      <rect x="38" y="68" width="124" height="6" rx="3" fill="url(#navGold2)"/>
-      <rect x="96" y="46" width="8" height="26" rx="2" fill="url(#navGold2)"/>
-      <circle cx="40" cy="71" r="6" fill="url(#navGold2)"/>
-      <circle cx="160" cy="71" r="6" fill="url(#navGold2)"/>
-      <line x1="40" y1="77" x2="28" y2="110" stroke="url(#navGold2)" stroke-width="2.5"/>
-      <line x1="40" y1="77" x2="52" y2="110" stroke="url(#navGold2)" stroke-width="2.5"/>
-      <path d="M22 110 L58 110 L46 138 Q40 144 34 138 Z" fill="url(#navGold2)"/>
-      <line x1="160" y1="77" x2="148" y2="110" stroke="url(#navGold2)" stroke-width="2.5"/>
-      <line x1="160" y1="77" x2="172" y2="110" stroke="url(#navGold2)" stroke-width="2.5"/>
-      <path d="M142 110 L178 110 L166 138 Q160 144 154 138 Z" fill="url(#navGold2)"/>
-    </svg>
-    <div class="logo-text">
-      <div class="firm">ELITE</div>
-      <div class="sub-row"><span class="sub-line"></span><span class="sub">Law Firm</span><span class="sub-line"></span></div>
-    </div>
+    <img src="/logo.jpg" alt="Elite Law Firm" class="logo-img">
   </a>
   <ul class="nav-links">
     <li><a href="/">Home</a></li>
@@ -388,31 +352,7 @@
   <div class="footer-grid">
     <div>
       <a href="/" class="footer-logo">
-        <svg width="44" height="48" viewBox="0 0 200 220" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <linearGradient id="ftGold" x1="30" y1="0" x2="170" y2="220" gradientUnits="userSpaceOnUse">
-              <stop offset="0%" stop-color="#f9ebb0"/><stop offset="35%" stop-color="#d4a93a"/><stop offset="65%" stop-color="#c9a030"/><stop offset="100%" stop-color="#8a6510"/>
-            </linearGradient>
-            <linearGradient id="ftGold2" x1="30" y1="0" x2="170" y2="220" gradientUnits="userSpaceOnUse">
-              <stop offset="0%" stop-color="#f9ebb0"/><stop offset="50%" stop-color="#c9a84c"/><stop offset="100%" stop-color="#9a7020"/>
-            </linearGradient>
-          </defs>
-          <path d="M100 6 L186 38 L186 108 C186 162 148 196 100 212 C52 196 14 162 14 108 L14 38 Z" fill="#0d1f3c"/>
-          <path d="M100 6 L186 38 L186 108 C186 162 148 196 100 212 C52 196 14 162 14 108 L14 38 Z" stroke="url(#ftGold)" stroke-width="9" fill="none"/>
-          <rect x="42" y="72" width="116" height="12" rx="3" fill="url(#ftGold2)"/>
-          <rect x="72" y="92" width="16" height="88" rx="2" fill="url(#ftGold2)"/>
-          <rect x="92" y="92" width="16" height="88" rx="2" fill="url(#ftGold2)"/>
-          <rect x="112" y="92" width="16" height="88" rx="2" fill="url(#ftGold2)"/>
-          <rect x="60" y="178" width="80" height="10" rx="2" fill="url(#ftGold2)"/>
-        </svg>
-        <div>
-          <div style="font-family:'Cinzel',serif;font-size:20px;font-weight:700;color:#fff;letter-spacing:0.18em;">ELITE</div>
-          <div style="display:flex;align-items:center;gap:5px;margin-top:2px;">
-            <span style="flex:1;height:1px;background:var(--gold);opacity:0.7;"></span>
-            <span style="font-family:'Cinzel',serif;font-size:9px;color:var(--gold);letter-spacing:0.22em;text-transform:uppercase;">Law Firm</span>
-            <span style="flex:1;height:1px;background:var(--gold);opacity:0.7;"></span>
-          </div>
-        </div>
+        <img src="/logo.jpg" alt="Elite Law Firm" class="footer-logo-img">
       </a>
       <p class="footer-about">A modern, full-service law firm delivering high-quality legal solutions to individuals, businesses, and institutions across Somalia and East Africa. Established 2019.</p>
       <p class="footer-about" style="margin-top:10px;font-size:11px;color:rgba(255,255,255,0.25);">Your Rights. Our Commitment.</p>
