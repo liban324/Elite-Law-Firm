@@ -102,6 +102,78 @@
     .why-grid { grid-template-columns: 1fr; } .footer-grid { grid-template-columns: 1fr; }
     .why-strip { padding: 40px 20px; } .cta-strip { padding: 48px 20px; }
   }
+
+  /* ── HAMBURGER BUTTON ── */
+  .ham-btn {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    width: 40px; height: 40px;
+    background: transparent;
+    border: 1px solid rgba(201,168,76,0.35);
+    cursor: pointer;
+    padding: 8px;
+    flex-shrink: 0;
+  }
+  .ham-btn span {
+    display: block; width: 22px; height: 2px;
+    background: var(--gold);
+    transition: transform 0.3s, opacity 0.3s;
+  }
+  nav.mobile-nav-open .ham-btn span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  nav.mobile-nav-open .ham-btn span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+  nav.mobile-nav-open .ham-btn span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+  /* ── MOBILE BREAKPOINT ── */
+  @media screen and (max-width: 768px) {
+    .ham-btn {
+      display: flex !important;
+      visibility: visible !important;
+      opacity: 1 !important;
+    }
+    nav { padding: 0 20px; height: 70px; position: sticky; top: 0; z-index: 1000; }
+    .logo-img { height: 50px; }
+    .logo-name .firm { font-size: 16px; }
+    .nav-links {
+      display: flex !important;
+      flex-direction: column;
+      position: fixed;
+      top: 70px; left: 0; right: 0;
+      background: #080f1e;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.35s ease;
+      z-index: 999;
+      gap: 0;
+      align-items: stretch;
+    }
+    nav.mobile-nav-open .nav-links { max-height: 90vh; overflow-y: auto; }
+    .nav-links > li { position: static; border-bottom: 1px solid rgba(255,255,255,0.06); }
+    .nav-links > li > a {
+      padding: 14px 20px;
+      font-size: 13px;
+      border-bottom: none;
+    }
+    /* Accordion dropdowns */
+    .dropdown {
+      position: static !important;
+      opacity: 1 !important;
+      visibility: visible !important;
+      transform: none !important;
+      box-shadow: none !important;
+      border-top: none !important;
+      background: rgba(255,255,255,0.04);
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
+    }
+    .nav-links > li.mob-open .dropdown { max-height: 600px; }
+    .dropdown a { padding: 10px 30px; font-size: 12px; }
+    /* Hide desktop hover dropdown trigger */
+    .nav-links > li:hover .dropdown { opacity: 1; visibility: visible; }
+  }
 </style>
 </head>
 <body>
@@ -163,6 +235,9 @@
     <li><a href="/#contact">Multimedia</a></li>
     <li><a href="/#contact" class="nav-cta">Contact</a></li>
   </ul>
+  <button class="ham-btn" id="hamBtn" aria-label="Toggle navigation" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
 <section class="page-hero">
   <div class="breadcrumb"><a href="/">Home</a> › <a href="#">Presence</a> › East Africa</div>
@@ -259,5 +334,76 @@
     </div>
   </div>
 </footer>
+<script>
+/* ── MOBILE NAVIGATION ── */
+(function () {
+  'use strict';
+  var nav     = document.querySelector('nav');
+  var hamBtn  = document.getElementById('hamBtn');
+  var navList = document.querySelector('.nav-links');
+  if (!nav || !hamBtn || !navList) return;
+
+  function isMobile() { return window.innerWidth <= 768; }
+
+  function openMenu() {
+    nav.classList.add('mobile-nav-open');
+    hamBtn.setAttribute('aria-expanded', 'true');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeMenu() {
+    nav.classList.remove('mobile-nav-open');
+    hamBtn.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+    navList.querySelectorAll('li.mob-open').forEach(function(li){ li.classList.remove('mob-open'); });
+  }
+  function toggleMenu() {
+    nav.classList.contains('mobile-nav-open') ? closeMenu() : openMenu();
+  }
+
+  hamBtn.addEventListener('click', function(e){ e.stopPropagation(); toggleMenu(); });
+
+  /* Accordion for items with dropdowns */
+  navList.querySelectorAll('li').forEach(function(li){
+    var topLink  = li.querySelector(':scope > a');
+    var dropdown = li.querySelector(':scope > .dropdown');
+    if (!topLink || !dropdown) return;
+    topLink.addEventListener('click', function(e){
+      if (!isMobile()) return;
+      e.preventDefault(); e.stopPropagation();
+      var isOpen = li.classList.contains('mob-open');
+      navList.querySelectorAll('li.mob-open').forEach(function(s){ if(s!==li) s.classList.remove('mob-open'); });
+      li.classList.toggle('mob-open', !isOpen);
+    });
+  });
+
+  /* Plain links close menu */
+  navList.querySelectorAll('li > a').forEach(function(a){
+    var hasDropdown = !!a.parentElement.querySelector('.dropdown');
+    if (hasDropdown) return;
+    a.addEventListener('click', function(){ if(isMobile()) closeMenu(); });
+  });
+
+  /* Dropdown links close menu */
+  navList.querySelectorAll('.dropdown a').forEach(function(a){
+    a.addEventListener('click', function(){ if(isMobile()) closeMenu(); });
+  });
+
+  /* Outside click */
+  document.addEventListener('click', function(e){
+    if (!nav.classList.contains('mobile-nav-open')) return;
+    if (!nav.contains(e.target)) closeMenu();
+  });
+
+  /* Escape key */
+  document.addEventListener('keydown', function(e){
+    if (e.key === 'Escape' && nav.classList.contains('mobile-nav-open')) closeMenu();
+  });
+
+  /* Resize cleanup */
+  window.addEventListener('resize', function(){
+    if (!isMobile() && nav.classList.contains('mobile-nav-open')) closeMenu();
+  });
+})();
+</script>
 </body>
 </html>
