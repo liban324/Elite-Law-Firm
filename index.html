@@ -623,6 +623,365 @@
   [dir="rtl"] .mvv-grid { direction: rtl; }
   [dir="rtl"] .footer-bottom { flex-direction: row-reverse; }
 
+  /* ── CONNECT SECTION ───────────────────────────────────────────────────── */
+  .connect-section {
+    background: #f4f6f9;
+    padding: 90px 80px;
+    text-align: center;
+  }
+  .connect-section-header h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(26px, 3vw, 40px);
+    font-weight: 700;
+    color: #1a1a2e;
+    letter-spacing: 0.01em;
+    line-height: 1.2;
+    margin-bottom: 10px;
+  }
+  .connect-section-header p {
+    font-size: 14px;
+    color: #6b7a8d;
+    margin-bottom: 16px;
+  }
+  .connect-accent-bar {
+    width: 52px;
+    height: 4px;
+    background: #6aafff;
+    border-radius: 2px;
+    margin: 0 auto 56px;
+  }
+  .connect-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    max-width: 1060px;
+    margin: 0 auto;
+    text-align: left;
+  }
+
+  /* ── Business Card ── */
+  .biz-card {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    box-shadow: 0 4px 24px rgba(13,31,60,0.08), 0 1px 4px rgba(13,31,60,0.04);
+    padding: 40px 36px 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    position: relative;
+    overflow: hidden;
+  }
+  .biz-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #0d1f3c, #c9a84c);
+  }
+  .biz-card-logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+  .biz-card-logo img {
+    height: 48px;
+    width: auto;
+    object-fit: contain;
+  }
+  .biz-card-firm {
+    font-family: 'Cinzel', serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: #0d1f3c;
+    letter-spacing: 0.12em;
+    line-height: 1.2;
+  }
+  .biz-card-firm span {
+    display: block;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    color: #c9a84c;
+    text-transform: uppercase;
+    margin-top: 2px;
+  }
+  .biz-card-specialty {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #c9a84c;
+    border-top: 1px solid #eef1f5;
+    border-bottom: 1px solid #eef1f5;
+    padding: 12px 0;
+    margin-bottom: 24px;
+  }
+  .biz-card-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    margin-bottom: 16px;
+  }
+  .biz-card-row:last-of-type { margin-bottom: 0; }
+  .biz-icon {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background: #eaf4ff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+  .biz-icon svg {
+    width: 15px;
+    height: 15px;
+    stroke: #4a90d9;
+    fill: none;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+  .biz-card-label {
+    font-size: 9.5px;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: #9aaabb;
+    margin-bottom: 2px;
+  }
+  .biz-card-value {
+    font-size: 13.5px;
+    color: #2c3e50;
+    font-weight: 500;
+    line-height: 1.5;
+  }
+  .biz-card-value a {
+    color: #2c3e50;
+    text-decoration: none;
+  }
+  .biz-card-value a:hover { color: #4a90d9; }
+  .biz-card-divider {
+    height: 1px;
+    background: #eef1f5;
+    margin: 20px 0;
+  }
+  .biz-card-langs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 4px;
+  }
+  .lang-tag {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    color: #4a6a8a;
+    background: #eef5ff;
+    border: 1px solid #cde0f5;
+    border-radius: 3px;
+    padding: 3px 9px;
+  }
+  .biz-card-footer {
+    margin-top: 28px;
+    padding-top: 20px;
+    border-top: 1px solid #eef1f5;
+  }
+  .vcf-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: #0d1f3c;
+    color: #ffffff;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 11px 22px;
+    border-radius: 4px;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    font-family: 'Montserrat', sans-serif;
+    transition: background 0.2s, transform 0.15s;
+    width: 100%;
+    justify-content: center;
+  }
+  .vcf-btn:hover {
+    background: #c9a84c;
+    color: #0d1f3c;
+    transform: translateY(-1px);
+  }
+  .vcf-btn svg {
+    width: 14px;
+    height: 14px;
+    stroke: currentColor;
+    fill: none;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    flex-shrink: 0;
+  }
+
+  /* ── Quick Contact Form ── */
+  .qc-form-wrap {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    box-shadow: 0 4px 24px rgba(13,31,60,0.08), 0 1px 4px rgba(13,31,60,0.04);
+    padding: 40px 36px 36px;
+    position: relative;
+    overflow: hidden;
+  }
+  .qc-form-wrap::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #c9a84c, #0d1f3c);
+  }
+  .qc-form-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: #1a1a2e;
+    margin-bottom: 4px;
+  }
+  .qc-form-subtitle {
+    font-size: 12.5px;
+    color: #8a9ab0;
+    margin-bottom: 28px;
+    line-height: 1.5;
+  }
+  .qc-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+  }
+  .qc-group {
+    margin-bottom: 16px;
+  }
+  .qc-group label {
+    display: block;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #5a7a96;
+    margin-bottom: 7px;
+  }
+  .qc-group input,
+  .qc-group select,
+  .qc-group textarea {
+    width: 100%;
+    background: #f8fafc;
+    border: 1.5px solid #dde6f0;
+    border-radius: 5px;
+    padding: 11px 14px;
+    font-size: 13.5px;
+    font-family: 'Montserrat', sans-serif;
+    color: #1a2a40;
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    -webkit-appearance: none;
+    appearance: none;
+  }
+  .qc-group input:focus,
+  .qc-group select:focus,
+  .qc-group textarea:focus {
+    border-color: #6aafff;
+    box-shadow: 0 0 0 3px rgba(106,175,255,0.15);
+    background: #fff;
+  }
+  .qc-group input::placeholder,
+  .qc-group textarea::placeholder { color: #b0bec5; }
+  .qc-group textarea {
+    resize: vertical;
+    min-height: 110px;
+  }
+  .qc-group select {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%236b7a8d' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+    padding-right: 36px;
+    cursor: pointer;
+  }
+  .qc-submit {
+    width: 100%;
+    padding: 14px 24px;
+    background: #0d1f3c;
+    color: #ffffff;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 11.5px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+    margin-top: 6px;
+  }
+  .qc-submit:hover {
+    background: #c9a84c;
+    color: #0d1f3c;
+    transform: translateY(-1px);
+    box-shadow: 0 6px 20px rgba(201,168,76,0.35);
+  }
+  .qc-success {
+    display: none;
+    text-align: center;
+    padding: 32px 20px;
+  }
+  .qc-success-icon {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: #e8f7ef;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 16px;
+  }
+  .qc-success-icon svg {
+    width: 26px;
+    height: 26px;
+    stroke: #2ecc71;
+    fill: none;
+    stroke-width: 2.5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+  .qc-success h4 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: #1a1a2e;
+    margin-bottom: 8px;
+  }
+  .qc-success p {
+    font-size: 13px;
+    color: #6b7a8d;
+    line-height: 1.65;
+  }
+
+  /* ── Responsive ── */
+  @media (max-width: 900px) {
+    .connect-section { padding: 64px 32px; }
+    .connect-grid { grid-template-columns: 1fr; gap: 28px; }
+    .qc-row { grid-template-columns: 1fr; gap: 0; }
+  }
+  @media (max-width: 600px) {
+    .connect-section { padding: 48px 16px; }
+    .biz-card { padding: 32px 20px 26px; }
+    .qc-form-wrap { padding: 32px 20px 28px; }
+    .qc-row { grid-template-columns: 1fr; gap: 0; }
+  }
+
   /* ── FEATURE PILLARS SECTION ──────────────────────────────────────────── */
   .feature-section {
     padding: 90px 80px;
@@ -1498,6 +1857,136 @@
     <div class="contact-item"><div class="ci-label">Address</div><div class="ci-val">Mogadishu</div></div>
   </div>
 </div>
+
+<!-- CONNECT SECTION -->
+<section class="connect-section">
+  <div class="connect-section-header">
+    <h2>Connect With Our Legal Team</h2>
+    <p>We're ready to advise you — reach out through your preferred channel.</p>
+  </div>
+  <div class="connect-accent-bar"></div>
+
+  <div class="connect-grid">
+
+    <!-- LEFT: Digital Business Card -->
+    <div class="biz-card">
+      <div class="biz-card-logo">
+        <img src="/logo.png" alt="Elite Law Firm">
+        <div>
+          <div class="biz-card-firm">ELITE LAW FIRM<span>Advocates &amp; Legal Consultants</span></div>
+        </div>
+      </div>
+      <div class="biz-card-specialty">Commercial &nbsp;·&nbsp; Corporate &nbsp;·&nbsp; Regulatory Affairs</div>
+
+      <div class="biz-card-row">
+        <div class="biz-icon">
+          <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 8.63 19.79 19.79 0 01.02 4.06 2 2 0 012 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"></path></svg>
+        </div>
+        <div>
+          <div class="biz-card-label">Phone</div>
+          <div class="biz-card-value"><a href="tel:+252000000000">+252 [Insert Phone Number]</a></div>
+        </div>
+      </div>
+
+      <div class="biz-card-row">
+        <div class="biz-icon">
+          <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+        </div>
+        <div>
+          <div class="biz-card-label">Email</div>
+          <div class="biz-card-value"><a href="mailto:info@elitelawfirm.so">info@elitelawfirm.so</a></div>
+        </div>
+      </div>
+
+      <div class="biz-card-row">
+        <div class="biz-icon">
+          <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+        </div>
+        <div>
+          <div class="biz-card-label">Address</div>
+          <div class="biz-card-value">Mogadishu, Somalia<br><span style="font-size:12px;color:#8a9ab0;">Regional offices across East Africa</span></div>
+        </div>
+      </div>
+
+      <div class="biz-card-divider"></div>
+
+      <div class="biz-card-row">
+        <div class="biz-icon">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"></path></svg>
+        </div>
+        <div>
+          <div class="biz-card-label">Languages Spoken</div>
+          <div class="biz-card-langs">
+            <span class="lang-tag">English</span>
+            <span class="lang-tag">Kiswahili</span>
+            <span class="lang-tag">Somali</span>
+            <span class="lang-tag">Arabic</span>
+            <span class="lang-tag">Italian</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="biz-card-footer">
+        <button class="vcf-btn" onclick="alert('VCF download coming soon.')">
+          <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+          Download VCF / Save Contact
+        </button>
+      </div>
+    </div>
+
+    <!-- RIGHT: Quick-Contact Form -->
+    <div class="qc-form-wrap">
+      <div class="qc-form-title">Send Us a Message</div>
+      <div class="qc-form-subtitle">Our team typically responds within one business day.</div>
+
+      <form id="quickContactForm" novalidate>
+        <div class="qc-row">
+          <div class="qc-group">
+            <label for="qcName">Full Name</label>
+            <input type="text" id="qcName" name="name" placeholder="Your full name" required>
+          </div>
+          <div class="qc-group">
+            <label for="qcEmail">Email Address</label>
+            <input type="email" id="qcEmail" name="email" placeholder="you@example.com" required>
+          </div>
+        </div>
+
+        <div class="qc-row">
+          <div class="qc-group">
+            <label for="qcPhone">Phone Number</label>
+            <input type="tel" id="qcPhone" name="phone" placeholder="+252 …">
+          </div>
+          <div class="qc-group">
+            <label for="qcMatter">Legal Matter</label>
+            <select id="qcMatter" name="matter">
+              <option value="" disabled selected>Select a matter…</option>
+              <option value="commercial">Commercial Law</option>
+              <option value="corporate">Corporate Setup</option>
+              <option value="regulatory">Regulatory Compliance</option>
+              <option value="general">General Inquiry</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="qc-group">
+          <label for="qcMessage">Message</label>
+          <textarea id="qcMessage" name="message" placeholder="Briefly describe how we can assist you…" required></textarea>
+        </div>
+
+        <button type="submit" class="qc-submit">Submit Inquiry</button>
+      </form>
+
+      <div class="qc-success" id="qcSuccess">
+        <div class="qc-success-icon">
+          <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+        </div>
+        <h4>Message Received</h4>
+        <p>Thank you — our legal team will contact you shortly.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
 
 <!-- FOOTER -->
 <footer>
@@ -2418,6 +2907,18 @@ document.addEventListener('DOMContentLoaded', function() {
   }, { passive: true });
 
   startAuto();
+})();
+
+/* ── Quick-Contact Form ─────────────────────────────────── */
+(function () {
+  var form    = document.getElementById('quickContactForm');
+  var success = document.getElementById('qcSuccess');
+  if (!form) return;
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    form.style.display = 'none';
+    success.style.display = 'block';
+  });
 })();
 </script>
 
