@@ -1,5 +1,5 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -174,6 +174,56 @@
     /* Hide desktop hover dropdown trigger */
     .nav-links > li:hover .dropdown { opacity: 1; visibility: visible; }
   }
+
+  /* ── LANGUAGE SWITCHER DROPDOWN ── */
+  .lang-switcher { position: relative; }
+  .lang-trigger {
+    display: flex; align-items: center; gap: 6px;
+    background: transparent;
+    border: 1px solid rgba(201,168,76,0.4);
+    color: #ffffff;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 10.5px; font-weight: 700;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    padding: 4px 10px;
+    cursor: pointer; transition: all 0.2s;
+    white-space: nowrap;
+  }
+  .lang-trigger:hover { border-color: var(--gold); color: var(--gold); }
+  .lang-trigger .lang-flag { font-size: 13px; line-height: 1; }
+  .lang-trigger .lang-caret { font-size: 8px; opacity: 0.7; transition: transform 0.2s; }
+  .lang-switcher.open .lang-caret { transform: rotate(180deg); }
+  .lang-dropdown {
+    position: absolute; top: calc(100% + 6px); right: 0;
+    background: var(--navy);
+    border: 1px solid rgba(201,168,76,0.25);
+    box-shadow: 0 8px 28px rgba(0,0,0,0.45);
+    min-width: 140px;
+    opacity: 0; visibility: hidden; transform: translateY(-6px);
+    transition: opacity 0.18s, transform 0.18s, visibility 0.18s;
+    z-index: 9999;
+  }
+  .lang-switcher.open .lang-dropdown { opacity: 1; visibility: visible; transform: translateY(0); }
+  .lang-option {
+    display: flex; align-items: center; gap: 10px;
+    padding: 9px 14px; cursor: pointer;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 11px; font-weight: 600; letter-spacing: 0.08em;
+    color: rgba(255,255,255,0.65);
+    text-transform: uppercase; transition: background 0.15s, color 0.15s;
+    border: none; background: none; width: 100%; text-align: left;
+  }
+  .lang-option:hover { background: rgba(201,168,76,0.1); color: var(--gold); }
+  .lang-option.active { color: var(--gold); }
+  .lang-option .lang-flag { font-size: 14px; }
+  [dir="rtl"] .lang-dropdown { right: auto; left: 0; }
+  [dir="rtl"] .lang-option { text-align: right; }
+  /* ── RTL LAYOUT ── */
+  [dir="rtl"] { direction: rtl; text-align: right; }
+  [dir="rtl"] nav { direction: rtl; }
+  [dir="rtl"] .topbar { flex-direction: row-reverse; }
+  [dir="rtl"] .topbar-right { flex-direction: row-reverse; }
+  [dir="rtl"] .dropdown { left: auto; right: 0; }
 </style>
 </head>
 <body>
@@ -185,7 +235,24 @@
       <a href="#" title="Twitter">𝕏</a>
       <a href="#" title="LinkedIn">in</a>
     </div>
-    <span>🌐 EN &nbsp;|&nbsp; SO</span>
+        <div class="lang-switcher" id="langSwitcher">
+      <button class="lang-trigger" id="langTrigger" aria-haspopup="listbox" aria-expanded="false">
+        <span class="lang-flag">🇬🇧</span>
+        <span id="langLabel">EN</span>
+        <span class="lang-caret">▼</span>
+      </button>
+      <div class="lang-dropdown" role="listbox">
+        <button class="lang-option active" role="option" data-lang="en" data-flag="🇬🇧" onclick="setLang('en')">
+          <span class="lang-flag">🇬🇧</span> English
+        </button>
+        <button class="lang-option" role="option" data-lang="so" data-flag="🇸🇴" onclick="setLang('so')">
+          <span class="lang-flag">🇸🇴</span> Somali
+        </button>
+        <button class="lang-option" role="option" data-lang="ar" data-flag="🇸🇦" onclick="setLang('ar')">
+          <span class="lang-flag">🇸🇦</span> Arabic
+        </button>
+      </div>
+    </div>
   </div>
 </div>
 <nav>
@@ -409,6 +476,70 @@
     if (!isMobile() && nav.classList.contains('mobile-nav-open')) closeMenu();
   });
 })();
+</script>
+<script>
+// ── LANGUAGE SWITCHER ──
+const translations = {
+  en: {
+    dir: 'ltr',
+    navHome: 'Home', navAbout: 'About Us', navServices: 'Services ▾',
+    navPresence: 'Presence ▾', navContact: 'Contact',
+  },
+  so: {
+    dir: 'ltr',
+    navHome: 'Bogga Hore', navAbout: 'Naga Waran', navServices: 'Adeegyada ▾',
+    navPresence: 'Goobaha ▾', navContact: 'Xiriir',
+  },
+  ar: {
+    dir: 'rtl',
+    navHome: 'الرئيسية', navAbout: 'من نحن', navServices: 'الخدمات ▾',
+    navPresence: 'حضورنا ▾', navContact: 'اتصل بنا',
+  }
+};
+
+let currentLang = 'en';
+
+function setLang(lang) {
+  const t = translations[lang];
+  if (!t) return;
+  currentLang = lang;
+
+  document.documentElement.dir = t.dir;
+  document.documentElement.lang = lang;
+
+  const chosen = document.querySelector('.lang-option[data-lang="' + lang + '"]');
+  if (chosen) {
+    document.getElementById('langLabel').textContent = lang.toUpperCase();
+    document.querySelector('#langTrigger .lang-flag').textContent = chosen.dataset.flag;
+  }
+  document.querySelectorAll('.lang-option').forEach(function(b){
+    b.classList.toggle('active', b.dataset.lang === lang);
+  });
+
+  document.getElementById('langSwitcher').classList.remove('open');
+  document.getElementById('langTrigger').setAttribute('aria-expanded', 'false');
+
+  document.querySelectorAll('[data-i18n]').forEach(function(el){
+    const key = el.dataset.i18n;
+    if (t[key] !== undefined) el.textContent = t[key];
+  });
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+  const switcher = document.getElementById('langSwitcher');
+  const trigger  = document.getElementById('langTrigger');
+  if (!switcher || !trigger) return;
+  trigger.addEventListener('click', function(e){
+    e.stopPropagation();
+    const isOpen = switcher.classList.toggle('open');
+    trigger.setAttribute('aria-expanded', isOpen);
+  });
+  document.addEventListener('click', function(){
+    switcher.classList.remove('open');
+    trigger.setAttribute('aria-expanded', 'false');
+  });
+  switcher.addEventListener('click', function(e){ e.stopPropagation(); });
+});
 </script>
 </body>
 </html>
