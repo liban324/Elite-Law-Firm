@@ -1465,6 +1465,136 @@
   </div>
 </section>
 
+<!-- CONNECT SECTION (homepage) -->
+<section class="connect-section">
+  <div class="connect-section-header">
+    <h2>Connect With Our Legal Team</h2>
+    <p>We're ready to advise you — reach out through your preferred channel.</p>
+  </div>
+  <div class="connect-accent-bar"></div>
+
+  <div class="connect-grid">
+
+    <!-- LEFT: Digital Business Card -->
+    <div class="biz-card">
+      <div class="biz-card-logo">
+        <img src="/logo.png" alt="Elite Law Firm">
+        <div>
+          <div class="biz-card-firm">ELITE LAW FIRM<span>Advocates &amp; Legal Consultants</span></div>
+        </div>
+      </div>
+      <div class="biz-card-specialty">Commercial &nbsp;·&nbsp; Corporate &nbsp;·&nbsp; Regulatory Affairs</div>
+
+      <div class="biz-card-row">
+        <div class="biz-icon">
+          <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 8.63 19.79 19.79 0 01.02 4.06 2 2 0 012 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"></path></svg>
+        </div>
+        <div>
+          <div class="biz-card-label">Phone</div>
+          <div class="biz-card-value"><a href="tel:+252000000000">+252 [Insert Phone Number]</a></div>
+        </div>
+      </div>
+
+      <div class="biz-card-row">
+        <div class="biz-icon">
+          <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+        </div>
+        <div>
+          <div class="biz-card-label">Email</div>
+          <div class="biz-card-value"><a href="mailto:info@elitelawfirm.so">info@elitelawfirm.so</a></div>
+        </div>
+      </div>
+
+      <div class="biz-card-row">
+        <div class="biz-icon">
+          <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+        </div>
+        <div>
+          <div class="biz-card-label">Address</div>
+          <div class="biz-card-value">Mogadishu, Somalia<br><span style="font-size:12px;color:#8a9ab0;">Regional offices across East Africa</span></div>
+        </div>
+      </div>
+
+      <div class="biz-card-divider"></div>
+
+      <div class="biz-card-row">
+        <div class="biz-icon">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"></path></svg>
+        </div>
+        <div>
+          <div class="biz-card-label">Languages Spoken</div>
+          <div class="biz-card-langs">
+            <span class="lang-tag">English</span>
+            <span class="lang-tag">Kiswahili</span>
+            <span class="lang-tag">Somali</span>
+            <span class="lang-tag">Arabic</span>
+            <span class="lang-tag">Italian</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="biz-card-footer">
+        <button class="vcf-btn" onclick="alert('VCF download coming soon.')">
+          <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+          Download VCF / Save Contact
+        </button>
+      </div>
+    </div>
+
+    <!-- RIGHT: Quick-Contact Form -->
+    <div class="qc-form-wrap">
+      <div class="qc-form-title">Send Us a Message</div>
+      <div class="qc-form-subtitle">Our team typically responds within one business day.</div>
+
+      <form id="quickContactFormHome" novalidate>
+        <div class="qc-row">
+          <div class="qc-group">
+            <label for="qcNameHome">Full Name</label>
+            <input type="text" id="qcNameHome" name="name" placeholder="Your full name" required>
+          </div>
+          <div class="qc-group">
+            <label for="qcEmailHome">Email Address</label>
+            <input type="email" id="qcEmailHome" name="email" placeholder="you@example.com" required>
+          </div>
+        </div>
+
+        <div class="qc-row">
+          <div class="qc-group">
+            <label for="qcPhoneHome">Phone Number</label>
+            <input type="tel" id="qcPhoneHome" name="phone" placeholder="+252 …">
+          </div>
+          <div class="qc-group">
+            <label for="qcMatterHome">Legal Matter</label>
+            <select id="qcMatterHome" name="matter">
+              <option value="" disabled selected>Select a matter…</option>
+              <option value="commercial">Commercial Law</option>
+              <option value="corporate">Corporate Setup</option>
+              <option value="regulatory">Regulatory Compliance</option>
+              <option value="general">General Inquiry</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="qc-group">
+          <label for="qcMessageHome">Message</label>
+          <textarea id="qcMessageHome" name="message" placeholder="Briefly describe how we can assist you…" required></textarea>
+        </div>
+
+        <button type="submit" class="qc-submit">Submit Inquiry</button>
+      </form>
+
+      <div class="qc-success" id="qcSuccessHome">
+        <div class="qc-success-icon">
+          <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+        </div>
+        <h4>Message Received</h4>
+        <p>Thank you — our legal team will contact you shortly.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
 </div>
 </div><!--/pg-home-->
 
@@ -2909,17 +3039,18 @@ document.addEventListener('DOMContentLoaded', function() {
   startAuto();
 })();
 
-/* ── Quick-Contact Form ─────────────────────────────────── */
-(function () {
-  var form    = document.getElementById('quickContactForm');
-  var success = document.getElementById('qcSuccess');
+/* ── Quick-Contact Forms ────────────────────────────────── */
+['quickContactFormHome', 'quickContactForm'].forEach(function (id) {
+  var form = document.getElementById(id);
   if (!form) return;
+  var successId = id === 'quickContactFormHome' ? 'qcSuccessHome' : 'qcSuccess';
+  var success = document.getElementById(successId);
   form.addEventListener('submit', function (e) {
     e.preventDefault();
     form.style.display = 'none';
     success.style.display = 'block';
   });
-})();
+});
 </script>
 
 </body>
