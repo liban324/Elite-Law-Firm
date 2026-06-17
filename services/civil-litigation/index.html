@@ -539,6 +539,22 @@ const translations = {
     'sec1Title': 'الخدمات القانونية <em>للتقاضي المدني</em>',
     'sec1Lead': 'عندما لا يمكن حل النزاعات خارج المحكمة، يصبح التقاضي الفعّال ضرورياً. تقدم إليت لو فيرم تمثيلاً متمرساً واستراتيجياً.',
     'dir': 'rtl'
+  },
+  sw: {
+    'navHome': 'Nyumbani',
+    'navAbout': 'Kuhusu Sisi',
+    'navAbout2': 'Kuhusu Sisi ▾',
+    'navServices': 'Huduma ▾',
+    'navPresence': 'Uwepo ▾',
+    'navMultimedia': 'Vyombo vya Habari',
+    'navContact': 'Wasiliana Nasi',
+    'ctaGetInTouch': 'Wasiliana Nasi →',
+    'dir': 'ltr',
+    'heroH1': 'Mashauri ya Madai',
+    'heroP': 'Uwakilishi wa kisheria wa ustadi na wa kimkakati katika mahakama na mabaraza ya Somalia.',
+    'sec1Tag': 'Huduma',
+    'sec1Title': 'Huduma za Kisheria za <em>Mashauri ya Madai</em>',
+    'sec1Lead': 'Wakati migogoro haiwezi kutatuliwa nje ya mahakama, uwakilishi wa kisheria unaofaa ni muhimu.'
   }
 };
 let currentLang = 'en';
@@ -567,10 +583,12 @@ document.addEventListener('DOMContentLoaded', function() {
   trigger.addEventListener('click',function(e){ e.stopPropagation(); const isOpen=switcher.classList.toggle('open'); trigger.setAttribute('aria-expanded',isOpen); });
   document.addEventListener('click',function(){ switcher.classList.remove('open'); trigger.setAttribute('aria-expanded','false'); });
   switcher.addEventListener('click',function(e){ e.stopPropagation(); });
-  // Restore saved language
+});
+// Restore saved language (DOM already ready — script is at end of body)
+(function() {
   var savedLang = localStorage.getItem('eliteLang');
   if (savedLang && translations[savedLang]) setLang(savedLang);
-});
+})();
 </script>
 </body>
 </html>

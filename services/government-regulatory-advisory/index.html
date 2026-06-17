@@ -540,6 +540,22 @@ const translations = {
     'sec1Title': 'الاستشارات القانونية <em>الحكومية والتنظيمية</em>',
     'sec1Lead': 'نقدم استشارات قانونية متخصصة لوزارات الحكومة والوكالات التنظيمية والشركات العامة والمنظمات غير الحكومية.',
     'dir': 'rtl'
+  },
+  sw: {
+    'navHome': 'Nyumbani',
+    'navAbout': 'Kuhusu Sisi',
+    'navAbout2': 'Kuhusu Sisi ▾',
+    'navServices': 'Huduma ▾',
+    'navPresence': 'Uwepo ▾',
+    'navMultimedia': 'Vyombo vya Habari',
+    'navContact': 'Wasiliana Nasi',
+    'ctaGetInTouch': 'Wasiliana Nasi →',
+    'dir': 'ltr',
+    'heroH1': 'Ushauri wa Serikali & Udhibiti',
+    'heroP': 'Ushauri wa kisheria wa kitaalamu kwa taasisi za serikali na mashirika ya umma.',
+    'sec1Tag': 'Huduma',
+    'sec1Title': 'Ushauri wa Kisheria wa <em>Serikali & Udhibiti</em>',
+    'sec1Lead': 'Tunatoa ushauri wa kisheria maalum kwa wizara za serikali, wakala za udhibiti, na NGO.'
   }
 };
 let currentLang = 'en';
@@ -568,10 +584,12 @@ document.addEventListener('DOMContentLoaded', function() {
   trigger.addEventListener('click',function(e){ e.stopPropagation(); const isOpen=switcher.classList.toggle('open'); trigger.setAttribute('aria-expanded',isOpen); });
   document.addEventListener('click',function(){ switcher.classList.remove('open'); trigger.setAttribute('aria-expanded','false'); });
   switcher.addEventListener('click',function(e){ e.stopPropagation(); });
-  // Restore saved language
+});
+// Restore saved language (DOM already ready — script is at end of body)
+(function() {
   var savedLang = localStorage.getItem('eliteLang');
   if (savedLang && translations[savedLang]) setLang(savedLang);
-});
+})();
 </script>
 </body>
 </html>

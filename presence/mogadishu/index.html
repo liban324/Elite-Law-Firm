@@ -532,6 +532,22 @@ const translations = {
     'sec1Title': 'الخدمات القانونية في <em>مقديشو</em>',
     'sec1Lead': 'بوصفها عاصمة الصومال ومركزه التجاري، تُعدّ مقديشو مركز عمليات إليت لو فيرم.',
     'dir': 'rtl'
+  },
+  sw: {
+    'navHome': 'Nyumbani',
+    'navAbout': 'Kuhusu Sisi',
+    'navAbout2': 'Kuhusu Sisi ▾',
+    'navServices': 'Huduma ▾',
+    'navPresence': 'Uwepo ▾',
+    'navMultimedia': 'Vyombo vya Habari',
+    'navContact': 'Wasiliana Nasi',
+    'ctaGetInTouch': 'Wasiliana Nasi →',
+    'dir': 'ltr',
+    'heroH1': 'Mogadishu',
+    'heroP': 'Makao makuu ya Elite Law Firm — moyo wa shughuli zetu za kisheria.',
+    'sec1Tag': 'Uwepo Wetu',
+    'sec1Title': 'Huduma za Kisheria <em>Mogadishu</em>',
+    'sec1Lead': 'Kama mji mkuu wa Somalia na kitovu cha biashara, Mogadishu ni katikati ya shughuli za Elite Law Firm.'
   }
 };
 let currentLang = 'en';
@@ -560,10 +576,12 @@ document.addEventListener('DOMContentLoaded', function() {
   trigger.addEventListener('click',function(e){ e.stopPropagation(); const isOpen=switcher.classList.toggle('open'); trigger.setAttribute('aria-expanded',isOpen); });
   document.addEventListener('click',function(){ switcher.classList.remove('open'); trigger.setAttribute('aria-expanded','false'); });
   switcher.addEventListener('click',function(e){ e.stopPropagation(); });
-  // Restore saved language
+});
+// Restore saved language (DOM already ready — script is at end of body)
+(function() {
   var savedLang = localStorage.getItem('eliteLang');
   if (savedLang && translations[savedLang]) setLang(savedLang);
-});
+})();
 </script>
 </body>
 </html>

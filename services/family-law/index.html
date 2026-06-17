@@ -539,6 +539,22 @@ const translations = {
     'sec1Title': 'الخدمات القانونية <em>لقانون الأسرة</em>',
     'sec1Lead': 'تتطلب المسائل القانونية الأسرية الحساسية والتكتم والخبرة العميقة.',
     'dir': 'rtl'
+  },
+  sw: {
+    'navHome': 'Nyumbani',
+    'navAbout': 'Kuhusu Sisi',
+    'navAbout2': 'Kuhusu Sisi ▾',
+    'navServices': 'Huduma ▾',
+    'navPresence': 'Uwepo ▾',
+    'navMultimedia': 'Vyombo vya Habari',
+    'navContact': 'Wasiliana Nasi',
+    'ctaGetInTouch': 'Wasiliana Nasi →',
+    'dir': 'ltr',
+    'heroH1': 'Sheria ya Familia',
+    'heroP': 'Mwongozo wa kisheria nyeti na wa kitaalamu kwa watu binafsi na familia nchini Somalia.',
+    'sec1Tag': 'Huduma',
+    'sec1Title': 'Huduma za Kisheria za <em>Familia</em>',
+    'sec1Lead': 'Masuala ya kisheria ya familia yanahitaji unyeti, siri, na ujuzi wa kina.'
   }
 };
 let currentLang = 'en';
@@ -567,10 +583,12 @@ document.addEventListener('DOMContentLoaded', function() {
   trigger.addEventListener('click',function(e){ e.stopPropagation(); const isOpen=switcher.classList.toggle('open'); trigger.setAttribute('aria-expanded',isOpen); });
   document.addEventListener('click',function(){ switcher.classList.remove('open'); trigger.setAttribute('aria-expanded','false'); });
   switcher.addEventListener('click',function(e){ e.stopPropagation(); });
-  // Restore saved language
+});
+// Restore saved language (DOM already ready — script is at end of body)
+(function() {
   var savedLang = localStorage.getItem('eliteLang');
   if (savedLang && translations[savedLang]) setLang(savedLang);
-});
+})();
 </script>
 </body>
 </html>

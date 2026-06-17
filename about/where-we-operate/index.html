@@ -532,6 +532,22 @@ const translations = {
     'sec1Title': 'أين <em>نعمل</em>',
     'sec1Lead': 'يقع المقر الرئيسي لإليت لو فيرم في مقديشو، مع القدرة والاتصالات اللازمة لخدمة العملاء في جميع مناطق الصومال.',
     'dir': 'rtl'
+  },
+  sw: {
+    'navHome': 'Nyumbani',
+    'navAbout': 'Kuhusu Sisi',
+    'navAbout2': 'Kuhusu Sisi ▾',
+    'navServices': 'Huduma ▾',
+    'navPresence': 'Uwepo ▾',
+    'navMultimedia': 'Vyombo vya Habari',
+    'navContact': 'Wasiliana Nasi',
+    'ctaGetInTouch': 'Wasiliana Nasi →',
+    'dir': 'ltr',
+    'heroH1': 'Tunafanya Kazi Wapi',
+    'heroP': 'Wigo wa kijiografia wa Elite Law Firm — kutoka Mogadishu hadi kote Somalia na Afrika Mashariki.',
+    'sec1Tag': 'Wigo Wetu wa Kijiografia',
+    'sec1Title': 'Tunafanya Kazi <em>Wapi</em>',
+    'sec1Lead': 'Makao makuu ya Elite Law Firm yako Mogadishu, na uwezo wa kutoa huduma kwa wateja katika mikoa yote ya Somalia.'
   }
 };
 let currentLang = 'en';
@@ -560,10 +576,12 @@ document.addEventListener('DOMContentLoaded', function() {
   trigger.addEventListener('click',function(e){ e.stopPropagation(); const isOpen=switcher.classList.toggle('open'); trigger.setAttribute('aria-expanded',isOpen); });
   document.addEventListener('click',function(){ switcher.classList.remove('open'); trigger.setAttribute('aria-expanded','false'); });
   switcher.addEventListener('click',function(e){ e.stopPropagation(); });
-  // Restore saved language
+});
+// Restore saved language (DOM already ready — script is at end of body)
+(function() {
   var savedLang = localStorage.getItem('eliteLang');
   if (savedLang && translations[savedLang]) setLang(savedLang);
-});
+})();
 </script>
 </body>
 </html>

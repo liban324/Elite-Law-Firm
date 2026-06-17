@@ -539,6 +539,22 @@ const translations = {
     'sec1Title': 'الخدمات القانونية <em>للدفاع الجنائي</em>',
     'sec1Lead': 'مواجهة التهم الجنائية هي من أخطر المواقف التي يمكن أن يواجهها شخص أو منظمة.',
     'dir': 'rtl'
+  },
+  sw: {
+    'navHome': 'Nyumbani',
+    'navAbout': 'Kuhusu Sisi',
+    'navAbout2': 'Kuhusu Sisi ▾',
+    'navServices': 'Huduma ▾',
+    'navPresence': 'Uwepo ▾',
+    'navMultimedia': 'Vyombo vya Habari',
+    'navContact': 'Wasiliana Nasi',
+    'ctaGetInTouch': 'Wasiliana Nasi →',
+    'dir': 'ltr',
+    'heroH1': 'Utetezi wa Jinai',
+    'heroP': 'Uwakilishi wa utetezi wa jinai uliojitoa kwa watu binafsi na mashirika yanayokabiliwa na mashtaka.',
+    'sec1Tag': 'Huduma',
+    'sec1Title': 'Huduma za Kisheria za <em>Utetezi wa Jinai</em>',
+    'sec1Lead': 'Kukabiliwa na mashtaka ya jinai ni moja ya hali ngumu zaidi ambayo mtu au shirika linaweza kukumbana nayo.'
   }
 };
 let currentLang = 'en';
@@ -567,10 +583,12 @@ document.addEventListener('DOMContentLoaded', function() {
   trigger.addEventListener('click',function(e){ e.stopPropagation(); const isOpen=switcher.classList.toggle('open'); trigger.setAttribute('aria-expanded',isOpen); });
   document.addEventListener('click',function(){ switcher.classList.remove('open'); trigger.setAttribute('aria-expanded','false'); });
   switcher.addEventListener('click',function(e){ e.stopPropagation(); });
-  // Restore saved language
+});
+// Restore saved language (DOM already ready — script is at end of body)
+(function() {
   var savedLang = localStorage.getItem('eliteLang');
   if (savedLang && translations[savedLang]) setLang(savedLang);
-});
+})();
 </script>
 </body>
 </html>

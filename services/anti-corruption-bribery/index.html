@@ -540,6 +540,22 @@ const translations = {
     'sec1Title': 'الخدمات القانونية <em>لمكافحة الفساد والرشوة</em>',
     'sec1Lead': 'يشكل الفساد والرشوة مخاطر قانونية وسمعية خطيرة. تقدم إليت لو فيرم دعماً قانونياً شاملاً لمساعدة المنظمات.',
     'dir': 'rtl'
+  },
+  sw: {
+    'navHome': 'Nyumbani',
+    'navAbout': 'Kuhusu Sisi',
+    'navAbout2': 'Kuhusu Sisi ▾',
+    'navServices': 'Huduma ▾',
+    'navPresence': 'Uwepo ▾',
+    'navMultimedia': 'Vyombo vya Habari',
+    'navContact': 'Wasiliana Nasi',
+    'ctaGetInTouch': 'Wasiliana Nasi →',
+    'dir': 'ltr',
+    'heroH1': 'Kupambana na Ufisadi & Rushwa',
+    'heroP': 'Kulinda watu binafsi na mashirika dhidi ya hatari za ufisadi na rushwa.',
+    'sec1Tag': 'Huduma',
+    'sec1Title': 'Huduma za Kisheria za <em>Kupambana na Ufisadi</em>',
+    'sec1Lead': 'Ufisadi na rushwa vinaleta hatari kubwa za kisheria na sifa. Elite Law Firm inatoa msaada kamili wa kisheria.'
   }
 };
 let currentLang = 'en';
@@ -568,10 +584,12 @@ document.addEventListener('DOMContentLoaded', function() {
   trigger.addEventListener('click',function(e){ e.stopPropagation(); const isOpen=switcher.classList.toggle('open'); trigger.setAttribute('aria-expanded',isOpen); });
   document.addEventListener('click',function(){ switcher.classList.remove('open'); trigger.setAttribute('aria-expanded','false'); });
   switcher.addEventListener('click',function(e){ e.stopPropagation(); });
-  // Restore saved language
+});
+// Restore saved language (DOM already ready — script is at end of body)
+(function() {
   var savedLang = localStorage.getItem('eliteLang');
   if (savedLang && translations[savedLang]) setLang(savedLang);
-});
+})();
 </script>
 </body>
 </html>

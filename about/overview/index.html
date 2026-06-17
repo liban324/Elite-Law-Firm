@@ -717,6 +717,37 @@ const translations = {
     'sec6Title': 'المحترفون خلف <em>إليت لو فيرم</em>',
     'sec6Lead': 'يتكون فريقنا من محامين ومستشارين قانونيين ومتخصصين في الدعم يتمتعون بخبرات متنوعة والتزام مشترك بالتميز.',
     'dir': 'rtl'
+  },
+  sw: {
+    'navHome': 'Nyumbani',
+    'navAbout': 'Kuhusu Sisi',
+    'navAbout2': 'Kuhusu Sisi ▾',
+    'navServices': 'Huduma ▾',
+    'navPresence': 'Uwepo ▾',
+    'navMultimedia': 'Vyombo vya Habari',
+    'navContact': 'Wasiliana Nasi',
+    'ctaGetInTouch': 'Wasiliana Nasi →',
+    'dir': 'ltr',
+    'heroH1': 'Kuhusu Elite Law Firm',
+    'heroP': 'Taasisi ya kisheria inayotoa huduma kamili iliyojitolea kwa ubora, uadilifu, na matokeo kote Somalia na Afrika Mashariki.',
+    'sec1Tag': 'Sisi Ni Nani',
+    'sec1Title': 'Urithi wa <em>Ubora wa Kisheria</em>',
+    'sec1Lead': 'Elite Law Firm ilianzishwa na dhamira iliyo wazi: kutoa huduma za kisheria za kiwango cha kimataifa kwa wateja.',
+    'sec2Tag': 'Madhumuni & Mwelekeo',
+    'sec2Title': 'Dhamira Yetu <em>& Maono</em>',
+    'sec2Lead': 'Dhamira yetu ni kutoa huduma za kisheria za ubora wa juu zinazoweza kupatikana ambazo zinawawezesha watu binafsi, biashara, na taasisi.',
+    'sec3Tag': 'Tunachosimamia',
+    'sec3Title': '<em>Maadili</em> Yanayotuongoza',
+    'sec3Lead': 'Maadili yetu msingi ni msingi wa utambulisho wa Elite Law Firm.',
+    'sec4Tag': 'Jinsi Tunavyofanya Kazi',
+    'sec4Title': '<em>Mkabala wa Kimkakati</em> kwa Ubora wa Kisheria',
+    'sec4Lead': 'Tunaamini kazi nzuri ya kisheria inaanza na kuelewa wateja wetu kweli kweli.',
+    'sec5Tag': 'Uwepo Wetu',
+    'sec5Title': 'Kutoa Huduma kwa Wateja Kote <em>Afrika Mashariki</em>',
+    'sec5Lead': 'Makao makuu ya Elite Law Firm yako Mogadishu, Somalia, na uwezo wa kushughulikia wateja katika eneo lote la Afrika Mashariki.',
+    'sec6Tag': 'Watu Wetu',
+    'sec6Title': 'Wataalamu Nyuma ya <em>Elite Law Firm</em>',
+    'sec6Lead': 'Timu yetu ina wanasheria waliohitimu sana, washauri wa kisheria, na wataalamu wa msaada wanaoleta ujuzi tofauti.'
   }
 };
 let currentLang = 'en';
@@ -745,10 +776,12 @@ document.addEventListener('DOMContentLoaded', function() {
   trigger.addEventListener('click',function(e){ e.stopPropagation(); const isOpen=switcher.classList.toggle('open'); trigger.setAttribute('aria-expanded',isOpen); });
   document.addEventListener('click',function(){ switcher.classList.remove('open'); trigger.setAttribute('aria-expanded','false'); });
   switcher.addEventListener('click',function(e){ e.stopPropagation(); });
-  // Restore saved language
+});
+// Restore saved language (DOM already ready — script is at end of body)
+(function() {
   var savedLang = localStorage.getItem('eliteLang');
   if (savedLang && translations[savedLang]) setLang(savedLang);
-});
+})();
 </script>
 </body>
 </html>

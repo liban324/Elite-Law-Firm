@@ -540,6 +540,22 @@ const translations = {
     'sec1Title': 'الخدمات القانونية <em>الإضافية</em>',
     'sec1Lead': 'بعيداً عن مجالات ممارستنا الأساسية، تقدم إليت لو فيرم مجموعة من الخدمات القانونية الإضافية.',
     'dir': 'rtl'
+  },
+  sw: {
+    'navHome': 'Nyumbani',
+    'navAbout': 'Kuhusu Sisi',
+    'navAbout2': 'Kuhusu Sisi ▾',
+    'navServices': 'Huduma ▾',
+    'navPresence': 'Uwepo ▾',
+    'navMultimedia': 'Vyombo vya Habari',
+    'navContact': 'Wasiliana Nasi',
+    'ctaGetInTouch': 'Wasiliana Nasi →',
+    'dir': 'ltr',
+    'heroH1': 'Huduma Nyingine za Kisheria',
+    'heroP': 'Huduma maalum za kisheria za ziada zilizoundwa kwa mahitaji ya kipekee ya wateja nchini Somalia.',
+    'sec1Tag': 'Huduma',
+    'sec1Title': 'Huduma za Kisheria <em>za Ziada</em>',
+    'sec1Lead': 'Zaidi ya maenya yetu msingi ya mazoezi, Elite Law Firm inatoa huduma za kisheria za ziada.'
   }
 };
 let currentLang = 'en';
@@ -568,10 +584,12 @@ document.addEventListener('DOMContentLoaded', function() {
   trigger.addEventListener('click',function(e){ e.stopPropagation(); const isOpen=switcher.classList.toggle('open'); trigger.setAttribute('aria-expanded',isOpen); });
   document.addEventListener('click',function(){ switcher.classList.remove('open'); trigger.setAttribute('aria-expanded','false'); });
   switcher.addEventListener('click',function(e){ e.stopPropagation(); });
-  // Restore saved language
+});
+// Restore saved language (DOM already ready — script is at end of body)
+(function() {
   var savedLang = localStorage.getItem('eliteLang');
   if (savedLang && translations[savedLang]) setLang(savedLang);
-});
+})();
 </script>
 </body>
 </html>
