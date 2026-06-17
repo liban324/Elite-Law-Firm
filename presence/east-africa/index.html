@@ -316,15 +316,15 @@
 </nav>
 <section class="page-hero">
   <div class="breadcrumb"><a href="/">Home</a> › <a href="#">Presence</a> › East Africa</div>
-  <h1>East Africa Regional Presence</h1>
-  <p>Cross-border legal expertise connecting Somalia with the wider East African region — for business, investment, and mobility.</p>
+  <h1 data-i18n-html="heroH1">East Africa Regional Presence</h1>
+  <p data-i18n="heroP">Cross-border legal expertise connecting Somalia with the wider East African region — for business, investment, and mobility.</p>
   <div class="gold-rule"></div>
 </section>
 
 <section class="page-content">
-  <div class="section-tag">Regional Presence</div>
-  <h2 class="section-title">Serving Clients Across <em>East Africa</em></h2>
-  <p class="lead">Somalia does not exist in isolation — its legal and commercial environment is deeply connected to the broader East African region. Elite Law Firm leverages its regional networks, cross-border expertise, and international best practices to serve clients with multi-jurisdictional legal needs across East Africa.</p>
+  <div class="section-tag" data-i18n="sec1Tag">Regional Presence</div>
+  <h2 class="section-title" data-i18n-html="sec1Title">Serving Clients Across <em>East Africa</em></h2>
+  <p class="lead" data-i18n="sec1Lead">Somalia does not exist in isolation — its legal and commercial environment is deeply connected to the broader East African region. Elite Law Firm leverages its regional networks, cross-border expertise, and international best practices to serve clients with multi-jurisdictional legal needs across East Africa.</p>
   <div class="content-grid">
     <ul class="feature-list">
     <li>Cross-border transaction advisory for East African markets</li>
@@ -480,68 +480,84 @@
   });
 })();
 </script>
+
 <script>
 // ── LANGUAGE SWITCHER ──
 const translations = {
   en: {
-    dir: 'ltr',
-    navHome: 'Home', navAbout: 'About Us', navServices: 'Services ▾',
-    navPresence: 'Presence ▾', navContact: 'Contact',
+    'navHome': 'Home',
+    'navAbout': 'About Us',
+    'navAbout2': 'About Us ▾',
+    'navServices': 'Services ▾',
+    'navPresence': 'Presence ▾',
+    'navMultimedia': 'Multimedia',
+    'navContact': 'Contact',
+    'ctaGetInTouch': 'Get In Touch →',
+    'heroH1': 'East Africa',
+    'heroP': 'Cross-border legal services connecting clients across the East African region with expert Somali law expertise and regional networks.',
+    'sec1Tag': 'Our Presence',
+    'sec1Title': 'Legal Services Across <em>East Africa</em>',
+    'sec1Lead': 'Somalia sits at the heart of East Africa, and Elite Law Firm is uniquely positioned to provide cross-border legal services to clients operating across the region.',
+    'dir': 'ltr'
   },
   so: {
-    dir: 'ltr',
-    navHome: 'Bogga Hore', navAbout: 'Naga Waran', navServices: 'Adeegyada ▾',
-    navPresence: 'Goobaha ▾', navContact: 'Xiriir',
+    'navHome': 'Bogga Hore',
+    'navAbout': 'Naga Waran',
+    'navAbout2': 'Naga Waran ▾',
+    'navServices': 'Adeegyada ▾',
+    'navPresence': 'Goobaha ▾',
+    'navMultimedia': 'Warbaahinta',
+    'navContact': 'Xiriir',
+    'ctaGetInTouch': 'Nala Xiriir →',
+    'heroH1': 'Bariga Afrika',
+    'heroP': 'Adeegyada sharciga ka-dhaafida xuduudda ee xidaya macaamiisha gobolka Bariga Afrika oo dhan.',
+    'sec1Tag': 'Goobteenna',
+    'sec1Title': 'Adeegyada Sharciga ee Dhammaan <em>Bariga Afrika</em>',
+    'sec1Lead': 'Soomaaliya waxay ku taallaa wadnaha Bariga Afrika, Elite Law Firm waxayna si gaara u taagan tahay inay bixiso adeegyada sharciga ka-dhaafida xuduudda.',
+    'dir': 'ltr'
   },
   ar: {
-    dir: 'rtl',
-    navHome: 'الرئيسية', navAbout: 'من نحن', navServices: 'الخدمات ▾',
-    navPresence: 'حضورنا ▾', navContact: 'اتصل بنا',
+    'navHome': 'الرئيسية',
+    'navAbout': 'من نحن',
+    'navAbout2': 'من نحن ▾',
+    'navServices': 'الخدمات ▾',
+    'navPresence': 'حضورنا ▾',
+    'navMultimedia': 'الوسائط',
+    'navContact': 'اتصل بنا',
+    'ctaGetInTouch': 'تواصل معنا →',
+    'heroH1': 'شرق أفريقيا',
+    'heroP': 'خدمات قانونية عابرة للحدود تربط العملاء في جميع أنحاء منطقة شرق أفريقيا.',
+    'sec1Tag': 'حضورنا',
+    'sec1Title': 'الخدمات القانونية عبر <em>شرق أفريقيا</em>',
+    'sec1Lead': 'يقع الصومال في قلب شرق أفريقيا، وإليت لو فيرم في وضع فريد لتقديم خدمات قانونية عابرة للحدود للعملاء.',
+    'dir': 'rtl'
   }
 };
-
 let currentLang = 'en';
-
 function setLang(lang) {
   const t = translations[lang];
   if (!t) return;
   currentLang = lang;
-
   document.documentElement.dir = t.dir;
   document.documentElement.lang = lang;
-
   const chosen = document.querySelector('.lang-option[data-lang="' + lang + '"]');
   if (chosen) {
     document.getElementById('langLabel').textContent = lang.toUpperCase();
     document.querySelector('#langTrigger .lang-flag').textContent = chosen.dataset.flag;
   }
-  document.querySelectorAll('.lang-option').forEach(function(b){
-    b.classList.toggle('active', b.dataset.lang === lang);
-  });
-
+  document.querySelectorAll('.lang-option').forEach(function(b){ b.classList.toggle('active', b.dataset.lang === lang); });
   document.getElementById('langSwitcher').classList.remove('open');
-  document.getElementById('langTrigger').setAttribute('aria-expanded', 'false');
-
-  document.querySelectorAll('[data-i18n]').forEach(function(el){
-    const key = el.dataset.i18n;
-    if (t[key] !== undefined) el.textContent = t[key];
-  });
+  document.getElementById('langTrigger').setAttribute('aria-expanded','false');
+  document.querySelectorAll('[data-i18n]').forEach(function(el){ const key=el.dataset.i18n; if(t[key]!==undefined) el.textContent=t[key]; });
+  document.querySelectorAll('[data-i18n-html]').forEach(function(el){ const key=el.dataset.i18nHtml; if(t[key]!==undefined) el.innerHTML=t[key]; });
 }
-
 document.addEventListener('DOMContentLoaded', function() {
-  const switcher = document.getElementById('langSwitcher');
-  const trigger  = document.getElementById('langTrigger');
-  if (!switcher || !trigger) return;
-  trigger.addEventListener('click', function(e){
-    e.stopPropagation();
-    const isOpen = switcher.classList.toggle('open');
-    trigger.setAttribute('aria-expanded', isOpen);
-  });
-  document.addEventListener('click', function(){
-    switcher.classList.remove('open');
-    trigger.setAttribute('aria-expanded', 'false');
-  });
-  switcher.addEventListener('click', function(e){ e.stopPropagation(); });
+  const switcher=document.getElementById('langSwitcher');
+  const trigger=document.getElementById('langTrigger');
+  if(!switcher||!trigger) return;
+  trigger.addEventListener('click',function(e){ e.stopPropagation(); const isOpen=switcher.classList.toggle('open'); trigger.setAttribute('aria-expanded',isOpen); });
+  document.addEventListener('click',function(){ switcher.classList.remove('open'); trigger.setAttribute('aria-expanded','false'); });
+  switcher.addEventListener('click',function(e){ e.stopPropagation(); });
 });
 </script>
 </body>

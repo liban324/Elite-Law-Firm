@@ -321,16 +321,16 @@
 </nav>
 <section class="page-hero">
   <div class="breadcrumb"><a href="/">Home</a> › About Us</div>
-  <h1>About Elite Law Firm</h1>
-  <p>A premier full-service legal institution committed to excellence, integrity, and results across Somalia and East Africa.</p>
+  <h1 data-i18n-html="heroH1">About Elite Law Firm</h1>
+  <p data-i18n="heroP">A premier full-service legal institution committed to excellence, integrity, and results across Somalia and East Africa.</p>
   <div class="gold-rule"></div>
 </section>
 
 <!-- OVERVIEW -->
 <section class="page-content" id="overview">
-  <div class="section-tag">Who We Are</div>
-  <h2 class="section-title">A Legacy of <em>Legal Excellence</em></h2>
-  <p class="lead">Elite Law Firm was founded with a clear mission: to deliver world-class legal services to clients navigating the complexities of Somali and East African law. From corporate transactions to courtroom advocacy, we bring precision, dedication, and deep expertise to every matter we handle.</p>
+  <div class="section-tag" data-i18n="sec1Tag">Who We Are</div>
+  <h2 class="section-title" data-i18n-html="sec1Title">A Legacy of <em>Legal Excellence</em></h2>
+  <p class="lead" data-i18n="sec1Lead">Elite Law Firm was founded with a clear mission: to deliver world-class legal services to clients navigating the complexities of Somali and East African law. From corporate transactions to courtroom advocacy, we bring precision, dedication, and deep expertise to every matter we handle.</p>
   <div class="content-grid">
     <ul class="feature-list">
     <li>Full-service litigation and corporate advisory across all sectors</li>
@@ -374,9 +374,9 @@
 
 <!-- CORE VALUES -->
 <section class="page-content" id="core-values">
-  <div class="section-tag">What We Stand For</div>
-  <h2 class="section-title">The <em>Values</em> That Drive Us</h2>
-  <p class="lead">Our core values are the foundation of Elite Law Firm's identity. They shape our culture, define our standards, and guide every interaction we have with clients, colleagues, and the broader legal community.</p>
+  <div class="section-tag" data-i18n="sec2Tag">What We Stand For</div>
+  <h2 class="section-title" data-i18n-html="sec2Title">The <em>Values</em> That Drive Us</h2>
+  <p class="lead" data-i18n="sec2Lead">Our core values are the foundation of Elite Law Firm's identity. They shape our culture, define our standards, and guide every interaction we have with clients, colleagues, and the broader legal community.</p>
   <div class="content-grid">
     <ul class="feature-list">
     <li>Integrity — we act with honesty and transparency in all circumstances</li>
@@ -420,9 +420,9 @@
 
 <!-- WHERE WE OPERATE -->
 <section class="page-content" id="where-we-operate">
-  <div class="section-tag">Our Presence</div>
-  <h2 class="section-title">Serving Clients Across <em>East Africa</em></h2>
-  <p class="lead">Elite Law Firm is headquartered in Mogadishu, Somalia, with the capacity to advise clients on matters spanning the entire East African region. Our network of contacts, partners, and local experts enables us to provide on-the-ground support wherever you need it.</p>
+  <div class="section-tag" data-i18n="sec3Tag">Our Presence</div>
+  <h2 class="section-title" data-i18n-html="sec3Title">Serving Clients Across <em>East Africa</em></h2>
+  <p class="lead" data-i18n="sec3Lead">Elite Law Firm is headquartered in Mogadishu, Somalia, with the capacity to advise clients on matters spanning the entire East African region. Our network of contacts, partners, and local experts enables us to provide on-the-ground support wherever you need it.</p>
   <div class="content-grid" style="margin-bottom:0;">
     <ul class="feature-list">
     <li>Mogadishu — our headquarters, serving the Banaadir region and beyond</li>
@@ -483,7 +483,7 @@
 
 <section class="why-strip">
   <div class="why-inner">
-    <div class="section-tag">Why Choose Us</div>
+    <div class="section-tag" data-i18n="sec4Tag">Why Choose Us</div>
     <div class="section-title">The <em>Elite Advantage</em></div>
     <div class="why-grid">
       <div class="why-card">
@@ -618,68 +618,129 @@
   });
 })();
 </script>
+
 <script>
 // ── LANGUAGE SWITCHER ──
 const translations = {
   en: {
-    dir: 'ltr',
-    navHome: 'Home', navAbout: 'About Us', navServices: 'Services ▾',
-    navPresence: 'Presence ▾', navContact: 'Contact',
+    'navHome': 'Home',
+    'navAbout': 'About Us',
+    'navAbout2': 'About Us ▾',
+    'navServices': 'Services ▾',
+    'navPresence': 'Presence ▾',
+    'navMultimedia': 'Multimedia',
+    'navContact': 'Contact',
+    'ctaGetInTouch': 'Get In Touch →',
+    'heroH1': 'About Elite Law Firm',
+    'heroP': 'A premier full-service legal institution committed to excellence, integrity, and results across Somalia and East Africa.',
+    'sec1Tag': 'Who We Are',
+    'sec1Title': 'A Legacy of <em>Legal Excellence</em>',
+    'sec1Lead': 'Elite Law Firm was founded with a clear mission: to deliver world-class legal services to clients navigating the complexities of Somali and East African law.',
+    'sec2Tag': 'Purpose & Direction',
+    'sec2Title': 'Our <em>Mission & Vision</em>',
+    'sec2Lead': 'Our mission is to provide accessible, high-quality legal services that empower individuals, businesses, and institutions to achieve their goals within the framework of the law.',
+    'sec3Tag': 'What We Stand For',
+    'sec3Title': 'The <em>Values</em> That Drive Us',
+    'sec3Lead': 'Our core values are the foundation of Elite Law Firm\'s identity. They shape our culture, define our standards, and guide every interaction.',
+    'sec4Tag': 'How We Work',
+    'sec4Title': 'A <em>Strategic Approach</em> to Legal Excellence',
+    'sec4Lead': 'We believe great legal work begins with truly understanding our clients. Before advising, we listen. Before acting, we plan.',
+    'sec5Tag': 'Our Presence',
+    'sec5Title': 'Serving Clients Across <em>East Africa</em>',
+    'sec5Lead': 'Elite Law Firm is headquartered in Mogadishu, Somalia, with the capacity to advise clients on matters spanning the entire East African region.',
+    'sec6Tag': 'Our People',
+    'sec6Title': 'The Professionals Behind <em>Elite Law Firm</em>',
+    'sec6Lead': 'Our team is composed of highly qualified lawyers, legal advisors, and support professionals who bring diverse expertise and a shared commitment to excellence.',
+    'dir': 'ltr'
   },
   so: {
-    dir: 'ltr',
-    navHome: 'Bogga Hore', navAbout: 'Naga Waran', navServices: 'Adeegyada ▾',
-    navPresence: 'Goobaha ▾', navContact: 'Xiriir',
+    'navHome': 'Bogga Hore',
+    'navAbout': 'Naga Waran',
+    'navAbout2': 'Naga Waran ▾',
+    'navServices': 'Adeegyada ▾',
+    'navPresence': 'Goobaha ▾',
+    'navMultimedia': 'Warbaahinta',
+    'navContact': 'Xiriir',
+    'ctaGetInTouch': 'Nala Xiriir →',
+    'heroH1': 'Ku Saabsan Elite Law Firm',
+    'heroP': 'Shirkad sharci casri ah oo dhammaystiran oo u heellan kaamil-ahaanshaha, daacadnimada, iyo natiijooyinka.',
+    'sec1Tag': 'Cidda Annagu Nahay',
+    'sec1Title': 'Dhaxalkii <em>Kaamil-ahaanshaha Sharciga</em>',
+    'sec1Lead': 'Elite Law Firm waxaa la aasaasay hadaf cad: in la bixiyo adeegyada sharciga ee heerka caalamiga ah macaamiisha u gudba adag-ahaanshiyaha sharciga Soomaalida.',
+    'sec2Tag': 'Ujeedada & Jihada',
+    'sec2Title': 'Hadafkeenna <em>& Aragtideenna</em>',
+    'sec2Lead': 'Hadafkeennu waa in la bixiyo adeegyada sharciga ee la heli karo, tayo sarena leh kuwaas oo u xoojiya shakhsiyaadka, ganacsiyada, iyo hay\'aadaha.',
+    'sec3Tag': 'Waxa Aan U Taagnahay',
+    'sec3Title': '<em>Qiyamka</em> Noo Wadda',
+    'sec3Lead': 'Qiyamadeenna aasaasiga ahi waa aasaaska aqoonsiga Elite Law Firm. Waxay qaabeeya dhaqankeenna, gartaan heerarkeenna.',
+    'sec4Tag': 'Sida Aan U Shaqeynno',
+    'sec4Title': '<em>Hab Istiraatiiji</em> ah ee Kaamil-ahaanshaha Sharciga',
+    'sec4Lead': 'Waxaan aaminanahay in shaqada sharciga ee wanaagsan ay ka bilaabanto fahanka dhabta ah ee macaamiisheenna.',
+    'sec5Tag': 'Goobteenna',
+    'sec5Title': 'U Adeegida Macaamiisha ee <em>Bariga Afrika</em>',
+    'sec5Lead': 'Elite Law Firm waxay ku xarantahay Muqdisho, Soomaaliya, awooda u leedahay in ay u talo gashaa macaamiisha arrimaha ka fidiyo gobolka Bariga Afrika.',
+    'sec6Tag': 'Dadkeenna',
+    'sec6Title': 'Xirfadlayaasha Ka Dambeeya <em>Elite Law Firm</em>',
+    'sec6Lead': 'Kooxdeennu waxay ka kooban tahay xeerbeegayaal aad u xirfadlaysan, la-taliyeyaasha sharciga, iyo xirfadlayaasha taageerada.',
+    'dir': 'ltr'
   },
   ar: {
-    dir: 'rtl',
-    navHome: 'الرئيسية', navAbout: 'من نحن', navServices: 'الخدمات ▾',
-    navPresence: 'حضورنا ▾', navContact: 'اتصل بنا',
+    'navHome': 'الرئيسية',
+    'navAbout': 'من نحن',
+    'navAbout2': 'من نحن ▾',
+    'navServices': 'الخدمات ▾',
+    'navPresence': 'حضورنا ▾',
+    'navMultimedia': 'الوسائط',
+    'navContact': 'اتصل بنا',
+    'ctaGetInTouch': 'تواصل معنا →',
+    'heroH1': 'حول إليت لو فيرم',
+    'heroP': 'مؤسسة قانونية رائدة متكاملة الخدمات ملتزمة بالتميز والنزاهة والنتائج في جميع أنحاء الصومال وشرق أفريقيا.',
+    'sec1Tag': 'من نحن',
+    'sec1Title': 'إرث من <em>التميز القانوني</em>',
+    'sec1Lead': 'تأسست إليت لو فيرم برسالة واضحة: تقديم خدمات قانونية عالمية المستوى للعملاء الذين يتنقلون في تعقيدات القانون الصومالي.',
+    'sec2Tag': 'الغرض والاتجاه',
+    'sec2Title': 'رسالتنا <em>ورؤيتنا</em>',
+    'sec2Lead': 'رسالتنا هي تقديم خدمات قانونية عالية الجودة وميسورة تمكّن الأفراد والشركات والمؤسسات من تحقيق أهدافهم.',
+    'sec3Tag': 'ما نؤمن به',
+    'sec3Title': '<em>القيم</em> التي تقودنا',
+    'sec3Lead': 'قيمنا الجوهرية هي أساس هوية إليت لو فيرم. تشكل ثقافتنا وتحدد معاييرنا.',
+    'sec4Tag': 'كيف نعمل',
+    'sec4Title': '<em>نهج استراتيجي</em> للتميز القانوني',
+    'sec4Lead': 'نؤمن بأن العمل القانوني الرائع يبدأ بالفهم الحقيقي لعملائنا. قبل تقديم المشورة نستمع.',
+    'sec5Tag': 'حضورنا',
+    'sec5Title': 'خدمة العملاء في جميع أنحاء <em>شرق أفريقيا</em>',
+    'sec5Lead': 'يقع المقر الرئيسي لإليت لو فيرم في مقديشو بالصومال، مع القدرة على تقديم المشورة للعملاء في منطقة شرق أفريقيا بأسرها.',
+    'sec6Tag': 'فريقنا',
+    'sec6Title': 'المحترفون خلف <em>إليت لو فيرم</em>',
+    'sec6Lead': 'يتكون فريقنا من محامين ومستشارين قانونيين ومتخصصين في الدعم يتمتعون بخبرات متنوعة والتزام مشترك بالتميز.',
+    'dir': 'rtl'
   }
 };
-
 let currentLang = 'en';
-
 function setLang(lang) {
   const t = translations[lang];
   if (!t) return;
   currentLang = lang;
-
   document.documentElement.dir = t.dir;
   document.documentElement.lang = lang;
-
   const chosen = document.querySelector('.lang-option[data-lang="' + lang + '"]');
   if (chosen) {
     document.getElementById('langLabel').textContent = lang.toUpperCase();
     document.querySelector('#langTrigger .lang-flag').textContent = chosen.dataset.flag;
   }
-  document.querySelectorAll('.lang-option').forEach(function(b){
-    b.classList.toggle('active', b.dataset.lang === lang);
-  });
-
+  document.querySelectorAll('.lang-option').forEach(function(b){ b.classList.toggle('active', b.dataset.lang === lang); });
   document.getElementById('langSwitcher').classList.remove('open');
-  document.getElementById('langTrigger').setAttribute('aria-expanded', 'false');
-
-  document.querySelectorAll('[data-i18n]').forEach(function(el){
-    const key = el.dataset.i18n;
-    if (t[key] !== undefined) el.textContent = t[key];
-  });
+  document.getElementById('langTrigger').setAttribute('aria-expanded','false');
+  document.querySelectorAll('[data-i18n]').forEach(function(el){ const key=el.dataset.i18n; if(t[key]!==undefined) el.textContent=t[key]; });
+  document.querySelectorAll('[data-i18n-html]').forEach(function(el){ const key=el.dataset.i18nHtml; if(t[key]!==undefined) el.innerHTML=t[key]; });
 }
-
 document.addEventListener('DOMContentLoaded', function() {
-  const switcher = document.getElementById('langSwitcher');
-  const trigger  = document.getElementById('langTrigger');
-  if (!switcher || !trigger) return;
-  trigger.addEventListener('click', function(e){
-    e.stopPropagation();
-    const isOpen = switcher.classList.toggle('open');
-    trigger.setAttribute('aria-expanded', isOpen);
-  });
-  document.addEventListener('click', function(){
-    switcher.classList.remove('open');
-    trigger.setAttribute('aria-expanded', 'false');
-  });
-  switcher.addEventListener('click', function(e){ e.stopPropagation(); });
+  const switcher=document.getElementById('langSwitcher');
+  const trigger=document.getElementById('langTrigger');
+  if(!switcher||!trigger) return;
+  trigger.addEventListener('click',function(e){ e.stopPropagation(); const isOpen=switcher.classList.toggle('open'); trigger.setAttribute('aria-expanded',isOpen); });
+  document.addEventListener('click',function(){ switcher.classList.remove('open'); trigger.setAttribute('aria-expanded','false'); });
+  switcher.addEventListener('click',function(e){ e.stopPropagation(); });
 });
 </script>
 </body>

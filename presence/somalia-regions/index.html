@@ -316,15 +316,15 @@
 </nav>
 <section class="page-hero">
   <div class="breadcrumb"><a href="/">Home</a> › <a href="#">Presence</a> › Somalia Regions</div>
-  <h1>Serving All Somalia Regions</h1>
-  <p>Extending our legal expertise to clients across all federal member states and regions of Somalia.</p>
+  <h1 data-i18n-html="heroH1">Serving All Somalia Regions</h1>
+  <p data-i18n="heroP">Extending our legal expertise to clients across all federal member states and regions of Somalia.</p>
   <div class="gold-rule"></div>
 </section>
 
 <section class="page-content">
-  <div class="section-tag">Regional Reach</div>
-  <h2 class="section-title">Legal Services Across <em>Somalia's Regions</em></h2>
-  <p class="lead">Somalia is a country of diverse regions, each with its own legal and administrative context. Elite Law Firm has the expertise, networks, and capability to serve clients across all federal member states and regions, providing consistent, high-quality legal support wherever you are.</p>
+  <div class="section-tag" data-i18n="sec1Tag">Regional Reach</div>
+  <h2 class="section-title" data-i18n-html="sec1Title">Legal Services Across <em>Somalia's Regions</em></h2>
+  <p class="lead" data-i18n="sec1Lead">Somalia is a country of diverse regions, each with its own legal and administrative context. Elite Law Firm has the expertise, networks, and capability to serve clients across all federal member states and regions, providing consistent, high-quality legal support wherever you are.</p>
   <div class="content-grid">
     <ul class="feature-list">
     <li>Legal advisory for clients in all federal member states</li>
@@ -478,68 +478,84 @@
   });
 })();
 </script>
+
 <script>
 // ── LANGUAGE SWITCHER ──
 const translations = {
   en: {
-    dir: 'ltr',
-    navHome: 'Home', navAbout: 'About Us', navServices: 'Services ▾',
-    navPresence: 'Presence ▾', navContact: 'Contact',
+    'navHome': 'Home',
+    'navAbout': 'About Us',
+    'navAbout2': 'About Us ▾',
+    'navServices': 'Services ▾',
+    'navPresence': 'Presence ▾',
+    'navMultimedia': 'Multimedia',
+    'navContact': 'Contact',
+    'ctaGetInTouch': 'Get In Touch →',
+    'heroH1': 'Somalia Regions',
+    'heroP': 'Extending our legal services across all federal member states and regions of Somalia to serve clients wherever they are located.',
+    'sec1Tag': 'Our Presence',
+    'sec1Title': 'Legal Services Across <em>Somalia\'s Regions</em>',
+    'sec1Lead': 'Elite Law Firm\'s reach extends far beyond Mogadishu. We provide legal advisory and representation services to clients in all of Somalia\'s federal member states and regions.',
+    'dir': 'ltr'
   },
   so: {
-    dir: 'ltr',
-    navHome: 'Bogga Hore', navAbout: 'Naga Waran', navServices: 'Adeegyada ▾',
-    navPresence: 'Goobaha ▾', navContact: 'Xiriir',
+    'navHome': 'Bogga Hore',
+    'navAbout': 'Naga Waran',
+    'navAbout2': 'Naga Waran ▾',
+    'navServices': 'Adeegyada ▾',
+    'navPresence': 'Goobaha ▾',
+    'navMultimedia': 'Warbaahinta',
+    'navContact': 'Xiriir',
+    'ctaGetInTouch': 'Nala Xiriir →',
+    'heroH1': 'Gobolada Soomaaliya',
+    'heroP': 'Fidinta adeegyadeenna sharciga ee dhammaan gobolladda xubinta ee federaalka iyo gobolada Soomaaliya.',
+    'sec1Tag': 'Goobteenna',
+    'sec1Title': 'Adeegyada Sharciga ee Dhammaan <em>Gobolada Soomaaliya</em>',
+    'sec1Lead': 'Gaadhitaanka Elite Law Firm waxay ka sii fogaataa Muqdisho. Waxaan bixinaa adeegyada la-talinta sharciga iyo wakiilnimada macaamiisha dhammaan gobolladda.',
+    'dir': 'ltr'
   },
   ar: {
-    dir: 'rtl',
-    navHome: 'الرئيسية', navAbout: 'من نحن', navServices: 'الخدمات ▾',
-    navPresence: 'حضورنا ▾', navContact: 'اتصل بنا',
+    'navHome': 'الرئيسية',
+    'navAbout': 'من نحن',
+    'navAbout2': 'من نحن ▾',
+    'navServices': 'الخدمات ▾',
+    'navPresence': 'حضورنا ▾',
+    'navMultimedia': 'الوسائط',
+    'navContact': 'اتصل بنا',
+    'ctaGetInTouch': 'تواصل معنا →',
+    'heroH1': 'مناطق الصومال',
+    'heroP': 'توسيع خدماتنا القانونية عبر جميع الولايات الأعضاء والمناطق الفيدرالية في الصومال.',
+    'sec1Tag': 'حضورنا',
+    'sec1Title': 'الخدمات القانونية عبر <em>مناطق الصومال</em>',
+    'sec1Lead': 'يمتد نطاق إليت لو فيرم إلى ما هو أبعد من مقديشو. نقدم خدمات المشورة القانونية والتمثيل للعملاء في جميع الولايات الأعضاء الفيدرالية.',
+    'dir': 'rtl'
   }
 };
-
 let currentLang = 'en';
-
 function setLang(lang) {
   const t = translations[lang];
   if (!t) return;
   currentLang = lang;
-
   document.documentElement.dir = t.dir;
   document.documentElement.lang = lang;
-
   const chosen = document.querySelector('.lang-option[data-lang="' + lang + '"]');
   if (chosen) {
     document.getElementById('langLabel').textContent = lang.toUpperCase();
     document.querySelector('#langTrigger .lang-flag').textContent = chosen.dataset.flag;
   }
-  document.querySelectorAll('.lang-option').forEach(function(b){
-    b.classList.toggle('active', b.dataset.lang === lang);
-  });
-
+  document.querySelectorAll('.lang-option').forEach(function(b){ b.classList.toggle('active', b.dataset.lang === lang); });
   document.getElementById('langSwitcher').classList.remove('open');
-  document.getElementById('langTrigger').setAttribute('aria-expanded', 'false');
-
-  document.querySelectorAll('[data-i18n]').forEach(function(el){
-    const key = el.dataset.i18n;
-    if (t[key] !== undefined) el.textContent = t[key];
-  });
+  document.getElementById('langTrigger').setAttribute('aria-expanded','false');
+  document.querySelectorAll('[data-i18n]').forEach(function(el){ const key=el.dataset.i18n; if(t[key]!==undefined) el.textContent=t[key]; });
+  document.querySelectorAll('[data-i18n-html]').forEach(function(el){ const key=el.dataset.i18nHtml; if(t[key]!==undefined) el.innerHTML=t[key]; });
 }
-
 document.addEventListener('DOMContentLoaded', function() {
-  const switcher = document.getElementById('langSwitcher');
-  const trigger  = document.getElementById('langTrigger');
-  if (!switcher || !trigger) return;
-  trigger.addEventListener('click', function(e){
-    e.stopPropagation();
-    const isOpen = switcher.classList.toggle('open');
-    trigger.setAttribute('aria-expanded', isOpen);
-  });
-  document.addEventListener('click', function(){
-    switcher.classList.remove('open');
-    trigger.setAttribute('aria-expanded', 'false');
-  });
-  switcher.addEventListener('click', function(e){ e.stopPropagation(); });
+  const switcher=document.getElementById('langSwitcher');
+  const trigger=document.getElementById('langTrigger');
+  if(!switcher||!trigger) return;
+  trigger.addEventListener('click',function(e){ e.stopPropagation(); const isOpen=switcher.classList.toggle('open'); trigger.setAttribute('aria-expanded',isOpen); });
+  document.addEventListener('click',function(){ switcher.classList.remove('open'); trigger.setAttribute('aria-expanded','false'); });
+  switcher.addEventListener('click',function(e){ e.stopPropagation(); });
 });
 </script>
 </body>

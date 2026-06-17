@@ -321,15 +321,15 @@
 </nav>
 <section class="page-hero">
   <div class="breadcrumb"><a href="/">Home</a> › <a href="#">Services</a> › Property &amp; Land Law</div>
-  <h1>Property &amp; Land Law</h1>
-  <p>Expert legal support for all property and land matters — ensuring secure, clear, and legally recognised ownership.</p>
+  <h1 data-i18n-html="heroH1">Property &amp; Land Law</h1>
+  <p data-i18n="heroP">Expert legal support for all property and land matters — ensuring secure, clear, and legally recognised ownership.</p>
   <div class="gold-rule"></div>
 </section>
 
 <section class="page-content">
-  <div class="section-tag">Service</div>
-  <h2 class="section-title">Property &amp; Land <em>Legal Services</em></h2>
-  <p class="lead">Land and property ownership is a foundational concern for individuals, businesses, and communities in Somalia. Elite Law Firm provides expert legal guidance on all aspects of property law, from title verification to dispute resolution, ensuring your ownership is secure and legally recognised.</p>
+  <div class="section-tag" data-i18n="sec1Tag">Service</div>
+  <h2 class="section-title" data-i18n-html="sec1Title">Property &amp; Land <em>Legal Services</em></h2>
+  <p class="lead" data-i18n="sec1Lead">Land and property ownership is a foundational concern for individuals, businesses, and communities in Somalia. Elite Law Firm provides expert legal guidance on all aspects of property law, from title verification to dispute resolution, ensuring your ownership is secure and legally recognised.</p>
   <div class="content-grid">
     <ul class="feature-list">
     <li>Land legalisation and official registration</li>
@@ -485,68 +485,84 @@
   });
 })();
 </script>
+
 <script>
 // ── LANGUAGE SWITCHER ──
 const translations = {
   en: {
-    dir: 'ltr',
-    navHome: 'Home', navAbout: 'About Us', navServices: 'Services ▾',
-    navPresence: 'Presence ▾', navContact: 'Contact',
+    'navHome': 'Home',
+    'navAbout': 'About Us',
+    'navAbout2': 'About Us ▾',
+    'navServices': 'Services ▾',
+    'navPresence': 'Presence ▾',
+    'navMultimedia': 'Multimedia',
+    'navContact': 'Contact',
+    'ctaGetInTouch': 'Get In Touch →',
+    'heroH1': 'Property & Land Law',
+    'heroP': 'Expert legal services for all property and land matters in Somalia, from acquisition and title disputes to development and leasing.',
+    'sec1Tag': 'Service',
+    'sec1Title': 'Property & Land <em>Legal Services</em>',
+    'sec1Lead': 'Property and land issues are among the most complex and sensitive legal matters in Somalia. Elite Law Firm provides specialist advice on all aspects of Somali property law.',
+    'dir': 'ltr'
   },
   so: {
-    dir: 'ltr',
-    navHome: 'Bogga Hore', navAbout: 'Naga Waran', navServices: 'Adeegyada ▾',
-    navPresence: 'Goobaha ▾', navContact: 'Xiriir',
+    'navHome': 'Bogga Hore',
+    'navAbout': 'Naga Waran',
+    'navAbout2': 'Naga Waran ▾',
+    'navServices': 'Adeegyada ▾',
+    'navPresence': 'Goobaha ▾',
+    'navMultimedia': 'Warbaahinta',
+    'navContact': 'Xiriir',
+    'ctaGetInTouch': 'Nala Xiriir →',
+    'heroH1': 'Sharciga Hantida & Dhulka',
+    'heroP': 'Adeegyada sharciga ee khabiirka ah oo loogu talagalay dhammaan arrimaha hantida iyo dhulka ee Soomaaliya.',
+    'sec1Tag': 'Adeeg',
+    'sec1Title': 'Adeegyada Sharciga ee <em>Hantida & Dhulka</em>',
+    'sec1Lead': 'Arrimaha hantida iyo dhulku waa mid ka mid ah arrimaha sharciga ee ugu adag iyo kuuga xasaasiga badan ee Soomaaliya.',
+    'dir': 'ltr'
   },
   ar: {
-    dir: 'rtl',
-    navHome: 'الرئيسية', navAbout: 'من نحن', navServices: 'الخدمات ▾',
-    navPresence: 'حضورنا ▾', navContact: 'اتصل بنا',
+    'navHome': 'الرئيسية',
+    'navAbout': 'من نحن',
+    'navAbout2': 'من نحن ▾',
+    'navServices': 'الخدمات ▾',
+    'navPresence': 'حضورنا ▾',
+    'navMultimedia': 'الوسائط',
+    'navContact': 'اتصل بنا',
+    'ctaGetInTouch': 'تواصل معنا →',
+    'heroH1': 'قانون الملكية والأراضي',
+    'heroP': 'خدمات قانونية متخصصة لجميع مسائل الملكية والأراضي في الصومال.',
+    'sec1Tag': 'خدمة',
+    'sec1Title': 'الخدمات القانونية <em>للملكية والأراضي</em>',
+    'sec1Lead': 'تعد مسائل الملكية والأراضي من أكثر المسائل القانونية تعقيداً وحساسية في الصومال.',
+    'dir': 'rtl'
   }
 };
-
 let currentLang = 'en';
-
 function setLang(lang) {
   const t = translations[lang];
   if (!t) return;
   currentLang = lang;
-
   document.documentElement.dir = t.dir;
   document.documentElement.lang = lang;
-
   const chosen = document.querySelector('.lang-option[data-lang="' + lang + '"]');
   if (chosen) {
     document.getElementById('langLabel').textContent = lang.toUpperCase();
     document.querySelector('#langTrigger .lang-flag').textContent = chosen.dataset.flag;
   }
-  document.querySelectorAll('.lang-option').forEach(function(b){
-    b.classList.toggle('active', b.dataset.lang === lang);
-  });
-
+  document.querySelectorAll('.lang-option').forEach(function(b){ b.classList.toggle('active', b.dataset.lang === lang); });
   document.getElementById('langSwitcher').classList.remove('open');
-  document.getElementById('langTrigger').setAttribute('aria-expanded', 'false');
-
-  document.querySelectorAll('[data-i18n]').forEach(function(el){
-    const key = el.dataset.i18n;
-    if (t[key] !== undefined) el.textContent = t[key];
-  });
+  document.getElementById('langTrigger').setAttribute('aria-expanded','false');
+  document.querySelectorAll('[data-i18n]').forEach(function(el){ const key=el.dataset.i18n; if(t[key]!==undefined) el.textContent=t[key]; });
+  document.querySelectorAll('[data-i18n-html]').forEach(function(el){ const key=el.dataset.i18nHtml; if(t[key]!==undefined) el.innerHTML=t[key]; });
 }
-
 document.addEventListener('DOMContentLoaded', function() {
-  const switcher = document.getElementById('langSwitcher');
-  const trigger  = document.getElementById('langTrigger');
-  if (!switcher || !trigger) return;
-  trigger.addEventListener('click', function(e){
-    e.stopPropagation();
-    const isOpen = switcher.classList.toggle('open');
-    trigger.setAttribute('aria-expanded', isOpen);
-  });
-  document.addEventListener('click', function(){
-    switcher.classList.remove('open');
-    trigger.setAttribute('aria-expanded', 'false');
-  });
-  switcher.addEventListener('click', function(e){ e.stopPropagation(); });
+  const switcher=document.getElementById('langSwitcher');
+  const trigger=document.getElementById('langTrigger');
+  if(!switcher||!trigger) return;
+  trigger.addEventListener('click',function(e){ e.stopPropagation(); const isOpen=switcher.classList.toggle('open'); trigger.setAttribute('aria-expanded',isOpen); });
+  document.addEventListener('click',function(){ switcher.classList.remove('open'); trigger.setAttribute('aria-expanded','false'); });
+  switcher.addEventListener('click',function(e){ e.stopPropagation(); });
 });
 </script>
 </body>

@@ -322,15 +322,15 @@
 </nav>
 <section class="page-hero">
   <div class="breadcrumb"><a href="/">Home</a> › <a href="#">Services</a> › Real Estate</div>
-  <h1>Real Estate</h1>
-  <p>Precision, compliance, and efficiency in every property transaction — expert real estate legal services across Somalia.</p>
+  <h1 data-i18n-html="heroH1">Real Estate</h1>
+  <p data-i18n="heroP">Precision, compliance, and efficiency in every property transaction — expert real estate legal services across Somalia.</p>
   <div class="gold-rule"></div>
 </section>
 
 <section class="page-content">
-  <div class="section-tag">Service</div>
-  <h2 class="section-title">Real Estate <em>Legal Services</em></h2>
-  <p class="lead">Somalia's real estate market presents significant opportunities alongside complex legal challenges. Elite Law Firm's real estate practice brings deep knowledge of Somali land law and property transactions to ensure every deal is completed with precision, compliance, and efficiency.</p>
+  <div class="section-tag" data-i18n="sec1Tag">Service</div>
+  <h2 class="section-title" data-i18n-html="sec1Title">Real Estate <em>Legal Services</em></h2>
+  <p class="lead" data-i18n="sec1Lead">Somalia's real estate market presents significant opportunities alongside complex legal challenges. Elite Law Firm's real estate practice brings deep knowledge of Somali land law and property transactions to ensure every deal is completed with precision, compliance, and efficiency.</p>
   <div class="content-grid">
     <ul class="feature-list">
     <li>Real estate transaction advisory for buyers and sellers</li>
@@ -486,68 +486,84 @@
   });
 })();
 </script>
+
 <script>
 // ── LANGUAGE SWITCHER ──
 const translations = {
   en: {
-    dir: 'ltr',
-    navHome: 'Home', navAbout: 'About Us', navServices: 'Services ▾',
-    navPresence: 'Presence ▾', navContact: 'Contact',
+    'navHome': 'Home',
+    'navAbout': 'About Us',
+    'navAbout2': 'About Us ▾',
+    'navServices': 'Services ▾',
+    'navPresence': 'Presence ▾',
+    'navMultimedia': 'Multimedia',
+    'navContact': 'Contact',
+    'ctaGetInTouch': 'Get In Touch →',
+    'heroH1': 'Real Estate',
+    'heroP': 'Comprehensive legal support for real estate transactions, development projects, and property investments across Somalia.',
+    'sec1Tag': 'Service',
+    'sec1Title': 'Real Estate <em>Legal Services</em>',
+    'sec1Lead': 'Somalia\'s real estate sector is expanding rapidly. Elite Law Firm provides end-to-end legal support for buyers, sellers, developers, and investors.',
+    'dir': 'ltr'
   },
   so: {
-    dir: 'ltr',
-    navHome: 'Bogga Hore', navAbout: 'Naga Waran', navServices: 'Adeegyada ▾',
-    navPresence: 'Goobaha ▾', navContact: 'Xiriir',
+    'navHome': 'Bogga Hore',
+    'navAbout': 'Naga Waran',
+    'navAbout2': 'Naga Waran ▾',
+    'navServices': 'Adeegyada ▾',
+    'navPresence': 'Goobaha ▾',
+    'navMultimedia': 'Warbaahinta',
+    'navContact': 'Xiriir',
+    'ctaGetInTouch': 'Nala Xiriir →',
+    'heroH1': 'Hantida Xaqiiqda ah',
+    'heroP': 'Taageero sharciga oo dhammaystiran oo loogu talagalay macaamalaadka hantida, mashaariicda horumarinta, iyo maalgashiga hantida.',
+    'sec1Tag': 'Adeeg',
+    'sec1Title': 'Adeegyada Sharciga ee <em>Hantida Xaqiiqda ah</em>',
+    'sec1Lead': 'Qaybta hantida Soomaaliya waxay si deg-deg ah u ballaadhaysaa. Elite Law Firm waxay bixisaa taageero sharciga oo dhammaystiran.',
+    'dir': 'ltr'
   },
   ar: {
-    dir: 'rtl',
-    navHome: 'الرئيسية', navAbout: 'من نحن', navServices: 'الخدمات ▾',
-    navPresence: 'حضورنا ▾', navContact: 'اتصل بنا',
+    'navHome': 'الرئيسية',
+    'navAbout': 'من نحن',
+    'navAbout2': 'من نحن ▾',
+    'navServices': 'الخدمات ▾',
+    'navPresence': 'حضورنا ▾',
+    'navMultimedia': 'الوسائط',
+    'navContact': 'اتصل بنا',
+    'ctaGetInTouch': 'تواصل معنا →',
+    'heroH1': 'العقارات',
+    'heroP': 'دعم قانوني شامل لمعاملات العقارات ومشاريع التطوير والاستثمارات العقارية في الصومال.',
+    'sec1Tag': 'خدمة',
+    'sec1Title': 'الخدمات القانونية <em>للعقارات</em>',
+    'sec1Lead': 'يتوسع قطاع العقارات في الصومال بسرعة. تقدم إليت لو فيرم دعماً قانونياً شاملاً للمشترين والبائعين والمطورين.',
+    'dir': 'rtl'
   }
 };
-
 let currentLang = 'en';
-
 function setLang(lang) {
   const t = translations[lang];
   if (!t) return;
   currentLang = lang;
-
   document.documentElement.dir = t.dir;
   document.documentElement.lang = lang;
-
   const chosen = document.querySelector('.lang-option[data-lang="' + lang + '"]');
   if (chosen) {
     document.getElementById('langLabel').textContent = lang.toUpperCase();
     document.querySelector('#langTrigger .lang-flag').textContent = chosen.dataset.flag;
   }
-  document.querySelectorAll('.lang-option').forEach(function(b){
-    b.classList.toggle('active', b.dataset.lang === lang);
-  });
-
+  document.querySelectorAll('.lang-option').forEach(function(b){ b.classList.toggle('active', b.dataset.lang === lang); });
   document.getElementById('langSwitcher').classList.remove('open');
-  document.getElementById('langTrigger').setAttribute('aria-expanded', 'false');
-
-  document.querySelectorAll('[data-i18n]').forEach(function(el){
-    const key = el.dataset.i18n;
-    if (t[key] !== undefined) el.textContent = t[key];
-  });
+  document.getElementById('langTrigger').setAttribute('aria-expanded','false');
+  document.querySelectorAll('[data-i18n]').forEach(function(el){ const key=el.dataset.i18n; if(t[key]!==undefined) el.textContent=t[key]; });
+  document.querySelectorAll('[data-i18n-html]').forEach(function(el){ const key=el.dataset.i18nHtml; if(t[key]!==undefined) el.innerHTML=t[key]; });
 }
-
 document.addEventListener('DOMContentLoaded', function() {
-  const switcher = document.getElementById('langSwitcher');
-  const trigger  = document.getElementById('langTrigger');
-  if (!switcher || !trigger) return;
-  trigger.addEventListener('click', function(e){
-    e.stopPropagation();
-    const isOpen = switcher.classList.toggle('open');
-    trigger.setAttribute('aria-expanded', isOpen);
-  });
-  document.addEventListener('click', function(){
-    switcher.classList.remove('open');
-    trigger.setAttribute('aria-expanded', 'false');
-  });
-  switcher.addEventListener('click', function(e){ e.stopPropagation(); });
+  const switcher=document.getElementById('langSwitcher');
+  const trigger=document.getElementById('langTrigger');
+  if(!switcher||!trigger) return;
+  trigger.addEventListener('click',function(e){ e.stopPropagation(); const isOpen=switcher.classList.toggle('open'); trigger.setAttribute('aria-expanded',isOpen); });
+  document.addEventListener('click',function(){ switcher.classList.remove('open'); trigger.setAttribute('aria-expanded','false'); });
+  switcher.addEventListener('click',function(e){ e.stopPropagation(); });
 });
 </script>
 </body>

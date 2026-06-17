@@ -321,15 +321,15 @@
 </nav>
 <section class="page-hero">
   <div class="breadcrumb"><a href="/">Home</a> › <a href="#">Services</a> › Family Law</div>
-  <h1>Family Law</h1>
-  <p>Compassionate, balanced legal support for family matters — helping you navigate sensitive issues with dignity and respect.</p>
+  <h1 data-i18n-html="heroH1">Family Law</h1>
+  <p data-i18n="heroP">Compassionate, balanced legal support for family matters — helping you navigate sensitive issues with dignity and respect.</p>
   <div class="gold-rule"></div>
 </section>
 
 <section class="page-content">
-  <div class="section-tag">Service</div>
-  <h2 class="section-title">Family Law &amp; <em>Personal Matters</em></h2>
-  <p class="lead">Family legal matters require a unique combination of legal expertise, sensitivity, and sound judgment. Elite Law Firm's family law team approaches every case with the care and professionalism it deserves, always prioritising the best interests of those involved.</p>
+  <div class="section-tag" data-i18n="sec1Tag">Service</div>
+  <h2 class="section-title" data-i18n-html="sec1Title">Family Law &amp; <em>Personal Matters</em></h2>
+  <p class="lead" data-i18n="sec1Lead">Family legal matters require a unique combination of legal expertise, sensitivity, and sound judgment. Elite Law Firm's family law team approaches every case with the care and professionalism it deserves, always prioritising the best interests of those involved.</p>
   <div class="content-grid">
     <ul class="feature-list">
     <li>Marriage, divorce, and separation proceedings</li>
@@ -485,68 +485,84 @@
   });
 })();
 </script>
+
 <script>
 // ── LANGUAGE SWITCHER ──
 const translations = {
   en: {
-    dir: 'ltr',
-    navHome: 'Home', navAbout: 'About Us', navServices: 'Services ▾',
-    navPresence: 'Presence ▾', navContact: 'Contact',
+    'navHome': 'Home',
+    'navAbout': 'About Us',
+    'navAbout2': 'About Us ▾',
+    'navServices': 'Services ▾',
+    'navPresence': 'Presence ▾',
+    'navMultimedia': 'Multimedia',
+    'navContact': 'Contact',
+    'ctaGetInTouch': 'Get In Touch →',
+    'heroH1': 'Family Law',
+    'heroP': 'Sensitive, expert legal guidance for individuals and families navigating family law matters in Somalia.',
+    'sec1Tag': 'Service',
+    'sec1Title': 'Family Law <em>Legal Services</em>',
+    'sec1Lead': 'Family legal matters require sensitivity, discretion, and deep expertise. Elite Law Firm provides compassionate yet effective legal representation and advice across all aspects of Somali family law.',
+    'dir': 'ltr'
   },
   so: {
-    dir: 'ltr',
-    navHome: 'Bogga Hore', navAbout: 'Naga Waran', navServices: 'Adeegyada ▾',
-    navPresence: 'Goobaha ▾', navContact: 'Xiriir',
+    'navHome': 'Bogga Hore',
+    'navAbout': 'Naga Waran',
+    'navAbout2': 'Naga Waran ▾',
+    'navServices': 'Adeegyada ▾',
+    'navPresence': 'Goobaha ▾',
+    'navMultimedia': 'Warbaahinta',
+    'navContact': 'Xiriir',
+    'ctaGetInTouch': 'Nala Xiriir →',
+    'heroH1': 'Sharciga Qoyska',
+    'heroP': 'Hagitaan sharci ah, khabiir ah oo u heellan shakhsiyaadka iyo qoysaska u gudba arrimaha sharciga qoyska.',
+    'sec1Tag': 'Adeeg',
+    'sec1Title': 'Adeegyada Sharciga ee <em>Qoyska</em>',
+    'sec1Lead': 'Arrimaha sharciga ee qoyska waxay u baahan yihiin xasaasi-ahaanta, sirta, iyo khibradda qoto dheer.',
+    'dir': 'ltr'
   },
   ar: {
-    dir: 'rtl',
-    navHome: 'الرئيسية', navAbout: 'من نحن', navServices: 'الخدمات ▾',
-    navPresence: 'حضورنا ▾', navContact: 'اتصل بنا',
+    'navHome': 'الرئيسية',
+    'navAbout': 'من نحن',
+    'navAbout2': 'من نحن ▾',
+    'navServices': 'الخدمات ▾',
+    'navPresence': 'حضورنا ▾',
+    'navMultimedia': 'الوسائط',
+    'navContact': 'اتصل بنا',
+    'ctaGetInTouch': 'تواصل معنا →',
+    'heroH1': 'قانون الأسرة',
+    'heroP': 'توجيه قانوني حساس ومتخصص للأفراد والعائلات في مسائل قانون الأسرة في الصومال.',
+    'sec1Tag': 'خدمة',
+    'sec1Title': 'الخدمات القانونية <em>لقانون الأسرة</em>',
+    'sec1Lead': 'تتطلب المسائل القانونية الأسرية الحساسية والتكتم والخبرة العميقة.',
+    'dir': 'rtl'
   }
 };
-
 let currentLang = 'en';
-
 function setLang(lang) {
   const t = translations[lang];
   if (!t) return;
   currentLang = lang;
-
   document.documentElement.dir = t.dir;
   document.documentElement.lang = lang;
-
   const chosen = document.querySelector('.lang-option[data-lang="' + lang + '"]');
   if (chosen) {
     document.getElementById('langLabel').textContent = lang.toUpperCase();
     document.querySelector('#langTrigger .lang-flag').textContent = chosen.dataset.flag;
   }
-  document.querySelectorAll('.lang-option').forEach(function(b){
-    b.classList.toggle('active', b.dataset.lang === lang);
-  });
-
+  document.querySelectorAll('.lang-option').forEach(function(b){ b.classList.toggle('active', b.dataset.lang === lang); });
   document.getElementById('langSwitcher').classList.remove('open');
-  document.getElementById('langTrigger').setAttribute('aria-expanded', 'false');
-
-  document.querySelectorAll('[data-i18n]').forEach(function(el){
-    const key = el.dataset.i18n;
-    if (t[key] !== undefined) el.textContent = t[key];
-  });
+  document.getElementById('langTrigger').setAttribute('aria-expanded','false');
+  document.querySelectorAll('[data-i18n]').forEach(function(el){ const key=el.dataset.i18n; if(t[key]!==undefined) el.textContent=t[key]; });
+  document.querySelectorAll('[data-i18n-html]').forEach(function(el){ const key=el.dataset.i18nHtml; if(t[key]!==undefined) el.innerHTML=t[key]; });
 }
-
 document.addEventListener('DOMContentLoaded', function() {
-  const switcher = document.getElementById('langSwitcher');
-  const trigger  = document.getElementById('langTrigger');
-  if (!switcher || !trigger) return;
-  trigger.addEventListener('click', function(e){
-    e.stopPropagation();
-    const isOpen = switcher.classList.toggle('open');
-    trigger.setAttribute('aria-expanded', isOpen);
-  });
-  document.addEventListener('click', function(){
-    switcher.classList.remove('open');
-    trigger.setAttribute('aria-expanded', 'false');
-  });
-  switcher.addEventListener('click', function(e){ e.stopPropagation(); });
+  const switcher=document.getElementById('langSwitcher');
+  const trigger=document.getElementById('langTrigger');
+  if(!switcher||!trigger) return;
+  trigger.addEventListener('click',function(e){ e.stopPropagation(); const isOpen=switcher.classList.toggle('open'); trigger.setAttribute('aria-expanded',isOpen); });
+  document.addEventListener('click',function(){ switcher.classList.remove('open'); trigger.setAttribute('aria-expanded','false'); });
+  switcher.addEventListener('click',function(e){ e.stopPropagation(); });
 });
 </script>
 </body>

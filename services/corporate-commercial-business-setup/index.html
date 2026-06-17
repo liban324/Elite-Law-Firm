@@ -321,15 +321,15 @@
 </nav>
 <section class="page-hero">
   <div class="breadcrumb"><a href="/">Home</a> › <a href="#">Services</a> › Corporate, Commercial &amp; Business Setup</div>
-  <h1>Corporate, Commercial &amp; Business Setup</h1>
-  <p>Comprehensive legal support for businesses at every stage — from formation and structuring to governance, contracts, and growth.</p>
+  <h1 data-i18n-html="heroH1">Corporate, Commercial &amp; Business Setup</h1>
+  <p data-i18n="heroP">Comprehensive legal support for businesses at every stage — from formation and structuring to governance, contracts, and growth.</p>
   <div class="gold-rule"></div>
 </section>
 
 <section class="page-content">
-  <div class="section-tag">Service</div>
-  <h2 class="section-title">Corporate &amp; Commercial <em>Legal Services</em></h2>
-  <p class="lead">Whether you are launching a new venture, structuring a joint venture, or managing an established enterprise, Elite Law Firm provides the full spectrum of corporate and commercial legal services you need to operate with confidence and compliance.</p>
+  <div class="section-tag" data-i18n="sec1Tag">Service</div>
+  <h2 class="section-title" data-i18n-html="sec1Title">Corporate &amp; Commercial <em>Legal Services</em></h2>
+  <p class="lead" data-i18n="sec1Lead">Whether you are launching a new venture, structuring a joint venture, or managing an established enterprise, Elite Law Firm provides the full spectrum of corporate and commercial legal services you need to operate with confidence and compliance.</p>
   <div class="content-grid">
     <ul class="feature-list">
     <li>Company formation, structuring, and legal registration</li>
@@ -485,68 +485,84 @@
   });
 })();
 </script>
+
 <script>
 // ── LANGUAGE SWITCHER ──
 const translations = {
   en: {
-    dir: 'ltr',
-    navHome: 'Home', navAbout: 'About Us', navServices: 'Services ▾',
-    navPresence: 'Presence ▾', navContact: 'Contact',
+    'navHome': 'Home',
+    'navAbout': 'About Us',
+    'navAbout2': 'About Us ▾',
+    'navServices': 'Services ▾',
+    'navPresence': 'Presence ▾',
+    'navMultimedia': 'Multimedia',
+    'navContact': 'Contact',
+    'ctaGetInTouch': 'Get In Touch →',
+    'heroH1': 'Corporate, Commercial & Business Setup',
+    'heroP': 'Comprehensive legal support for businesses at every stage — from formation and structuring to governance, contracts, and growth.',
+    'sec1Tag': 'Service',
+    'sec1Title': 'Corporate & Commercial <em>Legal Services</em>',
+    'sec1Lead': 'Whether you are launching a new venture, structuring a joint venture, or managing an established company, Elite Law Firm provides the full spectrum of corporate and commercial legal services.',
+    'dir': 'ltr'
   },
   so: {
-    dir: 'ltr',
-    navHome: 'Bogga Hore', navAbout: 'Naga Waran', navServices: 'Adeegyada ▾',
-    navPresence: 'Goobaha ▾', navContact: 'Xiriir',
+    'navHome': 'Bogga Hore',
+    'navAbout': 'Naga Waran',
+    'navAbout2': 'Naga Waran ▾',
+    'navServices': 'Adeegyada ▾',
+    'navPresence': 'Goobaha ▾',
+    'navMultimedia': 'Warbaahinta',
+    'navContact': 'Xiriir',
+    'ctaGetInTouch': 'Nala Xiriir →',
+    'heroH1': 'Ganacsiga, Ganacsiga & Dejinta Ganacsiga',
+    'heroP': 'Taageero sharciga oo dhammaystiran ganacsiyada heer kasta — laga bilaabo dhismaha iyo qaab-dhismeedka ilaa maamulka, heshiisyada, iyo kobaca.',
+    'sec1Tag': 'Adeeg',
+    'sec1Title': 'Adeegyada Sharciga ee <em>Ganacsiga</em>',
+    'sec1Lead': 'Haddaad bilaabaysid xiddigta cusub ama maamulaysid shirkad dhisan, Elite Law Firm waxay bixisaa adeegyada sharciga ee ganacsiga oo dhammaystiran.',
+    'dir': 'ltr'
   },
   ar: {
-    dir: 'rtl',
-    navHome: 'الرئيسية', navAbout: 'من نحن', navServices: 'الخدمات ▾',
-    navPresence: 'حضورنا ▾', navContact: 'اتصل بنا',
+    'navHome': 'الرئيسية',
+    'navAbout': 'من نحن',
+    'navAbout2': 'من نحن ▾',
+    'navServices': 'الخدمات ▾',
+    'navPresence': 'حضورنا ▾',
+    'navMultimedia': 'الوسائط',
+    'navContact': 'اتصل بنا',
+    'ctaGetInTouch': 'تواصل معنا →',
+    'heroH1': 'الشركات والتجارة وإنشاء الأعمال',
+    'heroP': 'دعم قانوني شامل للشركات في كل مرحلة — من التأسيس والهيكلة إلى الحوكمة والعقود والنمو.',
+    'sec1Tag': 'خدمة',
+    'sec1Title': 'الخدمات القانونية <em>للشركات والتجارة</em>',
+    'sec1Lead': 'سواء كنت تطلق مشروعاً جديداً أو تدير شركة راسخة، توفر إليت لو فيرم الطيف الكامل من الخدمات القانونية للشركات.',
+    'dir': 'rtl'
   }
 };
-
 let currentLang = 'en';
-
 function setLang(lang) {
   const t = translations[lang];
   if (!t) return;
   currentLang = lang;
-
   document.documentElement.dir = t.dir;
   document.documentElement.lang = lang;
-
   const chosen = document.querySelector('.lang-option[data-lang="' + lang + '"]');
   if (chosen) {
     document.getElementById('langLabel').textContent = lang.toUpperCase();
     document.querySelector('#langTrigger .lang-flag').textContent = chosen.dataset.flag;
   }
-  document.querySelectorAll('.lang-option').forEach(function(b){
-    b.classList.toggle('active', b.dataset.lang === lang);
-  });
-
+  document.querySelectorAll('.lang-option').forEach(function(b){ b.classList.toggle('active', b.dataset.lang === lang); });
   document.getElementById('langSwitcher').classList.remove('open');
-  document.getElementById('langTrigger').setAttribute('aria-expanded', 'false');
-
-  document.querySelectorAll('[data-i18n]').forEach(function(el){
-    const key = el.dataset.i18n;
-    if (t[key] !== undefined) el.textContent = t[key];
-  });
+  document.getElementById('langTrigger').setAttribute('aria-expanded','false');
+  document.querySelectorAll('[data-i18n]').forEach(function(el){ const key=el.dataset.i18n; if(t[key]!==undefined) el.textContent=t[key]; });
+  document.querySelectorAll('[data-i18n-html]').forEach(function(el){ const key=el.dataset.i18nHtml; if(t[key]!==undefined) el.innerHTML=t[key]; });
 }
-
 document.addEventListener('DOMContentLoaded', function() {
-  const switcher = document.getElementById('langSwitcher');
-  const trigger  = document.getElementById('langTrigger');
-  if (!switcher || !trigger) return;
-  trigger.addEventListener('click', function(e){
-    e.stopPropagation();
-    const isOpen = switcher.classList.toggle('open');
-    trigger.setAttribute('aria-expanded', isOpen);
-  });
-  document.addEventListener('click', function(){
-    switcher.classList.remove('open');
-    trigger.setAttribute('aria-expanded', 'false');
-  });
-  switcher.addEventListener('click', function(e){ e.stopPropagation(); });
+  const switcher=document.getElementById('langSwitcher');
+  const trigger=document.getElementById('langTrigger');
+  if(!switcher||!trigger) return;
+  trigger.addEventListener('click',function(e){ e.stopPropagation(); const isOpen=switcher.classList.toggle('open'); trigger.setAttribute('aria-expanded',isOpen); });
+  document.addEventListener('click',function(){ switcher.classList.remove('open'); trigger.setAttribute('aria-expanded','false'); });
+  switcher.addEventListener('click',function(e){ e.stopPropagation(); });
 });
 </script>
 </body>

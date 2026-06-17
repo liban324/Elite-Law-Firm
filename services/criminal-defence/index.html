@@ -321,15 +321,15 @@
 </nav>
 <section class="page-hero">
   <div class="breadcrumb"><a href="/">Home</a> › <a href="#">Services</a> › Criminal Defence</div>
-  <h1>Criminal Defence</h1>
-  <p>Vigorous defence representation ensuring every client receives a fair trial, due process, and the protection of their rights.</p>
+  <h1 data-i18n-html="heroH1">Criminal Defence</h1>
+  <p data-i18n="heroP">Vigorous defence representation ensuring every client receives a fair trial, due process, and the protection of their rights.</p>
   <div class="gold-rule"></div>
 </section>
 
 <section class="page-content">
-  <div class="section-tag">Service</div>
-  <h2 class="section-title">Criminal Defence <em>Representation</em></h2>
-  <p class="lead">Facing criminal charges is one of the most serious situations a person can encounter. Elite Law Firm's criminal defence team provides robust, principled representation at all levels of the criminal justice system, ensuring your constitutional rights are protected throughout.</p>
+  <div class="section-tag" data-i18n="sec1Tag">Service</div>
+  <h2 class="section-title" data-i18n-html="sec1Title">Criminal Defence <em>Representation</em></h2>
+  <p class="lead" data-i18n="sec1Lead">Facing criminal charges is one of the most serious situations a person can encounter. Elite Law Firm's criminal defence team provides robust, principled representation at all levels of the criminal justice system, ensuring your constitutional rights are protected throughout.</p>
   <div class="content-grid">
     <ul class="feature-list">
     <li>Criminal defence representation at all court levels</li>
@@ -485,68 +485,84 @@
   });
 })();
 </script>
+
 <script>
 // ── LANGUAGE SWITCHER ──
 const translations = {
   en: {
-    dir: 'ltr',
-    navHome: 'Home', navAbout: 'About Us', navServices: 'Services ▾',
-    navPresence: 'Presence ▾', navContact: 'Contact',
+    'navHome': 'Home',
+    'navAbout': 'About Us',
+    'navAbout2': 'About Us ▾',
+    'navServices': 'Services ▾',
+    'navPresence': 'Presence ▾',
+    'navMultimedia': 'Multimedia',
+    'navContact': 'Contact',
+    'ctaGetInTouch': 'Get In Touch →',
+    'heroH1': 'Criminal Defence',
+    'heroP': 'Dedicated, expert criminal defence representation for individuals and organisations facing criminal investigation or prosecution in Somalia.',
+    'sec1Tag': 'Service',
+    'sec1Title': 'Criminal Defence <em>Legal Services</em>',
+    'sec1Lead': 'Facing criminal charges is one of the most serious situations a person or organisation can encounter. Elite Law Firm provides robust, experienced criminal defence representation.',
+    'dir': 'ltr'
   },
   so: {
-    dir: 'ltr',
-    navHome: 'Bogga Hore', navAbout: 'Naga Waran', navServices: 'Adeegyada ▾',
-    navPresence: 'Goobaha ▾', navContact: 'Xiriir',
+    'navHome': 'Bogga Hore',
+    'navAbout': 'Naga Waran',
+    'navAbout2': 'Naga Waran ▾',
+    'navServices': 'Adeegyada ▾',
+    'navPresence': 'Goobaha ▾',
+    'navMultimedia': 'Warbaahinta',
+    'navContact': 'Xiriir',
+    'ctaGetInTouch': 'Nala Xiriir →',
+    'heroH1': 'Difaaca Danbiyada',
+    'heroP': 'Wakiilnimada difaaca danbiyada ee khabiirka ah, u heellan shakhsiyaadka iyo hay\'adaha la baarayaa ama la dacwoon doona.',
+    'sec1Tag': 'Adeeg',
+    'sec1Title': 'Adeegyada Sharciga ee <em>Difaaca Danbiyada</em>',
+    'sec1Lead': 'La kulanka eedeymaha danbiyada waa mid ka mid ah xaaladaha ugu xasaasiga badan ee qofku ama hay\'addu la kulmi karto.',
+    'dir': 'ltr'
   },
   ar: {
-    dir: 'rtl',
-    navHome: 'الرئيسية', navAbout: 'من نحن', navServices: 'الخدمات ▾',
-    navPresence: 'حضورنا ▾', navContact: 'اتصل بنا',
+    'navHome': 'الرئيسية',
+    'navAbout': 'من نحن',
+    'navAbout2': 'من نحن ▾',
+    'navServices': 'الخدمات ▾',
+    'navPresence': 'حضورنا ▾',
+    'navMultimedia': 'الوسائط',
+    'navContact': 'اتصل بنا',
+    'ctaGetInTouch': 'تواصل معنا →',
+    'heroH1': 'الدفاع الجنائي',
+    'heroP': 'تمثيل دفاعي جنائي متخصص ومتفانٍ للأفراد والمنظمات التي تواجه التحقيق أو الملاحقة القضائية.',
+    'sec1Tag': 'خدمة',
+    'sec1Title': 'الخدمات القانونية <em>للدفاع الجنائي</em>',
+    'sec1Lead': 'مواجهة التهم الجنائية هي من أخطر المواقف التي يمكن أن يواجهها شخص أو منظمة.',
+    'dir': 'rtl'
   }
 };
-
 let currentLang = 'en';
-
 function setLang(lang) {
   const t = translations[lang];
   if (!t) return;
   currentLang = lang;
-
   document.documentElement.dir = t.dir;
   document.documentElement.lang = lang;
-
   const chosen = document.querySelector('.lang-option[data-lang="' + lang + '"]');
   if (chosen) {
     document.getElementById('langLabel').textContent = lang.toUpperCase();
     document.querySelector('#langTrigger .lang-flag').textContent = chosen.dataset.flag;
   }
-  document.querySelectorAll('.lang-option').forEach(function(b){
-    b.classList.toggle('active', b.dataset.lang === lang);
-  });
-
+  document.querySelectorAll('.lang-option').forEach(function(b){ b.classList.toggle('active', b.dataset.lang === lang); });
   document.getElementById('langSwitcher').classList.remove('open');
-  document.getElementById('langTrigger').setAttribute('aria-expanded', 'false');
-
-  document.querySelectorAll('[data-i18n]').forEach(function(el){
-    const key = el.dataset.i18n;
-    if (t[key] !== undefined) el.textContent = t[key];
-  });
+  document.getElementById('langTrigger').setAttribute('aria-expanded','false');
+  document.querySelectorAll('[data-i18n]').forEach(function(el){ const key=el.dataset.i18n; if(t[key]!==undefined) el.textContent=t[key]; });
+  document.querySelectorAll('[data-i18n-html]').forEach(function(el){ const key=el.dataset.i18nHtml; if(t[key]!==undefined) el.innerHTML=t[key]; });
 }
-
 document.addEventListener('DOMContentLoaded', function() {
-  const switcher = document.getElementById('langSwitcher');
-  const trigger  = document.getElementById('langTrigger');
-  if (!switcher || !trigger) return;
-  trigger.addEventListener('click', function(e){
-    e.stopPropagation();
-    const isOpen = switcher.classList.toggle('open');
-    trigger.setAttribute('aria-expanded', isOpen);
-  });
-  document.addEventListener('click', function(){
-    switcher.classList.remove('open');
-    trigger.setAttribute('aria-expanded', 'false');
-  });
-  switcher.addEventListener('click', function(e){ e.stopPropagation(); });
+  const switcher=document.getElementById('langSwitcher');
+  const trigger=document.getElementById('langTrigger');
+  if(!switcher||!trigger) return;
+  trigger.addEventListener('click',function(e){ e.stopPropagation(); const isOpen=switcher.classList.toggle('open'); trigger.setAttribute('aria-expanded',isOpen); });
+  document.addEventListener('click',function(){ switcher.classList.remove('open'); trigger.setAttribute('aria-expanded','false'); });
+  switcher.addEventListener('click',function(e){ e.stopPropagation(); });
 });
 </script>
 </body>

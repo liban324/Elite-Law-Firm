@@ -321,15 +321,15 @@
 </nav>
 <section class="page-hero">
   <div class="breadcrumb"><a href="/">Home</a> › <a href="#">Services</a> › Shipping &amp; Trade</div>
-  <h1>Shipping &amp; Trade</h1>
-  <p>Specialist legal expertise for maritime law, international trade, and the energy and commodities sectors.</p>
+  <h1 data-i18n-html="heroH1">Shipping &amp; Trade</h1>
+  <p data-i18n="heroP">Specialist legal expertise for maritime law, international trade, and the energy and commodities sectors.</p>
   <div class="gold-rule"></div>
 </section>
 
 <section class="page-content">
-  <div class="section-tag">Service</div>
-  <h2 class="section-title">Shipping, Trade &amp; <em>Maritime Law</em></h2>
-  <p class="lead">Somalia's strategic position on the Horn of Africa makes maritime and trade law a critical area of practice. Elite Law Firm advises shipowners, traders, cargo interests, and energy companies on the full spectrum of shipping, trade, and maritime legal issues.</p>
+  <div class="section-tag" data-i18n="sec1Tag">Service</div>
+  <h2 class="section-title" data-i18n-html="sec1Title">Shipping, Trade &amp; <em>Maritime Law</em></h2>
+  <p class="lead" data-i18n="sec1Lead">Somalia's strategic position on the Horn of Africa makes maritime and trade law a critical area of practice. Elite Law Firm advises shipowners, traders, cargo interests, and energy companies on the full spectrum of shipping, trade, and maritime legal issues.</p>
   <div class="content-grid">
     <ul class="feature-list">
     <li>Maritime law and shipping contract advisory</li>
@@ -485,68 +485,84 @@
   });
 })();
 </script>
+
 <script>
 // ── LANGUAGE SWITCHER ──
 const translations = {
   en: {
-    dir: 'ltr',
-    navHome: 'Home', navAbout: 'About Us', navServices: 'Services ▾',
-    navPresence: 'Presence ▾', navContact: 'Contact',
+    'navHome': 'Home',
+    'navAbout': 'About Us',
+    'navAbout2': 'About Us ▾',
+    'navServices': 'Services ▾',
+    'navPresence': 'Presence ▾',
+    'navMultimedia': 'Multimedia',
+    'navContact': 'Contact',
+    'ctaGetInTouch': 'Get In Touch →',
+    'heroH1': 'Shipping & Trade',
+    'heroP': 'Specialist legal services for the maritime, shipping, and international trade sectors operating through Somali and East African ports.',
+    'sec1Tag': 'Service',
+    'sec1Title': 'Shipping & Trade <em>Legal Services</em>',
+    'sec1Lead': 'Somalia\'s strategic coastal position makes it a key hub for regional and international trade. Elite Law Firm provides expert legal support across all aspects of shipping law and international trade compliance.',
+    'dir': 'ltr'
   },
   so: {
-    dir: 'ltr',
-    navHome: 'Bogga Hore', navAbout: 'Naga Waran', navServices: 'Adeegyada ▾',
-    navPresence: 'Goobaha ▾', navContact: 'Xiriir',
+    'navHome': 'Bogga Hore',
+    'navAbout': 'Naga Waran',
+    'navAbout2': 'Naga Waran ▾',
+    'navServices': 'Adeegyada ▾',
+    'navPresence': 'Goobaha ▾',
+    'navMultimedia': 'Warbaahinta',
+    'navContact': 'Xiriir',
+    'ctaGetInTouch': 'Nala Xiriir →',
+    'heroH1': 'Maraakiibta & Ganacsiga',
+    'heroP': 'Adeegyada sharciga ee khabiirka ah ee loogu talagalay goobaha maraakiibta, maraakiibta, iyo ganacsiga caalamiga ah.',
+    'sec1Tag': 'Adeeg',
+    'sec1Title': 'Adeegyada Sharciga ee <em>Maraakiibta & Ganacsiga</em>',
+    'sec1Lead': 'Xaaladda xeebta ee istiraatiijiyadda Soomaaliya ayaa ka dhigaysa goob muhiim ah oo ganacsiga gobolka iyo caalamiga ah.',
+    'dir': 'ltr'
   },
   ar: {
-    dir: 'rtl',
-    navHome: 'الرئيسية', navAbout: 'من نحن', navServices: 'الخدمات ▾',
-    navPresence: 'حضورنا ▾', navContact: 'اتصل بنا',
+    'navHome': 'الرئيسية',
+    'navAbout': 'من نحن',
+    'navAbout2': 'من نحن ▾',
+    'navServices': 'الخدمات ▾',
+    'navPresence': 'حضورنا ▾',
+    'navMultimedia': 'الوسائط',
+    'navContact': 'اتصل بنا',
+    'ctaGetInTouch': 'تواصل معنا →',
+    'heroH1': 'الشحن والتجارة',
+    'heroP': 'خدمات قانونية متخصصة لقطاعات الشحن البحري والشحن والتجارة الدولية.',
+    'sec1Tag': 'خدمة',
+    'sec1Title': 'الخدمات القانونية <em>للشحن والتجارة</em>',
+    'sec1Lead': 'يجعل الموقع الساحلي الاستراتيجي للصومال منه مركزاً رئيسياً للتجارة الإقليمية والدولية.',
+    'dir': 'rtl'
   }
 };
-
 let currentLang = 'en';
-
 function setLang(lang) {
   const t = translations[lang];
   if (!t) return;
   currentLang = lang;
-
   document.documentElement.dir = t.dir;
   document.documentElement.lang = lang;
-
   const chosen = document.querySelector('.lang-option[data-lang="' + lang + '"]');
   if (chosen) {
     document.getElementById('langLabel').textContent = lang.toUpperCase();
     document.querySelector('#langTrigger .lang-flag').textContent = chosen.dataset.flag;
   }
-  document.querySelectorAll('.lang-option').forEach(function(b){
-    b.classList.toggle('active', b.dataset.lang === lang);
-  });
-
+  document.querySelectorAll('.lang-option').forEach(function(b){ b.classList.toggle('active', b.dataset.lang === lang); });
   document.getElementById('langSwitcher').classList.remove('open');
-  document.getElementById('langTrigger').setAttribute('aria-expanded', 'false');
-
-  document.querySelectorAll('[data-i18n]').forEach(function(el){
-    const key = el.dataset.i18n;
-    if (t[key] !== undefined) el.textContent = t[key];
-  });
+  document.getElementById('langTrigger').setAttribute('aria-expanded','false');
+  document.querySelectorAll('[data-i18n]').forEach(function(el){ const key=el.dataset.i18n; if(t[key]!==undefined) el.textContent=t[key]; });
+  document.querySelectorAll('[data-i18n-html]').forEach(function(el){ const key=el.dataset.i18nHtml; if(t[key]!==undefined) el.innerHTML=t[key]; });
 }
-
 document.addEventListener('DOMContentLoaded', function() {
-  const switcher = document.getElementById('langSwitcher');
-  const trigger  = document.getElementById('langTrigger');
-  if (!switcher || !trigger) return;
-  trigger.addEventListener('click', function(e){
-    e.stopPropagation();
-    const isOpen = switcher.classList.toggle('open');
-    trigger.setAttribute('aria-expanded', isOpen);
-  });
-  document.addEventListener('click', function(){
-    switcher.classList.remove('open');
-    trigger.setAttribute('aria-expanded', 'false');
-  });
-  switcher.addEventListener('click', function(e){ e.stopPropagation(); });
+  const switcher=document.getElementById('langSwitcher');
+  const trigger=document.getElementById('langTrigger');
+  if(!switcher||!trigger) return;
+  trigger.addEventListener('click',function(e){ e.stopPropagation(); const isOpen=switcher.classList.toggle('open'); trigger.setAttribute('aria-expanded',isOpen); });
+  document.addEventListener('click',function(){ switcher.classList.remove('open'); trigger.setAttribute('aria-expanded','false'); });
+  switcher.addEventListener('click',function(e){ e.stopPropagation(); });
 });
 </script>
 </body>

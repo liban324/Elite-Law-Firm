@@ -322,15 +322,15 @@
 </nav>
 <section class="page-hero">
   <div class="breadcrumb"><a href="/">Home</a> › <a href="#">Services</a> › International & Immigration Law</div>
-  <h1>International & Immigration Law</h1>
-  <p>Facilitating smooth international mobility, cross-border transactions, and immigration compliance across jurisdictions.</p>
+  <h1 data-i18n-html="heroH1">International & Immigration Law</h1>
+  <p data-i18n="heroP">Facilitating smooth international mobility, cross-border transactions, and immigration compliance across jurisdictions.</p>
   <div class="gold-rule"></div>
 </section>
 
 <section class="page-content">
-  <div class="section-tag">Service</div>
-  <h2 class="section-title">International & Immigration <em>Legal Services</em></h2>
-  <p class="lead">In an increasingly connected world, legal matters often cross borders. Elite Law Firm's international and immigration law practice helps individuals, families, and businesses navigate the complexities of cross-border legal issues, visa applications, and international compliance.</p>
+  <div class="section-tag" data-i18n="sec1Tag">Service</div>
+  <h2 class="section-title" data-i18n-html="sec1Title">International & Immigration <em>Legal Services</em></h2>
+  <p class="lead" data-i18n="sec1Lead">In an increasingly connected world, legal matters often cross borders. Elite Law Firm's international and immigration law practice helps individuals, families, and businesses navigate the complexities of cross-border legal issues, visa applications, and international compliance.</p>
   <div class="content-grid">
     <ul class="feature-list">
     <li>Visa applications and immigration documentation support</li>
@@ -486,68 +486,84 @@
   });
 })();
 </script>
+
 <script>
 // ── LANGUAGE SWITCHER ──
 const translations = {
   en: {
-    dir: 'ltr',
-    navHome: 'Home', navAbout: 'About Us', navServices: 'Services ▾',
-    navPresence: 'Presence ▾', navContact: 'Contact',
+    'navHome': 'Home',
+    'navAbout': 'About Us',
+    'navAbout2': 'About Us ▾',
+    'navServices': 'Services ▾',
+    'navPresence': 'Presence ▾',
+    'navMultimedia': 'Multimedia',
+    'navContact': 'Contact',
+    'ctaGetInTouch': 'Get In Touch →',
+    'heroH1': 'International & Immigration Law',
+    'heroP': 'Expert legal guidance for individuals, businesses, and institutions navigating international law and immigration processes in Somalia and beyond.',
+    'sec1Tag': 'Service',
+    'sec1Title': 'International & Immigration <em>Legal Services</em>',
+    'sec1Lead': 'Whether you are relocating, establishing cross-border operations, or dealing with immigration matters, Elite Law Firm provides clear, practical guidance on all aspects of international and immigration law.',
+    'dir': 'ltr'
   },
   so: {
-    dir: 'ltr',
-    navHome: 'Bogga Hore', navAbout: 'Naga Waran', navServices: 'Adeegyada ▾',
-    navPresence: 'Goobaha ▾', navContact: 'Xiriir',
+    'navHome': 'Bogga Hore',
+    'navAbout': 'Naga Waran',
+    'navAbout2': 'Naga Waran ▾',
+    'navServices': 'Adeegyada ▾',
+    'navPresence': 'Goobaha ▾',
+    'navMultimedia': 'Warbaahinta',
+    'navContact': 'Xiriir',
+    'ctaGetInTouch': 'Nala Xiriir →',
+    'heroH1': 'Sharciga Caalamiga & Socdaalka',
+    'heroP': 'Hagitaan sharci khabiir ah oo loogu talagalay shakhsiyaadka, ganacsiyada, iyo hay\'aadaha u gudba arrimaha sharciga caalamiga ah iyo hababka socdaalka.',
+    'sec1Tag': 'Adeeg',
+    'sec1Title': 'Adeegyada Sharciga ee <em>Caalamiga & Socdaalka</em>',
+    'sec1Lead': 'Haddaad guuraysid, dejinaysid hawlgalada ka-dhaafida xuduudda, ama xaaladaha socdaalka la kulmaysid, Elite Law Firm waxay bixisaa hagitaan cad oo wax ku ool ah.',
+    'dir': 'ltr'
   },
   ar: {
-    dir: 'rtl',
-    navHome: 'الرئيسية', navAbout: 'من نحن', navServices: 'الخدمات ▾',
-    navPresence: 'حضورنا ▾', navContact: 'اتصل بنا',
+    'navHome': 'الرئيسية',
+    'navAbout': 'من نحن',
+    'navAbout2': 'من نحن ▾',
+    'navServices': 'الخدمات ▾',
+    'navPresence': 'حضورنا ▾',
+    'navMultimedia': 'الوسائط',
+    'navContact': 'اتصل بنا',
+    'ctaGetInTouch': 'تواصل معنا →',
+    'heroH1': 'القانون الدولي والهجرة',
+    'heroP': 'توجيه قانوني متخصص للأفراد والشركات والمؤسسات في مسائل القانون الدولي والهجرة.',
+    'sec1Tag': 'خدمة',
+    'sec1Title': 'الخدمات القانونية <em>الدولية والهجرة</em>',
+    'sec1Lead': 'سواء كنت تنتقل أو تؤسس عمليات عبر الحدود، تقدم إليت لو فيرم توجيهاً واضحاً وعملياً.',
+    'dir': 'rtl'
   }
 };
-
 let currentLang = 'en';
-
 function setLang(lang) {
   const t = translations[lang];
   if (!t) return;
   currentLang = lang;
-
   document.documentElement.dir = t.dir;
   document.documentElement.lang = lang;
-
   const chosen = document.querySelector('.lang-option[data-lang="' + lang + '"]');
   if (chosen) {
     document.getElementById('langLabel').textContent = lang.toUpperCase();
     document.querySelector('#langTrigger .lang-flag').textContent = chosen.dataset.flag;
   }
-  document.querySelectorAll('.lang-option').forEach(function(b){
-    b.classList.toggle('active', b.dataset.lang === lang);
-  });
-
+  document.querySelectorAll('.lang-option').forEach(function(b){ b.classList.toggle('active', b.dataset.lang === lang); });
   document.getElementById('langSwitcher').classList.remove('open');
-  document.getElementById('langTrigger').setAttribute('aria-expanded', 'false');
-
-  document.querySelectorAll('[data-i18n]').forEach(function(el){
-    const key = el.dataset.i18n;
-    if (t[key] !== undefined) el.textContent = t[key];
-  });
+  document.getElementById('langTrigger').setAttribute('aria-expanded','false');
+  document.querySelectorAll('[data-i18n]').forEach(function(el){ const key=el.dataset.i18n; if(t[key]!==undefined) el.textContent=t[key]; });
+  document.querySelectorAll('[data-i18n-html]').forEach(function(el){ const key=el.dataset.i18nHtml; if(t[key]!==undefined) el.innerHTML=t[key]; });
 }
-
 document.addEventListener('DOMContentLoaded', function() {
-  const switcher = document.getElementById('langSwitcher');
-  const trigger  = document.getElementById('langTrigger');
-  if (!switcher || !trigger) return;
-  trigger.addEventListener('click', function(e){
-    e.stopPropagation();
-    const isOpen = switcher.classList.toggle('open');
-    trigger.setAttribute('aria-expanded', isOpen);
-  });
-  document.addEventListener('click', function(){
-    switcher.classList.remove('open');
-    trigger.setAttribute('aria-expanded', 'false');
-  });
-  switcher.addEventListener('click', function(e){ e.stopPropagation(); });
+  const switcher=document.getElementById('langSwitcher');
+  const trigger=document.getElementById('langTrigger');
+  if(!switcher||!trigger) return;
+  trigger.addEventListener('click',function(e){ e.stopPropagation(); const isOpen=switcher.classList.toggle('open'); trigger.setAttribute('aria-expanded',isOpen); });
+  document.addEventListener('click',function(){ switcher.classList.remove('open'); trigger.setAttribute('aria-expanded','false'); });
+  switcher.addEventListener('click',function(e){ e.stopPropagation(); });
 });
 </script>
 </body>

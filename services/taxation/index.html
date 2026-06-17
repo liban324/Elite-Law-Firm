@@ -322,15 +322,15 @@
 </nav>
 <section class="page-hero">
   <div class="breadcrumb"><a href="/">Home</a> › <a href="#">Services</a> › Taxation</div>
-  <h1>Taxation</h1>
-  <p>Practical, innovative tax advisory — navigating Somalia's evolving tax framework with clarity, strategy, and confidence.</p>
+  <h1 data-i18n-html="heroH1">Taxation</h1>
+  <p data-i18n="heroP">Practical, innovative tax advisory — navigating Somalia's evolving tax framework with clarity, strategy, and confidence.</p>
   <div class="gold-rule"></div>
 </section>
 
 <section class="page-content">
-  <div class="section-tag">Service</div>
-  <h2 class="section-title">Taxation <em>Advisory Services</em></h2>
-  <p class="lead">Somalia's tax framework is evolving rapidly. Staying compliant while minimising your tax burden requires specialist knowledge and proactive planning. Elite Law Firm's taxation advisory team provides practical, forward-looking tax advice for businesses and individuals.</p>
+  <div class="section-tag" data-i18n="sec1Tag">Service</div>
+  <h2 class="section-title" data-i18n-html="sec1Title">Taxation <em>Advisory Services</em></h2>
+  <p class="lead" data-i18n="sec1Lead">Somalia's tax framework is evolving rapidly. Staying compliant while minimising your tax burden requires specialist knowledge and proactive planning. Elite Law Firm's taxation advisory team provides practical, forward-looking tax advice for businesses and individuals.</p>
   <div class="content-grid">
     <ul class="feature-list">
     <li>Tax compliance advisory and annual filing support</li>
@@ -486,68 +486,84 @@
   });
 })();
 </script>
+
 <script>
 // ── LANGUAGE SWITCHER ──
 const translations = {
   en: {
-    dir: 'ltr',
-    navHome: 'Home', navAbout: 'About Us', navServices: 'Services ▾',
-    navPresence: 'Presence ▾', navContact: 'Contact',
+    'navHome': 'Home',
+    'navAbout': 'About Us',
+    'navAbout2': 'About Us ▾',
+    'navServices': 'Services ▾',
+    'navPresence': 'Presence ▾',
+    'navMultimedia': 'Multimedia',
+    'navContact': 'Contact',
+    'ctaGetInTouch': 'Get In Touch →',
+    'heroH1': 'Taxation',
+    'heroP': 'Expert tax legal advice for individuals, businesses, and investors navigating Somalia\'s evolving tax framework.',
+    'sec1Tag': 'Service',
+    'sec1Title': 'Taxation <em>Legal Services</em>',
+    'sec1Lead': 'Somalia\'s tax landscape is rapidly developing. Elite Law Firm provides specialised legal advice on all aspects of Somali tax law, helping clients understand their obligations and resolve disputes.',
+    'dir': 'ltr'
   },
   so: {
-    dir: 'ltr',
-    navHome: 'Bogga Hore', navAbout: 'Naga Waran', navServices: 'Adeegyada ▾',
-    navPresence: 'Goobaha ▾', navContact: 'Xiriir',
+    'navHome': 'Bogga Hore',
+    'navAbout': 'Naga Waran',
+    'navAbout2': 'Naga Waran ▾',
+    'navServices': 'Adeegyada ▾',
+    'navPresence': 'Goobaha ▾',
+    'navMultimedia': 'Warbaahinta',
+    'navContact': 'Xiriir',
+    'ctaGetInTouch': 'Nala Xiriir →',
+    'heroH1': 'Canshuurta',
+    'heroP': 'La-talin sharci canshuurta oo khabiir ah oo loogu talagalay shakhsiyaadka, ganacsiyada, iyo maalgashiga.',
+    'sec1Tag': 'Adeeg',
+    'sec1Title': 'Adeegyada Sharciga ee <em>Canshuurta</em>',
+    'sec1Lead': 'Goobta canshuurta Soomaaliya waxay si deg-deg ah u horumarinaysaa. Elite Law Firm waxay bixisaa la-talin sharci gaar ah oo ku saabsan dhammaan dhinacyada sharciga canshuurta.',
+    'dir': 'ltr'
   },
   ar: {
-    dir: 'rtl',
-    navHome: 'الرئيسية', navAbout: 'من نحن', navServices: 'الخدمات ▾',
-    navPresence: 'حضورنا ▾', navContact: 'اتصل بنا',
+    'navHome': 'الرئيسية',
+    'navAbout': 'من نحن',
+    'navAbout2': 'من نحن ▾',
+    'navServices': 'الخدمات ▾',
+    'navPresence': 'حضورنا ▾',
+    'navMultimedia': 'الوسائط',
+    'navContact': 'اتصل بنا',
+    'ctaGetInTouch': 'تواصل معنا →',
+    'heroH1': 'الضرائب',
+    'heroP': 'مشورة قانونية ضريبية متخصصة للأفراد والشركات والمستثمرين.',
+    'sec1Tag': 'خدمة',
+    'sec1Title': 'الخدمات القانونية <em>الضريبية</em>',
+    'sec1Lead': 'يتطور المشهد الضريبي في الصومال بسرعة. تقدم إليت لو فيرم مشورة قانونية متخصصة في جميع جوانب قانون الضرائب الصومالي.',
+    'dir': 'rtl'
   }
 };
-
 let currentLang = 'en';
-
 function setLang(lang) {
   const t = translations[lang];
   if (!t) return;
   currentLang = lang;
-
   document.documentElement.dir = t.dir;
   document.documentElement.lang = lang;
-
   const chosen = document.querySelector('.lang-option[data-lang="' + lang + '"]');
   if (chosen) {
     document.getElementById('langLabel').textContent = lang.toUpperCase();
     document.querySelector('#langTrigger .lang-flag').textContent = chosen.dataset.flag;
   }
-  document.querySelectorAll('.lang-option').forEach(function(b){
-    b.classList.toggle('active', b.dataset.lang === lang);
-  });
-
+  document.querySelectorAll('.lang-option').forEach(function(b){ b.classList.toggle('active', b.dataset.lang === lang); });
   document.getElementById('langSwitcher').classList.remove('open');
-  document.getElementById('langTrigger').setAttribute('aria-expanded', 'false');
-
-  document.querySelectorAll('[data-i18n]').forEach(function(el){
-    const key = el.dataset.i18n;
-    if (t[key] !== undefined) el.textContent = t[key];
-  });
+  document.getElementById('langTrigger').setAttribute('aria-expanded','false');
+  document.querySelectorAll('[data-i18n]').forEach(function(el){ const key=el.dataset.i18n; if(t[key]!==undefined) el.textContent=t[key]; });
+  document.querySelectorAll('[data-i18n-html]').forEach(function(el){ const key=el.dataset.i18nHtml; if(t[key]!==undefined) el.innerHTML=t[key]; });
 }
-
 document.addEventListener('DOMContentLoaded', function() {
-  const switcher = document.getElementById('langSwitcher');
-  const trigger  = document.getElementById('langTrigger');
-  if (!switcher || !trigger) return;
-  trigger.addEventListener('click', function(e){
-    e.stopPropagation();
-    const isOpen = switcher.classList.toggle('open');
-    trigger.setAttribute('aria-expanded', isOpen);
-  });
-  document.addEventListener('click', function(){
-    switcher.classList.remove('open');
-    trigger.setAttribute('aria-expanded', 'false');
-  });
-  switcher.addEventListener('click', function(e){ e.stopPropagation(); });
+  const switcher=document.getElementById('langSwitcher');
+  const trigger=document.getElementById('langTrigger');
+  if(!switcher||!trigger) return;
+  trigger.addEventListener('click',function(e){ e.stopPropagation(); const isOpen=switcher.classList.toggle('open'); trigger.setAttribute('aria-expanded',isOpen); });
+  document.addEventListener('click',function(){ switcher.classList.remove('open'); trigger.setAttribute('aria-expanded','false'); });
+  switcher.addEventListener('click',function(e){ e.stopPropagation(); });
 });
 </script>
 </body>

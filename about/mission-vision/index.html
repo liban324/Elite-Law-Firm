@@ -316,15 +316,15 @@
 </nav>
 <section class="page-hero">
   <div class="breadcrumb"><a href="/">Home</a> › <a href="#">About Us</a> › Mission & Vision</div>
-  <h1>Our Mission & Vision</h1>
-  <p>Guided by principle, driven by purpose — delivering justice and legal excellence across Somalia and East Africa.</p>
+  <h1 data-i18n-html="heroH1">Our Mission & Vision</h1>
+  <p data-i18n="heroP">Guided by principle, driven by purpose — delivering justice and legal excellence across Somalia and East Africa.</p>
   <div class="gold-rule"></div>
 </section>
 
 <section class="page-content">
-  <div class="section-tag">Purpose & Direction</div>
-  <h2 class="section-title">Our <em>Mission & Vision</em></h2>
-  <p class="lead">Our mission is to provide accessible, high-quality legal services that empower individuals, businesses, and institutions to achieve their goals within the framework of the law. Our vision is to be East Africa's most trusted and respected law firm.</p>
+  <div class="section-tag" data-i18n="sec1Tag">Purpose & Direction</div>
+  <h2 class="section-title" data-i18n-html="sec1Title">Our <em>Mission & Vision</em></h2>
+  <p class="lead" data-i18n="sec1Lead">Our mission is to provide accessible, high-quality legal services that empower individuals, businesses, and institutions to achieve their goals within the framework of the law. Our vision is to be East Africa's most trusted and respected law firm.</p>
   <div class="content-grid">
     <ul class="feature-list">
     <li>To uphold the rule of law and protect the rights of every client</li>
@@ -478,68 +478,84 @@
   });
 })();
 </script>
+
 <script>
 // ── LANGUAGE SWITCHER ──
 const translations = {
   en: {
-    dir: 'ltr',
-    navHome: 'Home', navAbout: 'About Us', navServices: 'Services ▾',
-    navPresence: 'Presence ▾', navContact: 'Contact',
+    'navHome': 'Home',
+    'navAbout': 'About Us',
+    'navAbout2': 'About Us ▾',
+    'navServices': 'Services ▾',
+    'navPresence': 'Presence ▾',
+    'navMultimedia': 'Multimedia',
+    'navContact': 'Contact',
+    'ctaGetInTouch': 'Get In Touch →',
+    'heroH1': 'Mission & Vision',
+    'heroP': 'The guiding principles and long-term aspirations that shape everything we do at Elite Law Firm.',
+    'sec1Tag': 'Our Purpose',
+    'sec1Title': 'Our <em>Mission & Vision</em>',
+    'sec1Lead': 'Elite Law Firm was founded with a clear sense of purpose. Our mission and vision reflect our deep commitment to justice, legal excellence, and the long-term development of the legal profession.',
+    'dir': 'ltr'
   },
   so: {
-    dir: 'ltr',
-    navHome: 'Bogga Hore', navAbout: 'Naga Waran', navServices: 'Adeegyada ▾',
-    navPresence: 'Goobaha ▾', navContact: 'Xiriir',
+    'navHome': 'Bogga Hore',
+    'navAbout': 'Naga Waran',
+    'navAbout2': 'Naga Waran ▾',
+    'navServices': 'Adeegyada ▾',
+    'navPresence': 'Goobaha ▾',
+    'navMultimedia': 'Warbaahinta',
+    'navContact': 'Xiriir',
+    'ctaGetInTouch': 'Nala Xiriir →',
+    'heroH1': 'Hadafka & Aragtida',
+    'heroP': 'Mabaadi\'iida haga iyo rajeynta mustaqbalka ee qaabeeya dhammaan waxa aan ka shaqeyno.',
+    'sec1Tag': 'Ujeedadeenna',
+    'sec1Title': 'Hadafkeenna <em>& Aragtideenna</em>',
+    'sec1Lead': 'Elite Law Firm waxaa la aasaasay xis-qaadis cad oo ujeedada ah. Hadafkeenna iyo aragtideennu waxay muujinayaan ballanqaadkeenna qoto dheer ee cadaaladda.',
+    'dir': 'ltr'
   },
   ar: {
-    dir: 'rtl',
-    navHome: 'الرئيسية', navAbout: 'من نحن', navServices: 'الخدمات ▾',
-    navPresence: 'حضورنا ▾', navContact: 'اتصل بنا',
+    'navHome': 'الرئيسية',
+    'navAbout': 'من نحن',
+    'navAbout2': 'من نحن ▾',
+    'navServices': 'الخدمات ▾',
+    'navPresence': 'حضورنا ▾',
+    'navMultimedia': 'الوسائط',
+    'navContact': 'اتصل بنا',
+    'ctaGetInTouch': 'تواصل معنا →',
+    'heroH1': 'الرسالة والرؤية',
+    'heroP': 'المبادئ التوجيهية والطموحات طويلة المدى التي تشكل كل ما نقوم به في إليت لو فيرم.',
+    'sec1Tag': 'غرضنا',
+    'sec1Title': 'رسالتنا <em>ورؤيتنا</em>',
+    'sec1Lead': 'تأسست إليت لو فيرم بإحساس واضح بالغرض. تعكس رسالتنا ورؤيتنا التزامنا العميق بالعدالة والتميز القانوني.',
+    'dir': 'rtl'
   }
 };
-
 let currentLang = 'en';
-
 function setLang(lang) {
   const t = translations[lang];
   if (!t) return;
   currentLang = lang;
-
   document.documentElement.dir = t.dir;
   document.documentElement.lang = lang;
-
   const chosen = document.querySelector('.lang-option[data-lang="' + lang + '"]');
   if (chosen) {
     document.getElementById('langLabel').textContent = lang.toUpperCase();
     document.querySelector('#langTrigger .lang-flag').textContent = chosen.dataset.flag;
   }
-  document.querySelectorAll('.lang-option').forEach(function(b){
-    b.classList.toggle('active', b.dataset.lang === lang);
-  });
-
+  document.querySelectorAll('.lang-option').forEach(function(b){ b.classList.toggle('active', b.dataset.lang === lang); });
   document.getElementById('langSwitcher').classList.remove('open');
-  document.getElementById('langTrigger').setAttribute('aria-expanded', 'false');
-
-  document.querySelectorAll('[data-i18n]').forEach(function(el){
-    const key = el.dataset.i18n;
-    if (t[key] !== undefined) el.textContent = t[key];
-  });
+  document.getElementById('langTrigger').setAttribute('aria-expanded','false');
+  document.querySelectorAll('[data-i18n]').forEach(function(el){ const key=el.dataset.i18n; if(t[key]!==undefined) el.textContent=t[key]; });
+  document.querySelectorAll('[data-i18n-html]').forEach(function(el){ const key=el.dataset.i18nHtml; if(t[key]!==undefined) el.innerHTML=t[key]; });
 }
-
 document.addEventListener('DOMContentLoaded', function() {
-  const switcher = document.getElementById('langSwitcher');
-  const trigger  = document.getElementById('langTrigger');
-  if (!switcher || !trigger) return;
-  trigger.addEventListener('click', function(e){
-    e.stopPropagation();
-    const isOpen = switcher.classList.toggle('open');
-    trigger.setAttribute('aria-expanded', isOpen);
-  });
-  document.addEventListener('click', function(){
-    switcher.classList.remove('open');
-    trigger.setAttribute('aria-expanded', 'false');
-  });
-  switcher.addEventListener('click', function(e){ e.stopPropagation(); });
+  const switcher=document.getElementById('langSwitcher');
+  const trigger=document.getElementById('langTrigger');
+  if(!switcher||!trigger) return;
+  trigger.addEventListener('click',function(e){ e.stopPropagation(); const isOpen=switcher.classList.toggle('open'); trigger.setAttribute('aria-expanded',isOpen); });
+  document.addEventListener('click',function(){ switcher.classList.remove('open'); trigger.setAttribute('aria-expanded','false'); });
+  switcher.addEventListener('click',function(e){ e.stopPropagation(); });
 });
 </script>
 </body>

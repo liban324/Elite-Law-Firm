@@ -322,15 +322,15 @@
 </nav>
 <section class="page-hero">
   <div class="breadcrumb"><a href="/">Home</a> › <a href="#">Services</a> › Anti-Corruption & Bribery</div>
-  <h1>Anti-Corruption & Bribery</h1>
-  <p>Strategic legal advisory and proactive compliance support to help clients navigate complex anti-corruption regulations.</p>
+  <h1 data-i18n-html="heroH1">Anti-Corruption & Bribery</h1>
+  <p data-i18n="heroP">Strategic legal advisory and proactive compliance support to help clients navigate complex anti-corruption regulations.</p>
   <div class="gold-rule"></div>
 </section>
 
 <section class="page-content">
-  <div class="section-tag">Service</div>
-  <h2 class="section-title">Anti-Corruption & Bribery <em>Compliance</em></h2>
-  <p class="lead">Anti-corruption compliance is a critical concern for businesses operating in Somalia and across East Africa. Elite Law Firm provides strategic legal advisory and proactive compliance support to help clients establish strong governance frameworks and ensure full compliance with applicable laws and international standards.</p>
+  <div class="section-tag" data-i18n="sec1Tag">Service</div>
+  <h2 class="section-title" data-i18n-html="sec1Title">Anti-Corruption & Bribery <em>Compliance</em></h2>
+  <p class="lead" data-i18n="sec1Lead">Anti-corruption compliance is a critical concern for businesses operating in Somalia and across East Africa. Elite Law Firm provides strategic legal advisory and proactive compliance support to help clients establish strong governance frameworks and ensure full compliance with applicable laws and international standards.</p>
   <div class="content-grid">
     <ul class="feature-list">
     <li>Anti-corruption and bribery law advisory</li>
@@ -486,68 +486,84 @@
   });
 })();
 </script>
+
 <script>
 // ── LANGUAGE SWITCHER ──
 const translations = {
   en: {
-    dir: 'ltr',
-    navHome: 'Home', navAbout: 'About Us', navServices: 'Services ▾',
-    navPresence: 'Presence ▾', navContact: 'Contact',
+    'navHome': 'Home',
+    'navAbout': 'About Us',
+    'navAbout2': 'About Us ▾',
+    'navServices': 'Services ▾',
+    'navPresence': 'Presence ▾',
+    'navMultimedia': 'Multimedia',
+    'navContact': 'Contact',
+    'ctaGetInTouch': 'Get In Touch →',
+    'heroH1': 'Anti-Corruption & Bribery',
+    'heroP': 'Protecting individuals and organisations from corruption risks with expert legal advice on compliance, prevention, and defence.',
+    'sec1Tag': 'Service',
+    'sec1Title': 'Anti-Corruption & Bribery <em>Legal Services</em>',
+    'sec1Lead': 'Corruption and bribery pose serious legal and reputational risks. Elite Law Firm provides comprehensive legal support to help organisations establish robust compliance frameworks.',
+    'dir': 'ltr'
   },
   so: {
-    dir: 'ltr',
-    navHome: 'Bogga Hore', navAbout: 'Naga Waran', navServices: 'Adeegyada ▾',
-    navPresence: 'Goobaha ▾', navContact: 'Xiriir',
+    'navHome': 'Bogga Hore',
+    'navAbout': 'Naga Waran',
+    'navAbout2': 'Naga Waran ▾',
+    'navServices': 'Adeegyada ▾',
+    'navPresence': 'Goobaha ▾',
+    'navMultimedia': 'Warbaahinta',
+    'navContact': 'Xiriir',
+    'ctaGetInTouch': 'Nala Xiriir →',
+    'heroH1': 'Ka-hortagga Musuqmaasuqa & Bakhshiishka',
+    'heroP': 'Ilaalinta shakhsiyaadka iyo hay\'adaha khataraha musuqmaasuqa iyada oo loo marayo la-talin sharci khabiir ah.',
+    'sec1Tag': 'Adeeg',
+    'sec1Title': 'Adeegyada Sharciga ee <em>Ka-hortagga Musuqmaasuqa</em>',
+    'sec1Lead': 'Musuqmaasuqa iyo bakhshiishku waxay horseedaan khataraha sharciga iyo sumcadda. Elite Law Firm waxay bixisaa taageero sharciga oo dhammaystiran.',
+    'dir': 'ltr'
   },
   ar: {
-    dir: 'rtl',
-    navHome: 'الرئيسية', navAbout: 'من نحن', navServices: 'الخدمات ▾',
-    navPresence: 'حضورنا ▾', navContact: 'اتصل بنا',
+    'navHome': 'الرئيسية',
+    'navAbout': 'من نحن',
+    'navAbout2': 'من نحن ▾',
+    'navServices': 'الخدمات ▾',
+    'navPresence': 'حضورنا ▾',
+    'navMultimedia': 'الوسائط',
+    'navContact': 'اتصل بنا',
+    'ctaGetInTouch': 'تواصل معنا →',
+    'heroH1': 'مكافحة الفساد والرشوة',
+    'heroP': 'حماية الأفراد والمنظمات من مخاطر الفساد بمشورة قانونية متخصصة.',
+    'sec1Tag': 'خدمة',
+    'sec1Title': 'الخدمات القانونية <em>لمكافحة الفساد والرشوة</em>',
+    'sec1Lead': 'يشكل الفساد والرشوة مخاطر قانونية وسمعية خطيرة. تقدم إليت لو فيرم دعماً قانونياً شاملاً لمساعدة المنظمات.',
+    'dir': 'rtl'
   }
 };
-
 let currentLang = 'en';
-
 function setLang(lang) {
   const t = translations[lang];
   if (!t) return;
   currentLang = lang;
-
   document.documentElement.dir = t.dir;
   document.documentElement.lang = lang;
-
   const chosen = document.querySelector('.lang-option[data-lang="' + lang + '"]');
   if (chosen) {
     document.getElementById('langLabel').textContent = lang.toUpperCase();
     document.querySelector('#langTrigger .lang-flag').textContent = chosen.dataset.flag;
   }
-  document.querySelectorAll('.lang-option').forEach(function(b){
-    b.classList.toggle('active', b.dataset.lang === lang);
-  });
-
+  document.querySelectorAll('.lang-option').forEach(function(b){ b.classList.toggle('active', b.dataset.lang === lang); });
   document.getElementById('langSwitcher').classList.remove('open');
-  document.getElementById('langTrigger').setAttribute('aria-expanded', 'false');
-
-  document.querySelectorAll('[data-i18n]').forEach(function(el){
-    const key = el.dataset.i18n;
-    if (t[key] !== undefined) el.textContent = t[key];
-  });
+  document.getElementById('langTrigger').setAttribute('aria-expanded','false');
+  document.querySelectorAll('[data-i18n]').forEach(function(el){ const key=el.dataset.i18n; if(t[key]!==undefined) el.textContent=t[key]; });
+  document.querySelectorAll('[data-i18n-html]').forEach(function(el){ const key=el.dataset.i18nHtml; if(t[key]!==undefined) el.innerHTML=t[key]; });
 }
-
 document.addEventListener('DOMContentLoaded', function() {
-  const switcher = document.getElementById('langSwitcher');
-  const trigger  = document.getElementById('langTrigger');
-  if (!switcher || !trigger) return;
-  trigger.addEventListener('click', function(e){
-    e.stopPropagation();
-    const isOpen = switcher.classList.toggle('open');
-    trigger.setAttribute('aria-expanded', isOpen);
-  });
-  document.addEventListener('click', function(){
-    switcher.classList.remove('open');
-    trigger.setAttribute('aria-expanded', 'false');
-  });
-  switcher.addEventListener('click', function(e){ e.stopPropagation(); });
+  const switcher=document.getElementById('langSwitcher');
+  const trigger=document.getElementById('langTrigger');
+  if(!switcher||!trigger) return;
+  trigger.addEventListener('click',function(e){ e.stopPropagation(); const isOpen=switcher.classList.toggle('open'); trigger.setAttribute('aria-expanded',isOpen); });
+  document.addEventListener('click',function(){ switcher.classList.remove('open'); trigger.setAttribute('aria-expanded','false'); });
+  switcher.addEventListener('click',function(e){ e.stopPropagation(); });
 });
 </script>
 </body>

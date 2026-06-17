@@ -316,15 +316,15 @@
 </nav>
 <section class="page-hero">
   <div class="breadcrumb"><a href="/">Home</a> › <a href="#">About Us</a> › Where We Operate</div>
-  <h1>Where We Operate</h1>
-  <p>From Mogadishu to the wider East African region — our reach extends wherever our clients need us.</p>
+  <h1 data-i18n-html="heroH1">Where We Operate</h1>
+  <p data-i18n="heroP">From Mogadishu to the wider East African region — our reach extends wherever our clients need us.</p>
   <div class="gold-rule"></div>
 </section>
 
 <section class="page-content">
-  <div class="section-tag">Our Presence</div>
-  <h2 class="section-title">Serving Clients Across <em>East Africa</em></h2>
-  <p class="lead">Elite Law Firm is headquartered in Mogadishu, Somalia, with the capacity to advise clients on matters spanning the entire East African region. Our network of contacts, partners, and local experts enables us to provide on-the-ground support wherever you need it.</p>
+  <div class="section-tag" data-i18n="sec1Tag">Our Presence</div>
+  <h2 class="section-title" data-i18n-html="sec1Title">Serving Clients Across <em>East Africa</em></h2>
+  <p class="lead" data-i18n="sec1Lead">Elite Law Firm is headquartered in Mogadishu, Somalia, with the capacity to advise clients on matters spanning the entire East African region. Our network of contacts, partners, and local experts enables us to provide on-the-ground support wherever you need it.</p>
   <div class="content-grid">
     <ul class="feature-list">
     <li>Mogadishu — our headquarters, serving the Banaadir region and beyond</li>
@@ -478,68 +478,84 @@
   });
 })();
 </script>
+
 <script>
 // ── LANGUAGE SWITCHER ──
 const translations = {
   en: {
-    dir: 'ltr',
-    navHome: 'Home', navAbout: 'About Us', navServices: 'Services ▾',
-    navPresence: 'Presence ▾', navContact: 'Contact',
+    'navHome': 'Home',
+    'navAbout': 'About Us',
+    'navAbout2': 'About Us ▾',
+    'navServices': 'Services ▾',
+    'navPresence': 'Presence ▾',
+    'navMultimedia': 'Multimedia',
+    'navContact': 'Contact',
+    'ctaGetInTouch': 'Get In Touch →',
+    'heroH1': 'Where We Operate',
+    'heroP': 'Elite Law Firm\'s geographic reach — from our Mogadishu headquarters to across Somalia and the wider East African region.',
+    'sec1Tag': 'Our Geographic Reach',
+    'sec1Title': 'Where We <em>Operate</em>',
+    'sec1Lead': 'Elite Law Firm is headquartered in Mogadishu, with the capacity and connections to serve clients across all of Somalia\'s regions and the broader East African market.',
+    'dir': 'ltr'
   },
   so: {
-    dir: 'ltr',
-    navHome: 'Bogga Hore', navAbout: 'Naga Waran', navServices: 'Adeegyada ▾',
-    navPresence: 'Goobaha ▾', navContact: 'Xiriir',
+    'navHome': 'Bogga Hore',
+    'navAbout': 'Naga Waran',
+    'navAbout2': 'Naga Waran ▾',
+    'navServices': 'Adeegyada ▾',
+    'navPresence': 'Goobaha ▾',
+    'navMultimedia': 'Warbaahinta',
+    'navContact': 'Xiriir',
+    'ctaGetInTouch': 'Nala Xiriir →',
+    'heroH1': 'Halka Aan Ka Hawlgalno',
+    'heroP': 'Gaadhitaanka juqraafiga ee Elite Law Firm — laga bilaabo xafiiskeenna Guud ee Muqdisho ilaa Soomaaliya iyo gobolka Bariga Afrika.',
+    'sec1Tag': 'Gaadhitaankeenna Juqraafiga',
+    'sec1Title': 'Halka Aan Ka <em>Hawlgalno</em>',
+    'sec1Lead': 'Elite Law Firm waxay ku xarantahay Muqdisho, awooda iyo xididdada u leedahay in ay u adeegto macaamiisha gobolada Soomaaliya oo dhan.',
+    'dir': 'ltr'
   },
   ar: {
-    dir: 'rtl',
-    navHome: 'الرئيسية', navAbout: 'من نحن', navServices: 'الخدمات ▾',
-    navPresence: 'حضورنا ▾', navContact: 'اتصل بنا',
+    'navHome': 'الرئيسية',
+    'navAbout': 'من نحن',
+    'navAbout2': 'من نحن ▾',
+    'navServices': 'الخدمات ▾',
+    'navPresence': 'حضورنا ▾',
+    'navMultimedia': 'الوسائط',
+    'navContact': 'اتصل بنا',
+    'ctaGetInTouch': 'تواصل معنا →',
+    'heroH1': 'أين نعمل',
+    'heroP': 'النطاق الجغرافي لإليت لو فيرم — من مقرنا الرئيسي في مقديشو عبر الصومال ومنطقة شرق أفريقيا الأوسع.',
+    'sec1Tag': 'نطاقنا الجغرافي',
+    'sec1Title': 'أين <em>نعمل</em>',
+    'sec1Lead': 'يقع المقر الرئيسي لإليت لو فيرم في مقديشو، مع القدرة والاتصالات اللازمة لخدمة العملاء في جميع مناطق الصومال.',
+    'dir': 'rtl'
   }
 };
-
 let currentLang = 'en';
-
 function setLang(lang) {
   const t = translations[lang];
   if (!t) return;
   currentLang = lang;
-
   document.documentElement.dir = t.dir;
   document.documentElement.lang = lang;
-
   const chosen = document.querySelector('.lang-option[data-lang="' + lang + '"]');
   if (chosen) {
     document.getElementById('langLabel').textContent = lang.toUpperCase();
     document.querySelector('#langTrigger .lang-flag').textContent = chosen.dataset.flag;
   }
-  document.querySelectorAll('.lang-option').forEach(function(b){
-    b.classList.toggle('active', b.dataset.lang === lang);
-  });
-
+  document.querySelectorAll('.lang-option').forEach(function(b){ b.classList.toggle('active', b.dataset.lang === lang); });
   document.getElementById('langSwitcher').classList.remove('open');
-  document.getElementById('langTrigger').setAttribute('aria-expanded', 'false');
-
-  document.querySelectorAll('[data-i18n]').forEach(function(el){
-    const key = el.dataset.i18n;
-    if (t[key] !== undefined) el.textContent = t[key];
-  });
+  document.getElementById('langTrigger').setAttribute('aria-expanded','false');
+  document.querySelectorAll('[data-i18n]').forEach(function(el){ const key=el.dataset.i18n; if(t[key]!==undefined) el.textContent=t[key]; });
+  document.querySelectorAll('[data-i18n-html]').forEach(function(el){ const key=el.dataset.i18nHtml; if(t[key]!==undefined) el.innerHTML=t[key]; });
 }
-
 document.addEventListener('DOMContentLoaded', function() {
-  const switcher = document.getElementById('langSwitcher');
-  const trigger  = document.getElementById('langTrigger');
-  if (!switcher || !trigger) return;
-  trigger.addEventListener('click', function(e){
-    e.stopPropagation();
-    const isOpen = switcher.classList.toggle('open');
-    trigger.setAttribute('aria-expanded', isOpen);
-  });
-  document.addEventListener('click', function(){
-    switcher.classList.remove('open');
-    trigger.setAttribute('aria-expanded', 'false');
-  });
-  switcher.addEventListener('click', function(e){ e.stopPropagation(); });
+  const switcher=document.getElementById('langSwitcher');
+  const trigger=document.getElementById('langTrigger');
+  if(!switcher||!trigger) return;
+  trigger.addEventListener('click',function(e){ e.stopPropagation(); const isOpen=switcher.classList.toggle('open'); trigger.setAttribute('aria-expanded',isOpen); });
+  document.addEventListener('click',function(){ switcher.classList.remove('open'); trigger.setAttribute('aria-expanded','false'); });
+  switcher.addEventListener('click',function(e){ e.stopPropagation(); });
 });
 </script>
 </body>

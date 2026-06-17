@@ -322,15 +322,15 @@
 </nav>
 <section class="page-hero">
   <div class="breadcrumb"><a href="/">Home</a> › <a href="#">Services</a> › General Legal Advisory</div>
-  <h1>General Legal Advisory</h1>
-  <p>Your trusted legal partner — providing ongoing advice, risk assessment, and tailored solutions across all areas of law.</p>
+  <h1 data-i18n-html="heroH1">General Legal Advisory</h1>
+  <p data-i18n="heroP">Your trusted legal partner — providing ongoing advice, risk assessment, and tailored solutions across all areas of law.</p>
   <div class="gold-rule"></div>
 </section>
 
 <section class="page-content">
-  <div class="section-tag">Service</div>
-  <h2 class="section-title">General Legal <em>Advisory Services</em></h2>
-  <p class="lead">Having access to reliable, ongoing legal advice is invaluable for individuals and organisations alike. Elite Law Firm offers comprehensive general legal advisory services, acting as your trusted legal partner and providing guidance whenever you need it.</p>
+  <div class="section-tag" data-i18n="sec1Tag">Service</div>
+  <h2 class="section-title" data-i18n-html="sec1Title">General Legal <em>Advisory Services</em></h2>
+  <p class="lead" data-i18n="sec1Lead">Having access to reliable, ongoing legal advice is invaluable for individuals and organisations alike. Elite Law Firm offers comprehensive general legal advisory services, acting as your trusted legal partner and providing guidance whenever you need it.</p>
   <div class="content-grid">
     <ul class="feature-list">
     <li>Ongoing legal consultation and retainer arrangements</li>
@@ -486,68 +486,84 @@
   });
 })();
 </script>
+
 <script>
 // ── LANGUAGE SWITCHER ──
 const translations = {
   en: {
-    dir: 'ltr',
-    navHome: 'Home', navAbout: 'About Us', navServices: 'Services ▾',
-    navPresence: 'Presence ▾', navContact: 'Contact',
+    'navHome': 'Home',
+    'navAbout': 'About Us',
+    'navAbout2': 'About Us ▾',
+    'navServices': 'Services ▾',
+    'navPresence': 'Presence ▾',
+    'navMultimedia': 'Multimedia',
+    'navContact': 'Contact',
+    'ctaGetInTouch': 'Get In Touch →',
+    'heroH1': 'General Legal Advisory',
+    'heroP': 'Broad-based, practical legal advice for individuals, businesses, and organisations on any legal matter arising in Somalia.',
+    'sec1Tag': 'Service',
+    'sec1Title': 'General Legal <em>Advisory Services</em>',
+    'sec1Lead': 'Not every legal question fits neatly into a single category. Elite Law Firm provides flexible, general legal advisory services on a wide range of legal issues.',
+    'dir': 'ltr'
   },
   so: {
-    dir: 'ltr',
-    navHome: 'Bogga Hore', navAbout: 'Naga Waran', navServices: 'Adeegyada ▾',
-    navPresence: 'Goobaha ▾', navContact: 'Xiriir',
+    'navHome': 'Bogga Hore',
+    'navAbout': 'Naga Waran',
+    'navAbout2': 'Naga Waran ▾',
+    'navServices': 'Adeegyada ▾',
+    'navPresence': 'Goobaha ▾',
+    'navMultimedia': 'Warbaahinta',
+    'navContact': 'Xiriir',
+    'ctaGetInTouch': 'Nala Xiriir →',
+    'heroH1': 'La-talinta Sharciga Guud',
+    'heroP': 'La-talin sharci ah oo ballaadhan, wax ku ool ah oo loogu talagalay shakhsiyaadka, ganacsiyada, iyo hay\'adaha.',
+    'sec1Tag': 'Adeeg',
+    'sec1Title': 'Adeegyada <em>La-talinta Sharciga Guud</em>',
+    'sec1Lead': 'Ma jirto su\'aal sharci kasta oo si qumman ugu haboon hal qaybood. Elite Law Firm waxay bixisaa adeegyada la-talinta sharciga guud ee jilicsan.',
+    'dir': 'ltr'
   },
   ar: {
-    dir: 'rtl',
-    navHome: 'الرئيسية', navAbout: 'من نحن', navServices: 'الخدمات ▾',
-    navPresence: 'حضورنا ▾', navContact: 'اتصل بنا',
+    'navHome': 'الرئيسية',
+    'navAbout': 'من نحن',
+    'navAbout2': 'من نحن ▾',
+    'navServices': 'الخدمات ▾',
+    'navPresence': 'حضورنا ▾',
+    'navMultimedia': 'الوسائط',
+    'navContact': 'اتصل بنا',
+    'ctaGetInTouch': 'تواصل معنا →',
+    'heroH1': 'الاستشارات القانونية العامة',
+    'heroP': 'مشورة قانونية عملية وشاملة للأفراد والشركات والمنظمات في أي مسألة قانونية.',
+    'sec1Tag': 'خدمة',
+    'sec1Title': 'خدمات <em>الاستشارات القانونية العامة</em>',
+    'sec1Lead': 'لا تناسب كل مسألة قانونية فئة واحدة بدقة. تقدم إليت لو فيرم خدمات استشارات قانونية عامة مرنة.',
+    'dir': 'rtl'
   }
 };
-
 let currentLang = 'en';
-
 function setLang(lang) {
   const t = translations[lang];
   if (!t) return;
   currentLang = lang;
-
   document.documentElement.dir = t.dir;
   document.documentElement.lang = lang;
-
   const chosen = document.querySelector('.lang-option[data-lang="' + lang + '"]');
   if (chosen) {
     document.getElementById('langLabel').textContent = lang.toUpperCase();
     document.querySelector('#langTrigger .lang-flag').textContent = chosen.dataset.flag;
   }
-  document.querySelectorAll('.lang-option').forEach(function(b){
-    b.classList.toggle('active', b.dataset.lang === lang);
-  });
-
+  document.querySelectorAll('.lang-option').forEach(function(b){ b.classList.toggle('active', b.dataset.lang === lang); });
   document.getElementById('langSwitcher').classList.remove('open');
-  document.getElementById('langTrigger').setAttribute('aria-expanded', 'false');
-
-  document.querySelectorAll('[data-i18n]').forEach(function(el){
-    const key = el.dataset.i18n;
-    if (t[key] !== undefined) el.textContent = t[key];
-  });
+  document.getElementById('langTrigger').setAttribute('aria-expanded','false');
+  document.querySelectorAll('[data-i18n]').forEach(function(el){ const key=el.dataset.i18n; if(t[key]!==undefined) el.textContent=t[key]; });
+  document.querySelectorAll('[data-i18n-html]').forEach(function(el){ const key=el.dataset.i18nHtml; if(t[key]!==undefined) el.innerHTML=t[key]; });
 }
-
 document.addEventListener('DOMContentLoaded', function() {
-  const switcher = document.getElementById('langSwitcher');
-  const trigger  = document.getElementById('langTrigger');
-  if (!switcher || !trigger) return;
-  trigger.addEventListener('click', function(e){
-    e.stopPropagation();
-    const isOpen = switcher.classList.toggle('open');
-    trigger.setAttribute('aria-expanded', isOpen);
-  });
-  document.addEventListener('click', function(){
-    switcher.classList.remove('open');
-    trigger.setAttribute('aria-expanded', 'false');
-  });
-  switcher.addEventListener('click', function(e){ e.stopPropagation(); });
+  const switcher=document.getElementById('langSwitcher');
+  const trigger=document.getElementById('langTrigger');
+  if(!switcher||!trigger) return;
+  trigger.addEventListener('click',function(e){ e.stopPropagation(); const isOpen=switcher.classList.toggle('open'); trigger.setAttribute('aria-expanded',isOpen); });
+  document.addEventListener('click',function(){ switcher.classList.remove('open'); trigger.setAttribute('aria-expanded','false'); });
+  switcher.addEventListener('click',function(e){ e.stopPropagation(); });
 });
 </script>
 </body>

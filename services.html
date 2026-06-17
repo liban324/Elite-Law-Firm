@@ -397,7 +397,7 @@
 <!-- PAGE BANNER -->
 <div class="page-banner">
   <div class="breadcrumb"><a href="index.html">Home</a> &nbsp;/&nbsp; Our Legal Services</div>
-  <h1>Our <em>Legal Services</em></h1>
+  <h1 data-i18n-html="heroH1">Our <em>Legal Services</em></h1>
   <p>We maintain a diverse and dynamic legal practice covering key sectors of the Somali economy and legal system — from business formation and compliance to dispute resolution and strategic advisory.</p>
   <div class="gold-rule"></div>
 </div>
@@ -743,68 +743,84 @@
   });
 })();
 </script>
+
 <script>
 // ── LANGUAGE SWITCHER ──
 const translations = {
   en: {
-    dir: 'ltr',
-    navHome: 'Home', navAbout: 'About Us', navServices: 'Services ▾',
-    navPresence: 'Presence ▾', navContact: 'Contact',
+    'navHome': 'Home',
+    'navAbout': 'About Us',
+    'navAbout2': 'About Us ▾',
+    'navServices': 'Services ▾',
+    'navPresence': 'Presence ▾',
+    'navMultimedia': 'Multimedia',
+    'navContact': 'Contact',
+    'ctaGetInTouch': 'Get In Touch →',
+    'heroH1': 'Our Legal Services',
+    'heroP': 'A comprehensive range of specialist legal services for individuals, businesses, and institutions across Somalia and East Africa.',
+    'sec1Tag': 'What We Do',
+    'sec1Title': 'Full-Service <em>Legal Practice</em>',
+    'sec1Lead': 'Elite Law Firm maintains a diverse and dynamic legal practice covering the key sectors of the Somali economy and legal system.',
+    'dir': 'ltr'
   },
   so: {
-    dir: 'ltr',
-    navHome: 'Bogga Hore', navAbout: 'Naga Waran', navServices: 'Adeegyada ▾',
-    navPresence: 'Goobaha ▾', navContact: 'Xiriir',
+    'navHome': 'Bogga Hore',
+    'navAbout': 'Naga Waran',
+    'navAbout2': 'Naga Waran ▾',
+    'navServices': 'Adeegyada ▾',
+    'navPresence': 'Goobaha ▾',
+    'navMultimedia': 'Warbaahinta',
+    'navContact': 'Xiriir',
+    'ctaGetInTouch': 'Nala Xiriir →',
+    'heroH1': 'Adeegyadeenna Sharciga',
+    'heroP': 'Noocyo dhammaystiran oo adeegyada sharciga ee khabiirka ah oo loogu talagalay shakhsiyaadka, ganacsiyada, iyo hay\'adaha.',
+    'sec1Tag': 'Waxa Aan Qabanno',
+    'sec1Title': 'Dhaqanka Sharciga ee <em>Dhammaystiran</em>',
+    'sec1Lead': 'Elite Law Firm waxay hayaa dhaqan sharci oo kala duwan oo firfircoon oo daboolaya dhinacyada muhiimka ah ee dhaqaalaha Soomaalida.',
+    'dir': 'ltr'
   },
   ar: {
-    dir: 'rtl',
-    navHome: 'الرئيسية', navAbout: 'من نحن', navServices: 'الخدمات ▾',
-    navPresence: 'حضورنا ▾', navContact: 'اتصل بنا',
+    'navHome': 'الرئيسية',
+    'navAbout': 'من نحن',
+    'navAbout2': 'من نحن ▾',
+    'navServices': 'الخدمات ▾',
+    'navPresence': 'حضورنا ▾',
+    'navMultimedia': 'الوسائط',
+    'navContact': 'اتصل بنا',
+    'ctaGetInTouch': 'تواصل معنا →',
+    'heroH1': 'خدماتنا القانونية',
+    'heroP': 'مجموعة شاملة من الخدمات القانونية المتخصصة للأفراد والشركات والمؤسسات.',
+    'sec1Tag': 'ما نقوم به',
+    'sec1Title': 'ممارسة قانونية <em>متكاملة الخدمات</em>',
+    'sec1Lead': 'تحافظ إليت لو فيرم على ممارسة قانونية متنوعة وديناميكية تغطي القطاعات الرئيسية للاقتصاد الصومالي.',
+    'dir': 'rtl'
   }
 };
-
 let currentLang = 'en';
-
 function setLang(lang) {
   const t = translations[lang];
   if (!t) return;
   currentLang = lang;
-
   document.documentElement.dir = t.dir;
   document.documentElement.lang = lang;
-
   const chosen = document.querySelector('.lang-option[data-lang="' + lang + '"]');
   if (chosen) {
     document.getElementById('langLabel').textContent = lang.toUpperCase();
     document.querySelector('#langTrigger .lang-flag').textContent = chosen.dataset.flag;
   }
-  document.querySelectorAll('.lang-option').forEach(function(b){
-    b.classList.toggle('active', b.dataset.lang === lang);
-  });
-
+  document.querySelectorAll('.lang-option').forEach(function(b){ b.classList.toggle('active', b.dataset.lang === lang); });
   document.getElementById('langSwitcher').classList.remove('open');
-  document.getElementById('langTrigger').setAttribute('aria-expanded', 'false');
-
-  document.querySelectorAll('[data-i18n]').forEach(function(el){
-    const key = el.dataset.i18n;
-    if (t[key] !== undefined) el.textContent = t[key];
-  });
+  document.getElementById('langTrigger').setAttribute('aria-expanded','false');
+  document.querySelectorAll('[data-i18n]').forEach(function(el){ const key=el.dataset.i18n; if(t[key]!==undefined) el.textContent=t[key]; });
+  document.querySelectorAll('[data-i18n-html]').forEach(function(el){ const key=el.dataset.i18nHtml; if(t[key]!==undefined) el.innerHTML=t[key]; });
 }
-
 document.addEventListener('DOMContentLoaded', function() {
-  const switcher = document.getElementById('langSwitcher');
-  const trigger  = document.getElementById('langTrigger');
-  if (!switcher || !trigger) return;
-  trigger.addEventListener('click', function(e){
-    e.stopPropagation();
-    const isOpen = switcher.classList.toggle('open');
-    trigger.setAttribute('aria-expanded', isOpen);
-  });
-  document.addEventListener('click', function(){
-    switcher.classList.remove('open');
-    trigger.setAttribute('aria-expanded', 'false');
-  });
-  switcher.addEventListener('click', function(e){ e.stopPropagation(); });
+  const switcher=document.getElementById('langSwitcher');
+  const trigger=document.getElementById('langTrigger');
+  if(!switcher||!trigger) return;
+  trigger.addEventListener('click',function(e){ e.stopPropagation(); const isOpen=switcher.classList.toggle('open'); trigger.setAttribute('aria-expanded',isOpen); });
+  document.addEventListener('click',function(){ switcher.classList.remove('open'); trigger.setAttribute('aria-expanded','false'); });
+  switcher.addEventListener('click',function(e){ e.stopPropagation(); });
 });
 </script>
 </body>

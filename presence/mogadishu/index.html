@@ -316,15 +316,15 @@
 </nav>
 <section class="page-hero">
   <div class="breadcrumb"><a href="/">Home</a> › <a href="#">Presence</a> › Mogadishu</div>
-  <h1>Our Presence in Mogadishu</h1>
-  <p>Headquartered in the heart of Somalia's capital — serving the Banaadir region and the nation's most dynamic legal market.</p>
+  <h1 data-i18n-html="heroH1">Our Presence in Mogadishu</h1>
+  <p data-i18n="heroP">Headquartered in the heart of Somalia's capital — serving the Banaadir region and the nation's most dynamic legal market.</p>
   <div class="gold-rule"></div>
 </section>
 
 <section class="page-content">
-  <div class="section-tag">Our Location</div>
-  <h2 class="section-title">Elite Law Firm in <em>Mogadishu</em></h2>
-  <p class="lead">Elite Law Firm's headquarters is located in Mogadishu, the capital city and economic hub of Somalia. From here, we serve individuals, businesses, government institutions, and international organisations operating in the Banaadir region and across the country.</p>
+  <div class="section-tag" data-i18n="sec1Tag">Our Location</div>
+  <h2 class="section-title" data-i18n-html="sec1Title">Elite Law Firm in <em>Mogadishu</em></h2>
+  <p class="lead" data-i18n="sec1Lead">Elite Law Firm's headquarters is located in Mogadishu, the capital city and economic hub of Somalia. From here, we serve individuals, businesses, government institutions, and international organisations operating in the Banaadir region and across the country.</p>
   <div class="content-grid">
     <ul class="feature-list">
     <li>Strategically located in Mogadishu's central business district</li>
@@ -478,68 +478,84 @@
   });
 })();
 </script>
+
 <script>
 // ── LANGUAGE SWITCHER ──
 const translations = {
   en: {
-    dir: 'ltr',
-    navHome: 'Home', navAbout: 'About Us', navServices: 'Services ▾',
-    navPresence: 'Presence ▾', navContact: 'Contact',
+    'navHome': 'Home',
+    'navAbout': 'About Us',
+    'navAbout2': 'About Us ▾',
+    'navServices': 'Services ▾',
+    'navPresence': 'Presence ▾',
+    'navMultimedia': 'Multimedia',
+    'navContact': 'Contact',
+    'ctaGetInTouch': 'Get In Touch →',
+    'heroH1': 'Mogadishu',
+    'heroP': 'Elite Law Firm\'s headquarters — the heart of our legal operations, serving clients across the Banaadir region and Somalia.',
+    'sec1Tag': 'Our Presence',
+    'sec1Title': 'Legal Services in <em>Mogadishu</em>',
+    'sec1Lead': 'As Somalia\'s capital and commercial hub, Mogadishu is the centre of Elite Law Firm\'s operations.',
+    'dir': 'ltr'
   },
   so: {
-    dir: 'ltr',
-    navHome: 'Bogga Hore', navAbout: 'Naga Waran', navServices: 'Adeegyada ▾',
-    navPresence: 'Goobaha ▾', navContact: 'Xiriir',
+    'navHome': 'Bogga Hore',
+    'navAbout': 'Naga Waran',
+    'navAbout2': 'Naga Waran ▾',
+    'navServices': 'Adeegyada ▾',
+    'navPresence': 'Goobaha ▾',
+    'navMultimedia': 'Warbaahinta',
+    'navContact': 'Xiriir',
+    'ctaGetInTouch': 'Nala Xiriir →',
+    'heroH1': 'Muqdisho',
+    'heroP': 'Xafiiska Guud ee Elite Law Firm — wadnaha hawlgaladeenna sharciga, u adeegid macaamiisha gobolka Banaadir iyo Soomaaliya.',
+    'sec1Tag': 'Goobteenna',
+    'sec1Title': 'Adeegyada Sharciga ee <em>Muqdisho</em>',
+    'sec1Lead': 'Muqdisho oo ah caasimadda Soomaaliya iyo xarunta ganacsiga, waxay tahay xarunta hawlgalada Elite Law Firm.',
+    'dir': 'ltr'
   },
   ar: {
-    dir: 'rtl',
-    navHome: 'الرئيسية', navAbout: 'من نحن', navServices: 'الخدمات ▾',
-    navPresence: 'حضورنا ▾', navContact: 'اتصل بنا',
+    'navHome': 'الرئيسية',
+    'navAbout': 'من نحن',
+    'navAbout2': 'من نحن ▾',
+    'navServices': 'الخدمات ▾',
+    'navPresence': 'حضورنا ▾',
+    'navMultimedia': 'الوسائط',
+    'navContact': 'اتصل بنا',
+    'ctaGetInTouch': 'تواصل معنا →',
+    'heroH1': 'مقديشو',
+    'heroP': 'المقر الرئيسي لإليت لو فيرم — قلب عملياتنا القانونية، خدمة العملاء في منطقة بنادر والصومال.',
+    'sec1Tag': 'حضورنا',
+    'sec1Title': 'الخدمات القانونية في <em>مقديشو</em>',
+    'sec1Lead': 'بوصفها عاصمة الصومال ومركزه التجاري، تُعدّ مقديشو مركز عمليات إليت لو فيرم.',
+    'dir': 'rtl'
   }
 };
-
 let currentLang = 'en';
-
 function setLang(lang) {
   const t = translations[lang];
   if (!t) return;
   currentLang = lang;
-
   document.documentElement.dir = t.dir;
   document.documentElement.lang = lang;
-
   const chosen = document.querySelector('.lang-option[data-lang="' + lang + '"]');
   if (chosen) {
     document.getElementById('langLabel').textContent = lang.toUpperCase();
     document.querySelector('#langTrigger .lang-flag').textContent = chosen.dataset.flag;
   }
-  document.querySelectorAll('.lang-option').forEach(function(b){
-    b.classList.toggle('active', b.dataset.lang === lang);
-  });
-
+  document.querySelectorAll('.lang-option').forEach(function(b){ b.classList.toggle('active', b.dataset.lang === lang); });
   document.getElementById('langSwitcher').classList.remove('open');
-  document.getElementById('langTrigger').setAttribute('aria-expanded', 'false');
-
-  document.querySelectorAll('[data-i18n]').forEach(function(el){
-    const key = el.dataset.i18n;
-    if (t[key] !== undefined) el.textContent = t[key];
-  });
+  document.getElementById('langTrigger').setAttribute('aria-expanded','false');
+  document.querySelectorAll('[data-i18n]').forEach(function(el){ const key=el.dataset.i18n; if(t[key]!==undefined) el.textContent=t[key]; });
+  document.querySelectorAll('[data-i18n-html]').forEach(function(el){ const key=el.dataset.i18nHtml; if(t[key]!==undefined) el.innerHTML=t[key]; });
 }
-
 document.addEventListener('DOMContentLoaded', function() {
-  const switcher = document.getElementById('langSwitcher');
-  const trigger  = document.getElementById('langTrigger');
-  if (!switcher || !trigger) return;
-  trigger.addEventListener('click', function(e){
-    e.stopPropagation();
-    const isOpen = switcher.classList.toggle('open');
-    trigger.setAttribute('aria-expanded', isOpen);
-  });
-  document.addEventListener('click', function(){
-    switcher.classList.remove('open');
-    trigger.setAttribute('aria-expanded', 'false');
-  });
-  switcher.addEventListener('click', function(e){ e.stopPropagation(); });
+  const switcher=document.getElementById('langSwitcher');
+  const trigger=document.getElementById('langTrigger');
+  if(!switcher||!trigger) return;
+  trigger.addEventListener('click',function(e){ e.stopPropagation(); const isOpen=switcher.classList.toggle('open'); trigger.setAttribute('aria-expanded',isOpen); });
+  document.addEventListener('click',function(){ switcher.classList.remove('open'); trigger.setAttribute('aria-expanded','false'); });
+  switcher.addEventListener('click',function(e){ e.stopPropagation(); });
 });
 </script>
 </body>

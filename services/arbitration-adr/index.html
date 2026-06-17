@@ -322,15 +322,15 @@
 </nav>
 <section class="page-hero">
   <div class="breadcrumb"><a href="/">Home</a> › <a href="#">Services</a> › Arbitration & ADR</div>
-  <h1>Arbitration & ADR</h1>
-  <p>Efficient, cost-effective dispute resolution — resolving commercial and civil disputes outside the courtroom.</p>
+  <h1 data-i18n-html="heroH1">Arbitration & ADR</h1>
+  <p data-i18n="heroP">Efficient, cost-effective dispute resolution — resolving commercial and civil disputes outside the courtroom.</p>
   <div class="gold-rule"></div>
 </section>
 
 <section class="page-content">
-  <div class="section-tag">Service</div>
-  <h2 class="section-title">Arbitration & Alternative <em>Dispute Resolution</em></h2>
-  <p class="lead">Not every dispute needs to go to court. Alternative dispute resolution methods — including mediation, arbitration, and negotiated settlement — offer faster, more cost-effective, and confidential ways to resolve conflicts. Elite Law Firm has extensive experience guiding clients through all forms of ADR.</p>
+  <div class="section-tag" data-i18n="sec1Tag">Service</div>
+  <h2 class="section-title" data-i18n-html="sec1Title">Arbitration & Alternative <em>Dispute Resolution</em></h2>
+  <p class="lead" data-i18n="sec1Lead">Not every dispute needs to go to court. Alternative dispute resolution methods — including mediation, arbitration, and negotiated settlement — offer faster, more cost-effective, and confidential ways to resolve conflicts. Elite Law Firm has extensive experience guiding clients through all forms of ADR.</p>
   <div class="content-grid">
     <ul class="feature-list">
     <li>Commercial and civil arbitration proceedings</li>
@@ -486,68 +486,84 @@
   });
 })();
 </script>
+
 <script>
 // ── LANGUAGE SWITCHER ──
 const translations = {
   en: {
-    dir: 'ltr',
-    navHome: 'Home', navAbout: 'About Us', navServices: 'Services ▾',
-    navPresence: 'Presence ▾', navContact: 'Contact',
+    'navHome': 'Home',
+    'navAbout': 'About Us',
+    'navAbout2': 'About Us ▾',
+    'navServices': 'Services ▾',
+    'navPresence': 'Presence ▾',
+    'navMultimedia': 'Multimedia',
+    'navContact': 'Contact',
+    'ctaGetInTouch': 'Get In Touch →',
+    'heroH1': 'Arbitration & ADR',
+    'heroP': 'Efficient, cost-effective dispute resolution through arbitration, mediation, and alternative dispute resolution mechanisms.',
+    'sec1Tag': 'Service',
+    'sec1Title': 'Arbitration & ADR <em>Legal Services</em>',
+    'sec1Lead': 'Disputes are an inevitable part of business and personal affairs. Elite Law Firm provides expert representation and advisory services across all forms of alternative dispute resolution.',
+    'dir': 'ltr'
   },
   so: {
-    dir: 'ltr',
-    navHome: 'Bogga Hore', navAbout: 'Naga Waran', navServices: 'Adeegyada ▾',
-    navPresence: 'Goobaha ▾', navContact: 'Xiriir',
+    'navHome': 'Bogga Hore',
+    'navAbout': 'Naga Waran',
+    'navAbout2': 'Naga Waran ▾',
+    'navServices': 'Adeegyada ▾',
+    'navPresence': 'Goobaha ▾',
+    'navMultimedia': 'Warbaahinta',
+    'navContact': 'Xiriir',
+    'ctaGetInTouch': 'Nala Xiriir →',
+    'heroH1': 'Xukuumadda & Xalinta Khilaafaadka',
+    'heroP': 'Xalinta khilaafaadka ee hufan, qiimana yar iyada oo loo marayo xukuumadda, dhexdhexaadka, iyo qaababka xalinta khilaafaadka ee kale.',
+    'sec1Tag': 'Adeeg',
+    'sec1Title': 'Adeegyada Sharciga ee <em>Xukuumadda & Xalinta Khilaafaadka</em>',
+    'sec1Lead': 'Khilaafaadku waa qaybta aan ka maarmin ganacsiga iyo arrimaha shakhsiga. Elite Law Firm waxay bixisaa wakiilnimo khabiir ah.',
+    'dir': 'ltr'
   },
   ar: {
-    dir: 'rtl',
-    navHome: 'الرئيسية', navAbout: 'من نحن', navServices: 'الخدمات ▾',
-    navPresence: 'حضورنا ▾', navContact: 'اتصل بنا',
+    'navHome': 'الرئيسية',
+    'navAbout': 'من نحن',
+    'navAbout2': 'من نحن ▾',
+    'navServices': 'الخدمات ▾',
+    'navPresence': 'حضورنا ▾',
+    'navMultimedia': 'الوسائط',
+    'navContact': 'اتصل بنا',
+    'ctaGetInTouch': 'تواصل معنا →',
+    'heroH1': 'التحكيم وتسوية النزاعات',
+    'heroP': 'حل النزاعات بكفاءة وفعالية من حيث التكلفة من خلال التحكيم والوساطة وآليات تسوية النزاعات البديلة.',
+    'sec1Tag': 'خدمة',
+    'sec1Title': 'الخدمات القانونية <em>للتحكيم وتسوية النزاعات</em>',
+    'sec1Lead': 'النزاعات جزء لا مفر منه في الأعمال والشؤون الشخصية. تقدم إليت لو فيرم تمثيلاً متخصصاً وخدمات استشارية.',
+    'dir': 'rtl'
   }
 };
-
 let currentLang = 'en';
-
 function setLang(lang) {
   const t = translations[lang];
   if (!t) return;
   currentLang = lang;
-
   document.documentElement.dir = t.dir;
   document.documentElement.lang = lang;
-
   const chosen = document.querySelector('.lang-option[data-lang="' + lang + '"]');
   if (chosen) {
     document.getElementById('langLabel').textContent = lang.toUpperCase();
     document.querySelector('#langTrigger .lang-flag').textContent = chosen.dataset.flag;
   }
-  document.querySelectorAll('.lang-option').forEach(function(b){
-    b.classList.toggle('active', b.dataset.lang === lang);
-  });
-
+  document.querySelectorAll('.lang-option').forEach(function(b){ b.classList.toggle('active', b.dataset.lang === lang); });
   document.getElementById('langSwitcher').classList.remove('open');
-  document.getElementById('langTrigger').setAttribute('aria-expanded', 'false');
-
-  document.querySelectorAll('[data-i18n]').forEach(function(el){
-    const key = el.dataset.i18n;
-    if (t[key] !== undefined) el.textContent = t[key];
-  });
+  document.getElementById('langTrigger').setAttribute('aria-expanded','false');
+  document.querySelectorAll('[data-i18n]').forEach(function(el){ const key=el.dataset.i18n; if(t[key]!==undefined) el.textContent=t[key]; });
+  document.querySelectorAll('[data-i18n-html]').forEach(function(el){ const key=el.dataset.i18nHtml; if(t[key]!==undefined) el.innerHTML=t[key]; });
 }
-
 document.addEventListener('DOMContentLoaded', function() {
-  const switcher = document.getElementById('langSwitcher');
-  const trigger  = document.getElementById('langTrigger');
-  if (!switcher || !trigger) return;
-  trigger.addEventListener('click', function(e){
-    e.stopPropagation();
-    const isOpen = switcher.classList.toggle('open');
-    trigger.setAttribute('aria-expanded', isOpen);
-  });
-  document.addEventListener('click', function(){
-    switcher.classList.remove('open');
-    trigger.setAttribute('aria-expanded', 'false');
-  });
-  switcher.addEventListener('click', function(e){ e.stopPropagation(); });
+  const switcher=document.getElementById('langSwitcher');
+  const trigger=document.getElementById('langTrigger');
+  if(!switcher||!trigger) return;
+  trigger.addEventListener('click',function(e){ e.stopPropagation(); const isOpen=switcher.classList.toggle('open'); trigger.setAttribute('aria-expanded',isOpen); });
+  document.addEventListener('click',function(){ switcher.classList.remove('open'); trigger.setAttribute('aria-expanded','false'); });
+  switcher.addEventListener('click',function(e){ e.stopPropagation(); });
 });
 </script>
 </body>

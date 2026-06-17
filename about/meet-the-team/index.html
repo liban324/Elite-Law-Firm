@@ -316,15 +316,15 @@
 </nav>
 <section class="page-hero">
   <div class="breadcrumb"><a href="/">Home</a> › <a href="#">About Us</a> › Meet The Team</div>
-  <h1>Meet The Team</h1>
-  <p>Experienced, dedicated, and client-focused — the legal professionals who make Elite Law Firm exceptional.</p>
+  <h1 data-i18n-html="heroH1">Meet The Team</h1>
+  <p data-i18n="heroP">Experienced, dedicated, and client-focused — the legal professionals who make Elite Law Firm exceptional.</p>
   <div class="gold-rule"></div>
 </section>
 
 <section class="page-content">
-  <div class="section-tag">Our People</div>
-  <h2 class="section-title">The Professionals Behind <em>Elite Law Firm</em></h2>
-  <p class="lead">Our team is composed of highly qualified lawyers, legal advisors, and support professionals who bring diverse expertise and a shared commitment to excellence. Together, we provide the depth and breadth of knowledge required to handle any legal challenge.</p>
+  <div class="section-tag" data-i18n="sec1Tag">Our People</div>
+  <h2 class="section-title" data-i18n-html="sec1Title">The Professionals Behind <em>Elite Law Firm</em></h2>
+  <p class="lead" data-i18n="sec1Lead">Our team is composed of highly qualified lawyers, legal advisors, and support professionals who bring diverse expertise and a shared commitment to excellence. Together, we provide the depth and breadth of knowledge required to handle any legal challenge.</p>
   <div class="content-grid">
     <ul class="feature-list">
     <li>Senior partners with decades of combined legal experience</li>
@@ -478,68 +478,84 @@
   });
 })();
 </script>
+
 <script>
 // ── LANGUAGE SWITCHER ──
 const translations = {
   en: {
-    dir: 'ltr',
-    navHome: 'Home', navAbout: 'About Us', navServices: 'Services ▾',
-    navPresence: 'Presence ▾', navContact: 'Contact',
+    'navHome': 'Home',
+    'navAbout': 'About Us',
+    'navAbout2': 'About Us ▾',
+    'navServices': 'Services ▾',
+    'navPresence': 'Presence ▾',
+    'navMultimedia': 'Multimedia',
+    'navContact': 'Contact',
+    'ctaGetInTouch': 'Get In Touch →',
+    'heroH1': 'Meet The Team',
+    'heroP': 'The dedicated legal professionals behind Elite Law Firm — experienced, committed, and passionate about delivering justice.',
+    'sec1Tag': 'Our People',
+    'sec1Title': 'The Team Behind <em>Elite Law Firm</em>',
+    'sec1Lead': 'Elite Law Firm\'s strength lies in its people. Our team of qualified lawyers, advisors, and support staff bring together decades of combined experience.',
+    'dir': 'ltr'
   },
   so: {
-    dir: 'ltr',
-    navHome: 'Bogga Hore', navAbout: 'Naga Waran', navServices: 'Adeegyada ▾',
-    navPresence: 'Goobaha ▾', navContact: 'Xiriir',
+    'navHome': 'Bogga Hore',
+    'navAbout': 'Naga Waran',
+    'navAbout2': 'Naga Waran ▾',
+    'navServices': 'Adeegyada ▾',
+    'navPresence': 'Goobaha ▾',
+    'navMultimedia': 'Warbaahinta',
+    'navContact': 'Xiriir',
+    'ctaGetInTouch': 'Nala Xiriir →',
+    'heroH1': 'La Xiriir Kooxda',
+    'heroP': 'Xirfadlayaasha sharciga u heellan ee ka dambeeya Elite Law Firm — khibrad leh, u heellan, oo xiisaynaya bixinta cadaaladda.',
+    'sec1Tag': 'Dadkeenna',
+    'sec1Title': 'Kooxda Ka Dambeeya <em>Elite Law Firm</em>',
+    'sec1Lead': 'Xoogga Elite Law Firm waxay ku jirtaa dadkeeda. Kooxdeena xeerbeegayaasha u xirfadlaysan iyo la-taliyeyaasha waxay isku keenaan khibrad dheer oo la isku daray.',
+    'dir': 'ltr'
   },
   ar: {
-    dir: 'rtl',
-    navHome: 'الرئيسية', navAbout: 'من نحن', navServices: 'الخدمات ▾',
-    navPresence: 'حضورنا ▾', navContact: 'اتصل بنا',
+    'navHome': 'الرئيسية',
+    'navAbout': 'من نحن',
+    'navAbout2': 'من نحن ▾',
+    'navServices': 'الخدمات ▾',
+    'navPresence': 'حضورنا ▾',
+    'navMultimedia': 'الوسائط',
+    'navContact': 'اتصل بنا',
+    'ctaGetInTouch': 'تواصل معنا →',
+    'heroH1': 'تعرف على الفريق',
+    'heroP': 'المحترفون القانونيون المتفانون وراء إليت لو فيرم — ذوو خبرة وملتزمون وشغوفون بتحقيق العدالة.',
+    'sec1Tag': 'فريقنا',
+    'sec1Title': 'الفريق وراء <em>إليت لو فيرم</em>',
+    'sec1Lead': 'تكمن قوة إليت لو فيرم في أناسها. يجمع فريقنا عقوداً من الخبرة المشتركة.',
+    'dir': 'rtl'
   }
 };
-
 let currentLang = 'en';
-
 function setLang(lang) {
   const t = translations[lang];
   if (!t) return;
   currentLang = lang;
-
   document.documentElement.dir = t.dir;
   document.documentElement.lang = lang;
-
   const chosen = document.querySelector('.lang-option[data-lang="' + lang + '"]');
   if (chosen) {
     document.getElementById('langLabel').textContent = lang.toUpperCase();
     document.querySelector('#langTrigger .lang-flag').textContent = chosen.dataset.flag;
   }
-  document.querySelectorAll('.lang-option').forEach(function(b){
-    b.classList.toggle('active', b.dataset.lang === lang);
-  });
-
+  document.querySelectorAll('.lang-option').forEach(function(b){ b.classList.toggle('active', b.dataset.lang === lang); });
   document.getElementById('langSwitcher').classList.remove('open');
-  document.getElementById('langTrigger').setAttribute('aria-expanded', 'false');
-
-  document.querySelectorAll('[data-i18n]').forEach(function(el){
-    const key = el.dataset.i18n;
-    if (t[key] !== undefined) el.textContent = t[key];
-  });
+  document.getElementById('langTrigger').setAttribute('aria-expanded','false');
+  document.querySelectorAll('[data-i18n]').forEach(function(el){ const key=el.dataset.i18n; if(t[key]!==undefined) el.textContent=t[key]; });
+  document.querySelectorAll('[data-i18n-html]').forEach(function(el){ const key=el.dataset.i18nHtml; if(t[key]!==undefined) el.innerHTML=t[key]; });
 }
-
 document.addEventListener('DOMContentLoaded', function() {
-  const switcher = document.getElementById('langSwitcher');
-  const trigger  = document.getElementById('langTrigger');
-  if (!switcher || !trigger) return;
-  trigger.addEventListener('click', function(e){
-    e.stopPropagation();
-    const isOpen = switcher.classList.toggle('open');
-    trigger.setAttribute('aria-expanded', isOpen);
-  });
-  document.addEventListener('click', function(){
-    switcher.classList.remove('open');
-    trigger.setAttribute('aria-expanded', 'false');
-  });
-  switcher.addEventListener('click', function(e){ e.stopPropagation(); });
+  const switcher=document.getElementById('langSwitcher');
+  const trigger=document.getElementById('langTrigger');
+  if(!switcher||!trigger) return;
+  trigger.addEventListener('click',function(e){ e.stopPropagation(); const isOpen=switcher.classList.toggle('open'); trigger.setAttribute('aria-expanded',isOpen); });
+  document.addEventListener('click',function(){ switcher.classList.remove('open'); trigger.setAttribute('aria-expanded','false'); });
+  switcher.addEventListener('click',function(e){ e.stopPropagation(); });
 });
 </script>
 </body>
