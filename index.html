@@ -651,6 +651,9 @@
         <button class="lang-option" role="option" data-lang="ar" data-flag="🇸🇦" onclick="setLang('ar')">
           <span class="lang-flag">🇸🇦</span> Arabic
         </button>
+        <button class="lang-option" role="option" data-lang="sw" data-flag="🇰🇪" onclick="setLang('sw')">
+          <span class="lang-flag">🇰🇪</span> Kiswahili
+        </button>
       </div>
     </div>
   </div>
@@ -1731,6 +1734,62 @@ const translations = {
     stripP: 'تواصل مع فريق محامينا الخبراء اليوم',
     footerAbout: 'مكتب محاماة عصري متكامل الخدمات يقدم حلولاً قانونية عالية الجودة للأفراد والشركات والمؤسسات في جميع أنحاء الصومال وشرق أفريقيا. تأسس عام 2019.',
     footerSvcH: 'الخدمات', footerMoreSvcH: 'المزيد من الخدمات', footerInfoH: 'معلومات',
+  },
+
+  sw: {
+    dir: 'ltr',
+    // Nav
+    navHome: 'Nyumbani', navAbout: 'Kuhusu Sisi', navServices: 'Huduma ▾',
+    navPresence: 'Uwepo ▾', navMogadishu: 'Mogadishu',
+    navSomaliaRegions: 'Mikoa ya Somalia', navEastAfrica: 'Afrika Mashariki',
+    navMultimedia: 'Vyombo vya Habari', navContact: 'Wasiliana Nasi',
+    // Hero
+    heroEyebrow: 'Ofisi Kamili ya Sheria — Somalia',
+    heroH1: 'Ubora. Uadilifu. <em>Matokeo.</em>',
+    heroP: 'Elite Law Firm ni ofisi ya kisasa ya sheria inayotoa huduma kamili, iliyojitolea kutoa suluhu za kisheria za ubora wa juu zilizoundwa mahsusi kwa mahitaji yanayobadilika ya watu binafsi, biashara, na taasisi kote Somalia na Afrika Mashariki.',
+    heroBtnServices: 'Chunguza Huduma Zetu', heroBtnAbout: 'Kuhusu Sisi',
+    // Stats
+    statEstablished: 'Ilianzishwa', statServices: 'Huduma',
+    statCases: 'Kesi Zilizoshughulikiwa', statReach: 'Wigo wa Kikanda',
+    // About
+    aboutTag: 'Sisi Ni Nani',
+    aboutTitle: 'Kuhusu <em>Elite Law Firm</em>',
+    aboutP1: 'Elite Law Firm ni ofisi ya kisasa ya sheria inayotoa huduma kamili, iliyojitolea kutoa suluhu za kisheria za ubora wa juu zilizoundwa mahsusi kwa mahitaji yanayobadilika ya watu binafsi, biashara, na taasisi.',
+    aboutP2: 'Tangu kuanzishwa kwake mwaka 2019, ofisi yetu imekua na kuwa mazoezi ya kisheria yenye kuaminika na nguvu ndani ya mazingira ya kisheria ya Somalia. Imejengwa juu ya msingi wa utaalamu, uadilifu, na kujitolea kwa matokeo, tumiendelea kujenga sifa imara ya kutoa huduma za kisheria za kutegemewa.',
+    aboutP3: 'Katika Elite Law Firm, tunalenga kuweka kiwango kipya cha mazoezi ya kisheria nchini Somalia kwa kuunganisha uvumbuzi, utafiti wa kisheria, na mikakati inayolenga mteja katika kila kipengele cha kazi yetu.',
+    aboutLi1: 'Uwakilishi kamili wa kisheria na ushauri wa shirika',
+    aboutLi2: 'Ujuzi wa kisheria wa kimataifa na kikanda',
+    aboutLi3: 'Suluhu za kisheria zinazobadilika na zenye ufanisi wa gharama',
+    aboutLi4: 'Ujuzi wa kina wa ndani na mbinu bora za kimataifa',
+    aboutCta: 'Wasiliana Nasi',
+    // Mission/Vision
+    mvvTag: 'Msingi Wetu',
+    mvvTitle: 'Dhamira, Maono & <em>Maadili Msingi</em>',
+    missionH: 'Dhamira Yetu', missionP: 'Kutoa huduma za kisheria zenye ufanisi, zinazotegemewa, na za ubora wa juu, ikiwemo ushauri wa kisheria wa kitaalamu, huku tukiilinda haki za wateja wetu na kukuza kanuni za haki na utawala wa sheria.',
+    visionH: 'Maono Yetu', visionP: 'Kuwa ofisi ya sheria inayotambuliwa na kuaminiwa duniani kote, ikiweka kiwango cha ubora wa kisheria nchini Somalia, Pembe ya Afrika, na zaidi — ikiunda mazingira ya kisheria ya haki na usawa na kuathiri mazoezi ya kisheria na upatikanaji wa haki ulimwenguni kote.',
+    approachH: 'Mkabala Wetu', approachP: 'Tunazingatia kutoa suluhu za kisheria zinazofaa na zinazomlenga mteja. Uelewa wetu imara wa mfumo wa kisheria wa Somalia, pamoja na mkabala wa kisasa na wa kimkakati, unatuwezesha kutoa mwongozo wa kisheria unaofaa katika maeneo mbalimbali na usahihi, utaalamu, na uzoefu wa kina wa ndani.',
+    coreValuesTag: 'Maadili Msingi',
+    // Services
+    svcTag: 'Tunachofanya',
+    svcTitle: 'Huduma Zetu <em>za Kisheria</em>',
+    svcSubtitle: 'Tunadumisha mazoezi ya kisheria tofauti na yenye nguvu yanayoshughulikia sekta muhimu za uchumi wa Somalia na mfumo wa kisheria — kuanzia kuanzisha biashara na kufuata sheria hadi kutatua migogoro na ushauri wa kimkakati.',
+    // Contact
+    contactTag: 'Wasiliana Nasi',
+    contactTitle: 'Tutumie <em>Ujumbe</em>',
+    contactIntro: 'Iwe unahitaji ushauri wa kisheria, uwakilishi, au unataka tu kujadili hali yako, timu yetu iko tayari kusaidia. Jaza fomu na tutakujibu haraka.',
+    formFirstName: 'Jina la Kwanza', formFirstNamePh: 'Jina lako la kwanza',
+    formLastName: 'Jina la Familia', formLastNamePh: 'Jina lako la familia',
+    formEmail: 'Anwani ya Barua Pepe', formPhone: 'Nambari ya Simu',
+    formService: 'Eneo la Haja ya Kisheria', formMessage: 'Ujumbe Wako',
+    formMessagePh: 'Eleza kwa ufupi suala lako la kisheria...',
+    formSubmit: 'Tuma Ujumbe',
+    contactDetailsTag: 'Maelezo ya Mawasiliano',
+    tagline: 'Haki Zako. Ahadi Yetu.',
+    stripH: 'Tuko Hapa Kwa Ajili Yako — <em style="color:var(--gold); font-style:normal;">24/7</em>',
+    stripP: 'Wasiliana na timu yetu ya wanasheria wataalamu leo',
+    // Footer
+    footerAbout: 'Ofisi ya kisasa ya sheria inayotoa huduma kamili ikitoa suluhu za kisheria za ubora wa juu kwa watu binafsi, biashara, na taasisi kote Somalia na Afrika Mashariki. Ilianzishwa 2019.',
+    footerSvcH: 'Huduma', footerMoreSvcH: 'Huduma Zaidi', footerInfoH: 'Maelezo',
   }
 };
 
@@ -1740,6 +1799,7 @@ function setLang(lang) {
   const t = translations[lang];
   if (!t) return;
   currentLang = lang;
+  localStorage.setItem('eliteLang', lang);
 
   // Direction & lang attribute
   document.documentElement.dir = t.dir;
@@ -1786,6 +1846,9 @@ document.addEventListener('DOMContentLoaded', function() {
     trigger.setAttribute('aria-expanded', 'false');
   });
   switcher.addEventListener('click', function(e) { e.stopPropagation(); });
+  // Restore saved language
+  var savedLang = localStorage.getItem('eliteLang');
+  if (savedLang && translations[savedLang]) setLang(savedLang);
 });
 </script>
 

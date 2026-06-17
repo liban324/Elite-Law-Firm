@@ -313,6 +313,9 @@
       <button class="lang-option" role="option" data-lang="ar" data-flag="🇸🇦" onclick="setLang('ar')">
         <span class="lang-flag">🇸🇦</span> Arabic
       </button>
+        <button class="lang-option" role="option" data-lang="sw" data-flag="🇰🇪" onclick="setLang('sw')">
+          <span class="lang-flag">🇰🇪</span> Kiswahili
+        </button>
     </div>
   </div>
   <button class="ham-btn" id="hamBtn" aria-label="Toggle navigation" aria-expanded="false">
@@ -543,6 +546,7 @@ function setLang(lang) {
   const t = translations[lang];
   if (!t) return;
   currentLang = lang;
+  localStorage.setItem('eliteLang', lang);
   document.documentElement.dir = t.dir;
   document.documentElement.lang = lang;
   const chosen = document.querySelector('.lang-option[data-lang="' + lang + '"]');
@@ -563,6 +567,9 @@ document.addEventListener('DOMContentLoaded', function() {
   trigger.addEventListener('click',function(e){ e.stopPropagation(); const isOpen=switcher.classList.toggle('open'); trigger.setAttribute('aria-expanded',isOpen); });
   document.addEventListener('click',function(){ switcher.classList.remove('open'); trigger.setAttribute('aria-expanded','false'); });
   switcher.addEventListener('click',function(e){ e.stopPropagation(); });
+  // Restore saved language
+  var savedLang = localStorage.getItem('eliteLang');
+  if (savedLang && translations[savedLang]) setLang(savedLang);
 });
 </script>
 </body>
