@@ -559,23 +559,49 @@
     footer { padding: 32px 16px 16px; }
     .footer-logo .firm { font-size: 17px; }
   }
-  /* ── LANGUAGE SWITCHER ── */
-  .lang-switcher { display: flex; align-items: center; gap: 4px; }
-  .lang-btn {
+  /* ── LANGUAGE SWITCHER DROPDOWN ── */
+  .lang-switcher { position: relative; }
+  .lang-trigger {
+    display: flex; align-items: center; gap: 6px;
     background: transparent;
-    border: 1px solid rgba(201,168,76,0.35);
+    border: 1px solid rgba(201,168,76,0.4);
     color: var(--gray);
     font-family: 'Montserrat', sans-serif;
-    font-size: 10.5px;
-    font-weight: 600;
-    letter-spacing: 0.1em;
-    padding: 3px 9px;
-    cursor: pointer;
-    transition: all 0.2s;
-    text-transform: uppercase;
+    font-size: 10.5px; font-weight: 700;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    padding: 4px 10px 4px 10px;
+    cursor: pointer; transition: all 0.2s;
+    white-space: nowrap;
   }
-  .lang-btn:hover { border-color: var(--gold); color: var(--gold); }
-  .lang-btn.active { background: var(--gold); border-color: var(--gold); color: var(--navy); }
+  .lang-trigger:hover { border-color: var(--gold); color: var(--gold); }
+  .lang-trigger .lang-flag { font-size: 13px; line-height: 1; }
+  .lang-trigger .lang-caret { font-size: 8px; opacity: 0.7; transition: transform 0.2s; }
+  .lang-switcher.open .lang-caret { transform: rotate(180deg); }
+  .lang-dropdown {
+    position: absolute; top: calc(100% + 6px); right: 0;
+    background: var(--navy);
+    border: 1px solid rgba(201,168,76,0.25);
+    box-shadow: 0 8px 28px rgba(0,0,0,0.45);
+    min-width: 140px;
+    opacity: 0; visibility: hidden; transform: translateY(-6px);
+    transition: opacity 0.18s, transform 0.18s, visibility 0.18s;
+    z-index: 9999;
+  }
+  .lang-switcher.open .lang-dropdown { opacity: 1; visibility: visible; transform: translateY(0); }
+  .lang-option {
+    display: flex; align-items: center; gap: 10px;
+    padding: 9px 14px; cursor: pointer;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 11px; font-weight: 600; letter-spacing: 0.08em;
+    color: rgba(255,255,255,0.65);
+    text-transform: uppercase; transition: background 0.15s, color 0.15s;
+    border: none; background: none; width: 100%; text-align: left;
+  }
+  .lang-option:hover { background: rgba(201,168,76,0.1); color: var(--gold); }
+  .lang-option.active { color: var(--gold); }
+  .lang-option .lang-flag { font-size: 14px; }
+  [dir="rtl"] .lang-dropdown { right: auto; left: 0; }
+  [dir="rtl"] .lang-option { text-align: right; }
   [dir="rtl"] { direction: rtl; text-align: right; }
   [dir="rtl"] .hero-content { padding: 80px 80px 80px 40px; }
   [dir="rtl"] .hero-eyebrow::before { display: none; }
@@ -583,6 +609,18 @@
   [dir="rtl"] .dropdown { left: auto; right: 0; }
   [dir="rtl"] .check-list li { padding: 8px 24px 8px 0; }
   [dir="rtl"] .check-list li::before { left: auto; right: 0; }
+  [dir="rtl"] nav { direction: rtl; }
+  [dir="rtl"] .nav-links { margin-right: auto; margin-left: unset; }
+  [dir="rtl"] .section-tag { flex-direction: row-reverse; }
+  [dir="rtl"] .section-tag::after { display: none; }
+  [dir="rtl"] .section-tag::before { content: ''; display: block; width: 30px; height: 1px; background: var(--gold); }
+  [dir="rtl"] .footer-grid { direction: rtl; }
+  [dir="rtl"] footer ul li a { flex-direction: row-reverse; }
+  [dir="rtl"] .topbar { flex-direction: row-reverse; }
+  [dir="rtl"] .topbar-right { flex-direction: row-reverse; }
+  [dir="rtl"] .contact-detail-item { flex-direction: row; }
+  [dir="rtl"] .mvv-grid { direction: rtl; }
+  [dir="rtl"] .footer-bottom { flex-direction: row-reverse; }
 </style>
 </head>
 <body>
@@ -596,10 +634,23 @@
       <a href="#" title="Twitter">𝕏</a>
       <a href="#" title="LinkedIn">in</a>
     </div>
-    <div class="lang-switcher">
-      <button class="lang-btn active" onclick="setLang('en', this)">EN</button>
-      <button class="lang-btn" onclick="setLang('so', this)">SO</button>
-      <button class="lang-btn" onclick="setLang('ar', this)">AR</button>
+    <div class="lang-switcher" id="langSwitcher">
+      <button class="lang-trigger" id="langTrigger" aria-haspopup="listbox" aria-expanded="false">
+        <span class="lang-flag">🇬🇧</span>
+        <span id="langLabel">EN</span>
+        <span class="lang-caret">▼</span>
+      </button>
+      <div class="lang-dropdown" role="listbox">
+        <button class="lang-option active" role="option" data-lang="en" data-flag="🇬🇧" onclick="setLang('en')">
+          <span class="lang-flag">🇬🇧</span> English
+        </button>
+        <button class="lang-option" role="option" data-lang="so" data-flag="🇸🇴" onclick="setLang('so')">
+          <span class="lang-flag">🇸🇴</span> Somali
+        </button>
+        <button class="lang-option" role="option" data-lang="ar" data-flag="🇸🇦" onclick="setLang('ar')">
+          <span class="lang-flag">🇸🇦</span> Arabic
+        </button>
+      </div>
     </div>
   </div>
 </div>
@@ -615,10 +666,10 @@
   </a>
 
   <ul class="nav-links" id="mainNav">
-    <li><a href="#" class="nav-pg active" data-pg="home">Home</a></li>
-    <li><a href="#" class="nav-pg" data-pg="about">About Us</a></li>
+    <li><a href="#" class="nav-pg active" data-pg="home" data-i18n="navHome">Home</a></li>
+    <li><a href="#" class="nav-pg" data-pg="about" data-i18n="navAbout">About Us</a></li>
     <li>
-      <a href="#" class="nav-pg" data-pg="services">Services ▾</a>
+      <a href="#" class="nav-pg" data-pg="services" data-i18n="navServices">Services ▾</a>
       <div class="dropdown">
         <a href="/services/corporate-commercial-business-setup/">Corporate, Commercial &amp; Business Setup</a>
         <a href="/services/government-regulatory-advisory/">Government &amp; Regulatory Advisory</a>
@@ -639,15 +690,15 @@
       </div>
     </li>
     <li>
-      <a href="#" class="nav-pg" data-pg="presence">Presence ▾</a>
+      <a href="#" class="nav-pg" data-pg="presence" data-i18n="navPresence">Presence ▾</a>
       <div class="dropdown">
-        <a href="#" class="nav-pg" data-pg="presence">Mogadishu</a>
-        <a href="#" class="nav-pg" data-pg="presence">Somalia Regions</a>
-        <a href="#" class="nav-pg" data-pg="presence">East Africa</a>
+        <a href="#" class="nav-pg" data-pg="presence" data-i18n="navMogadishu">Mogadishu</a>
+        <a href="#" class="nav-pg" data-pg="presence" data-i18n="navSomaliaRegions">Somalia Regions</a>
+        <a href="#" class="nav-pg" data-pg="presence" data-i18n="navEastAfrica">East Africa</a>
       </div>
     </li>
-    <li><a href="#" class="nav-pg" data-pg="multimedia">Multimedia</a></li>
-    <li><a href="#" class="nav-pg nav-cta" data-pg="contact">Contact</a></li>
+    <li><a href="#" class="nav-pg" data-pg="multimedia" data-i18n="navMultimedia">Multimedia</a></li>
+    <li><a href="#" class="nav-pg nav-cta" data-pg="contact" data-i18n="navContact">Contact</a></li>
   </ul>
   <button class="ham-btn" id="hamBtn" aria-label="Toggle navigation" aria-expanded="false">
     <span></span>
@@ -663,12 +714,12 @@
   <div class="hero-overlay"></div>
   <div class="hero-grid"></div>
   <div class="hero-content">
-    <div class="hero-eyebrow">Full-Service Law Firm — Somalia</div>
-    <h1>Excellence. Integrity. <em>Results.</em></h1>
-    <p>Elite Law Firm is a modern, full-service law firm dedicated to delivering high-quality legal solutions tailored to the evolving needs of individuals, businesses, and institutions across Somalia and East Africa.</p>
+    <div class="hero-eyebrow" data-i18n="heroEyebrow">Full-Service Law Firm — Somalia</div>
+    <h1 data-i18n-html="heroH1">Excellence. Integrity. <em>Results.</em></h1>
+    <p data-i18n="heroP">Elite Law Firm is a modern, full-service law firm dedicated to delivering high-quality legal solutions tailored to the evolving needs of individuals, businesses, and institutions across Somalia and East Africa.</p>
     <div class="hero-btns">
-      <a href="#" class="btn-gold nav-pg" data-pg="services">Explore Our Services</a>
-      <a href="#" class="btn-outline nav-pg" data-pg="about">About Us</a>
+      <a href="#" class="btn-gold nav-pg" data-pg="services" data-i18n="heroBtnServices">Explore Our Services</a>
+      <a href="#" class="btn-outline nav-pg" data-pg="about" data-i18n="heroBtnAbout">About Us</a>
     </div>
   </div>
   <svg class="hero-shield" viewBox="0 0 300 340" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -679,10 +730,10 @@
 
 <!-- STATS BAR -->
 <div class="stats-bar">
-  <div class="stat-item"><div class="stat-num">2019</div><div class="stat-label">Established</div></div>
-  <div class="stat-item"><div class="stat-num">16+</div><div class="stat-label">Services</div></div>
-  <div class="stat-item"><div class="stat-num">500+</div><div class="stat-label">Cases Handled</div></div>
-  <div class="stat-item"><div class="stat-num">East Africa</div><div class="stat-label">Regional Reach</div></div>
+  <div class="stat-item"><div class="stat-num">2019</div><div class="stat-label" data-i18n="statEstablished">Established</div></div>
+  <div class="stat-item"><div class="stat-num">16+</div><div class="stat-label" data-i18n="statServices">Services</div></div>
+  <div class="stat-item"><div class="stat-num">500+</div><div class="stat-label" data-i18n="statCases">Cases Handled</div></div>
+  <div class="stat-item"><div class="stat-num">East Africa</div><div class="stat-label" data-i18n="statReach">Regional Reach</div></div>
 </div>
 </div><!--/pg-home-->
 
@@ -704,18 +755,18 @@
       <div class="about-badge"><strong>5+</strong><span>Years of Practice</span></div>
     </div>
     <div class="about-content">
-      <div class="section-tag">Who We Are</div>
-      <h2 class="section-title">About <em>Elite Law Firm</em></h2>
-      <p>Elite Law Firm is a modern, full-service law firm dedicated to delivering high-quality legal solutions tailored to the evolving needs of individuals, businesses, and institutions.</p>
-      <p>Since its establishment in 2019, our firm has grown into a trusted and dynamic legal practice within the Somali legal landscape. Built on a foundation of professionalism, integrity, and commitment to results, we have steadily developed a strong reputation for delivering reliable legal services.</p>
-      <p>At Elite Law Firm, we aim to set a new standard for legal practice in Somalia by integrating innovation, legal research, and client-focused strategies into every aspect of our work.</p>
+      <div class="section-tag" data-i18n="aboutTag">Who We Are</div>
+      <h2 class="section-title" data-i18n-html="aboutTitle">About <em>Elite Law Firm</em></h2>
+      <p data-i18n="aboutP1">Elite Law Firm is a modern, full-service law firm dedicated to delivering high-quality legal solutions tailored to the evolving needs of individuals, businesses, and institutions.</p>
+      <p data-i18n="aboutP2">Since its establishment in 2019, our firm has grown into a trusted and dynamic legal practice within the Somali legal landscape. Built on a foundation of professionalism, integrity, and commitment to results, we have steadily developed a strong reputation for delivering reliable legal services.</p>
+      <p data-i18n="aboutP3">At Elite Law Firm, we aim to set a new standard for legal practice in Somalia by integrating innovation, legal research, and client-focused strategies into every aspect of our work.</p>
       <ul class="check-list">
-        <li>Full-service litigation and corporate advisory</li>
-        <li>Cross-border and regional legal expertise</li>
-        <li>Flexible, cost-effective legal solutions</li>
-        <li>Deep local knowledge with international best practices</li>
+        <li data-i18n="aboutLi1">Full-service litigation and corporate advisory</li>
+        <li data-i18n="aboutLi2">Cross-border and regional legal expertise</li>
+        <li data-i18n="aboutLi3">Flexible, cost-effective legal solutions</li>
+        <li data-i18n="aboutLi4">Deep local knowledge with international best practices</li>
       </ul>
-      <a href="#" class="btn-gold nav-pg" data-pg="contact">Get In Touch</a>
+      <a href="#" class="btn-gold nav-pg" data-pg="contact" data-i18n="aboutCta">Get In Touch</a>
     </div>
   </div>
 </section>
@@ -723,28 +774,28 @@
 <!-- MISSION / VISION / VALUES -->
 <section class="section section-dark" id="mission">
   <div style="text-align:center; max-width:700px; margin:0 auto 10px;">
-    <div class="section-tag" style="justify-content:center;">Our Foundation</div>
-    <h2 class="section-title" style="text-align:center;">Mission, Vision & <em>Core Values</em></h2>
+    <div class="section-tag" style="justify-content:center;" data-i18n="mvvTag">Our Foundation</div>
+    <h2 class="section-title" style="text-align:center;" data-i18n-html="mvvTitle">Mission, Vision & <em>Core Values</em></h2>
   </div>
   <div class="mvv-grid">
     <div class="mvv-card">
       <div class="mvv-icon">⚖️</div>
-      <h3>Our Mission</h3>
-      <p>To provide efficient, reliable, and high-quality legal services, including expert legal advisory, while safeguarding our clients' rights and advancing the principles of justice and the rule of law.</p>
+      <h3 data-i18n="missionH">Our Mission</h3>
+      <p data-i18n="missionP">To provide efficient, reliable, and high-quality legal services, including expert legal advisory, while safeguarding our clients' rights and advancing the principles of justice and the rule of law.</p>
     </div>
     <div class="mvv-card">
       <div class="mvv-icon">🌍</div>
-      <h3>Our Vision</h3>
-      <p>To become a globally recognized and trusted law firm, setting the standard for legal excellence in Somalia, the Horn of Africa, and beyond — shaping a fair and just legal environment and influencing legal practice and access to justice across the world.</p>
+      <h3 data-i18n="visionH">Our Vision</h3>
+      <p data-i18n="visionP">To become a globally recognized and trusted law firm, setting the standard for legal excellence in Somalia, the Horn of Africa, and beyond — shaping a fair and just legal environment and influencing legal practice and access to justice across the world.</p>
     </div>
     <div class="mvv-card">
       <div class="mvv-icon">🏛️</div>
-      <h3>Our Approach</h3>
-      <p>We focus on delivering practical, client-centered legal solutions. Our strong understanding of Somalia's legal system, combined with a modern and strategic approach, enables us to provide effective legal guidance across a wide range of matters with precision, professionalism, and deep local expertise.</p>
+      <h3 data-i18n="approachH">Our Approach</h3>
+      <p data-i18n="approachP">We focus on delivering practical, client-centered legal solutions. Our strong understanding of Somalia's legal system, combined with a modern and strategic approach, enables us to provide effective legal guidance across a wide range of matters with precision, professionalism, and deep local expertise.</p>
     </div>
   </div>
   <div style="margin-top:48px;">
-    <div class="section-tag" style="justify-content:center; margin-bottom:20px;">Core Values</div>
+    <div class="section-tag" style="justify-content:center; margin-bottom:20px;" data-i18n="coreValuesTag">Core Values</div>
     <div class="values-grid">
       <div class="value-pill">Integrity</div>
       <div class="value-pill">Professionalism</div>
@@ -765,9 +816,9 @@
 <div class="pg" id="pg-services">
 <!-- SERVICES -->
 <section class="section section-alt" id="services">
-  <div class="section-tag">What We Do</div>
-  <h2 class="section-title">Our <em>Legal Services</em></h2>
-  <p class="section-subtitle">We maintain a diverse and dynamic legal practice covering key sectors of the Somali economy and legal system — from business formation and compliance to dispute resolution and strategic advisory.</p>
+  <div class="section-tag" data-i18n="svcTag">What We Do</div>
+  <h2 class="section-title" data-i18n-html="svcTitle">Our <em>Legal Services</em></h2>
+  <p class="section-subtitle" data-i18n="svcSubtitle">We maintain a diverse and dynamic legal practice covering key sectors of the Somali economy and legal system — from business formation and compliance to dispute resolution and strategic advisory.</p>
   <div class="services-grid-full">
     <div class="service-card-full">
       <div class="service-num">01</div>
@@ -989,17 +1040,17 @@
 <section class="contact-section" id="contact">
   <div class="contact-grid">
     <div class="contact-form-wrap">
-      <div class="section-tag">Get In Touch</div>
-      <h2 class="section-title" style="color:var(--white);">Send Us a <em>Message</em></h2>
-      <p>Whether you need legal advice, representation, or simply want to discuss your situation, our team is ready to assist. Fill in the form and we will get back to you promptly.</p>
+      <div class="section-tag" data-i18n="contactTag">Get In Touch</div>
+      <h2 class="section-title" style="color:var(--white);" data-i18n-html="contactTitle">Send Us a <em>Message</em></h2>
+      <p data-i18n="contactIntro">Whether you need legal advice, representation, or simply want to discuss your situation, our team is ready to assist. Fill in the form and we will get back to you promptly.</p>
       <div class="form-row">
-        <div class="form-group"><label>First Name</label><input type="text" placeholder="Your first name"></div>
-        <div class="form-group"><label>Last Name</label><input type="text" placeholder="Your last name"></div>
+        <div class="form-group"><label data-i18n="formFirstName">First Name</label><input type="text" data-i18n-ph="formFirstNamePh" placeholder="Your first name"></div>
+        <div class="form-group"><label data-i18n="formLastName">Last Name</label><input type="text" data-i18n-ph="formLastNamePh" placeholder="Your last name"></div>
       </div>
-      <div class="form-group"><label>Email Address</label><input type="email" placeholder="your@email.com"></div>
-      <div class="form-group"><label>Phone Number</label><input type="tel" placeholder="+252 ..."></div>
+      <div class="form-group"><label data-i18n="formEmail">Email Address</label><input type="email" placeholder="your@email.com"></div>
+      <div class="form-group"><label data-i18n="formPhone">Phone Number</label><input type="tel" placeholder="+252 ..."></div>
       <div class="form-group">
-        <label>Area of Legal Need</label>
+        <label data-i18n="formService">Area of Legal Need</label>
         <select>
           <option value="">Select a service...</option>
           <option>Corporate, Commercial & Business Setup</option>
@@ -1020,14 +1071,14 @@
           <option>Other Legal Services</option>
         </select>
       </div>
-      <div class="form-group"><label>Your Message</label><textarea placeholder="Briefly describe your legal matter..."></textarea></div>
-      <a href="#" class="btn-gold" style="width:100%; text-align:center; display:block;">Send Message</a>
+      <div class="form-group"><label data-i18n="formMessage">Your Message</label><textarea data-i18n-ph="formMessagePh" placeholder="Briefly describe your legal matter..."></textarea></div>
+      <a href="#" class="btn-gold" style="width:100%; text-align:center; display:block;" data-i18n="formSubmit">Send Message</a>
     </div>
 
     <div class="contact-info">
-      <div class="section-tag">Contact Details</div>
+      <div class="section-tag" data-i18n="contactDetailsTag">Contact Details</div>
       <h3>Elite Law Firm</h3>
-      <div class="tagline">Your Rights. Our Commitment.</div>
+      <div class="tagline" data-i18n="tagline">Your Rights. Our Commitment.</div>
 
       <div class="contact-detail-item">
         <div class="cd-icon">📍</div>
@@ -1066,8 +1117,8 @@
 <!-- CONTACT STRIP -->
 <div class="contact-strip">
   <div>
-    <h3>We Are Here For You — <em style="color:var(--gold); font-style:normal;">24/7</em></h3>
-    <p>Get in touch with our team of expert lawyers today</p>
+    <h3 data-i18n-html="stripH">We Are Here For You — <em style="color:var(--gold); font-style:normal;">24/7</em></h3>
+    <p data-i18n="stripP">Get in touch with our team of expert lawyers today</p>
   </div>
   <div class="contact-details">
     <div class="contact-item"><div class="ci-label">Phone</div><div class="ci-val">000 000 0000</div></div>
@@ -1083,11 +1134,11 @@
       <a href="#" class="footer-logo">
         <img src="/logo.png" alt="Elite Law Firm" class="footer-logo-img">
       </a>
-      <p class="footer-about">A modern, full-service law firm delivering high-quality legal solutions to individuals, businesses, and institutions across Somalia and East Africa. Established 2019.</p>
-      <p class="footer-about" style="margin-top:12px; font-size:11px; color:rgba(255,255,255,0.3);">Your Rights. Our Commitment.</p>
+      <p class="footer-about" data-i18n="footerAbout">A modern, full-service law firm delivering high-quality legal solutions to individuals, businesses, and institutions across Somalia and East Africa. Established 2019.</p>
+      <p class="footer-about" style="margin-top:12px; font-size:11px; color:rgba(255,255,255,0.3);" data-i18n="tagline">Your Rights. Our Commitment.</p>
     </div>
     <div>
-      <h5>Services</h5>
+      <h5 data-i18n="footerSvcH">Services</h5>
       <ul>
         <li><a href="#services">Corporate &amp; Business Setup</a></li>
         <li><a href="#services">Government &amp; Regulatory</a></li>
@@ -1100,7 +1151,7 @@
       </ul>
     </div>
     <div>
-      <h5>More Services</h5>
+      <h5 data-i18n="footerMoreSvcH">More Services</h5>
       <ul>
         <li><a href="#services">Civil Litigation</a></li>
         <li><a href="#services">Criminal Defence</a></li>
@@ -1113,7 +1164,7 @@
       </ul>
     </div>
     <div>
-      <h5>Information</h5>
+      <h5 data-i18n="footerInfoH">Information</h5>
       <ul>
         <li><a href="#">About Us</a></li>
         <li><a href="#">Mission & Vision</a></li>
@@ -1531,68 +1582,210 @@
 const translations = {
   en: {
     dir: 'ltr',
+    // Nav
+    navHome: 'Home', navAbout: 'About Us', navServices: 'Services ▾',
+    navPresence: 'Presence ▾', navMogadishu: 'Mogadishu',
+    navSomaliaRegions: 'Somalia Regions', navEastAfrica: 'East Africa',
+    navMultimedia: 'Multimedia', navContact: 'Contact',
+    // Hero
     heroEyebrow: 'Full-Service Law Firm — Somalia',
     heroH1: 'Excellence. Integrity. <em>Results.</em>',
     heroP: 'Elite Law Firm is a modern, full-service law firm dedicated to delivering high-quality legal solutions tailored to the evolving needs of individuals, businesses, and institutions across Somalia and East Africa.',
-    heroBtnServices: 'Explore Our Services',
-    heroBtnAbout: 'About Us',
-    statLabels: ['Established','Services','Cases Handled','Regional Reach'],
-    sectionTagAbout: 'Who We Are',
+    heroBtnServices: 'Explore Our Services', heroBtnAbout: 'About Us',
+    // Stats
+    statEstablished: 'Established', statServices: 'Services',
+    statCases: 'Cases Handled', statReach: 'Regional Reach',
+    // About
+    aboutTag: 'Who We Are',
+    aboutTitle: 'About <em>Elite Law Firm</em>',
+    aboutP1: 'Elite Law Firm is a modern, full-service law firm dedicated to delivering high-quality legal solutions tailored to the evolving needs of individuals, businesses, and institutions.',
+    aboutP2: 'Since its establishment in 2019, our firm has grown into a trusted and dynamic legal practice within the Somali legal landscape. Built on a foundation of professionalism, integrity, and commitment to results, we have steadily developed a strong reputation for delivering reliable legal services.',
+    aboutP3: 'At Elite Law Firm, we aim to set a new standard for legal practice in Somalia by integrating innovation, legal research, and client-focused strategies into every aspect of our work.',
+    aboutLi1: 'Full-service litigation and corporate advisory',
+    aboutLi2: 'Cross-border and regional legal expertise',
+    aboutLi3: 'Flexible, cost-effective legal solutions',
+    aboutLi4: 'Deep local knowledge with international best practices',
+    aboutCta: 'Get In Touch',
+    // Mission/Vision
+    mvvTag: 'Our Foundation',
+    mvvTitle: 'Mission, Vision & <em>Core Values</em>',
+    missionH: 'Our Mission', missionP: "To provide efficient, reliable, and high-quality legal services, including expert legal advisory, while safeguarding our clients' rights and advancing the principles of justice and the rule of law.",
+    visionH: 'Our Vision', visionP: "To become a globally recognized and trusted law firm, setting the standard for legal excellence in Somalia, the Horn of Africa, and beyond — shaping a fair and just legal environment and influencing legal practice and access to justice across the world.",
+    approachH: 'Our Approach', approachP: "We focus on delivering practical, client-centered legal solutions. Our strong understanding of Somalia's legal system, combined with a modern and strategic approach, enables us to provide effective legal guidance across a wide range of matters with precision, professionalism, and deep local expertise.",
+    coreValuesTag: 'Core Values',
+    // Services
+    svcTag: 'What We Do',
+    svcTitle: 'Our <em>Legal Services</em>',
+    svcSubtitle: 'We maintain a diverse and dynamic legal practice covering key sectors of the Somali economy and legal system — from business formation and compliance to dispute resolution and strategic advisory.',
+    // Contact
+    contactTag: 'Get In Touch',
+    contactTitle: 'Send Us a <em>Message</em>',
+    contactIntro: 'Whether you need legal advice, representation, or simply want to discuss your situation, our team is ready to assist. Fill in the form and we will get back to you promptly.',
+    formFirstName: 'First Name', formFirstNamePh: 'Your first name',
+    formLastName: 'Last Name', formLastNamePh: 'Your last name',
+    formEmail: 'Email Address', formPhone: 'Phone Number',
+    formService: 'Area of Legal Need', formMessage: 'Your Message',
+    formMessagePh: 'Briefly describe your legal matter...',
+    formSubmit: 'Send Message',
+    contactDetailsTag: 'Contact Details',
+    tagline: 'Your Rights. Our Commitment.',
+    stripH: 'We Are Here For You — <em style="color:var(--gold); font-style:normal;">24/7</em>',
+    stripP: 'Get in touch with our team of expert lawyers today',
+    // Footer
+    footerAbout: 'A modern, full-service law firm delivering high-quality legal solutions to individuals, businesses, and institutions across Somalia and East Africa. Established 2019.',
+    footerSvcH: 'Services', footerMoreSvcH: 'More Services', footerInfoH: 'Information',
   },
+
   so: {
     dir: 'ltr',
+    navHome: 'Bogga Hore', navAbout: 'Naga Waran', navServices: 'Adeegyada ▾',
+    navPresence: 'Goobaha ▾', navMogadishu: 'Muqdisho',
+    navSomaliaRegions: 'Gobolada Soomaaliya', navEastAfrica: 'Bariga Afrika',
+    navMultimedia: 'Warbaahinta', navContact: 'Xiriir',
     heroEyebrow: 'Shirkadda Sharciga ee Dhammeystiran — Soomaaliya',
     heroH1: 'Tayada. Daacadnimada. <em>Natiijooyinka.</em>',
-    heroP: 'Elite Law Firm waa shirkad sharci casri ah oo dhammaystiran oo u hiilisa bixinta xalalada sharciga ee tayo sare leh kuwaas oo loogu talagalay baahiyaha isbeddelaya ee shakhsiyaadka, ganacsiyada, iyo hay\'aadaha Soomaaliya iyo Bariga Afrika.',
-    heroBtnServices: 'Baadh Adeegyadeenna',
-    heroBtnAbout: 'Naga Waran',
-    statLabels: ['La Aasaasay','Goobaha Dhaqanka','Kiisaska La Maamullay','Gaadhitaanka Gobolka'],
-    sectionTagAbout: 'Cidda Annagu Nahay',
+    heroP: "Elite Law Firm waa shirkad sharci casri ah oo dhammaystiran oo u hiilisa bixinta xalalada sharciga ee tayo sare leh kuwaas oo loogu talagalay baahiyaha isbeddelaya ee shakhsiyaadka, ganacsiyada, iyo hay'aadaha Soomaaliya iyo Bariga Afrika.",
+    heroBtnServices: 'Baadh Adeegyadeenna', heroBtnAbout: 'Naga Waran',
+    statEstablished: 'La Aasaasay', statServices: 'Adeegyada',
+    statCases: 'Kiisaska La Maamullay', statReach: 'Gaadhitaanka Gobolka',
+    aboutTag: 'Cidda Annagu Nahay',
+    aboutTitle: 'Ku Saabsan <em>Elite Law Firm</em>',
+    aboutP1: 'Elite Law Firm waa shirkad sharci casri ah oo dhammaystiran oo u hiilisa bixinta xalalada sharciga ee tayo sare leh kuwaas oo loogu talagalay baahiyaha isbeddelaya ee shakhsiyaadka, ganacsiyada, iyo hay\'aadaha.',
+    aboutP2: 'Tan iyo markii la aasaasay 2019, shirkaddeenu waxay ku koreen dhaqan sharci oo la isku halayn karo oo firfircoon oo ku jira goobta sharciga Soomaalida. Aasaas ku dhisan xirfadnimada, daacadnimada, iyo go\'aanka natiijada, waxaan si joogto ah u horumarinay sumcad xooggan oo bixinta adeegyada sharciga ee la isku halayn karo.',
+    aboutP3: 'Shirkadda Elite Law Firm, waxaan doonayaa inaan dejino heer cusub oo cilmi-baaris sharci ah oo Soomaaliya ku jiro adeegsiga hal-abuurka, cilmi-baaarista sharciga, iyo istiraatiijiyadaha xeebta macmiilka ee dhinac kasta oo hawsheena ah.',
+    aboutLi1: 'Dacwad-gelin iyo la-talinta ganacsiga oo dhammaystiran',
+    aboutLi2: 'Xardhan sharci oo caalami ah oo gobolka ah',
+    aboutLi3: 'Xalalada sharciga ee jilicsan oo qiimo jaban',
+    aboutLi4: 'Aqoon hoose oo xooggan oo leh habab caalamiga ah',
+    aboutCta: 'Nala Xiriir',
+    mvvTag: 'Aasaaskeenna',
+    mvvTitle: 'Hadafka, Aragtida & <em>Qiyamka Aasaasiga</em>',
+    missionH: 'Hadafkeenna', missionP: "Bixinta adeegyada sharciga ee hufan, la isku halayn karo, iyo tayada sare, oo ay ku jirto la-talinta sharciga ee xirfadda leh, iyadoo la ilaalinayo xuquuqaha macaamiisheenna oo la kobcin lahaa mabda'yada cadaaladda iyo xeerka sharci.",
+    visionH: 'Aragtideenna', visionP: "Inaan noqono shirkad sharci oo caalami ahaan la yaqaan oo la isku halayn karo, oo dejisa heerka kaamil-ahaanshaha sharciga ee Soomaaliya, Geeska Afrika, iyo ka dib — oo qaabeeya deegaan sharci oo xaq iyo caddaalad ah oo saameeya dhaqanka sharciga iyo helitaanka cadaaladda adduunka oo dhan.",
+    approachH: 'Hababkeenna', approachP: "Waxaan diiradda saarnaa bixinta xalalada sharciga ee wax ku ool ah oo xeebta macmiilka ah. Fahanka xooggan ee noogu jira nidaamka sharciga Soomaaliya, oo la mid ah hab casri ah oo istiraatiiji ah, waxay noo suurtogalinaysaa inaan bixino hogaamiye sharci oo wax ku ool ah oo kala duwan arrimaha ballaadhan leh saxnaanta, xirfadnimada, iyo khibradda hoose ee hooseeya.",
+    coreValuesTag: 'Qiyamka Aasaasiga',
+    svcTag: 'Waxa Aan Qabanno',
+    svcTitle: 'Adeegyadeenna <em>Sharciga</em>',
+    svcSubtitle: 'Waxaan hayaa dhaqan sharci oo kala duwan oo firfircoon oo daboolaya dhinacyada muhiimka ah ee dhaqaalaha Soomaalida iyo nidaamka sharciga — laga bilaabo dhisidda ganacsiga iyo u hoggaansamida ilaa xalinta khilaafaadka iyo la-talinta istiraatiijiga ah.',
+    contactTag: 'Nala Xiriir',
+    contactTitle: 'Noo Dir <em>Fariin</em>',
+    contactIntro: 'Haddaad u baahan tahay la-talin sharci, wakiil, ama doonayso inaad ka hadashid xaaladaada, kooxdeenu waxay diyaar u tahay inay caawiso. Buuxi foomka waxaanaan ku soo noqon doonaa si degdeg ah.',
+    formFirstName: 'Magaca Hore', formFirstNamePh: 'Magacaaga hore',
+    formLastName: 'Magaca Dambe', formLastNamePh: 'Magacaaga dambe',
+    formEmail: 'Cinwaanka Emailka', formPhone: 'Lambarka Telefoonka',
+    formService: 'Baahida Sharciga', formMessage: 'Fariintaada',
+    formMessagePh: 'Si gaaban u sharax arimaha sharciga...',
+    formSubmit: 'Dir Fariin',
+    contactDetailsTag: 'Faahfaahinta Xiriirka',
+    tagline: 'Xuquuqdaada. Furinaanteenna.',
+    stripH: 'Halkan Ayaan Idiin Joognaa — <em style="color:var(--gold); font-style:normal;">24/7</em>',
+    stripP: 'Nala xiriir kooxda xeerbeegayaasheenna khabiirka ah maanta',
+    footerAbout: 'Shirkad sharci casri ah oo dhammaystiran oo bixisa xalalada sharciga ee tayo sare leh shakhsiyaadka, ganacsiyada, iyo hay\'aadaha Soomaaliya iyo Bariga Afrika. La aasaasay 2019.',
+    footerSvcH: 'Adeegyada', footerMoreSvcH: 'Adeegyada Dheeraadka', footerInfoH: 'Macluumaadka',
   },
+
   ar: {
     dir: 'rtl',
+    navHome: 'الرئيسية', navAbout: 'من نحن', navServices: 'الخدمات ▾',
+    navPresence: 'حضورنا ▾', navMogadishu: 'مقديشو',
+    navSomaliaRegions: 'مناطق الصومال', navEastAfrica: 'شرق أفريقيا',
+    navMultimedia: 'الوسائط', navContact: 'اتصل بنا',
     heroEyebrow: 'مكتب محاماة متكامل الخدمات — الصومال',
     heroH1: 'التميز. النزاهة. <em>النتائج.</em>',
     heroP: 'إليت لو فيرم مكتب محاماة عصري متكامل الخدمات يلتزم بتقديم حلول قانونية عالية الجودة مصممة لتلبية الاحتياجات المتطورة للأفراد والشركات والمؤسسات في جميع أنحاء الصومال وشرق أفريقيا.',
-    heroBtnServices: 'استكشف خدماتنا',
-    heroBtnAbout: 'من نحن',
-    statLabels: ['تأسست','مجالات الممارسة','القضايا المنجزة','النطاق الإقليمي'],
-    sectionTagAbout: 'من نحن',
+    heroBtnServices: 'استكشف خدماتنا', heroBtnAbout: 'من نحن',
+    statEstablished: 'تأسست', statServices: 'الخدمات',
+    statCases: 'القضايا المنجزة', statReach: 'النطاق الإقليمي',
+    aboutTag: 'من نحن',
+    aboutTitle: 'حول <em>إليت لو فيرم</em>',
+    aboutP1: 'إليت لو فيرم مكتب محاماة عصري متكامل الخدمات يلتزم بتقديم حلول قانونية عالية الجودة مصممة لتلبية الاحتياجات المتطورة للأفراد والشركات والمؤسسات.',
+    aboutP2: 'منذ تأسيسه عام 2019، نما مكتبنا ليصبح ممارسة قانونية موثوقة وديناميكية في المشهد القانوني الصومالي. بُني على أساس من الاحترافية والنزاهة والالتزام بالنتائج، وقد طورنا باستمرار سمعة قوية في تقديم خدمات قانونية موثوقة.',
+    aboutP3: 'في إليت لو فيرم، نهدف إلى وضع معيار جديد للممارسة القانونية في الصومال من خلال دمج الابتكار والبحث القانوني والاستراتيجيات التي تركز على العميل في كل جانب من جوانب عملنا.',
+    aboutLi1: 'التقاضي الشامل والاستشارات المؤسسية',
+    aboutLi2: 'الخبرة القانونية العابرة للحدود والإقليمية',
+    aboutLi3: 'حلول قانونية مرنة وفعالة من حيث التكلفة',
+    aboutLi4: 'معرفة محلية عميقة مع أفضل الممارسات الدولية',
+    aboutCta: 'تواصل معنا',
+    mvvTag: 'أسسنا',
+    mvvTitle: 'الرسالة، الرؤية & <em>القيم الجوهرية</em>',
+    missionH: 'رسالتنا', missionP: 'تقديم خدمات قانونية فعالة وموثوقة وعالية الجودة، بما في ذلك الاستشارات القانونية المتخصصة، مع صون حقوق موكلينا والنهوض بمبادئ العدالة وسيادة القانون.',
+    visionH: 'رؤيتنا', visionP: 'أن نصبح مكتب محاماة معترفاً به عالمياً وموثوقاً، يضع معيار التميز القانوني في الصومال وقرن أفريقيا وما وراءها — نشكّل بيئة قانونية عادلة ومنصفة ونؤثر في الممارسة القانونية وإمكانية الوصول إلى العدالة حول العالم.',
+    approachH: 'نهجنا', approachP: 'نركز على تقديم حلول قانونية عملية تتمحور حول العميل. يُمكّننا فهمنا العميق للنظام القانوني في الصومال، إلى جانب نهجنا الحديث والاستراتيجي، من تقديم توجيهات قانونية فعالة في مجموعة واسعة من القضايا بدقة واحترافية وخبرة محلية عميقة.',
+    coreValuesTag: 'القيم الجوهرية',
+    svcTag: 'ما نقوم به',
+    svcTitle: 'خدماتنا <em>القانونية</em>',
+    svcSubtitle: 'نحافظ على ممارسة قانونية متنوعة وديناميكية تغطي القطاعات الرئيسية للاقتصاد الصومالي والنظام القانوني — من تأسيس الأعمال والامتثال إلى حل النزاعات والاستشارات الاستراتيجية.',
+    contactTag: 'تواصل معنا',
+    contactTitle: 'أرسل لنا <em>رسالة</em>',
+    contactIntro: 'سواء كنت بحاجة إلى استشارة قانونية أو تمثيل قانوني أو تريد ببساطة مناقشة وضعك، فريقنا مستعد للمساعدة. املأ النموذج وسنعود إليك بسرعة.',
+    formFirstName: 'الاسم الأول', formFirstNamePh: 'اسمك الأول',
+    formLastName: 'اسم العائلة', formLastNamePh: 'اسم عائلتك',
+    formEmail: 'البريد الإلكتروني', formPhone: 'رقم الهاتف',
+    formService: 'مجال الاحتياج القانوني', formMessage: 'رسالتك',
+    formMessagePh: 'صف باختصار مسألتك القانونية...',
+    formSubmit: 'إرسال الرسالة',
+    contactDetailsTag: 'بيانات التواصل',
+    tagline: 'حقوقك. التزامنا.',
+    stripH: 'نحن هنا من أجلك — <em style="color:var(--gold); font-style:normal;">24/7</em>',
+    stripP: 'تواصل مع فريق محامينا الخبراء اليوم',
+    footerAbout: 'مكتب محاماة عصري متكامل الخدمات يقدم حلولاً قانونية عالية الجودة للأفراد والشركات والمؤسسات في جميع أنحاء الصومال وشرق أفريقيا. تأسس عام 2019.',
+    footerSvcH: 'الخدمات', footerMoreSvcH: 'المزيد من الخدمات', footerInfoH: 'معلومات',
   }
 };
 
-function setLang(lang, btn) {
+let currentLang = 'en';
+
+function setLang(lang) {
   const t = translations[lang];
   if (!t) return;
+  currentLang = lang;
 
-  // Update active button
-  document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
-  btn.classList.add('active');
-
-  // Direction
+  // Direction & lang attribute
   document.documentElement.dir = t.dir;
   document.documentElement.lang = lang;
 
-  // Hero text
-  const eyebrow = document.querySelector('.hero-eyebrow');
-  if (eyebrow) eyebrow.textContent = t.heroEyebrow;
-  const heroH1 = document.querySelector('.hero h1');
-  if (heroH1) heroH1.innerHTML = t.heroH1;
-  const heroP = document.querySelector('.hero p');
-  if (heroP) heroP.textContent = t.heroP;
-  const btnGold = document.querySelector('.btn-gold');
-  if (btnGold) btnGold.textContent = t.heroBtnServices;
-  const btnOutline = document.querySelector('.btn-outline');
-  if (btnOutline) btnOutline.textContent = t.heroBtnAbout;
+  // Update dropdown trigger label & flag
+  const chosen = document.querySelector(`.lang-option[data-lang="${lang}"]`);
+  if (chosen) {
+    document.getElementById('langLabel').textContent = lang.toUpperCase();
+    document.querySelector('#langTrigger .lang-flag').textContent = chosen.dataset.flag;
+  }
+  document.querySelectorAll('.lang-option').forEach(b => b.classList.toggle('active', b.dataset.lang === lang));
 
-  // Stat labels
-  const statLbls = document.querySelectorAll('.stat-label');
-  t.statLabels.forEach((txt, i) => { if (statLbls[i]) statLbls[i].textContent = txt; });
+  // Close dropdown
+  document.getElementById('langSwitcher').classList.remove('open');
+  document.getElementById('langTrigger').setAttribute('aria-expanded', 'false');
 
-  // About section tag
-  const aboutTag = document.querySelector('#about .section-tag');
-  if (aboutTag) aboutTag.childNodes[0].textContent = t.sectionTagAbout;
+  // Apply text translations
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.dataset.i18n;
+    if (t[key] !== undefined) el.textContent = t[key];
+  });
+  document.querySelectorAll('[data-i18n-html]').forEach(el => {
+    const key = el.dataset.i18nHtml;
+    if (t[key] !== undefined) el.innerHTML = t[key];
+  });
+  document.querySelectorAll('[data-i18n-ph]').forEach(el => {
+    const key = el.dataset.i18nPh;
+    if (t[key] !== undefined) el.placeholder = t[key];
+  });
 }
+
+// Dropdown toggle
+document.addEventListener('DOMContentLoaded', function() {
+  const switcher = document.getElementById('langSwitcher');
+  const trigger = document.getElementById('langTrigger');
+  trigger.addEventListener('click', function(e) {
+    e.stopPropagation();
+    const isOpen = switcher.classList.toggle('open');
+    trigger.setAttribute('aria-expanded', isOpen);
+  });
+  document.addEventListener('click', function() {
+    switcher.classList.remove('open');
+    trigger.setAttribute('aria-expanded', 'false');
+  });
+  switcher.addEventListener('click', function(e) { e.stopPropagation(); });
+});
 </script>
 
 <script>
