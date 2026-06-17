@@ -233,6 +233,13 @@
   [dir="rtl"] .topbar { flex-direction: row-reverse; }
   [dir="rtl"] .topbar-right { flex-direction: row-reverse; }
   [dir="rtl"] .dropdown { left: auto; right: 0; }
+
+  /* Lang switcher inside nav (always visible, including mobile) */
+  .nav-lang { margin-left: 16px; }
+  @media (max-width: 900px) {
+    .nav-lang { margin-left: 8px; }
+    .lang-trigger { padding: 3px 7px; font-size: 10px; }
+  }
 </style>
 </head>
 <body>
@@ -244,24 +251,7 @@
       <a href="#" title="Twitter">𝕏</a>
       <a href="#" title="LinkedIn">in</a>
     </div>
-        <div class="lang-switcher" id="langSwitcher">
-      <button class="lang-trigger" id="langTrigger" aria-haspopup="listbox" aria-expanded="false">
-        <span class="lang-flag">🇬🇧</span>
-        <span id="langLabel">EN</span>
-        <span class="lang-caret">▼</span>
-      </button>
-      <div class="lang-dropdown" role="listbox">
-        <button class="lang-option active" role="option" data-lang="en" data-flag="🇬🇧" onclick="setLang('en')">
-          <span class="lang-flag">🇬🇧</span> English
-        </button>
-        <button class="lang-option" role="option" data-lang="so" data-flag="🇸🇴" onclick="setLang('so')">
-          <span class="lang-flag">🇸🇴</span> Somali
-        </button>
-        <button class="lang-option" role="option" data-lang="ar" data-flag="🇸🇦" onclick="setLang('ar')">
-          <span class="lang-flag">🇸🇦</span> Arabic
-        </button>
-      </div>
-    </div>
+  </div>
   </div>
 </div>
 <nav>
@@ -307,6 +297,24 @@
     <li><a href="/#contact">Multimedia</a></li>
     <li><a href="/#contact" class="nav-cta">Contact</a></li>
   </ul>
+  <div class="lang-switcher nav-lang" id="langSwitcher">
+    <button class="lang-trigger" id="langTrigger" aria-haspopup="listbox" aria-expanded="false">
+      <span class="lang-flag">🇬🇧</span>
+      <span id="langLabel">EN</span>
+      <span class="lang-caret">▼</span>
+    </button>
+    <div class="lang-dropdown" role="listbox">
+      <button class="lang-option active" role="option" data-lang="en" data-flag="🇬🇧" onclick="setLang('en')">
+        <span class="lang-flag">🇬🇧</span> English
+      </button>
+      <button class="lang-option" role="option" data-lang="so" data-flag="🇸🇴" onclick="setLang('so')">
+        <span class="lang-flag">🇸🇴</span> Somali
+      </button>
+      <button class="lang-option" role="option" data-lang="ar" data-flag="🇸🇦" onclick="setLang('ar')">
+        <span class="lang-flag">🇸🇦</span> Arabic
+      </button>
+    </div>
+  </div>
   <button class="ham-btn" id="hamBtn" aria-label="Toggle navigation" aria-expanded="false">
     <span></span><span></span><span></span>
   </button>
