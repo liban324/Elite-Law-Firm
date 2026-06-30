@@ -1,19 +1,19 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mogadishu | Elite Law Firm</title>
+<title>Terms &amp; Conditions | Elite Law Firm</title>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
-  html { scroll-behavior: smooth; }
+  html { scroll-behavior: smooth; min-height: 100dvh; overflow-y: auto; }
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   :root {
     --navy: #0d1f3c; --navy-mid: #162848; --navy-light: #1e3560;
     --gold: #c9a84c; --gold-light: #e8c96a; --gold-pale: #f5e9c8;
     --white: #ffffff; --off-white: #f8f6f1; --gray: #8a9bb5; --text: #2c3e5a;
   }
-  body { font-family: 'Montserrat', sans-serif; color: var(--text); background: var(--white); overflow-x: hidden; }
+  body { font-family: 'Montserrat', sans-serif; color: var(--text); background: var(--white); overflow-x: hidden; min-height: 100dvh; overflow-y: auto; }
   /* TOP BAR */
   .topbar { background: var(--navy-mid); padding: 8px 40px; display: flex; justify-content: space-between; align-items: center; font-size: 12px; color: var(--gray); letter-spacing: 0.05em; }
   .topbar a { color: var(--gray); text-decoration: none; }
@@ -51,33 +51,16 @@
   .page-hero p { font-size: 15px; color: var(--gray); max-width: 600px; margin: 0 auto; line-height: 1.7; position: relative; }
   .gold-rule { width: 60px; height: 2px; background: var(--gold); margin: 20px auto 0; }
   /* CONTENT */
-  .page-content { max-width: 1100px; margin: 0 auto; padding: 80px 40px; }
-  .section-tag { font-size: 11px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); margin-bottom: 10px; }
-  .section-title { font-family: 'Cormorant Garamond', serif; font-size: 36px; font-weight: 600; color: var(--navy); margin-bottom: 20px; line-height: 1.2; }
-  .section-title em { color: var(--gold); font-style: italic; }
-  .lead { font-size: 15px; color: var(--text); line-height: 1.8; margin-bottom: 40px; max-width: 760px; }
-  .content-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; margin-bottom: 60px; align-items: start; }
-  .feature-list { list-style: none; padding: 0; }
-  .feature-list li { display: flex; gap: 12px; align-items: flex-start; padding: 12px 0; border-bottom: 1px solid rgba(13,31,60,0.07); font-size: 14px; color: var(--text); line-height: 1.6; }
-  .feature-list li::before { content: '›'; color: var(--gold); font-size: 18px; font-weight: 700; line-height: 1.2; flex-shrink: 0; margin-top: 1px; }
-  .info-box { background: var(--navy); padding: 36px 32px; border-radius: 4px; }
-  .info-box h3 { font-family: 'Cinzel', serif; font-size: 16px; color: var(--gold); letter-spacing: 0.1em; margin-bottom: 14px; }
-  .info-box p { font-size: 13.5px; color: var(--gray); line-height: 1.75; }
-  .info-box .btn-gold { display: inline-block; margin-top: 20px; background: var(--gold); color: var(--navy); padding: 11px 28px; font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; border-radius: 2px; transition: background 0.2s; }
-  .info-box .btn-gold:hover { background: var(--gold-light); }
-  /* WHY US STRIP */
-  .why-strip { background: var(--off-white); padding: 60px 40px; }
-  .why-inner { max-width: 1100px; margin: 0 auto; }
-  .why-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; margin-top: 36px; }
-  .why-card { background: var(--white); border: 1px solid rgba(13,31,60,0.08); padding: 28px 24px; border-radius: 4px; }
-  .why-card h4 { font-family: 'Cinzel', serif; font-size: 13px; letter-spacing: 0.1em; color: var(--navy); margin-bottom: 10px; }
-  .why-card p { font-size: 13px; color: var(--gray); line-height: 1.65; }
-  /* CTA STRIP */
-  .cta-strip { background: var(--navy); padding: 64px 40px; text-align: center; }
-  .cta-strip h2 { font-family: 'Cinzel', serif; font-size: 28px; color: var(--white); letter-spacing: 0.08em; margin-bottom: 14px; }
-  .cta-strip p { font-size: 14px; color: var(--gray); margin-bottom: 30px; }
-  .btn-gold { display: inline-block; background: var(--gold); color: var(--navy); padding: 13px 32px; font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; text-decoration: none; border-radius: 2px; transition: background 0.2s; }
-  .btn-gold:hover { background: var(--gold-light); }
+  .page-content { max-width: 900px; margin: 0 auto; padding: 80px 40px; }
+  .legal-updated { font-size: 12.5px; color: var(--gray); margin-bottom: 36px; letter-spacing: 0.04em; }
+  .legal-content h2 { font-family: 'Cormorant Garamond', serif; font-size: 26px; font-weight: 600; color: var(--navy); margin: 44px 0 16px; line-height: 1.25; }
+  .legal-content h2:first-child { margin-top: 0; }
+  .legal-content p { font-size: 14.5px; color: var(--text); line-height: 1.85; margin-bottom: 14px; }
+  .legal-content ul { list-style: none; padding: 0; margin: 0 0 14px; }
+  .legal-content ul li { display: flex; gap: 10px; align-items: flex-start; padding: 8px 0; font-size: 14.5px; color: var(--text); line-height: 1.7; }
+  .legal-content ul li::before { content: '›'; color: var(--gold); font-size: 18px; font-weight: 700; line-height: 1.2; flex-shrink: 0; margin-top: 1px; }
+  .legal-content a { color: var(--gold); text-decoration: none; }
+  .legal-content a:hover { text-decoration: underline; }
   /* FOOTER */
   footer { background: var(--navy); padding: 60px 40px 28px; }
   .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px; margin-bottom: 40px; }
@@ -98,9 +81,8 @@
     .logo-img { height: 60px; margin-bottom: -8px; }
     .topbar { display: none; } nav { padding: 0 20px; } .nav-links { display: none; }
     .page-hero { padding: 60px 20px 50px; } .page-hero h1 { font-size: 28px; }
-    .page-content { padding: 50px 20px; } .content-grid { grid-template-columns: 1fr; gap: 32px; }
-    .why-grid { grid-template-columns: 1fr; } .footer-grid { grid-template-columns: 1fr; }
-    .why-strip { padding: 40px 20px; } .cta-strip { padding: 48px 20px; }
+    .page-content { padding: 50px 20px; }
+    .footer-grid { grid-template-columns: 1fr; }
   }
 
   /* ── HAMBURGER BUTTON ── */
@@ -235,14 +217,13 @@
 </head>
 <body>
 <div class="topbar">
-  <span style="color:#ffffff;">📧 <a href="mailto:info@elitelawfirm.so" style="color:#ffffff;">info@elitelawfirm.so</a> &nbsp;|&nbsp; ☎ +252 61 000 0000 &nbsp;|&nbsp; Mon–Fri: 9am – 6pm | Mogadishu, Somalia</span>
+  <span style="color:#ffffff;">📧 <a href="mailto:info@elitelawfirm.so" style="color:#ffffff;">info@elitelawfirm.so</a> &nbsp;|&nbsp; ☎ +252 61 1118860 &nbsp;|&nbsp; Sat–Fri: 9am – 6pm | Mogadishu, Somalia</span>
   <div class="topbar-right">
     <div class="social-icons">
       <a href="https://www.facebook.com/people/Elite-law-firm/61591183311987/" title="Facebook" target="_blank" rel="noopener">f</a>
       <a href="#" title="Twitter">𝕏</a>
       <a href="#" title="LinkedIn">in</a>
     </div>
-  </div>
   </div>
 </div>
 <nav>
@@ -255,29 +236,25 @@
   </a>
   <ul class="nav-links">
     <li><a href="/">Home</a></li>
-    <li>
-      <a href="#">About Us ▾</a>
-      <div class="dropdown">
-        <a href="/about/overview/">Overview</a>
-        <a href="/about/mission-vision/">Our Mission &amp; Vision</a>
-        <a href="/about/core-values/">Core Values</a>
-        <a href="/about/our-approach/">Our Approach</a>
-        <a href="/about/where-we-operate/">Where We Operate</a>
-        <a href="/about/meet-the-team/">Meet The Team</a>
-      </div>
-    </li>
+    <li><a href="/about/overview/">About Us</a></li>
     <li>
       <a href="#">Services ▾</a>
       <div class="dropdown">
-        <a href="/services/notary-legal-documentation/">Notary &amp; Legal Documentation</a>
-        <a href="/services/labour-employment-law/">Labour &amp; Employment Law</a>
-        <a href="/services/arbitration-adr/">Arbitration &amp; ADR</a>
+        <a href="/services/corporate-commercial-business-setup/">Corporate, Commercial &amp; Business Setup</a>
         <a href="/services/government-regulatory-advisory/">Government &amp; Regulatory Advisory</a>
+        <a href="/services/labour-employment-law/">Labour &amp; Employment Law</a>
+        <a href="/services/shipping-trade/">Shipping &amp; Trade</a>
         <a href="/services/international-immigration-law/">International &amp; Immigration Law</a>
-        <a href="/services/general-legal-advisory/">General Legal Advisory</a>
-        <a href="/services/taxation/">Taxation</a>
+        <a href="/services/arbitration-adr/">Arbitration &amp; ADR</a>
         <a href="/services/anti-corruption-bribery/">Anti-Corruption &amp; Bribery</a>
+        <a href="/services/taxation/">Taxation</a>
+        <a href="/services/civil-litigation/">Civil Litigation</a>
+        <a href="/services/criminal-defence/">Criminal Defence</a>
+        <a href="/services/property-land-law/">Property &amp; Land Law</a>
         <a href="/services/real-estate/">Real Estate</a>
+        <a href="/services/family-law/">Family Law</a>
+        <a href="/services/notary-legal-documentation/">Notary &amp; Legal Documentation</a>
+        <a href="/services/general-legal-advisory/">General Legal Advisory</a>
         <a href="/services/other-legal-services/">Other Legal Services</a>
       </div>
     </li>
@@ -318,57 +295,62 @@
   </button>
 </nav>
 <section class="page-hero">
-  <div class="breadcrumb"><a href="/">Home</a> › <a href="#">Presence</a> › Mogadishu</div>
-  <h1 data-i18n-html="heroH1">Our Presence in Mogadishu</h1>
-  <p data-i18n="heroP">Headquartered in the heart of Somalia's capital — serving the Banaadir region and the nation's most dynamic legal market.</p>
+  <div class="breadcrumb"><a href="/">Home</a> › Terms &amp; Conditions</div>
+  <h1>Terms &amp; Conditions</h1>
+  <p>Please read these terms carefully before using our website or engaging our legal services.</p>
   <div class="gold-rule"></div>
 </section>
 
 <section class="page-content">
-  <div class="section-tag" data-i18n="sec1Tag">Our Location</div>
-  <h2 class="section-title" data-i18n-html="sec1Title">Elite Law Firm in <em>Mogadishu</em></h2>
-  <p class="lead" data-i18n="sec1Lead">Elite Law Firm's headquarters is located in Mogadishu, the capital city and economic hub of Somalia. From here, we serve individuals, businesses, government institutions, and international organisations operating in the Banaadir region and across the country.</p>
-  <div class="content-grid">
-    <ul class="feature-list">
-    <li>Strategically located in Mogadishu's central business district</li>
-    <li>Serving the Banaadir regional administration and courts</li>
-    <li>Deep knowledge of local regulatory and judicial processes</li>
-    <li>Established relationships with Mogadishu's business and legal communities</li>
-    <li>Full suite of legal services available from our Mogadishu office</li>
-    <li>Arabic, Somali, and English language legal services</li>
+  <div class="legal-updated">Last Updated: June 2026</div>
+  <div class="legal-content">
+
+    <h2>1. Introduction</h2>
+    <p>These Terms and Conditions ("Terms") govern your access to and use of the website and services provided by [Insert Law Firm Name] ("the Firm," "we," "us," or "our"). By accessing this website or engaging our services, you agree to be bound by these Terms. If you do not agree with any part of these Terms, please discontinue use of this website immediately.</p>
+
+    <h2>2. No Attorney-Client Relationship</h2>
+    <p>Use of this website, including submission of any contact or inquiry forms, does not create an attorney-client relationship between you and [Insert Law Firm Name]. An attorney-client relationship is only formed once the Firm has expressly agreed to represent you through a signed engagement letter or formal retainer agreement.</p>
+
+    <h2>3. No Legal Advice</h2>
+    <p>The content on this website is provided for general informational purposes only and does not constitute legal advice. Laws and regulations vary by jurisdiction and change frequently. You should not act or refrain from acting based on any information on this website without first seeking professional legal counsel specific to your circumstances.</p>
+
+    <h2>4. Use of Website</h2>
+    <p>You agree to use this website only for lawful purposes and in a manner that does not infringe the rights of, restrict, or inhibit anyone else's use of the website. Prohibited behavior includes, but is not limited to:</p>
+    <ul>
+      <li>Attempting to gain unauthorized access to any part of the website or its underlying systems</li>
+      <li>Transmitting any harmful code, viruses, or malicious software</li>
+      <li>Using automated systems to scrape, copy, or extract content without permission</li>
+      <li>Impersonating any person or entity, or misrepresenting your affiliation</li>
+      <li>Submitting false, misleading, or fraudulent information through any form on this website</li>
     </ul>
-    <div class="info-box">
-      <h3>Visit Our Office</h3>
-      <p>Our Mogadishu office is open Monday to Friday, 9am to 6pm. We welcome clients by appointment and are also available for remote consultations. Contact us to arrange a meeting with our team.</p>
-      <a href="/#contact" class="btn-gold">Get In Touch →</a>
-    </div>
+
+    <h2>5. Intellectual Property</h2>
+    <p>All content on this website, including text, graphics, logos, images, and firm branding, is the property of [Insert Law Firm Name] or its licensors and is protected by applicable intellectual property laws. No part of this website may be reproduced, distributed, or transmitted in any form without the prior written consent of the Firm, except for personal, non-commercial use.</p>
+
+    <h2>6. Confidentiality of Submitted Information</h2>
+    <p>Information submitted through our contact or inquiry forms is treated as confidential to the extent permitted by law; however, transmission over the internet is never completely secure. Please do not submit highly sensitive or privileged information through this website prior to the establishment of a formal attorney-client relationship.</p>
+
+    <h2>7. Limitation of Liability</h2>
+    <p>To the fullest extent permitted by law, [Insert Law Firm Name] shall not be liable for any direct, indirect, incidental, consequential, or punitive damages arising out of your access to, use of, or inability to use this website, including reliance on any information contained herein.</p>
+
+    <h2>8. Third-Party Links</h2>
+    <p>This website may contain links to third-party websites for your convenience. The Firm does not endorse and is not responsible for the content, accuracy, or practices of any linked third-party websites. Access to such websites is at your own risk.</p>
+
+    <h2>9. Changes to These Terms</h2>
+    <p>We reserve the right to update or modify these Terms at any time without prior notice. Any changes will be effective immediately upon posting to this website. Your continued use of the website following any changes constitutes acceptance of the revised Terms.</p>
+
+    <h2>10. Governing Law</h2>
+    <p>These Terms shall be governed by and construed in accordance with the laws of [Insert State/Country], without regard to its conflict of law provisions. Any disputes arising under or in connection with these Terms shall be subject to the exclusive jurisdiction of the courts of [Insert State/Country].</p>
+
+    <h2>11. Severability</h2>
+    <p>If any provision of these Terms is found to be invalid or unenforceable, the remaining provisions shall continue in full force and effect.</p>
+
+    <h2>12. Contact Us</h2>
+    <p>If you have any questions regarding these Terms and Conditions, please contact us at <a href="mailto:info@elitelawfirm.so">info@elitelawfirm.so</a> or through our <a href="/#contact">contact page</a>.</p>
+
   </div>
 </section>
-<section class="why-strip">
-  <div class="why-inner">
-    <div class="section-tag">Why Choose Us</div>
-    <div class="section-title">The <em>Elite Advantage</em></div>
-    <div class="why-grid">
-      <div class="why-card">
-        <h4>Deep Local Knowledge</h4>
-        <p>Decades of experience navigating Somalia's legal landscape, with unmatched insight into local regulations, courts, and institutions.</p>
-      </div>
-      <div class="why-card">
-        <h4>International Standards</h4>
-        <p>Our team combines local expertise with international best practices, ensuring your matter is handled to the highest professional standard.</p>
-      </div>
-      <div class="why-card">
-        <h4>Client-Centred Service</h4>
-        <p>We treat every client as a priority — providing clear, timely communication and solutions tailored to your specific needs and goals.</p>
-      </div>
-    </div>
-  </div>
-</section>
-<section class="cta-strip">
-  <h2>Ready to Discuss Your Matter?</h2>
-  <p>Our legal team is available to provide expert advice. Schedule a consultation today.</p>
-  <a href="/#contact" class="btn-gold">Contact Us →</a>
-</section>
+
 <footer>
   <div class="footer-grid">
     <div>
@@ -392,11 +374,10 @@
     <div>
       <h5>Information</h5>
       <ul>
-        <li><a href="/about/overview/">About Us</a></li>
-        <li><a href="/about/mission-vision/">Mission &amp; Vision</a></li>
-        <li><a href="/about/meet-the-team/">Our Team</a></li>
-        <li><a href="/about/where-we-operate/">Where We Operate</a></li>
-        <li><a href="/#contact">Multimedia</a></li>
+        <li><a href="/about/overview/#overview">About Us</a></li>
+        <li><a href="/about/overview/#mission-vision">Mission &amp; Vision</a></li>
+        <li><a href="/about/overview/#team">Our Team</a></li>
+        <li><a href="/about/overview/#where-we-operate">Where We Operate</a></li>
         <li><a href="/#contact">Contact Us</a></li>
         <li><a href="/terms-and-conditions.html">Terms &amp; Conditions</a></li>
       </ul>
@@ -486,76 +467,14 @@
 <script>
 // ── LANGUAGE SWITCHER ──
 const translations = {
-  en: {
-    'navHome': 'Home',
-    'navAbout': 'About Us',
-    'navAbout2': 'About Us ▾',
-    'navServices': 'Services ▾',
-    'navPresence': 'Presence ▾',
-    'navMultimedia': 'Multimedia',
-    'navContact': 'Contact',
-    'ctaGetInTouch': 'Get In Touch →',
-    'heroH1': 'Mogadishu',
-    'heroP': 'Elite Law Firm's headquarters — the heart of our legal operations, serving clients across the Banaadir region and Somalia.',
-    'sec1Tag': 'Our Presence',
-    'sec1Title': 'Legal Services in <em>Mogadishu</em>',
-    'sec1Lead': 'As Somalia's capital and commercial hub, Mogadishu is the centre of Elite Law Firm's operations.',
-    'dir': 'ltr'
-  },
-  so: {
-    'navHome': 'Bogga Hore',
-    'navAbout': 'Naga Waran',
-    'navAbout2': 'Naga Waran ▾',
-    'navServices': 'Adeegyada ▾',
-    'navPresence': 'Goobaha ▾',
-    'navMultimedia': 'Warbaahinta',
-    'navContact': 'Xiriir',
-    'ctaGetInTouch': 'Nala Xiriir →',
-    'heroH1': 'Muqdisho',
-    'heroP': 'Xafiiska Guud ee Elite Law Firm — wadnaha hawlgaladeenna sharciga, u adeegid macaamiisha gobolka Banaadir iyo Soomaaliya.',
-    'sec1Tag': 'Goobteenna',
-    'sec1Title': 'Adeegyada Sharciga ee <em>Muqdisho</em>',
-    'sec1Lead': 'Muqdisho oo ah caasimadda Soomaaliya iyo xarunta ganacsiga, waxay tahay xarunta hawlgalada Elite Law Firm.',
-    'dir': 'ltr'
-  },
-  ar: {
-    'navHome': 'الرئيسية',
-    'navAbout': 'من نحن',
-    'navAbout2': 'من نحن ▾',
-    'navServices': 'الخدمات ▾',
-    'navPresence': 'حضورنا ▾',
-    'navMultimedia': 'الوسائط',
-    'navContact': 'اتصل بنا',
-    'ctaGetInTouch': 'تواصل معنا →',
-    'heroH1': 'مقديشو',
-    'heroP': 'المقر الرئيسي لإليت لو فيرم — قلب عملياتنا القانونية، خدمة العملاء في منطقة بنادر والصومال.',
-    'sec1Tag': 'حضورنا',
-    'sec1Title': 'الخدمات القانونية في <em>مقديشو</em>',
-    'sec1Lead': 'بوصفها عاصمة الصومال ومركزه التجاري، تُعدّ مقديشو مركز عمليات إليت لو فيرم.',
-    'dir': 'rtl'
-  },
-  sw: {
-    'navHome': 'Nyumbani',
-    'navAbout': 'Kuhusu Sisi',
-    'navAbout2': 'Kuhusu Sisi ▾',
-    'navServices': 'Huduma ▾',
-    'navPresence': 'Uwepo ▾',
-    'navMultimedia': 'Vyombo vya Habari',
-    'navContact': 'Wasiliana Nasi',
-    'ctaGetInTouch': 'Wasiliana Nasi →',
-    'dir': 'ltr',
-    'heroH1': 'Mogadishu',
-    'heroP': 'Makao makuu ya Elite Law Firm — moyo wa shughuli zetu za kisheria.',
-    'sec1Tag': 'Uwepo Wetu',
-    'sec1Title': 'Huduma za Kisheria <em>Mogadishu</em>',
-    'sec1Lead': 'Kama mji mkuu wa Somalia na kitovu cha biashara, Mogadishu ni katikati ya shughuli za Elite Law Firm.'
-  }
+  en: { 'dir': 'ltr' },
+  so: { 'dir': 'ltr' },
+  ar: { 'dir': 'rtl' },
+  sw: { 'dir': 'ltr' }
 };
-let currentLang = 'en';
 function setLang(lang) {
   const t = translations[lang];
   if (!t) return;
-  currentLang = lang;
   localStorage.setItem('eliteLang', lang);
   document.documentElement.dir = t.dir;
   document.documentElement.lang = lang;
@@ -567,8 +486,6 @@ function setLang(lang) {
   document.querySelectorAll('.lang-option').forEach(function(b){ b.classList.toggle('active', b.dataset.lang === lang); });
   document.getElementById('langSwitcher').classList.remove('open');
   document.getElementById('langTrigger').setAttribute('aria-expanded','false');
-  document.querySelectorAll('[data-i18n]').forEach(function(el){ const key=el.dataset.i18n; if(t[key]!==undefined) el.textContent=t[key]; });
-  document.querySelectorAll('[data-i18n-html]').forEach(function(el){ const key=el.dataset.i18nHtml; if(t[key]!==undefined) el.innerHTML=t[key]; });
 }
 document.addEventListener('DOMContentLoaded', function() {
   const switcher=document.getElementById('langSwitcher');
@@ -578,7 +495,6 @@ document.addEventListener('DOMContentLoaded', function() {
   document.addEventListener('click',function(){ switcher.classList.remove('open'); trigger.setAttribute('aria-expanded','false'); });
   switcher.addEventListener('click',function(e){ e.stopPropagation(); });
 });
-// Restore saved language (DOM already ready — script is at end of body)
 (function() {
   var savedLang = localStorage.getItem('eliteLang');
   if (savedLang && translations[savedLang]) setLang(savedLang);
