@@ -67,6 +67,13 @@
   .info-box p { font-size: 13.5px; color: var(--gray); line-height: 1.75; }
   .info-box .btn-gold { display: inline-block; margin-top: 20px; background: var(--gold); color: var(--navy); padding: 11px 28px; font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; border-radius: 2px; transition: background 0.2s; }
   .info-box .btn-gold:hover { background: var(--gold-light); }
+  .overview-story { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 56px; align-items: start; margin-bottom: 56px; }
+  .overview-story p { font-size: 14.5px; color: var(--text); line-height: 1.85; margin-bottom: 18px; }
+  .overview-story img { width: 100%; height: 100%; min-height: 460px; object-fit: cover; border-radius: 4px; }
+  @media (max-width: 900px) {
+    .overview-story { grid-template-columns: 1fr; gap: 28px; }
+    .overview-story img { min-height: 280px; }
+  }
   /* WHY US STRIP */
   .why-strip { background: var(--off-white); padding: 60px 40px; }
   .why-inner { max-width: 1100px; margin: 0 auto; }
@@ -344,6 +351,16 @@
   <div class="section-tag" data-i18n="sec1Tag">Who We Are</div>
   <h2 class="section-title" data-i18n-html="sec1Title">A Legacy of <em>Legal Excellence</em></h2>
   <p class="lead" data-i18n="sec1Lead">Elite Law Firm was founded with a clear mission: to deliver world-class legal services to clients navigating the complexities of Somali and East African law. From corporate transactions to courtroom advocacy, we bring precision, dedication, and deep expertise to every matter we handle.</p>
+  <div class="overview-story">
+    <div>
+      <p>Since its establishment in 2019, our law firm has grown into a trusted and dynamic legal practice within the Somali legal landscape. Built on a foundation of professionalism, integrity, and commitment to results, we have steadily developed a strong reputation for delivering reliable legal services to individuals, businesses, and institutions.</p>
+      <p>As a full-service law firm, we provide comprehensive legal solutions covering both litigation and corporate advisory matters. Our practice is designed to handle a wide range of complex and demanding legal issues, supported by a dedicated team of legal professionals who are diligent, accessible, and committed to excellence in service delivery.</p>
+      <p>We approach every case with careful attention, strategic thinking, and a strong focus on achieving practical and effective outcomes for our clients. Our commitment goes beyond legal representation—we aim to be a dependable partner that clients can trust in both routine and high-stakes matters.</p>
+      <p>In addition to our local expertise, we continuously strengthen our capacity to handle cross-border and regional legal matters, ensuring that our clients benefit from informed, commercially aware legal guidance that aligns with modern business needs.</p>
+      <p>At our firm, we also value flexibility and fairness in our service delivery. We tailor our legal solutions to meet the specific needs and circumstances of each client, ensuring that high-quality legal support remains accessible and cost-effective.</p>
+    </div>
+    <img src="/Overview.webp" alt="Elite Law Firm attorney reviewing legal documents">
+  </div>
   <div class="content-grid">
     <ul class="feature-list">
     <li>Full-service litigation and corporate advisory across all sectors</li>
