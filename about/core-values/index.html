@@ -49,6 +49,9 @@
   .breadcrumb a:hover { opacity: 1; }
   .page-hero h1 { font-family: 'Cinzel', serif; font-size: 42px; font-weight: 700; color: var(--white); letter-spacing: 0.08em; margin-bottom: 16px; position: relative; }
   .page-hero p { font-size: 15px; color: var(--gray); max-width: 600px; margin: 0 auto; line-height: 1.7; position: relative; }
+  .page-hero.img-hero { padding: 0; }
+  .page-hero.img-hero img { display: block; width: 100%; height: auto; }
+  .page-hero.img-hero .breadcrumb, .page-hero.img-hero h1, .page-hero.img-hero p, .page-hero.img-hero .gold-rule { display: none; }
   .gold-rule { width: 60px; height: 2px; background: var(--gold); margin: 20px auto 0; }
   /* CONTENT */
   .page-content { max-width: 1100px; margin: 0 auto; padding: 80px 40px; }
@@ -317,7 +320,8 @@
     <span></span><span></span><span></span>
   </button>
 </nav>
-<section class="page-hero">
+<section class="page-hero img-hero">
+  <img src="/Our-Core-Values.webp" alt="Our Core Values">
   <div class="breadcrumb"><a href="/">Home</a> › <a href="#">About Us</a> › Core Values</div>
   <h1 data-i18n-html="heroH1">Our Core Values</h1>
   <p data-i18n="heroP">The principles that define who we are and guide everything we do for our clients and communities.</p>

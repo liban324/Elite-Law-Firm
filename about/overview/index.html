@@ -43,13 +43,17 @@
   .nav-cta:hover { background: var(--gold-light) !important; }
   /* PAGE HERO */
   .page-hero { background: var(--navy); padding: 80px 40px 70px; text-align: center; position: relative; overflow: hidden; }
-  .page-hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 60% 40%, rgba(201,168,76,0.08) 0%, transparent 70%); }
-  .breadcrumb { font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); opacity: 0.8; margin-bottom: 18px; }
+  .page-hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 60% 40%, rgba(201,168,76,0.08) 0%, transparent 70%); z-index: 1; }
+  .hero-bg-slide { position: absolute; inset: 0; background-size: cover; background-position: center; opacity: 0; transition: opacity 1.5s ease-in-out; z-index: 0; }
+  .hero-bg-slide.active { opacity: 1; }
+  .page-hero::after { content: ''; position: absolute; inset: 0; background: rgba(13,31,60,0.72); z-index: 1; }
+  .breadcrumb { font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); opacity: 0.8; margin-bottom: 18px; position: relative; z-index: 2; }
   .breadcrumb a { color: var(--gold); text-decoration: none; opacity: 0.7; }
   .breadcrumb a:hover { opacity: 1; }
-  .page-hero h1 { font-family: 'Cinzel', serif; font-size: 42px; font-weight: 700; color: var(--white); letter-spacing: 0.08em; margin-bottom: 16px; position: relative; }
-  .page-hero p { font-size: 15px; color: var(--gray); max-width: 600px; margin: 0 auto; line-height: 1.7; position: relative; }
+  .page-hero h1 { font-family: 'Cinzel', serif; font-size: 42px; font-weight: 700; color: var(--white); letter-spacing: 0.08em; margin-bottom: 16px; position: relative; z-index: 2; }
+  .page-hero p { font-size: 15px; color: var(--gray); max-width: 600px; margin: 0 auto; line-height: 1.7; position: relative; z-index: 2; }
   .gold-rule { width: 60px; height: 2px; background: var(--gold); margin: 20px auto 0; }
+  .page-hero .gold-rule { position: relative; z-index: 2; }
   /* CONTENT */
   .page-content { max-width: 1100px; margin: 0 auto; padding: 80px 40px; }
   .page-content.alt { background: var(--off-white); max-width: none; }
@@ -340,11 +344,25 @@
   </button>
 </nav>
 <section class="page-hero">
+  <div class="hero-bg-slide active" style="background-image:url('/About-Us.webp');"></div>
+  <div class="hero-bg-slide" style="background-image:url('/About-Us2.webp');"></div>
   <div class="breadcrumb"><a href="/">Home</a> › About Us</div>
   <h1 data-i18n-html="heroH1">About Elite Law Firm</h1>
   <p data-i18n="heroP">A premier full-service legal institution committed to excellence, integrity, and results across Somalia and East Africa.</p>
   <div class="gold-rule"></div>
 </section>
+<script>
+  (function () {
+    var slides = document.querySelectorAll('.hero-bg-slide');
+    if (slides.length < 2) return;
+    var current = 0;
+    setInterval(function () {
+      slides[current].classList.remove('active');
+      current = (current + 1) % slides.length;
+      slides[current].classList.add('active');
+    }, 5000);
+  })();
+</script>
 
 <!-- OVERVIEW -->
 <section class="page-content" id="overview">
